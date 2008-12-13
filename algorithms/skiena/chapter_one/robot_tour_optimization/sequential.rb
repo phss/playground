@@ -4,12 +4,7 @@ require "data_structures"
 class Sequential
   
   def self.find_shortest_cycle(points)
-    cycle = points.inject(Cycle.from_initial_edge(points.shift, points.shift)) do |result, point|
-      result.add_point(point)
-      result
-    end
-    cycle.add_point(cycle.edges.first.start_point) # Closing the cycle
-    return cycle
+    Cycle.from_list_of_points(points)
   end
   
 end
