@@ -1,1 +1,3 @@
-A place to store any fun and mildy useful hacks.
+A place to store fun and mildy useful hacks, such as:
+- algorithms: implementation of algorithms from books.
+- ruby_features_test: unit test driven documentation of Ruby features.
