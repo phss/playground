@@ -10,24 +10,47 @@ Point = Struct.new(:id, :x, :y) do
 end
 
 class Edge  
-  def initialize(pointA, pointB)
-    @pointA = pointA
-    @pointB = pointB
+  attr_reader :start_point, :end_point
+  
+  def initialize(start_point, end_point)
+    @start_point = start_point
+    @end_point = end_point
+  end
+  
+  def length
+    Math.sqrt((@start_point.x - @end_point.x)**2 + (@start_point.y - @end_point.y)**2)
   end
   
   def to_s
-    "(#{@pointA}, #{@pointB})"
+    "(#{@start_point}, #{@end_point})"
   end
 end
 
 class Cycle
-  def initialize(edges)
+  attr_reader :edges
+  
+  def initialize(edges = [])
     @edges = edges
   end
   
+  def self.from_initial_edge(start_point, end_point)
+    Cycle.new([Edge.new(start_point, end_point)])
+  end
+  
+  def add_point(point)
+    @edges << Edge.new(@edges.last.end_point, point)
+  end
+  
+  def closed?
+    @edges.last.end_point == @edges.first.start_point
+  end
+  
+  def length
+    @edges.inject(0) { |result, edge| result += edge.length }
+  end
+  
   def to_s
-    output_string = ""
-    @edges.each { |edge| output_string << "#{edge} -> " }
-    output_string << "#{@edges[0]}\n"
+    output_string = @edges.inject("") { |result, edge| result << "#{edge} -> " }
+    output_string << "Length: #{length}" #-> Closed?: #{closed?}"
   end
 end
