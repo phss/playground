@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: lib/jruby.jar lib/lwjgl.jar lib/slick.jar data.jar . 
+Main-Class: org.rubyforge.rawr.Main

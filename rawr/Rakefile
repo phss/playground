@@ -1,0 +1,19 @@
+require "rawr"
+require "rake"
+
+task :run do
+  sh "export CLASSPATH=lib/slick.jar:lib/lwjgl.jar; jruby -J-Djava.library.path=lib/native_files src/main.rb"
+end
+
+task :test_jar => ["rawr:clean", "rawr:jar"] do
+  sh "cd package/jar; java -Djava.library.path=lib/native_files -jar Test.jar"
+end
+
+task :test_jar_from_jruby do
+  FileUtils.cp("/Users/moonpxi/Documents/projects/jruby/lib/jruby.jar", "lib")
+  Rake::Task["test_jar"].execute
+end
+
+task :test_app => ["rawr:clean", "rawr:bundle:app"] do
+  sh "open package/osx/Test.app"
+end
