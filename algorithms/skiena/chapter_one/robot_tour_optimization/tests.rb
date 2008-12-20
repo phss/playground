@@ -2,6 +2,7 @@ require "test/unit"
 
 require "sequential"
 require "nearest_neighbor"
+require "closest_pair"
 require "optimal_tsp"
 
 TestInput = Struct.new(:name, :scenario)
@@ -23,6 +24,11 @@ class TestAlgorithms < Test::Unit::TestCase
     puts "\nNearest neighbor:"
     run_all_tests_for(NearestNeighbor)  
   end
+  
+  def test_closest_pair
+    puts "\nClosest Pair:"
+    run_all_tests_for(ClosestPair)  
+  end  
   
   def test_optimal_tsp
     puts "\nOptimal TSP:"
