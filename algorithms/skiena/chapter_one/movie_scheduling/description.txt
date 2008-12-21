@@ -1,0 +1,3 @@
+Problem: Movie Scheduling
+Input: A set I of n points in the plane.
+Output: What is the largest subset of mutually non-overlapping intervals which can be selected from I?
