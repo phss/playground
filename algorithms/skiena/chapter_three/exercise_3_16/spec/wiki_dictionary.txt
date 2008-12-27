@@ -1,0 +1,256 @@
+Dictionary
+From Wikipedia, the free encyclopedia
+Jump to: navigation, search
+For other uses, see Dictionary (disambiguation).
+For Wikimedia's dictionary project visit Wiktionary, or see the Wiktionary article.
+	This article includes a list of references or external links, but its sources remain unclear because it lacks inline citations. Please improve this article by introducing more precise citations where appropriate. (July 2007)
+
+A dictionary is a book of alphabetically listed words in a specific language, with definitions, etymologies, pronunciations, and other information;[1] or a book of alphabetically listed words in one language with their equivalents in another, also known as a lexicon.[1]
+
+In many languages, words can appear in many different forms, but only the undeclined or unconjugated form appears as the headword in most dictionaries. Dictionaries are most commonly found in the form of a book, but some newer dictionaries, like StarDict and the New Oxford American Dictionary are dictionary software running on PDAs or computers. There are also many online dictionaries accessible via the Internet.
+A multi-volume Latin dictionary in the University Library of Graz.
+Contents
+[hide]
+
+    * 1 History
+    * 2 Coverage
+    * 3 Special-purpose dictionaries
+    * 4 Specialized dictionaries
+    * 5 Glossaries
+    * 6 Pronunciation
+    * 7 Variations between dictionaries
+          o 7.1 Prescription and description
+    * 8 Science Dictionary
+    * 9 Major English dictionaries
+          o 9.1 Others
+    * 10 See also
+    * 11 References
+    * 12 Relevant literature
+    * 13 External links
+
+[edit] History
+
+The oldest known dictionaries were Akkadian empire cuneiform tablets with bilingual Sumerian-Akkadian wordlists, discovered in Ebla (modern Syria) and dating roughly 2300 BCE.[2] The early 2nd millennium BCE Urra=hubullu glossary is the canonical Babylonian version of such bilingual Sumerian wordlists. A Chinese dictionary, the ca. 3rd century BCE Erya, was the earliest monolingual dictionary, although some sources cite the ca. 800 BCE Shizhoupian as a "dictionary", modern scholarship considers it a calligraphic compendium of Chinese characters from Zhou dynasty bronzes. Apollonius the Sophist (fl. 1st century CE) wrote the oldest extant Greek lexicon, which lists Homeric vocabulary and meanings.[2] According to the Nihon Shoki, the first Japanese dictionary was the long-lost 682 CE Niina glossary of Chinese characters. The oldest existing Japanese dictionary, the ca. 835 CE Tenrei Banshō Meigi, was also a glossary of written Chinese.
+
+Arabic dictionaries were compiled between the 8th and 14th centuries CE, organizing words in rhyme order (by the last syllable), by alphabetical order of the radicals, or according to the alphabetical order of the first letter (the system used in modern European language dictionaries). The modern system was mainly used in specialist dictionaries, such as those of terms from the Qur'an and hadith, while most general use dictionaries, such as the Lisan al-`Arab (13th c., still the best-known large-scale dictionary of Arabic) and al-Qamus al-Muhit (14th c.) listed words in the alphabetical order of the radicals. The Qamus al-Muhit is the first handy dictionary in Arabic, which includes only words and their definitions, eliminating the supporting examples used in such dictionaries as the Lisan and the Oxford English Dictionary.[3]
+
+The earliest modern European dictionaries were bilingual dictionaries. The earliest in the English language were glossaries of French, Italian or Latin words along with definitions of the foreign words in English. An early non-alphabetical list of 8000 English words was the Elementarie created by Richard Mulcaster in 1592.[4][5]
+
+The first purely English alphabetical dictionary was A Table Alphabeticall, written by English schoolteacher Robert Cawdrey in 1604. The only surviving copy is found at the Bodleian Library in Oxford. Yet this early effort, as well as the many imitators which followed it, was seen as unreliable and nowhere near definitive. Philip Stanhope, 4th Earl of Chesterfield was still lamenting in 1754, 150 years after Cawdrey's publication, that it is "a sort of disgrace to our nation, that hitherto we have had no… standard of our language; our dictionaries at present being more properly what our neighbors the Dutch and the Germans call theirs, word-books, than dictionaries in the superior sense of that title." [6] It was not until Samuel Johnson's A Dictionary of the English Language (1755) that a truly noteworthy, reliable English Dictionary was deemed to have been produced, and the fact that today many people still mistakenly believe Johnson to have written the first English Dictionary is a testament to this legacy.[7] By this stage, dictionaries had evolved to contain textual references for most words, and were arranged alphabetically, rather than by topic (a previously popular form of arrangement, which meant all animals would be grouped together, etc.). Johnson's masterwork could be judged as the first to bring all these elements together, creating the first 'modern' dictionary.[7]
+
+Johnson's Dictionary remained the English-language standard for over 150 years, until the Oxford University Press began writing and releasing the Oxford English Dictionary in short fascicles from 1884 onwards. It took nearly 50 years to finally complete the huge work, and they finally released the complete OED in twelve volumes in 1928. It remains the most comprehensive and trusted English language dictionary to this day, with revisions and updates added by a dedicated team every three months. One of the main contributors to this modern day dictionary was an ex-army surgeon, William Chester Minor, a convicted murderer who was confined to an asylum for the criminally insane.[8]
+
+[edit] Coverage
+
+Dictionaries can vary widely in coverage, size, and scope. A maximizing dictionary lists as many words as possible from a particular speech community (e.g., the Oxford English Dictionary), whereas a minimizing dictionary exclusively attempts to cover only a limited selection of words from a speech community (e.g., a dictionary of Basic English words). Take for instance, two dictionaries of Chinese characters: the pocket-sized minimizing dictionary Xinhua Zidian (2004, 700 pages) only includes 11,200 commonly used characters, while the multi-volume maximizing dictionary Hanyu Da Zidian (1995, 5800 pages) includes over 54,678 characters and variants.
+
+[edit] Special-purpose dictionaries
+
+There are many different types of special-purpose dictionaries, including bilingual, multilingual, scientific, historical, biographical, word game and technical and geographical dictionaries.
+
+[edit] Specialized dictionaries
+
+According to the Manual of Specialized Lexicography a specialized dictionary (also referred to as a technical dictionary) is a lexicon that focuses upon a specific subject field. Following the description in The Bilingual LSP Dictionary lexicographers categorize specialized dictionaries into three types. A multi-field dictionary broadly covers several semantic fields (e.g., a picture dictionary), a single-field dictionary narrowly covers one particular subject field (e.g., law), and a sub-field dictionary covers a singular field (e.g., constitutional law). For example, the 23-language Inter-Active Terminology for Europe is a multi-field dictionary, the American National Biography is a single-field, and the African American National Biography Project is a sub-field dictionary. In terms of the above coverage distinction between "minimizing dictionaries" and "maximizing dictionaries", multi-field dictionaries tend to minimize coverage across lexical fields (for instance, Oxford Dictionary of World Religions) whereas single-field and sub-field dictionaries tend to maximize coverage within a limited subject field (The Oxford Dictionary of English Etymology). See also LSP dictionary.
+
+[edit] Glossaries
+
+Another variant is the glossary, an alphabetical list of defined terms in a specialised field, such as medicine or science. The simplest dictionary, a defining dictionary, provides a core glossary of the simplest meanings of the simplest concepts. From these, other concepts can be explained and defined, in particular for those who are first learning a language. In English, the commercial defining dictionaries typically include only one or two meanings of under 2000 words. With these, the rest of English, and even the 4000 most common English idioms and metaphors, can be defined.
+
+[edit] Pronunciation
+
+    Main articles: IPA chart for English and Pronunciation respelling for English
+
+Dictionaries for languages for which the pronunciation of words is not apparent from their spelling, such as the English language, usually provide the pronunciation, often using the International Phonetic Alphabet. For example, the definition for the word dictionary might be followed by the (American English) phonemic spelling: /ˈdɪkʃəˌnɛri/. American dictionaries, however, often use their own pronunciation spelling systems, for example dictionary [dĭkʹshə-nârʹē] while the IPA is more commonly used within the British Commonwealth countries. Yet others use an ad hoc notation; for example, dictionary may become [DIK-shuh-nair-ee]. Some on-line or electronic dictionaries provide recordings of words being spoken.
+	Please help improve this section by expanding it. Further information might be found on the talk page. (June 2008)
+
+[edit] Variations between dictionaries
+
+[edit] Prescription and description
+
+Lexicographers apply two basic philosophies to the defining of words: prescriptive or descriptive. Noah Webster, intent on forging a distinct identity for the American language, altered spellings and accentuated differences in meaning and pronunciation of some words. This is why American English now uses the spelling color while the rest of the English-speaking world prefers colour. (Similarly, British English subsequently underwent a few spelling changes that did not affect American English; see further at American and British English spelling differences.) Large 20th-century dictionaries such as the Oxford English Dictionary (OED) and Webster's Third are descriptive, and attempt to describe the actual use of words.
+A dictionary open at the word "Internet", viewed through a lens
+
+While descriptivists argue that prescriptivism is an unnatural attempt to dictate usage or curtail change, prescriptivists argue that to indiscriminately document "improper" or "inferior" usages sanctions those usages by default and causes language to "deteriorate". Although the debate can become very heated, only a small number of controversial words are usually affected. But the softening of usage notations, from the previous edition, for two words, ain't and irregardless, out of over 450,000 in Webster's Third in 1961, was enough to provoke outrage among many with prescriptivist leanings, who branded the dictionary as "permissive."
+
+The prescriptive/descriptive issue has been given so much consideration in modern times that most dictionaries of English apply the descriptive method to definitions, while additionally informing readers of attitudes which may influence their choices on words often considered vulgar, offensive, erroneous, or easily confused. Merriam-Webster is subtle, only adding italicized notations such as, sometimes offensive or nonstand (nonstandard.) American Heritage goes further, discussing issues separately in numerous "usage notes." Encarta provides similar notes, but is more prescriptive, offering warnings and admonitions against the use of certain words considered by many to be offensive or illiterate, such as, "an offensive term for..." or "a taboo term meaning..."
+
+Because of the broad use of dictionaries, and their acceptance by many as language authorities, their treatment of the language does affect usage to some degree, even the most descriptive dictionaries providing conservative continuity. In the long run, however, usage primarily determines the meanings of words in English, and the language is being changed and created every day. As Jorge Luis Borges says in the prologue to "El otro, el mismo": "It is often forgotten that (dictionaries) are artificial repositories, put together well after the languages they define. The roots of language are irrational and of a magical nature."
+
+[edit] Science Dictionary
+
+Science Dictionaries have existed from the 500 B.C.'s when the Chinese started organizing all of their scientifically important knowledge, and combining them into scrolls. The amount and type of information ranged from theories, species, experiments, essays, research, and various other forms of knowledge. However it wasn't until the 100 B.C.'s when they started organizing each and every scroll to form a dictionary of scientific knowledge. The dictionaries were ordered from most "important" to least "important" by Chinese standards, and reached up to 8,000 entries long. Some versions have been found where the dragon (one of the most ancient and powerful creatures of Chinese legend) was the first entry [9] in the science dictionary. However, that since the notion of searching up entries one by one based on importance, was too much of a confusion (also because, the Chinese scientists couldn't agree upon a good definition for each article) they abandoned the task, and it had never gained momentum to be a worldwide success.
+
+[10]
+
+[edit] Major English dictionaries
+
+    * The Penguin English Dictionary
+    * Merriam-Webster Merriam-Webster Dictionary
+    * Webster's Third New International Dictionary (descriptive)
+    * Random House Dictionary of the English Language
+    * The American Heritage Dictionary of the English Language
+    * Webster's New World Dictionary
+    * Oxford English Dictionary (descriptive)
+    * Concise Oxford Dictionary
+    * New Oxford Dictionary of English
+    * New Oxford American Dictionary
+    * Canadian Oxford Dictionary
+    * ITP Nelson Canadian Dictionary
+    * Webster's New Universal Unabridged Dictionary
+
+	
+
+    * Samuel Johnson's A Dictionary of the English Language (prescriptive)
+    * Noah Webster's An American Dictionary of the English Language (prescriptive)
+    * The Century Dictionary
+    * Brewer's Dictionary of Phrase and Fable
+    * Macquarie Dictionary, The, a dictionary of Australian English
+    * The Chambers Dictionary
+    * Collins COBUILD
+    * Collins English Dictionary
+    * Longman Dictionary of Contemporary English
+    * Black's Law Dictionary, a law dictionary
+
+For languages other than modern English, see the article about that language. See also articles such as Japanese dictionaries.
+
+[edit] Others
+
+    * Free On-line Dictionary of Computing
+    * Double-Tongued Dictionary
+    * LEO (website)
+    * Logos Dictionary
+
+
+	
+
+    * Pseudodictionary
+    * Reference.com
+    * Urban Dictionary
+    * WWWJDIC
+
+[edit] See also
+
+    * Bilingual dictionary
+    * Centre for Lexicography
+    * COBUILD, a large corpus of English text
+    * Corpus linguistics
+    * DICT, the dictionary server protocol
+    * Dictionary Society of North America
+    * Electronic dictionary
+    * Encyclopedic dictionary
+    * Lexicographic error
+    * Lexigraf
+    * List of online encyclopedias
+    * Machine-readable dictionary
+    * Medical dictionary
+
+	
+
+    * Monolingual learners' dictionaries
+    * OED
+    * Reverse dictionary
+    * Rhyming dictionary
+    * Thesaurus
+    * Translation dictionary
+    * Visual dictionary
+    * Wiktionary
+    * WordNet
+
+Sister project 	Look up Dictionary in
+Wiktionary, the free dictionary.
+
+[edit] References
+
+   1. ^ a b Webster's New World College Dictionary, Fourth Edition, 2002
+   2. ^ a b Dictionary - MSN Encarta
+   3. ^ "Ḳāmūs," J. Eckmann, Encyclopaedia of Islam, 2nd ed., Brill
+   4. ^ 1582 - Mulcaster's Elementarie, Learning Dictionaries and Meaning, The British Library
+   5. ^ A Brief History of English Lexicography, Peter Erdmann and See-Young Cho, Technische Universität Berlin, 1999.
+   6. ^ Jack Lynch, “How Johnson's Dictionary Became the First Dictionary” (delivered 25 August 2005 at the Johnson and the English Language conference, Birmingham) Retrieved July 12, 2008
+   7. ^ a b Lynch, "How Johnson's Dictionary Became the First Dictionary"
+   8. ^ Simon Winchester, author of The Surgeon of Crowthorne.
+   9. ^ Science Bucket Science Bucket
+  10. ^ The Science Dictionary The Science Dictionary
+
+[edit] Relevant literature
+
+    * Manual of Specialised Lexicography, Henning Bergenholtz/Sven Tarp (eds.), Benjamins Publishing, 1995
+    * The Bilingual LSP Dictionary, Sandro Nielsen, Gunter Narr Verlag 1994
+    * Dictionaries, The Art and Craft of Lexicography, Sidney I. Landau, Simon & Schuster, 1998, hardcover, ISBN 0-684-18096-0
+    * The Professor and the Madman, A Tale of Murder, Insanity, and the Making of the Oxford English Dictionary, Simon Winchester, HarperPerennial, New York, 1998, trade paperback, ISBN 0-06-017596-6. (published in the UK as The Surgeon of Crowthorne)
+    * "A Brief History of English Lexicography". Retrieved on 2007-01-22.
+    * Sandro Nielsen:"The Effect of Lexicographical Information Costs on Dictionary Making and Use". In: Lexikos 18/2008, 170-189.
+
+[edit] External links
+
+    * Dictionary at the Open Directory Project
+
+
+[hide]
+v • d • e
+Lexicography
+Types of reference works 	
+Dictionary · Glossary · Lexicon · Thesaurus
+Types of dictionaries 	
+Biographical · Defining · Electronic · Encyclopedic · LSP · Machine-readable · Maximizing · Medical · Minimizing · Monolingual learner's · Multi-field · Picture · Reverse · Rhyming · Rime · Single-field · Specialized · Sub-field · Visual
+Vocabulary topics 	
+Focal vocabulary · Function word · Headword · Holonymy · Hyponymy · Idiom · International Scientific Vocabulary · Lemma · Lexeme · Meronymy · Morphology · Synonym · Vocabulary size · Word
+Lexicographic topics 	
+Controlled vocabulary · English lexicology and lexicography · Lexicographic error · Lexicographic information cost · Linguistic prescription · Specialised lexicography
+Lexicographic projects 	
+Lexigraf · WordNet
+Other 	
+List of lexicographers
+Retrieved from "http://en.wikipedia.org/wiki/Dictionary"
+Category: Dictionaries
+Hidden categories: Articles lacking in-text citations | Articles to be expanded since June 2008 | All articles to be expanded
+Views
+
+    * Article
+    * Discussion
+    * Edit this page
+    * History
+
+Personal tools
+
+    * Log in / create account
+
+Navigation
+
+    * Main page
+    * Contents
+    * Featured content
+    * Current events
+    * Random article
+
+Search
+ 
+Interaction
+
+    * About Wikipedia
+    * Community portal
+    * Recent changes
+    * Contact Wikipedia
+    * Donate to Wikipedia
+    * Help
+
+Toolbox
+
+    * What links here
+    * Related changes
+    * Upload file
+    * Special pages
+    * Printable version
+    * Permanent link
+    * Cite this page
+
+Powered by MediaWiki
+Wikimedia Foundation
+
+    * This page was last modified on 24 December 2008, at 14:02.
+    * All text is available under the terms of the GNU Free Documentation License. (See Copyrights for details.)
+      Wikipedia® is a registered trademark of the Wikimedia Foundation, Inc., a U.S. registered 501(c)(3) tax-deductible nonprofit charity.
+    * Privacy policy
+    * About Wikipedia
+    * Disclaimers
+

@@ -119,5 +119,34 @@ shared_examples_for "dictionary" do
       @dictionary.predecessor(item).should == nil      
     end    
   end
+  
+  describe "(with text samples)" do
+    it "should have one word" do
+      add_words_from_file(@dictionary, "one_word_sample.txt")
+      @dictionary.min.key.should == "a"
+      @dictionary.max.key.should == "a"
+    end
+    
+    it "should have a few word" do
+      add_words_from_file(@dictionary, "few_words_sample.txt")
+      @dictionary.min.key.should == "a"
+      @dictionary.max.key.should == "d"
+    end
+    
+    it "should have words from wiki" do
+      add_words_from_file(@dictionary, "wiki_dictionary.txt")
+      @dictionary.items.size.should == 1258
+    end
+  end
+ 
+end
 
+def add_words_from_file(dictionary, file)
+  File.open("#{File.dirname(__FILE__)}/#{file}", "r") do |f|
+    f.each_line do |line| 
+      line.split.each do |word| 
+        dictionary.insert(Item.new(word, word)) if dictionary.search(word).nil?
+      end
+    end
+  end
 end

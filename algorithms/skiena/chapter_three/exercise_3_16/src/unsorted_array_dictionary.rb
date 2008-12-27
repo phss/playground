@@ -3,6 +3,7 @@
 # I am doing a lot of sillyness with indexed and such.
 #
 class UnsortedArrayDictionary
+  attr_reader :items
   
   def initialize
     @items = []

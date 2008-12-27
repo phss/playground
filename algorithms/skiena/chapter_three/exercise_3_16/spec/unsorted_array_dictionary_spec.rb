@@ -1,5 +1,5 @@
-require File.dirname(__FILE__) + "/common_dictionary_spec"
 require File.dirname(__FILE__) + "/../src/unsorted_array_dictionary"
+require File.dirname(__FILE__) + "/common_dictionary_spec"
 
 AN_ITEM = Item.new("a key", "a value")
 ANOTHER_ITEM = Item.new("another key", "another value")
