@@ -1,0 +1,11 @@
+== Problem ==
+
+Implement versions of several different dictionary structures, such s linked lists, binary trees, balanced binary search trees, and hash tables. Conduct experiments to assess the relative performance of these data structures in a simple application that reads a large text file and reports exactly on instance of each word that appears within it. This application can be efficiently implemented by maintaing a dictionary of all distinct words that have appeared this far in the text and inserting/reporting each word that is not found.
+
+== Dictionary operations ==
+
+- Search(D, k): Given a search key k, returns a pointer to the element in dictionary D whose key values is k, if one exists.
+- Insert(D, x): Given a data item x, add it to the set in the dictionary D.
+- Delete(D, x): Given a pointer to a given data item x in the dictionary D, remove it from D.
+- Max(D) or Min(D): Retrieve the item with the largest (or smallest) key from D.
+- Predecessor(D, k) or Successor(D, k): Retrieve the item from D whose key is immediately before (or after) k in sorted order.
