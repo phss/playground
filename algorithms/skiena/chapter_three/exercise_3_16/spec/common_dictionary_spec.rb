@@ -1,14 +1,4 @@
-require File.dirname(__FILE__) + "/unsorted_array_dictionary"
-
-AN_ITEM = Item.new("a key", "a value")
-ANOTHER_ITEM = Item.new("another key", "another value")
-YET_ANOTHER_ITEM = Item.new("yet another key", "yet another value")
-
-describe UnsortedArrayDictionary do
-  
-  before(:each) do
-   @dictionary = UnsortedArrayDictionary.new
-  end
+shared_examples_for "dictionary" do
     
   describe "(empty)" do
     it "should return nil when searching" do
@@ -80,6 +70,10 @@ describe UnsortedArrayDictionary do
       @dictionary.search(ANOTHER_ITEM.key).should == ANOTHER_ITEM
       @dictionary.search(YET_ANOTHER_ITEM.key).should == YET_ANOTHER_ITEM
     end
+    
+    it "should return nil when searching item not in dictionary" do
+      @dictionary.search(ITEM_NOT_FOUND.key).should == nil
+    end    
     
     it "should have min as the smaller key" do
       @dictionary.min.should == AN_ITEM

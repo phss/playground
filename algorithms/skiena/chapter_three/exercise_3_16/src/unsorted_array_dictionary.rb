@@ -53,6 +53,7 @@ class UnsortedArrayDictionary
   
   protected
   
+  # O(n)
   def index_of(key)
     @items.each_with_index { |item, index| return index if item.key == key }
     nil # If key not found
