@@ -40,20 +40,14 @@ class UnsortedArrayDictionary
   
   # O(n)
   def predecessor(an_item)
-    previous_item = min
-    @items.each do |item|
-      previous_item = item if item < an_item && item > previous_item
-    end
-    return previous_item == an_item ? nil : previous_item    
+    return nil if an_item == min
+    @items.inject(min) { |result, item| (item < an_item && item > result) ? item : result }
   end
   
   # O(n)
   def successor(an_item)
-    next_item = max
-    @items.each do |item|
-      next_item = item if item > an_item && item < next_item
-    end
-    return next_item == an_item ? nil : next_item
+    return nil if an_item == max
+    @items.inject(max) { |result, item| (item > an_item && item < result) ? item : result }
   end
   
   
