@@ -1,73 +1,56 @@
+# Most of the functions are O(h), where h is the height of the tree. Ideally h = log n, in a balanced tree.
 class BinaryTreeDictionary
   
   def initialize
     @root = nil
   end
   
-  # O(h), where h is the height of the tree
-  def search(key, node=@root)
-    return nil if node.nil?
-    return node.item if key == node.item.key
-    return key < node.item.key ? search(key, node.left_child) : search(key, node.right_child)
+  # O(h)
+  def search(key)
+    key_node = find_node_for(key)
+    return key_node.nil? ? nil : key_node.item
   end
   
-  # O(h), where h is the height of the tree
-  def insert(an_item)
-    insertion_node = find_node_for(an_item)
-    insertion_node.nil? ? @root = Node.new(an_item) : insertion_node.add_child(an_item)
-  end
-  
-  # O(h), where h is the height of the tree
-  def delete(an_item)
-    deletion_node = find_node(an_item)
-    return if deletion_node.nil?
+  # O(h)
+  def insert(an_item, node=@root)
+    @root = Node.new(an_item) and return if @root.nil?
     
-    if !deletion_node.has_child?
-      deletion_node == @root ? @root = nil : deletion_node.parent.remove_child(deletion_node)
+    node_path = an_item < node.item ? node.left_child : node.right_child 
+    node_path.nil? ? node.add_child(an_item) : insert(an_item, node_path)
+  end
+  
+  # O(h)
+  def delete(an_item)
+    node = find_node_for(an_item.key)
+    return if node.nil?
+    
+    if node.has_child?
+      swap_item = node.right_child ? successor(an_item) : predecessor(an_item) 
+      delete(swap_item)
+      node.item = swap_item
     else
-      succ = deletion_node.right_child ? successor(an_item) : predecessor(an_item) 
-      succ = find_node(succ)
-      deletion_node.item = succ.item
-      succ.parent.remove_child(succ)
+      node == @root ? @root = nil : node.parent.unlink(node)
     end
   end
   
-  # O(h), where h is the height of the tree
+  # O(h)
   def max(node=@root)
-    return nil if node.nil?
-    largest = node
-    largest = largest.right_child while largest.right_child
-    return largest.item
+    return go_down(node) { |n| n.right_child }
   end
   
-  # O(h), where h is the height of the tree
+  # O(h)
   def min(node=@root)
-    return nil if node.nil?
-    smallest = node
-    smallest = smallest.left_child while smallest.left_child
-    return smallest.item
+    return go_down(node) { |n| n.left_child }
   end
   
-  # O(h), where h is the height of the tree
+  # O(h) not great code
   def predecessor(an_item)
-    previous = max(find_node(an_item).left_child)
-    if previous.nil?
-      previous = find_node(an_item).parent
-      previous = previous.parent while previous && previous.item > an_item
-      previous = previous.item if previous
-    end
-    return previous
+    find_next_item(an_item, max(find_node_for(an_item.key).left_child)) { |item, node| node.item > item }
   end
   
-  # O(h), where h is the height of the tree
+  # O(h) not great code
   def successor(an_item)
-    next_item = min(find_node(an_item).right_child)
-    if next_item.nil?
-      next_item = find_node(an_item).parent
-      next_item = next_item.parent while next_item && next_item.item < an_item
-      next_item = next_item.item if next_item
-    end
-    return next_item
+    find_next_item(an_item, min(find_node_for(an_item.key).right_child)) { |item, node| node.item < item }
   end
   
   def size(node=@root)
@@ -77,32 +60,32 @@ class BinaryTreeDictionary
   
   private
   
-  # O(h), where h is the height of the tree
-  def find_node_for(item, node=@root)
+  # O(h)
+  def find_node_for(key, node=@root)
     return nil if node.nil?
-    if item < node.item
-      return node.left_child.nil? ? node : find_node_for(item, node.left_child)
-    else
-      return node.right_child.nil? ? node : find_node_for(item, node.right_child)
-    end
+    return node if node.item.key == key
+    return key < node.item.key ? find_node_for(key, node.left_child) : find_node_for(key, node.right_child)
   end
   
-  # O(h), where h is the height of the tree
-  def find_node(item, node=@root)
+  def go_down(node=@root)
     return nil if node.nil?
-    return node if node.item == item
-    if item < node.item
-      return find_node(item, node.left_child)
-    else
-      return find_node(item, node.right_child)
-    end
+    current = node
+    current = yield(current) while yield(current)
+    return current.item
   end
-  
+
+  # Weird code
+  def find_next_item(an_item, node)
+    if node.nil?
+      node = find_node_for(an_item.key).parent
+      node = node.parent while node && yield(an_item, node)
+      node = node.item if node
+    end
+    return node
+  end
 end
 
 class Node
-  include Comparable
-  
   attr_accessor :item, :parent, :left_child, :right_child
   
   def initialize(item, parent=nil)
@@ -117,22 +100,18 @@ class Node
     child_item < @item ?  @left_child = child_node : @right_child = child_node
   end
   
-  def remove_child(child_node)
+  def unlink(child_node)
     if child_node.item < @item
       @left_child = nil
     else
       @right_child = nil
     end
+    child_node.parent = nil
   end
 
   def has_child?
     @left_child || @right_child
   end
-
-  def <=>(other_node)
-    @item <=> other_node.item
-  end
-  
 end
 
 Item = Struct.new(:key, :value) do
