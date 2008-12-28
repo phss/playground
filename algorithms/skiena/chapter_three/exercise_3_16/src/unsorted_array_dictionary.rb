@@ -51,6 +51,9 @@ class UnsortedArrayDictionary
     @items.inject(max) { |result, item| (item > an_item && item < result) ? item : result }
   end
   
+  def size
+    @items.size
+  end
   
   protected
   

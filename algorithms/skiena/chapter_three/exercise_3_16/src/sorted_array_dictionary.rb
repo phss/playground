@@ -57,6 +57,9 @@ class SortedArrayDictionary
     @items[index_of(an_item.key) + 1]
   end
   
+  def size
+    @items.size
+  end
   
   protected
   
