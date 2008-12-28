@@ -1,6 +1,3 @@
-#
-# 
-#
 class HashTableDictionary
   attr_reader :table
   
@@ -8,7 +5,7 @@ class HashTableDictionary
     @table = Array.new(table_size) { |i| [] }
   end
   
-  # O(n/table_size)
+  # O(n/m)
   def search(key)
     @table[index_of(key)].each { |item| return item if item.key == key }
     nil # Item not found
@@ -19,7 +16,7 @@ class HashTableDictionary
     @table[index_of(an_item.key)] << an_item
   end
   
-  # O(n/table_size)
+  # O(n/m)
   def delete(an_item)
     @table[index_of(an_item.key)].delete(an_item)
   end
