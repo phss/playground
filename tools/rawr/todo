@@ -1,0 +1,17 @@
+General:
+✓ Run with imported files
+✓ Run with data files
+- Trim .jars and libs
+
+Mac:
+- Verify it runs
+
+Windows:
+- Try using launch4j
+
+Webstart:
+- Try it
+
+=============
+Notes:
+- To run the jar, always pass -Djava.library.path=libraryb/native_files

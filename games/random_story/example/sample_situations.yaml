@@ -1,0 +1,21 @@
+---
+name: outside
+description: >
+  You are outside the cave. It is raining umbrellas.
+actions:
+  enter: 
+    - go_to entrance
+  leave: 
+    - log "Bye bye."
+    - end
+---
+name: entrance
+description: > 
+  You are at the cave entrance. You see a troll!
+actions:
+  fight: 
+    - log "The Troll kills you."
+    - end
+  flee:
+    - log "You run away."
+    - end
