@@ -1,3 +1,5 @@
-A place to store fun and mildy useful hacks, such as:
+A place to store fun and mildly useful hacks, such as:
 - algorithms: implementation of algorithms from books.
+- games: sketches of game ideas.
 - ruby_features_test: unit test driven documentation of Ruby features.
+- tools: playing around with various tools.
