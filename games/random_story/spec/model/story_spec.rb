@@ -3,17 +3,12 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe Story do
   
   before(:each) do
-    @situations = [
-      Situation.new(:first, "First situation"),
-      Situation.new(:second, "Second situation"),
-    ]
-    @story = Story.new(@situations)
+    @story = Story.new("Story name")
   end
   
   describe "(new)" do
-    it "should have first element as the current situation" do
-      @story.situations.keys.should include(:first, :second)
-      @story.current_situation.should == @situations.first
+    it "should have no the current situation" do
+      @story.current_situation.should == nil
     end
     
     it "should not be finished" do
@@ -24,10 +19,19 @@ describe Story do
       @story.events.should be_empty
       @story.unseen_events.should be_empty
     end
+    
+    it "should have a name" do
+      @story.name.should == "Story name"
+    end
   end
   
-  
   describe "(actions)" do
+    
+    before(:each) do
+      @story.add_situation(Situation.new(:first, "First situation"))
+      @story.add_situation(Situation.new(:second, "Second situation"))
+    end
+    
     it "should end a story" do
       @story.finished?.should == false
       @story.end

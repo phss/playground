@@ -1,5 +1,6 @@
 class Situation
-  attr_reader :name, :description  
+  attr_reader :name
+  attr_accessor :description
   
   def initialize(name, description)
     @name = name

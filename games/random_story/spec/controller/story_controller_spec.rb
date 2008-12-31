@@ -11,7 +11,9 @@ describe StoryController do
     @ui_mock.should_receive(:show).with(SAMPLE_SITUATION)
     @ui_mock.should_receive(:select_action_for).with(SAMPLE_SITUATION).and_return(:sample_action)
     
-    @controller.enact(Story.new([SAMPLE_SITUATION]))
+    sample_story = Story.new([SAMPLE_SITUATION])
+    sample_story.add_situation(SAMPLE_SITUATION)
+    @controller.enact(sample_story)
   end
   
 end

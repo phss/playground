@@ -1,13 +1,20 @@
 class Story
   
-  attr_reader :current_situation, :situations, :events, :unseen_events
+  attr_reader :name, :current_situation, :situations, :events, :unseen_events
   
-  def initialize(situations)
-    @situations = situations.inject({}) { |result, situation| result[situation.name] = situation; result }
-    @current_situation = situations.first
+  def initialize(name)
+    @name = name
+    @situations = {}
+    @current_situation = nil
     @events = []
     clear_unseen_events
     @is_finished = false
+  end
+  
+  # TODO refactor this method. Could use situations << situation
+  def add_situation(situation)
+    @situations[situation.name] = situation
+    @current_situation = situation if @situations.size == 1
   end
     
   def go_to(situation)
