@@ -17,6 +17,7 @@ class StoryController
     #TODO quick hack
     story.unseen_events.each { |event| puts event }
     story.clear_unseen_events
+    puts ""
   end
   
 end

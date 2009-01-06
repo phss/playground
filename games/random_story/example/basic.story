@@ -1,4 +1,4 @@
-story "Sample Story" do
+story "Basic Story" do
 
   begin_at :outside
   
