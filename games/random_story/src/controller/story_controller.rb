@@ -11,7 +11,7 @@ class StoryController
   
   def enact(story)
     @ui.show(story.current_situation)
-    action = @ui.select_action_for(story.current_situation)
+    action = @ui.select_action_from(story.current_situation.actions)
     story.current_situation.execute(action, story)
     
     #TODO quick hack

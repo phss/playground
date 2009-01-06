@@ -9,7 +9,7 @@ describe StoryController do
   
   it "should show current situation and run action when enacting a story" do
     @ui_mock.should_receive(:show).with(SAMPLE_SITUATION)
-    @ui_mock.should_receive(:select_action_for).with(SAMPLE_SITUATION).and_return(:sample_action)
+    @ui_mock.should_receive(:select_action_from).with(SAMPLE_SITUATION.actions).and_return(:sample_action)
     
     sample_story = Story.new([SAMPLE_SITUATION])
     sample_story.add_situation(SAMPLE_SITUATION)

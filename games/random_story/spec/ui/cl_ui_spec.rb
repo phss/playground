@@ -15,9 +15,9 @@ describe CLUI do
   
   it "should show actions and select an option" do
     @@input << "Wrong option"
-    @@input << SAMPLE_SITUATION.actions.first.to_s
+    @@input << "1"
     
-    @ui.select_action_for(SAMPLE_SITUATION).should == SAMPLE_SITUATION.actions.first.to_sym
+    @ui.select_action_from(SAMPLE_SITUATION.actions).should == SAMPLE_SITUATION.actions.first.to_sym
   end
   
 end

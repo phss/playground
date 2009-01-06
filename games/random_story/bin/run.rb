@@ -1,5 +1,7 @@
 require File.dirname(__FILE__) + "/../src/story"
 
-sample_story = File.dirname(__FILE__) + "/../example/sample.story"
+story_name = ARGV.size != 1 ? "sample.story" : ARGV.shift
 
-StoryController.new(CLUI.new).play(StoryBuilder.make(sample_story))
+story = File.dirname(__FILE__) + "/../example/#{story_name}"
+
+StoryController.new(CLUI.new).play(StoryBuilder.make(story))

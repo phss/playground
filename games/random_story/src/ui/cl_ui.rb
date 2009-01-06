@@ -4,11 +4,20 @@ class CLUI
     puts "\"#{situation.description}\""
   end
   
-  def select_action_for(situation)
+  def select_action_from(actions)
     puts "What will you do?"
-    situation.actions.each { |action| puts "- #{action.capitalize}" }
-    action = gets.chomp while !situation.actions.include?(action)
-    return action.to_sym
+    actions.each_with_index { |action, i| puts "[#{i+1}] #{action.capitalize}" }
+    return actions[get_action_number(actions.size)].to_sym
+  end
+  
+  private
+  
+  def get_action_number(size)
+    while true
+      print ">> "
+      action = gets.chomp.to_i
+      return action - 1 if action > 0 && action <= size
+    end
   end
   
 end
