@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + "/../src/story"
 
-story_name = ARGV.size != 1 ? "sample.story" : ARGV.shift
+story_name = ARGV.size != 1 ? "basic.story" : ARGV.shift
 
 story = File.dirname(__FILE__) + "/../example/#{story_name}"
 
