@@ -33,7 +33,12 @@ class Story
   def end
     @is_finished = true
   end
-  
+    
+  def end_with(event)
+    log(event)
+    self.end
+  end
+    
   def finished?
     @is_finished
   end

@@ -58,6 +58,14 @@ describe Story do
       @story.clear_unseen_events
       @story.unseen_events.should be_empty
     end
+    
+    it "should end a story with a final event" do
+      @story.finished?.should == false
+      @story.unseen_events.should be_empty
+      @story.end_with("Finished story")
+      @story.finished?.should == true
+      @story.unseen_events.should == ["Finished story"]
+    end
   end
   
 end
