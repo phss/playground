@@ -17,7 +17,7 @@ class FancyRectangle < Processing::App
 		end
 
 		def draw
-			fill(random(255))
+			fill(random(255), random(255), random(255))
 			rect @x, @y, @width, @height
 		end
 	end
