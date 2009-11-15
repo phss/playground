@@ -57,7 +57,7 @@ class GameWindow < Gosu::Window
       puts "colide"
     end
     
-    @space.add_collision_func(:wall, :wall)
+    # @space.add_collision_func(:wall, :wall)
   end
   
   def add_to_space(obj)
@@ -67,7 +67,6 @@ class GameWindow < Gosu::Window
 
   def update
     # @ball.shape.body.reset_forces
-    
     @space.step(1.0/60.0)
   end
 
