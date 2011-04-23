@@ -52,14 +52,26 @@ class Graph
   public
 
   def bfs(start_node, &visitor)
-    searcher = BreadthFirstSearch.new(self, GraphSearchVisitorParser.parse(&visitor))
-    searcher.search(start_node)
-    return searcher
+    return bfs_on_all([start_node], &visitor)
+  end
+  
+  def bfs_on_all(nodes, &visitor)
+    search_on_all(BreadthFirstSearch, nodes, &visitor)
+  end
+ 
+  def dfs(start_node, &visitor)
+    return dfs_on_all([start_node], &visitor)
   end
 
-  def dfs(start_node, &visitor)
-    searcher = DepthFirstSearch.new(self, GraphSearchVisitorParser.parse(&visitor))
-    searcher.search(start_node)
+  def dfs_on_all(nodes, &visitor)
+    search_on_all(DepthFirstSearch, nodes, &visitor)
+  end
+
+  private
+ 
+  def search_on_all(searcher_class, nodes, &visitor)
+    searcher = searcher_class.new(self, GraphSearchVisitorParser.parse(&visitor))
+    nodes.each { |node| searcher.search(node) if searcher.undiscovered? node }
     return searcher
   end
 
