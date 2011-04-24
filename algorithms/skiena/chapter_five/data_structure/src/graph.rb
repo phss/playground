@@ -92,7 +92,8 @@ class GraphSearchVisitorParser
   end
 
   def method_missing(m, *args, &block)
-    @actions[m] = block
+    raise "No action for '#{m}'" unless [:on_node_entry, :on_node_exit, :on_any_edge, :on_unique_edge].include? m
+    @actions[m] = block 
   end
 end
 
