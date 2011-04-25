@@ -18,12 +18,11 @@ class BreadthFirstSearch
       current_node = visit_next_node to_process
 
       @graph.edges_for(current_node).each do |edge_node|
-        visit_edge(current_node, edge_node)
-
         if undiscovered? edge_node
           to_process << discover(edge_node, current_node)
           visit_unique_edge(current_node, edge_node)
         end
+        visit_edge(current_node, edge_node)
       end
 
       visit_exit_node current_node
@@ -36,6 +35,10 @@ class BreadthFirstSearch
 
   def undiscovered?(node)
     @status[node] == :undiscovered
+  end
+  
+  def unprocessed?(node)
+    @status[node] != :processed
   end
 
   def discover(node, parent)
