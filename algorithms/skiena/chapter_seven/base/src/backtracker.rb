@@ -34,8 +34,8 @@ class Backtracker
   end
 
   def undo_last_candidate
-    @array.pop
     undo_move
+    @array.pop
   end
 
   def halt?
