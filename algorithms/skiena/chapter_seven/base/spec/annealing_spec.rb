@@ -6,16 +6,18 @@ describe SimulatedAnnealing do
   it "should find smallest numbers from set" do
     set = (1..1000).to_a
 
-    solution = SimulatedAnnealing.generate([3, 500, 200, 100, 10], :same_temperature_steps => 2000) do
-      cost_function { |a| a.reduce(0) { |res, e| res + e } }
-      transition do |a|
-        new_a = a.clone
-        swap_index = rand(a.size)
-        while true
-          new_a[swap_index] = set[rand(set.size)]
-          break if new_a.uniq.size == a.size
-        end
-        return new_a
+    solution = SimulatedAnnealing.generate([3, 500, 200, 100, 10], :same_temperature_steps => 10000) do
+      delta_cost_function do |a, swap| 
+        set[swap.last] - a[swap.first]
+      end
+      generate_transition do |a|
+        a_index = rand(a.size)
+        set_index = rand(set.size)
+        set_index = rand(set.size) while a.include?(set[set_index])
+        return [a_index, set_index]
+      end
+      transition do |a, swap|
+        a[swap.first] = set[swap.last]
       end
     end
 

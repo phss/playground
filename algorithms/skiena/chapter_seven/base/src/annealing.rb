@@ -6,7 +6,8 @@ class SimulatedAnnealing
     :initial_temperature => 1,
     :cooling_steps => 3,
     :same_temperature_steps => 1000,
-    :temperature_decrement => 0.8
+    :temperature_decrement => 0.8,
+    :initial_cost => 0
   }
 
   def initialize(initial_solution, &block)
@@ -21,16 +22,16 @@ class SimulatedAnnealing
   
   def calculate(options)
     temperature = options[:initial_temperature]
-    current_cost = @hooks.hook_cost_function(@solution)
+    current_cost = options[:initial_cost]
 
     options[:cooling_steps].times do
       options[:same_temperature_steps].times do
-        new_solution = @hooks.hook_transition(@solution)
-        new_cost = @hooks.hook_cost_function(new_solution)
+        change = @hooks.hook_generate_transition(@solution)
+        delta = @hooks.hook_delta_cost_function(@solution, change)
         
-        if new_cost < current_cost || @hooks.hook_acceptance_function(current_cost, new_cost, temperature) > rand
-          current_cost = new_cost
-          @solution = new_solution
+        if delta < 0 || (@hooks.hook_acceptance_function(delta, temperature) > rand)
+          current_cost += delta
+          @hooks.hook_transition(@solution, change)
         end
       end
 
@@ -59,12 +60,13 @@ class AnnealingHooks
   end
 
   # Default acceptance function
-  def hook_acceptance_function(current_cost, new_cost, temperature)
-    1/(1 + Math::exp((new_cost - current_cost)/temperature.to_f))
+  def hook_acceptance_function(delta, temperature)
+    1/(1 + Math::exp(delta/temperature.to_f))
   end
 
   # Blank implementations of the hook methods
-  def hook_cost_function(a); 0; end
-  def hook_transition(a); []; end
+  def hook_delta_cost_function(a, swap); 0; end
+  def hook_generate_transition(a); []; end
+  def hook_transition(a, swap);  end
 
 end
