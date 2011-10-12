@@ -5,7 +5,8 @@ ig.module(
 	'impact.game',
 	'impact.font',
 	'game.levels.main',
-	'game.entities.player'
+	'game.entities.player',
+	'game.entities.ball'
 )
 .defines(function(){
 
