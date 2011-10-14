@@ -10,6 +10,7 @@ ig.module(
 EntityPlayer = ig.Box2DEntity.extend({
   
   size: { x: 20, y: 20 },  
+  friction: 0,
         
   type: ig.Entity.TYPE.A,
   checkAgainst: ig.Entity.TYPE.NONE,
@@ -46,6 +47,7 @@ EntityPlayer = ig.Box2DEntity.extend({
   },
 
   move: function(x, y) {
+    this.body.WakeUp();
     this.body.SetLinearVelocity(new b2.Vec2(x, y));
     // this.body.ApplyImpulse( new b2.Vec2(x, y), this.body.GetPosition() );
   }
