@@ -2,24 +2,28 @@ ig.module(
   'game.entities.ball'
 )
 .requires(
-  'impact.entity'
+  'impact.entity',
+  'plugins.box2d.entity'
 )
 .defines(function(){
 
-EntityBall = ig.Entity.extend({
+EntityBall = ig.Box2DEntity.extend({
   
   size: { x: 5, y: 5 },  
-  collides: ig.Entity.COLLIDES.ACTIVE, 
+  restitution: 1,
+  friction: 0,
+
+  type: ig.Entity.TYPE.B,
+  checkAgainst: ig.Entity.TYPE.NONE,
+  collides: ig.Entity.COLLIDES.NEVER,
+
   color: '#f0f',
-  bounciness: 1,
   
   init: function( x, y, settings ) {
     // this.addAnim( 'idle', 1, [0] );
-    
-    this.vel.x = -100;
-    this.vel.y = 200;
-
     this.parent( x, y, settings );
+
+    this.body.ApplyForce( new b2.Vec2(-40, 80), this.body.GetPosition() );        
   },
 
   draw: function() {

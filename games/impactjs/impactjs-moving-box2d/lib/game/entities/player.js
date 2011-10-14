@@ -1,15 +1,20 @@
 ig.module(
   'game.entities.player'
-)
+)  
 .requires(
-  'impact.entity'
+  'impact.entity',
+  'plugins.box2d.entity'
 )
 .defines(function(){
 
-EntityPlayer = ig.Entity.extend({
+EntityPlayer = ig.Box2DEntity.extend({
   
   size: { x: 20, y: 20 },  
-  collides: ig.Entity.COLLIDES.FIXED,
+        
+  type: ig.Entity.TYPE.A,
+  checkAgainst: ig.Entity.TYPE.NONE,
+  collides: ig.Entity.COLLIDES.NEVER, // Collision is already handled by Box2D!
+
   animSheet: new ig.AnimationSheet( 'media/player.png', 20, 20 ),
   
   init: function( x, y, settings ) {
@@ -19,26 +24,30 @@ EntityPlayer = ig.Entity.extend({
   },
 
   update: function() {
-    var moveUnit = 100;
+    var moveUnit = 20, moveX = 0, moveY = 0;
 
     if (ig.input.state("up")) {
-      this.vel.y = -moveUnit;
+      moveY = -moveUnit;
     } else if (ig.input.state("down")) {
-      this.vel.y = moveUnit;
-    } else {      
-      this.vel.y = 0
+      moveY = moveUnit;
     }
 
     if (ig.input.state("right")) {
-      this.vel.x = moveUnit;
+      moveX = moveUnit;
     } else if (ig.input.state("left")) {
-      this.vel.x = -moveUnit;
-    } else {
-      this.vel.x = 0
-    }
+      moveX = -moveUnit;
+    } 
 
+    this.move(moveX, moveY);
+
+    // this.body.SetXForm(this.body.GetPosition(), 0);
 
     this.parent();
+  },
+
+  move: function(x, y) {
+    this.body.SetLinearVelocity(new b2.Vec2(x, y));
+    // this.body.ApplyImpulse( new b2.Vec2(x, y), this.body.GetPosition() );
   }
 });
 

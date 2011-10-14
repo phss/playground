@@ -6,12 +6,15 @@ ig.module(
 	'impact.font',
 	'game.levels.main',
 	'game.entities.player',
-	'game.entities.ball'
+	'game.entities.ball',
+    'plugins.box2d.game'
 )
 .defines(function(){
 
-MyGame = ig.Game.extend({
+MyGame = ig.Box2DGame.extend({
 	
+    gravity: 0,
+
 	init: function() {
 		// Initialize your game here; bind keys etc.
 		ig.input.bind( ig.KEY.LEFT_ARROW, "left" );
