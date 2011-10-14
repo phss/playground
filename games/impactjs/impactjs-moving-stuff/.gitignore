@@ -1,5 +1,7 @@
 index.html
 lib/impact
 lib/weltmeister
+bin
+.DS_Store
 tools/
 weltmeister.html
