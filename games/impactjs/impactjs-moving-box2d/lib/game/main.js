@@ -13,7 +13,7 @@ ig.module(
 
 MyGame = ig.Box2DGame.extend({
 	
-    gravity: 0,
+  gravity: 0,
 
 	init: function() {
 		// Initialize your game here; bind keys etc.

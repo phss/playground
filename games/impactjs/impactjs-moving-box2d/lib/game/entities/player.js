@@ -6,6 +6,7 @@ ig.module(
   'plugins.box2d.entity'
 )
 .defines(function(){
+// var blah = 20;
 
 EntityPlayer = ig.Box2DEntity.extend({
   

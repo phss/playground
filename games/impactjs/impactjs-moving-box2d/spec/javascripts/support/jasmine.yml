@@ -11,7 +11,8 @@
 #   - dist/**/*.js
 #
 src_files:
-    - lib/game/entities/*.js
+    - lib/impact/impact.js
+    - lib/game/**/*.js
 
 # stylesheets
 #
