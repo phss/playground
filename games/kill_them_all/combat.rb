@@ -28,7 +28,8 @@ class Combat
   def hit(attacker, defender)
     damage = attacker.roll_attack - defender.roll_defence
     defender.take_damage(damage) if damage > 0
-    @scribe.register_attack(attacker, defender, damage)
+
+    @scribe.register_attack(attacker, defender, :punch, damage)
   end
 
 end

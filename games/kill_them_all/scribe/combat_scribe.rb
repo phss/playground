@@ -5,11 +5,11 @@ class CombatScribe
   end
   
   def begin_turn
-    puts "--- Turn #@turn_number ---"
+    puts_header "Turn #@turn_number"
     @turn_number += 1
   end 
 
-  def register_attack(attacker, defender, damage)
+  def register_attack(attacker, defender, type, damage)
     if damage > 0
       puts "#{defender.name} was mauled by #{damage} points by #{attacker.name}."
     else
@@ -23,8 +23,14 @@ class CombatScribe
   end
 
   def finish_combat_between(fighter1, fighter2)
-    puts "--- THE END ---"
+    puts_header "THE END"
     puts "#{fighter1.name} is dead" unless fighter1.alive?
     puts "#{fighter2.name} is dead" unless fighter2.alive? 
+  end
+
+ private
+
+  def puts_header(text)
+    puts "\n--- #{text} ---"
   end
 end
