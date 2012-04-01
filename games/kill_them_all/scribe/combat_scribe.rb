@@ -13,7 +13,7 @@ class CombatScribe
     if damage > 0
       puts "#{defender.name} was mauled by #{damage} points by #{attacker.name}."
     else
-      puts "#{defender.name} dodged a vicious attack from #{attacker.name}."
+      puts DodgedDescription.for(attacker, defender)
     end 
   end
 
