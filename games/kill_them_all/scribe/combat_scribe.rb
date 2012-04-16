@@ -2,6 +2,7 @@ class CombatScribe
 
   def initialize
     @turn_number = 1
+    @descriptions = DescriptionScribe.new('./scribe/descriptions.rb')
   end
   
   def begin_turn
@@ -13,7 +14,8 @@ class CombatScribe
     if damage > 0
       puts "#{defender.name} was mauled by #{damage} points by #{attacker.name}."
     else
-      puts DodgedDescription.for(attacker, defender, type)
+      # puts DodgedDescription.for(attacker, defender, type)
+      puts @descriptions.generate(:dodging_attack, :attacker => attacker, :defender => defender, :attack => type)
     end 
   end
 
