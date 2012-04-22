@@ -11,11 +11,7 @@ class CombatScribe
   end 
 
   def register_attack(attacker, defender, type, damage)
-    if damage > 0
-      puts @descriptions.generate(:attack_move, :attacker => attacker, :defender => defender, :attack => type, :damage => damage)
-    else
-      puts @descriptions.generate(:dodging_attack, :attacker => attacker, :defender => defender, :attack => type)
-    end 
+    puts @descriptions.generate(:attack_move, :attacker => attacker, :defender => defender, :attack => type, :damage => damage)
   end
 
   def health_status_of(fighter1, fighter2)

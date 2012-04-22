@@ -5,8 +5,10 @@ class DescriptionScribe
     instance_eval File.read(description_file), description_file 
   end
 
-  def describe(description, &blk)
-    @descriptions[description] = blk
+  def describe(description, conditions = {}, &blk)
+    entry = { :conditions => conditions, :action => blk}
+    @descriptions[description] ||= []
+    @descriptions[description] << entry
   end
 
   def one_of(*options)
@@ -22,10 +24,14 @@ class DescriptionScribe
     @data
   end
 
+  def condition(&blk)
+    { :when => blk }
+  end
+
   # Invoking description
   def generate(description, d)
     @data = d
-    instance_eval &@descriptions[description]
+    instance_eval &entry_for(description)[:action]
   end
   
  private
@@ -37,4 +43,22 @@ class DescriptionScribe
     end
   end
 
+  def entry_for(description)
+    descriptions = @descriptions[description]
+    with_condition = lambda { |desc| desc[:conditions].has_key?(:when) }
+
+    conditional_descriptions = descriptions.select &with_condition
+    unconditional_descriptions = descriptions.reject &with_condition
+
+    passing_conditions = conditional_descriptions.select do |desc| 
+      action = desc[:conditions][:when]
+      action.call
+    end
+
+    if passing_conditions.empty?
+      unconditional_descriptions.first
+    else
+      passing_conditions.first
+    end
+  end 
 end
