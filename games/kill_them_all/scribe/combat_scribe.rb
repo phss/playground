@@ -12,9 +12,8 @@ class CombatScribe
 
   def register_attack(attacker, defender, type, damage)
     if damage > 0
-      puts "#{defender.name} was mauled by #{damage} points by #{attacker.name}."
+      puts @descriptions.generate(:attack_move, :attacker => attacker, :defender => defender, :attack => type, :damage => damage)
     else
-      # puts DodgedDescription.for(attacker, defender, type)
       puts @descriptions.generate(:dodging_attack, :attacker => attacker, :defender => defender, :attack => type)
     end 
   end
