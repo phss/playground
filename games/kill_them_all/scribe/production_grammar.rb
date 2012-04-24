@@ -10,7 +10,7 @@ class ProductionGrammar
     grammar
   end
 
-  def describe(description, conditions = {}, &blk)
+  def rule(description, conditions = {}, &blk)
     entry = { :conditions => conditions, :action => blk}
     @descriptions[description] ||= []
     @descriptions[description] << entry
@@ -37,6 +37,11 @@ class ProductionGrammar
   def generate(description, d)
     @data = d
     instance_eval &entry_for(description)[:action]
+  end
+
+  def method_missing(meth, *args, &blk)
+    super unless @descriptions.has_key? meth
+    generate(meth, args.first)
   end
   
  private

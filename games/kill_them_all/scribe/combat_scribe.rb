@@ -10,7 +10,7 @@ class CombatScribe
   end 
 
   def register_attack(attacker, defender, type, damage)
-    puts DescriptionsGrammar.generate(:attack_move, :attacker => attacker, :defender => defender, :attack => type, :damage => damage)
+    puts DescriptionsGrammar.attack_move(:attacker => attacker, :defender => defender, :attack => type, :damage => damage)
   end
 
   def health_status_of(fighter1, fighter2)
