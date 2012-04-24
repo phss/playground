@@ -2,7 +2,6 @@ class CombatScribe
 
   def initialize
     @turn_number = 1
-    @descriptions = DescriptionScribe.new('./scribe/descriptions.rb')
   end
   
   def begin_turn
@@ -11,7 +10,7 @@ class CombatScribe
   end 
 
   def register_attack(attacker, defender, type, damage)
-    puts @descriptions.generate(:attack_move, :attacker => attacker, :defender => defender, :attack => type, :damage => damage)
+    puts DescriptionsGrammar.generate(:attack_move, :attacker => attacker, :defender => defender, :attack => type, :damage => damage)
   end
 
   def health_status_of(fighter1, fighter2)
