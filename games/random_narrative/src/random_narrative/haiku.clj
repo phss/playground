@@ -1,9 +1,14 @@
 (ns random_narrative.haiku)
 
-(def something "indeed!")
+(defn- first_sentence [] 
+  (rand-nth ["Snow in my show", "Summer's blaze"]))
 
-(defn pub [] "public")
+(defn- second_sentence [] 
+  (rand-nth ["Abandoned", "Full"]))
 
-(defn- priv [] "private")
+(defn- third_sentence [] 
+  (rand-nth ["Sparrow's nest", "Moon"]))
 
-(defn priva [] (priv))
+(defn generate []
+  [(first_sentence) (second_sentence) (third_sentence)])
+
