@@ -1,3 +1,5 @@
-(ns random_narrative.core)
+(ns random_narrative.core
+  (:require [random_narrative.haiku :as haiku]))
 
-(defn -main [] (println "Blah"))
+
+(defn -main [] (println (haiku/priva)))
