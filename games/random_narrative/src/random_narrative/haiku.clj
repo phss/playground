@@ -1,7 +1,7 @@
 (ns random_narrative.haiku)
 
 (defn- first_sentence [] 
-  (rand-nth ["Snow in my show", "Summer's blaze"]))
+  (rand-nth ["Snow in my shoe", "Summer's blaze"]))
 
 (defn- second_sentence [] 
   (rand-nth ["Abandoned", "Full"]))
