@@ -1,0 +1,2 @@
+cmdhistory=[";; Loading file /Users/moonpxi/Documents/programming/github/playground/algorithms/spoj/spojclj/src/spoj/test.clj" ";; Switching to spoj.test namespace" "(clojure.core/in-ns 'spoj.test)" "(hello)" "(defn hello [] (print \\"hello\\"))" "(hello)" "(life [1 2 88 42 99])" ";; Loading file /Users/moonpxi/Documents/programming/github/playground/algorithms/spoj/spojclj/src/spoj/test.clj"]
+eclipse.preferences.version=1
