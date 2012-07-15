@@ -6,6 +6,9 @@
 ;
 ;By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 
+
+; Recursive
+
 (defn fib-even-sum [max]
   (loop [prev 1 curr 1 sum 0]
     (cond
@@ -14,4 +17,16 @@
                    (+ prev curr) 
                    (if (even? curr) (+ sum curr) sum)))))
 
-(time (fib-even-sum 4000000)) ; 4613732
+(time (println (fib-even-sum 4000000))) ; 4613732
+
+
+; Lazy seq
+
+(def fibo (map first (iterate (fn [[prev curr]] [curr (+ prev curr)]) [0 1])))
+
+(defn lazy-fib-even-sum [max]
+  (let [fibo-nums (take-while #(< % max) fibo)
+        even-fibo (filter #(even? %) fibo-nums)]
+    (reduce + even-fibo)))
+
+(time (println (lazy-fib-even-sum 4000000))) ; 4613732
