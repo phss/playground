@@ -26,7 +26,7 @@
 
 (defn lazy-fib-even-sum [max]
   (let [fibo-nums (take-while #(< % max) fibo)
-        even-fibo (filter #(even? %) fibo-nums)]
+        even-fibo (filter even? fibo-nums)]
     (reduce + even-fibo)))
 
 (time (println (lazy-fib-even-sum 4000000))) ; 4613732
