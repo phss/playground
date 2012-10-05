@@ -1,6 +1,6 @@
 (defproject quilling "0.1.0-SNAPSHOT"
   :description "FIXME: write description"
-  :main quiling.core
+  :main quiling.points
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
