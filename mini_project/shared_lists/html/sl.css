@@ -1,0 +1,32 @@
+body {
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 1.2em;
+
+  width: 800px;
+  margin: 20px auto;
+}
+
+#header h1 {
+  font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+  font-size: 1.9em;
+}
+
+.events li {
+  list-style: none;
+}
+
+.when {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.time {
+  font-size: 0.9em;
+  font-style: italic;
+  color: #2F4F4F;
+}
+
+.who {
+  color: #2F4F4F;
+  font-size: 0.8em;
+}
