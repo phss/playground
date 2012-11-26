@@ -1,1 +1,7 @@
-Super exciting stuff!!1!
+.events.twelve.columns
+  - @events_per_day.each do |key, events|
+    .two.columns.alpha
+      %h3= key.strftime("%d/%m")
+    .ten.columns.omega
+      %h3= key.strftime("%A")
+      %p Blah blah
