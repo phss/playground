@@ -1,14 +1,18 @@
 %html
   %head
-    %title Shared Lists
+    %title Shared Events
     %meta{"http-equiv" => "Content-Type", :content=>"text/html; charset=UTF-8"}
     %link{:rel => "stylesheet", :type => "text/css", :href => "/shared.css" } 
-    %link{:rel => "stylesheet", :type => "text/css", :href => "/stylesheets/base.css" } 
-    %link{:rel => "stylesheet", :type => "text/css", :href => "/stylesheets/skeleton.css" } 
-    %link{:rel => "stylesheet", :type => "text/css", :href => "/stylesheets/layout.css" } 
     
   %body
-    .container
-      %h1 Shared Lists
+    #header
+      #title Shared Events
+      #user
+        = "Hi #{@user.name}!"
+        %br
+        %a{:href=>'#'} Account
+        |
+        %a{:href=>'#'} Logout
 
+    .content
       = yield

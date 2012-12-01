@@ -1,7 +1,16 @@
-.events.twelve.columns
-  - @events_per_day.each do |key, events|
-    .two.columns.alpha
-      %h3= key.strftime("%d/%m")
-    .ten.columns.omega
-      %h3= key.strftime("%A")
-      %p Blah blah
+.events
+  - @events_per_day.each do |date, events|
+    .day
+      .when
+        .day.left-side= day_and_month(date)
+        .of-week.right-side= week_day(date)
+
+      - events.each do |event|
+        .event
+          .time.left-side= time_of(event)
+          .what.right-side= event.title
+          .description.right-side
+            %p= event.description
+          .who.right-side
+            - event.participants.each do |participant|
+              %a{:href=>'#'}= participant.name
