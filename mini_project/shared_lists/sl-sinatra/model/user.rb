@@ -1,8 +1,6 @@
 class User
-  attr_reader :name
+  include MongoMapper::Document
 
-  def initialize(name)
-    @name = name
-  end
+  key :name, String
 
 end

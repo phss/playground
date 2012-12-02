@@ -1,12 +1,10 @@
 class Event
-  attr_reader :title, :description, :start_at, :end_at, :participants
+  include MongoMapper::Document
 
-  def initialize(title, description, start_at, end_at, participants)
-    @title = title
-    @description = description
-    @start_at = start_at
-    @end_at = end_at
-    @participants = participants
-  end
+  key :title, String
+  key :description, String
+  key :start_at, Time
+  key :end_at, Time
 
+  many :users, :as => :participants, :in => :users_ids
 end

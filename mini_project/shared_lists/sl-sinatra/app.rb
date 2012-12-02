@@ -1,14 +1,21 @@
-require "rubygems"
-require 'date'
-require 'sinatra'
+require 'rubygems'
+require 'bundler'
+Bundler.require
+
 require_relative 'model'
 require_relative 'helpers/date_formatter'
 
 helpers DateFormatter
 
+configure do
+  MongoMapper.database = 'shared-events-ruby'
+
+  bootstrap_model  
+end
+
 get '/' do
-  @user = USERS.first
-  @events_per_day = EVENTS.group_by { |event| event.start_at.to_date }
+  @user = User.first
+  @events_per_day = Event.all.group_by { |event| event.start_at.to_date }
 
   haml :view
 end

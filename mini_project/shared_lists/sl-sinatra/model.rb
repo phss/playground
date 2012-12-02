@@ -1,24 +1,28 @@
 require_relative 'model/user'
 require_relative 'model/event'
 
-USERS = [User.new('Paulo')]
+EVENTS = []
 
-EVENTS = [
-  Event.new('Play football',
-            '',
-            DateTime.new(2012, 11, 12, 17, 30),
-            nil,
-            [USERS[0]]),
+def bootstrap_model
+  User.remove
+  Event.remove
 
-  Event.new('Boiler repairment visit',
-            '',
-            DateTime.new(2012, 11, 14, 9, 30),
-            DateTime.new(2012, 11, 14, 13, 0),
-            [USERS[0]]),
+  unless User.find_by_name('Paulo')
+    User.create(:name => 'Paulo')
 
-  Event.new('Photography course and jewelry course',
-            'Hopefully we will have a lunch break',
-            DateTime.new(2012, 11, 17, 10, 0),
-            DateTime.new(2012, 11, 17, 16, 0),
-            [USERS[0]] )
-]
+    Event.create(:title => 'Play football',
+                 :start_at => DateTime.new(2012, 11, 12, 17, 30),
+                 :participants => [User.first._id])
+
+    Event.create(:title => 'Boiler repairment visit',
+                 :start_at => DateTime.new(2012, 11, 14, 9, 30),
+                 :end_at => DateTime.new(2012, 11, 14, 13, 0),
+                 :participants => [User.first._id])
+
+    Event.create(:title => 'Photography course and jewelry course',
+                 :description => 'Hopefully we will have a lunch break',
+                 :start_at => DateTime.new(2012, 11, 17, 10, 0),
+                 :end_at => DateTime.new(2012, 11, 17, 16, 0),
+                 :participants => [User.first._id])
+  end
+end
