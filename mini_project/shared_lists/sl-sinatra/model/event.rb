@@ -6,5 +6,6 @@ class Event
   key :start_at, Time
   key :end_at, Time
 
-  many :users, :as => :participants, :in => :users_ids
+  key :participant_ids, Array
+  many :participants, :class_name => 'User', :in => :participant_ids
 end
