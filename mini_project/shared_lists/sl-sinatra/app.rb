@@ -9,15 +9,34 @@ helpers DateFormatter
 
 configure do
   MongoMapper.database = 'shared-events-ruby'
+  enable :sessions
 
   bootstrap_model  
 end
 
 get '/' do
-  @user = User.first
-  @events_per_day = Event.all.group_by { |event| event.start_at.to_date }
+  redirect '/login' unless session['user']
+
+  @user = User.where(:name => session['user']).first
+  @events_per_day = Event.participating(@user).group_by { |event| event.start_at.to_date }
 
   haml :view
+end
+
+get '/login' do
+  @available_users = User.all
+
+  haml :login
+end
+
+post '/login' do
+  session['user'] = params[:login_as]
+  redirect '/'
+end
+
+get '/logout' do
+  session['user'] = nil
+  redirect '/'
 end
 
 # Stylesheet link

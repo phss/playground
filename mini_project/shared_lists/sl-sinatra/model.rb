@@ -8,7 +8,7 @@ def bootstrap_model
   Event.remove
 
   unless User.find_by_name('Paulo')
-    User.create(:name => 'Paulo')
+    %w{Paulo Cris}.each { |name| User.create(:name => name) }
 
     Event.create(:title => 'Play football',
                  :start_at => DateTime.new(2012, 11, 12, 17, 30),
