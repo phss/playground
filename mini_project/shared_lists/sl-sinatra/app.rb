@@ -15,14 +15,18 @@ configure do
 end
 
 get '/' do
-  redirect '/login' unless session['user']
+  redirect '/week' if session['user']
+  redirect '/login'
+end
 
+get '/week' do
   @user = User.where(:name => session['user']).first
   @events_per_day = Event.participating(@user).group_by { |event| event.start_at.to_date }
 
   haml :view
 end
 
+# Login/logout actions
 get '/login' do
   @available_users = User.all
 
