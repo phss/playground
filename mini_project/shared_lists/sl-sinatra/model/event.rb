@@ -12,4 +12,5 @@ class Event
   def self.participating(user)
     Event.where(:participant_ids => user.id)
   end
+
 end

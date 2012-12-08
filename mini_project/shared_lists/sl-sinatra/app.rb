@@ -20,8 +20,10 @@ get '/' do
 end
 
 get '/week' do
+  @period = {:from => week_start, :to => week_end}
+
   @user = User.where(:name => session['user']).first
-  @events_per_day = Event.participating(@user).group_by { |event| event.start_at.to_date }
+  @events_per_day = Event.participating(@user).where(:start_at => {'$gte' => week_start.to_time, '$lte' => week_end.to_time + 169999}).group_by { |event| event.start_at.to_date }
 
   haml :view
 end

@@ -11,7 +11,7 @@ def bootstrap_model
     %w{Paulo Cris}.each { |name| User.create(:name => name) }
 
     Event.create(:title => 'Play football',
-                 :start_at => DateTime.new(2012, 11, 12, 17, 30),
+                 :start_at => DateTime.new(2012, 12, 9, 17, 30),
                  :participants => [User.first])
 
     Event.create(:title => 'Boiler repairment visit',
