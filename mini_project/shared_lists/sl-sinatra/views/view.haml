@@ -1,3 +1,11 @@
+%ul{:class => 'tabs'}
+  %li{:class => 'selected'}
+    %a{:href => '/week'} This Week
+  %li
+    %a{:href => '/next'} Next
+  %li
+    %a{:href => '/new'} New Event
+
 .events
   - @events_per_day.each do |date, events|
     .day
