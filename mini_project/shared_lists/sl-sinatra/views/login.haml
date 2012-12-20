@@ -1,8 +1,0 @@
-%form{:action => '/login', :method => 'POST'}
-  Login as
-  %select{:name => 'login_as'}
-    - @available_users.each do |user|
-      %option{:value => user.name}= user.name
-  %input{:type => 'submit', :value => 'Go'}
-    
-  
