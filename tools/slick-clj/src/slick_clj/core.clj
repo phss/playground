@@ -1,11 +1,13 @@
 (ns slick-clj.core
-  (:import (org.newdawn.slick BasicGame)))
+  (:import (org.newdawn.slick AppGameContainer BasicGame)))
 
 (defn hello-world []
   (proxy [BasicGame] ["Hello World"]
-    (init [container] (println "Init"))
-    (update [container delta] (println "Update"))
-    (render [container graphics] (println "Render"))))
+    (init [container] )
+    (update [container delta] )
+    (render [container graphics] (.drawString graphics "Hello World" 100 100))))
 
 (defn -main [& args]
-  (println "I am main!"))
+  (doto (AppGameContainer. (hello-world))
+    (.setDisplayMode 800 600 false)
+    (.start)))
