@@ -29,3 +29,4 @@
        (- (sum-divisibles adjusted-cap 15)))))
 
 (time (println (calculated-some-of-multiples cap)))
+
