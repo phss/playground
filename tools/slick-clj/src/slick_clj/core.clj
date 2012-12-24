@@ -1,4 +1,5 @@
 (ns slick-clj.core
+  (:gen-class)
   (:import (org.newdawn.slick AppGameContainer BasicGame)))
 
 (defn hello-world []
