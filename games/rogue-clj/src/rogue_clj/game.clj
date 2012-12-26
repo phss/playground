@@ -1,9 +1,9 @@
 (ns rogue-clj.game
   (:gen-class)
   (:import (org.newdawn.slick AppGameContainer BasicGame))
-  (:require [rogue-clj.world :as w]))
+  (:require [rogue-clj.world :as w]
+            [rogue-clj.config :as config]))
 
-(def world-dim {:width 50, :height 30})
 (def cell {:width 12, :height 15})
 
 (def cell-types {:blank ".",
@@ -11,17 +11,17 @@
                  :player "@",
                  :goblin "G"})
 
-(def world (ref (w/box-world (world-dim :width) (world-dim :height) cell-types)))
+(def world (ref (w/box-world config/world-size cell-types)))
 
-(def player {:x (/ (world-dim :width) 2),
-             :y (/ (world-dim :height) 2)})
+(def player {:x (/ (config/world-size :width) 2),
+             :y (/ (config/world-size :height) 2)})
 
-(def goblin {:x (rand-int (world-dim :width)),
-             :y (rand-int (world-dim :height))})
+(def goblin {:x (rand-int (config/world-size :width)),
+             :y (rand-int (config/world-size :height))})
 
 (defn update-world [w]
-  (let [rx (rand-int (world-dim :width))
-        ry (rand-int (world-dim :height))]
+  (let [rx (rand-int (config/world-size :width))
+        ry (rand-int (config/world-size :height))]
     (w/update w rx ry "X")))
 
 (defn draw [graphics c x y]
@@ -34,16 +34,16 @@
 ;      (dosync (alter world update-world))
     )
     (render [container graphics]
-      (doseq [x (range (world-dim :width)) 
-              y (range (world-dim :height))]
+      (doseq [x (range (config/world-size :width)) 
+              y (range (config/world-size :height))]
         (draw graphics (w/at @world x y) x y))
       (draw graphics (cell-types :player) (player :x) (player :y))
       (draw graphics (cell-types :goblin) (goblin :x) (goblin :y)))))
 
 (defn -main [& args]
   (doto (AppGameContainer. (game))
-    (.setDisplayMode (* (world-dim :width) (cell :width)) 
-                     (* (world-dim :height) (cell :height)) 
+    (.setDisplayMode (* (config/world-size :width) (cell :width)) 
+                     (* (config/world-size :height) (cell :height)) 
                      false)
     (.setTargetFrameRate 60)
     (.start)))
