@@ -1,21 +1,16 @@
 (ns rogue-clj.game
   (:gen-class)
-  (:import (org.newdawn.slick AppGameContainer BasicGame)))
+  (:import (org.newdawn.slick AppGameContainer BasicGame))
+  (:require [rogue-clj.world :as w]))
 
 (def text "This is a counter: ")
 (def counter (ref 0))
 (def cell {:width 12, :height 15})
 
-(defn make-world [width height]
-  (vec (repeat width (vec (repeat height "X")))))
- 
-(defn cell-at [world x y]
-  ((world x) y))
-
 (defn trans-pos [n size padding]
   (+ padding (* n size)))
 
-(def world (make-world 20 10))
+(def world (w/make-world 20 10))
 
 
 (defn hello-world []
@@ -26,7 +21,7 @@
     (render [container graphics]
       (.drawString graphics (str text @counter) 100 100)
       (doseq [x (range 20) y (range 10)]
-        (.drawString graphics (cell-at world x y) 
+        (.drawString graphics (w/cell-at world x y) 
                               (trans-pos x (cell :width) 20) 
                               (trans-pos y (cell :height) 140))))))
 
