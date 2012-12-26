@@ -7,5 +7,5 @@
   ((world x) y))
 
 (defn update-cell [world x y value]
-  (assoc world x (assoc (world x) y value)))
+  (assoc world x (assoc (world x) y value))) ; lookup better way
  

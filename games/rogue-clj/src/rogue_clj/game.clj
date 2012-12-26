@@ -31,4 +31,5 @@
     (.setDisplayMode (* (world-dim :width) (cell :width)) 
                      (* (world-dim :height) (cell :height)) 
                      false)
+    (.setTargetFrameRate 60)
     (.start)))
