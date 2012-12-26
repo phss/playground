@@ -9,16 +9,7 @@
 (def cell-type {:blank ".",
                 :wall "X"})
 
-(defn box-world [w h]
-  (let [blank-world (w/make-world w h (cell-type :blank))
-        walls (for [x (range w)
-                    y (range h)
-                    :when (or (zero? x) (zero? y) (= x (dec w)) (= y (dec h)))] 
-                [x y])]
-    (reduce (fn [wrld [x y]] (w/update wrld x y (cell-type :wall))) blank-world walls)
-    ))
-
-(def world (ref (box-world (world-dim :width) (world-dim :height))))
+(def world (ref (w/box-world (world-dim :width) (world-dim :height))))
 
 (defn update-world [w]
   (let [rx (rand-int (world-dim :width))
