@@ -7,13 +7,7 @@
 (def world-dim {:width 100, :height 60})
 (def cell {:width 12, :height 15})
 
-(def world (ref (w/make-world (world-dim :width) (world-dim :height) "X")))
-
-
-(defn trans-pos [n size padding]
-  (+ padding (* n size)))
-
-
+(def world (ref (w/make-world (world-dim :width) (world-dim :height) ".")))
 
 (defn hello-world []
   (proxy [BasicGame] ["Hello World"]
@@ -24,8 +18,8 @@
     (render [container graphics]
       (doseq [x (range (world-dim :width)) y (range (world-dim :height))]
         (.drawString graphics (w/cell-at @world x y) 
-                              (trans-pos x (cell :width) 0) 
-                              (trans-pos y (cell :height) 0))))))
+                              (* x (cell :width)) 
+                              (* y (cell :height)))))))
 
 (defn -main [& args]
   (doto (AppGameContainer. (hello-world))
