@@ -3,7 +3,7 @@
   (:import (org.newdawn.slick AppGameContainer BasicGame))
   (:require [rogue-clj.world :as w]))
 
-(def world-dim {:width 100, :height 60})
+(def world-dim {:width 50, :height 30})
 (def cell {:width 12, :height 15})
 
 (def world (ref (w/make-world (world-dim :width) (world-dim :height) ".")))
@@ -11,7 +11,7 @@
 (defn update-world [w]
   (let [rx (rand-int (world-dim :width))
         ry (rand-int (world-dim :height))]
-    (w/update-cell w rx ry "X")))
+    (w/update w rx ry "X")))
 
 (defn hello-world []
   (proxy [BasicGame] ["Hello World"]
@@ -22,7 +22,7 @@
     (render [container graphics]
       (doseq [x (range (world-dim :width)) 
               y (range (world-dim :height))]
-        (.drawString graphics (w/cell-at @world x y) 
+        (.drawString graphics (w/at @world x y) 
                               (* x (cell :width)) 
                               (* y (cell :height)))))))
 
