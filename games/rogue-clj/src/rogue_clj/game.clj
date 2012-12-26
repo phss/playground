@@ -13,7 +13,7 @@
         ry (rand-int (world-dim :height))]
     (w/update w rx ry "X")))
 
-(defn hello-world []
+(defn game []
   (proxy [BasicGame] ["Rogue in Clojure"]
     (init [container])
     (update [container delta]
@@ -27,7 +27,7 @@
                               (* y (cell :height)))))))
 
 (defn -main [& args]
-  (doto (AppGameContainer. (hello-world))
+  (doto (AppGameContainer. (game))
     (.setDisplayMode (* (world-dim :width) (cell :width)) 
                      (* (world-dim :height) (cell :height)) 
                      false)
