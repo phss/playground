@@ -4,8 +4,7 @@
   (vec (repeat width (vec (repeat height default)))))
  
 (defn cell-at [world x y]
-  ((world x) y))
+  (get-in world [x y]))
 
 (defn update-cell [world x y value]
-  (assoc world x (assoc (world x) y value))) ; lookup better way
- 
+  (assoc-in world [x y] value))
