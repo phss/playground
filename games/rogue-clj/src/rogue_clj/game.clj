@@ -6,10 +6,10 @@
 (def world-dim {:width 50, :height 30})
 (def cell {:width 12, :height 15})
 
-(def cell-type {:blank ".",
-                :wall "X"})
+(def cell-types {:blank ".",
+                 :wall "X"})
 
-(def world (ref (w/box-world (world-dim :width) (world-dim :height))))
+(def world (ref (w/box-world (world-dim :width) (world-dim :height) cell-types)))
 
 (defn update-world [w]
   (let [rx (rand-int (world-dim :width))
