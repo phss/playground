@@ -14,7 +14,7 @@
     (w/update w rx ry "X")))
 
 (defn hello-world []
-  (proxy [BasicGame] ["Hello World"]
+  (proxy [BasicGame] ["Rogue in Clojure"]
     (init [container])
     (update [container delta]
       (dosync (alter world update-world))
