@@ -11,7 +11,7 @@
 (defn update-world [w]
   (let [rx (rand-int (world-dim :width))
         ry (rand-int (world-dim :height))]
-    (assoc w rx (assoc (w rx) ry "X"))))
+    (update-cell w rx ry "X")))
 
 (defn hello-world []
   (proxy [BasicGame] ["Hello World"]
