@@ -2,16 +2,15 @@
   (:gen-class)
   (:import (org.newdawn.slick AppGameContainer BasicGame))
   (:require [rogue-clj.world :as world]
-            [rogue-clj.config :as config]))
+            [rogue-clj.config :as config]
+            [rogue-clj.entity :as entity]))
 
 
 (def world (ref (world/make-world-from config/world-map)))
 
-(def player {:x (/ (world/width @world) 2),
-             :y (/ (world/height @world) 2)})
+(def player (entity/make-entity :player  {:x 1, :y 2}))
 
-(def goblin {:x (rand-int (world/width @world)),
-             :y (rand-int (world/height @world))})
+(def goblin (entity/make-entity :goblin  {:x 12, :y 2}))
 
 (defn to-absolute-pos [n axis]
   (let [dimension ({:on-x :width, :on-y :height} axis)]
@@ -37,8 +36,10 @@
       (doseq [x (range (world/width @world)) 
               y (range (world/height @world))]
         (draw graphics (world/at @world x y) x y))
-      (draw graphics :player (player :x) (player :y))
-      (draw graphics :goblin (goblin :x) (goblin :y)))))
+      (doseq [ent [player goblin]]
+        (draw graphics (ent :type) 
+                       (entity/x ent) 
+                       (entity/y ent))))))
 
 (defn -main [& args]
   (doto (AppGameContainer. (game))
