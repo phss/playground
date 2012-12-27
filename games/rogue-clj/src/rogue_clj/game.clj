@@ -7,10 +7,7 @@
 
 
 (def world (ref (world/make-world-from config/world-map)))
-
-(def player (entity/make-entity :player  {:x 1, :y 2}))
-
-(def goblin (entity/make-entity :goblin  {:x 12, :y 2}))
+(def entities (ref (entity/make-entities-from config/world-map)))
 
 (defn to-absolute-pos [n axis]
   (let [dimension ({:on-x :width, :on-y :height} axis)]
@@ -36,7 +33,7 @@
       (doseq [x (range (world/width @world)) 
               y (range (world/height @world))]
         (draw graphics (world/at @world x y) x y))
-      (doseq [ent [player goblin]]
+      (doseq [ent @entities]
         (draw graphics (ent :type) 
                        (entity/x ent) 
                        (entity/y ent))))))

@@ -19,8 +19,7 @@
 (defn make-world-from [world-map]
   (let [size  {:width (count (world-map 0)), 
                :height (count world-map)}
-        blank-world (make-world size :blank)
-        char-to-cell {"W" :wall}]
+        blank-world (make-world size :blank)]
     (reduce (fn [world [x y value]] (update world x y value))
             blank-world
             (for [x (range (size :width))
