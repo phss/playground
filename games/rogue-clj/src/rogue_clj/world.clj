@@ -1,13 +1,14 @@
 (ns rogue-clj.world)
 
-(defn make-world [{w :width h :height} default]
-  (vec (repeat w (vec (repeat h default)))))
+(defn make-world [{w :width h :height :as size} default]
+  {:map (vec (repeat w (vec (repeat h default)))),
+   :size size})
  
 (defn at [world x y]
-  (get-in world [x y]))
+  (get-in world [:map x y]))
 
 (defn update [world x y value]
-  (assoc-in world [x y] value))
+  (assoc-in world [:map x y] value))
  
 (defn make-world-from [world-map]
   (let [size  {:width (count (world-map 0)), 
