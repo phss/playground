@@ -13,6 +13,9 @@
 (defn at [world x y]
   (get-in world [:map x y]))
 
+(defn blocked? [world x y]
+  (= :wall (at world x y)))
+
 (defn update [world x y value]
   (assoc-in world [:map x y] value))
  

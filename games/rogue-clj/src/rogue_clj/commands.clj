@@ -1,10 +1,19 @@
 (ns rogue-clj.commands
-  (:require [rogue-clj.entity :as entity]))
+  (:require [rogue-clj.entity :as entity]
+            [rogue-clj.world :as world]))
 
 (defn move-player [entities dir world]
-  (let [player [:player 0]] 
-    (update-in entities player entity/move dir)))
+  (let [player-id [:player 0]
+        player (get-in entities player-id)
+        moved-player (entity/move player dir)
+        new-position (moved-player :position)] 
+    (cond
+      (world/blocked? world (new-position :x) (new-position :y)) 
+        entities
+      :else 
+        (assoc-in entities player-id moved-player))))
 
+; Can macro this
 (defn move-player-left [entities world]
   (move-player entities [-1 0] world))
 
