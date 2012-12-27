@@ -14,5 +14,5 @@
     (for [x (range (count (world-map 0)))
           y (range (count world-map))
           :let [c (get-in world-map [y x])]
-          :when (some #{c} [\P \G])]
+          :when (some #{c} (keys char-to-entity))]
       (make-entity (char-to-entity c) {:x x, :y y}))))
