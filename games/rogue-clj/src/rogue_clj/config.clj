@@ -2,10 +2,10 @@
 
 (def cell {:width 12, :height 15})
 
-(def cell-types {:blank ".",
-                 :wall "X",
-                 :player "@",
-                 :goblin "G"})
+(def cell-representation {:blank ".",
+                          :wall "X",
+                          :player "@",
+                          :goblin "G"})
  
 (def world-map ["WWWWWWWWWWWWWWWWWWWWWWWW"
                 "W                      W"

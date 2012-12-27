@@ -14,13 +14,19 @@
 (def goblin {:x (rand-int (config/world-size :width)),
              :y (rand-int (config/world-size :height))})
 
+(defn to-absolute-pos [n axis]
+  (let [dimension ({:on-x :width, :on-y :height} axis)]
+    (* n (config/cell dimension))))
+ 
 (defn update-world [w]
   (let [rx (rand-int (config/world-size :width))
         ry (rand-int (config/world-size :height))]
     (w/update w rx ry "X")))
 
-(defn draw [graphics c x y]
-  (.drawString graphics (config/cell-types c) (* x (config/cell :width)) (* y (config/cell :height))))
+(defn draw [graphics cell x y]
+  (.drawString graphics (config/cell-representation cell) 
+                        (to-absolute-pos x :on-x) 
+                        (to-absolute-pos y :on-y)))
 
 (defn game []
   (proxy [BasicGame] ["Rogue in Clojure"]
@@ -37,8 +43,8 @@
 
 (defn -main [& args]
   (doto (AppGameContainer. (game))
-    (.setDisplayMode (* (config/world-size :width) (config/cell :width)) 
-                     (* (config/world-size :height) (config/cell :height)) 
+    (.setDisplayMode (to-absolute-pos (config/world-size :width) :on-x) 
+                     (to-absolute-pos (config/world-size :height) :on-y) 
                      false)
     (.setTargetFrameRate 60)
     (.start)))
