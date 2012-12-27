@@ -18,6 +18,7 @@
                         (to-absolute-pos x :on-x) 
                         (to-absolute-pos y :on-y)))
 
+
 (defn game []
   (proxy [BasicGame] ["Rogue in Clojure"]
     (init [container])
