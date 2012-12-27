@@ -3,6 +3,9 @@
 (defn make-world [{w :width h :height :as size} default]
   {:map (vec (repeat w (vec (repeat h default)))),
    :size size})
+
+(defn width [world]
+  (get-in world [:size :width]))
  
 (defn at [world x y]
   (get-in world [:map x y]))

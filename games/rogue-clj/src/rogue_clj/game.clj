@@ -42,7 +42,7 @@
 
 (defn -main [& args]
   (doto (AppGameContainer. (game))
-    (.setDisplayMode (to-absolute-pos (config/world-size :width) :on-x) 
+    (.setDisplayMode (to-absolute-pos (w/width world) :on-x) 
                      (to-absolute-pos (config/world-size :height) :on-y) 
                      false)
     (.setTargetFrameRate 60)
