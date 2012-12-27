@@ -21,9 +21,11 @@
 (defn game []
   (proxy [BasicGame] ["Rogue in Clojure"]
     (init [container])
-    (update [container delta]
-;      (dosync (alter world update-world))
-    )
+    (update [container delta])
+
+    (keyPressed [k c] 
+      (println (str "Something is pressed!! " k " | " c)))
+
     (render [container graphics]
       (doseq [x (range (world/width world)) 
               y (range (world/height world))]
