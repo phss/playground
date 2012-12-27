@@ -18,7 +18,6 @@
                         (to-absolute-pos x :on-x) 
                         (to-absolute-pos y :on-y)))
 
-
 (defn game []
   (proxy [BasicGame] ["Rogue in Clojure"]
     (init [container])
@@ -29,10 +28,8 @@
       (doseq [x (range (world/width world)) 
               y (range (world/height world))]
         (draw graphics (world/at world x y) x y))
-      (doseq [ent @entities]
-        (draw graphics (ent :type) 
-                       (entity/x ent) 
-                       (entity/y ent))))))
+      (doseq [e @entities]
+        (draw graphics (e :type) (entity/x e) (entity/y e))))))
 
 (defn -main [& args]
   (doto (AppGameContainer. (game))
