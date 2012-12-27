@@ -17,5 +17,5 @@
                 "W                      W"
                 "WWWWWWWWWWWWWWWWWWWWWWWW"])
 
-(def  {:width (count (world-map 0)), 
+(def world-size {:width (count (world-map 0)), 
                  :height (count world-map)})

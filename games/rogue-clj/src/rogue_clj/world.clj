@@ -7,6 +7,9 @@
 (defn width [world]
   (get-in world [:size :width]))
  
+(defn height [world]
+  (get-in world [:size :height]))
+
 (defn at [world x y]
   (get-in world [:map x y]))
 
@@ -23,4 +26,5 @@
             (for [x (range (size :width))
                   y (range (size :height))
                   :when (= \W (get-in world-map [y x]))]
-              [x y :wall]))))
+              [x y :wall])))) 
+ 
