@@ -9,6 +9,11 @@
 (defn y [entity]
   (get-in entity [:position :y]))
 
+(defn move [entity dir]
+  (-> entity
+      (update-in [:position :x] + (first dir))
+      (update-in [:position :y] + (last dir))))
+
 (defn make-entities-from [world-map]
   (let [char-to-entity {\P :player, \G :goblin}]
     (for [x (range (count (world-map 0)))
