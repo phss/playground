@@ -8,17 +8,6 @@
 
 (defn update [world x y value]
   (assoc-in world [x y] value))
-
-(defn box-world [{w :width h :height :as size}]
-  (let [blank-world (make-world size :blank)
-        walls (for [x (range w)
-                    y (range h)
-                    :when (or (zero? x) (zero? y) 
-                              (= x (dec w)) (= y (dec h)))] 
-                [x y])]
-    (reduce (fn [world [x y]] (update world x y :wall)) 
-            blank-world walls)
-    ))
  
 (defn make-world-from [world-map]
   (let [size  {:width (count (world-map 0)), 
@@ -29,5 +18,5 @@
             blank-world
             (for [x (range (size :width))
                   y (range (size :height))
-                  :when (= "W" (get-in world-map [x y]))]
+                  :when (= \W (get-in world-map [y x]))]
               [x y :wall]))))

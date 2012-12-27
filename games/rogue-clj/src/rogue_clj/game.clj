@@ -5,8 +5,6 @@
             [rogue-clj.config :as config]))
 
 
-
-;(def world (ref (w/box-world config/world-size)))
 (def world (ref (w/make-world-from config/world-map)))
 
 (def player {:x (/ (config/world-size :width) 2),
