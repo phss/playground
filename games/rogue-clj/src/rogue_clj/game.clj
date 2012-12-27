@@ -6,7 +6,8 @@
 
 
 
-(def world (ref (w/box-world config/world-size)))
+;(def world (ref (w/box-world config/world-size)))
+(def world (ref (w/make-world-from config/world-map)))
 
 (def player {:x (/ (config/world-size :width) 2),
              :y (/ (config/world-size :height) 2)})
