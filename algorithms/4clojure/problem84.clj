@@ -2,10 +2,11 @@
   (let [[biggest smallest] (if (> (count w1) (count w2)) [w1 w2] [w2 w1])
         cb (count biggest)
         cs (count smallest)
-        combs (fn [word] (for [x (range (count word))] (apply str (concat (take x word) (drop (inc x) word)))))]
+        letter-diff (fn [a b] (count (filter false? (for [i (range (count a))] (= (get a i) (get b i))))))
+        one-letter-removed-combs (fn [word] (for [i (range (count word))] (apply str (concat (take i word) (drop (inc i) word)))))]
     (cond
-      (= cb cs) (= 1 (count (filter false? (for [x (range cb)] (= (get biggest x) (get smallest x))))))
-      (= cb (inc cs)) (some #(= % smallest) (combs biggest))
+      (= cb cs) (= 1 (letter-diff biggest smallest))
+      (= cb (inc cs)) (some #{smallest} (one-letter-removed-combs biggest))
       :else false)))
 
 (defn word-graph [words]
@@ -14,6 +15,12 @@
 
 (defn word-chain [words]
   (let [g (word-graph words)]
-    g))
+    (loop [walks [[(map vector words)]]]
+      (let [n (first walks)]
+        (cond
+          (empty? walks) false
+          (= (count n) (count words)) true
+          )))))
 
 (println (word-chain #{"hat" "coat" "dog" "cat" "oat" "cot" "hot" "hog"}))
+
