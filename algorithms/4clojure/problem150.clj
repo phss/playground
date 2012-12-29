@@ -1,26 +1,21 @@
-(defn toi [s]
-  (Integer. s))
-
-(defn splice [n]
-  (let [s (str n)
-        mid (quot (count s) 2)
-        pivot (if (even? (count s)) "" (get s mid))
-        left (subs s 0 mid)
-        right (subs s (if (even? (count s)) mid (inc mid)))]
-    [left pivot right]))
-
-(defn nextp [n]
-  (let [[l p r] (splice n)
-        x (if (< (toi r) (toi (clojure.string/reverse l)))
-              (str l p)
-              (str (inc (toi (str l p)))))
-        r (clojure.string/reverse (if (= p "")
-                                    x
-                                    (subs x 0 (dec (count x)))))]
-     (toi (str x r))))
 
 (defn pals [n]
-  (let [np (if (< n 10) n (nextp n))] 
+  (let [digits (str n)
+        even (even? (count digits))
+        mid-idx (quot (count digits) 2)
+        middle (if even "" (get digits mid-idx))
+        left-side (subs digits 0 mid-idx)
+        right-side (subs digits (if even mid-idx (inc mid-idx)))
+        next-pal (fn [n]
+                (let [toi (fn [st] (Long. st))
+                      x (if (<= (toi right-side) (toi (clojure.string/reverse left-side)))
+                          (str left-side middle)
+                          (str (inc (toi (str left-side middle)))))
+                      r (clojure.string/reverse (if (= middle "")
+                                    x
+                                    (subs x 0 (dec (count x)))))]
+                  (toi (str x r))))
+        np (if (< n 10) n (next-pal n))] 
     (cons np (lazy-seq (pals (inc np))))))
 
 
@@ -33,3 +28,6 @@
 (println (nth (pals 0) 10101)) ; 9102019
 
 (println (take 5 (pals 8800))) ; 9102019
+
+(println (* 111111111 111111111))
+(println (first (pals (* 111111111 111111111))))
