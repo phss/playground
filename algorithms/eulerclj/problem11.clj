@@ -24,7 +24,10 @@
 
 
 (defn largest-product [grid]
-  grid)
+  (let [hor [[0 0] [1 0] [2 0] [3 0]]]
+    (for [x (range (count (first grid)))
+          y (range (count grid))]
+      (map (fn [dx dy] (get-in grid [(+ x dx) (+ y dy)])) hor))))
 
 
 (time (println (largest-product grid)))
