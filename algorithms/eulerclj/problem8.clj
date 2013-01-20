@@ -2,4 +2,9 @@
 
 (def digits (map #(Integer/parseInt %) (rest (clojure.string/split digitsString #""))))
 
+(defn largets-product [col]
+  (let [five-digit-seqs (partition 5 1 col)]
+    five-digit-seqs))
 
+
+(time (println (largets-product digits)))
