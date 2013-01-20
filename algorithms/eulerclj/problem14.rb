@@ -11,13 +11,9 @@ def longest_collatz_under(n)
   collatz_lengths = {1 => 1}
 
   1.upto(n-1) do |i|
-    x = i
-    seq = []
+    x, seq = i, []
 
-    while !(collatz_lengths.has_key? x)
-      seq << x
-      x = next_n(x)
-    end
+    seq << x and x = next_n(x) while !(collatz_lengths.has_key? x)
 
     base = collatz_lengths[x]
 
