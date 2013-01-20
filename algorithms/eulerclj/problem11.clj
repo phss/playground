@@ -27,13 +27,22 @@
             (clojure.string/split-lines gridString))))
 
 
-(defn largest-product [grid]
-  (let [par [[0 0] [0 1] [0 2] [0 3]]
-        width (count (first grid))
+(defn partition-grid [grid par]
+  (let [width (count (first grid))
         height (count grid)]
     (for [x (range width) y (range height)
           :let [gridloc (map (fn [[dx dy]] [(+ dx x) (+ dy y)]) par)]]
       (remove nil? (map #(get-in grid %) gridloc)))))
+
+(defn largest-product [grid]
+  (let [partitions [[[0 0] [0 1] [0 2] [0 3]]
+                    [[0 0] [1 0] [2 0] [3 0]]
+                    [[0 0] [1 1] [2 2] [3 3]]
+                    [[0 0] [-1 1] [-2 2] [-3 3]]]
+        multiply #(apply * %)
+        all-partitions (apply concat (map (partial partition-grid grid) partitions))
+        all-products (map multiply all-partitions)]
+    (last (sort all-products))))
 
 
 (time (println (largest-product grid)))
