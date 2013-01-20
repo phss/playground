@@ -20,14 +20,20 @@
 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48")
 
-(def grid (map (fn [line] (map #(Integer/parseInt %) (clojure.string/split line #" "))) (clojure.string/split-lines gridString)))
+(def grid (apply vector (map 
+            (fn [line] (apply vector (map 
+                         #(Integer/parseInt %) 
+                         (clojure.string/split line #" ")))) 
+            (clojure.string/split-lines gridString))))
 
 
 (defn largest-product [grid]
-  (let [hor [[0 0] [1 0] [2 0] [3 0]]]
-    (for [x (range (count (first grid)))
-          y (range (count grid))]
-      (map (fn [dx dy] (get-in grid [(+ x dx) (+ y dy)])) hor))))
+  (let [par [[0 0] [0 1] [0 2] [0 3]]
+        width (count (first grid))
+        height (count grid)]
+    (for [x (range width) y (range height)
+          :let [gridloc (map (fn [[dx dy]] [(+ dx x) (+ dy y)]) par)]]
+      (remove nil? (map #(get-in grid %) gridloc)))))
 
 
 (time (println (largest-product grid)))
