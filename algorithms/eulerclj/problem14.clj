@@ -11,12 +11,8 @@
         s
         (recur (conj s (next-n l)))))))
 
-(defn longest-collatz-under2 [n]
+(defn longest-collatz-under [n]
   (let [all-lengths (map-indexed vector (map (comp count collatz-seq) (range 1 n)))]
     (last (sort-by second all-lengths))))
 
-
-(defn longest-collatz-under [n]
-  (loop [lengths {} x 1]))
-
-(time (println (longest-collatz-under 1000000)))
+(time (println (longest-collatz-under 100)))
