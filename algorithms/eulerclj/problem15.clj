@@ -12,4 +12,4 @@
                [] paths)))))
 
 
-(time (println (lattice-paths 20)))
+(time (println (lattice-paths 6)))
