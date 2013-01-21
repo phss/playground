@@ -1,9 +1,12 @@
-a = 100
-b = 200
+a = 4405
+b = 9341
 
-sum = 0
+s = 0
 for n in range(a, b+1):
   if n % 2 == 1:
-    sum += n
+    s += n
 
-print sum
+print s
+
+# Very fancy pants solution
+print sum(range(a|1, b+1, 2))
