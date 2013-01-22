@@ -5,4 +5,4 @@
     (first (filter n-divisors? triangle-numbers))))
 
 
-(time (println (triangle-with-divisors 2)))
+(time (println (triangle-with-divisors 5)))
