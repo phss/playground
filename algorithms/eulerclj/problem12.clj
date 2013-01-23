@@ -11,6 +11,6 @@
 
 (time (println (triangle-with-divisors 20)))
 
-(doseq [n (take 1 triangle-numbers)
+(doseq [n (take 10 triangle-numbers)
         :let [divs (divisors n)]]
   (println n (count divs) divs))
