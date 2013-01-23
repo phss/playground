@@ -1,29 +1,18 @@
-(defn next-paths [[x y] size]
-  (let [right-path [(inc x) y]
-        down-path [x (inc y)]]
-    (remove (fn [[x y]] (or (> x size) (> y size))) [right-path down-path])))
 
-(defn lattice-paths-first [size]
-  (loop [paths [[0 0]]]
-    (if (= [size size] (first paths))
-      (count paths)
-      (recur (reduce 
-               (fn [ps paths] (concat ps (next-paths paths size))) 
-               [] paths)))))
-
-(defn paths-at [n grid size]
-  (let [up-idx ]))
+(defn paths-at [i grid cols]
+  (let [left (if (= 0 (rem i cols)) 0 (nth grid (dec i)))
+        up (if (< i cols) 0 (nth grid (- i cols)))]
+    (+ left up)))
 
 (defn lattice-paths [n]
-  (let [size (inc n)]
-    (loop [path-grid [1] curr 1]
-      (let [current-paths (paths-at curr path-grid)] 
-        (if (= curr (Math/pow size 2))
-          current-paths
-          (recur (conj path-grid current-paths) (inc curr)))))))
+  (let [cols (inc n)
+        size (int (Math/pow cols 2))]
+    (loop [path-grid [1] i 1]
+      (let [paths-at-i (paths-at i path-grid cols)] 
+        (if (= i size)
+          (last path-grid)
+          (recur (conj path-grid paths-at-i) (inc i)))))))
 
 
-(time (println (lattice-paths 6)))
+(time (println (lattice-paths 20)))
 
-;(doseq [x (range 1 8)]
-;  (println x (lattice-paths x)))
