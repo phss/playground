@@ -1,6 +1,11 @@
 
 def triangle_from(filename)
-  
+ tri = []
+  File.open(filename) do |file|
+    tri = file.readlines.map do |line|
+      line.split(" ").map { |n| n.to_i }
+    end
+  end
 end
 
 def maximum_path_sum(triangle)
@@ -17,11 +22,5 @@ end
 
 small_tri = [[3], [7, 4], [2, 4, 6], [8, 5, 9, 3]]
 
-tri = []
-File.open("files/problem67.txt") do |file|
-  tri = file.readlines.map do |line|
-    line.split(" ").map { |n| n.to_i }
-  end
-end
-
-puts maximum_path_sum(tri)
+puts maximum_path_sum(triangle_from("files/problem18.txt"))
+puts maximum_path_sum(triangle_from("files/problem67.txt"))
