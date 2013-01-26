@@ -1,9 +1,20 @@
-(defn sum-of-divisors [n]
-  (let [divisors  (mapcat (fn [f] [f (/ n f)])
-                          (filter #(zero? (rem n %)) (range 1 (inc (Math/sqrt n)))))]
-    (apply + divisors)))
+;(defn divisors [n]
+;  (mapcat (fn [f] [f (/ n f)]) (filter #(zero? (rem n %)) (range 1 (int (Math/sqrt n))))))
 
-;(time (println (map divisors (range 1 10001))))
-;
-(println (sum-of-divisors 220))
-(println (sum-of-divisors 284))
+(defn divisors [n]
+  (filter #(zero? (rem n %)) (range 1 n)))
+
+(defn sum-of-divisors [n]
+  (apply + (divisors n)))
+
+(defn amicable-sum [n]
+  (let [sods (for [i (range n)] [i (sum-of-divisors i)])
+        amicable? (fn [[i sod]] (and (not= i sod) (< sod n) (= i (second (nth sods sod)))))
+        amicables (filter amicable? sods)]
+    (apply + (map second amicables))))  
+
+(time (println (amicable-sum 10000)))
+
+;(println (divisors 57))
+;(println (divisors 79))
+
