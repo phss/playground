@@ -9,7 +9,7 @@
 
 (def abundants (filter abundant? (range 12 28123)))
 
-(def non-abundants (for [n (range 1 100) 
+(def non-abundants (for [n (range 1 1000) 
                          :when (not-any? (fn [a] (let [f (- n a)] (and (> f 0) (some #{f} abundants)))) abundants)]
                      n))
 
