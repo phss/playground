@@ -11,9 +11,4 @@
                (slurp)
                (clojure.string/split #",")))
 
-(println (count names))
-(println (count (sort names)))
-
 (time (println (name-scores names)))
-
-(println (sum-name "COLIN"))
