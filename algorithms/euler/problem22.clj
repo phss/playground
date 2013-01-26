@@ -5,12 +5,14 @@
 (defn name-scores [names]
   (let [idx-names (map vector (iterate inc 1) (sort names))
         name-score (fn [[idx s]] (* idx (sum-name s)))]
-    (println (nth idx-names 937))
     (apply + (map name-score idx-names))))
 
 (def names (-> "files/problem22.txt"
                (slurp)
                (clojure.string/split #",")))
+
+(println (count names))
+(println (count (sort names)))
 
 (time (println (name-scores names)))
 
