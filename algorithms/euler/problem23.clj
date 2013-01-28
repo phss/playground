@@ -10,11 +10,9 @@
 
 (def abundants (filter abundant? (range 12 upper-bound)))
 
-(def non-abundants (for [n (range 1 upper-bound) 
-                         :when (not-any? (fn [a] (let [f (- n a)] (and (> f 0) (some #{f} abundants)))) abundants)]
-                     n))
+(def sum-abundants (for [a abundants b abundants] (+ a b)))
 
-(println (apply + non-abundants))
+(count sum-abundants)
 
-;(println (take 50 abundants))
-;(println (take 50 non-abundants))
+(println (apply + (remove (fn [n] (some #{n} sum-abundants)) (range upper-bound))))
+
