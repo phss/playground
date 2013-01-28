@@ -10,7 +10,7 @@
 
 (def abundants (filter abundant? (range 12 upper-bound)))
 
-(def sum-abundants (for [a abundants b abundants] (+ a b)))
+(def sum-abundants (for [a abundants b abundants :let [s (+ a b)] :when (< s upper-bound)] s))
 
 (count sum-abundants)
 
