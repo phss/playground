@@ -13,7 +13,4 @@
     (last (sort-by second all-quad-primes))))
 
 
-(println (solve-quadratic 5 1 41))
-(println (solve-quadratic 5 -79 1601))
-
-(time (println (quadratic-primes (range 1 5) (range 39 44))))
+(time (println (quadratic-primes (range -999 1000) (range -999 1000))))
