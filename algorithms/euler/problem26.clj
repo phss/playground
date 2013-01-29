@@ -8,5 +8,8 @@
         (- (count qr) idx)
         (recur (* 10 r) (conj qr [q r]))))))
 
-(println (recurring-cycle 7))
-(println (recurring-cycle 6))
+(defn max-cycle [numbers]
+  (let [ncycles (map (fn [n] [n (recurring-cycle n)]) numbers)]
+    (last (sort-by second ncycles))))
+
+(time (println (max-cycle (range 1 1000))))
