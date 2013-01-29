@@ -9,7 +9,7 @@
         (recur (* 10 r) (conj qr [q r]))))))
 
 (defn max-cycle [numbers]
-  (let [ncycles (map (fn [n] [n (recurring-cycle n)]) numbers)]
+  (let [ncycles (for [n numbers] [n (recurring-cycle n)])]
     (last (sort-by second ncycles))))
 
 (time (println (max-cycle (range 1 1000))))
