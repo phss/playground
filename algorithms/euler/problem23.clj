@@ -1,5 +1,5 @@
 
-(def upper-bound 20161)
+(def upper-bound 28123)
 
 (defn sum-of-divisors [n]
   (let [divisors (fn [n] (filter #(zero? (rem n %)) (range 1 n)))]
@@ -10,11 +10,9 @@
 
 (def abundants (filter abundant? (range 12 upper-bound)))
 
-(def non-abundants (for [n (range 1 100) 
-                         :when (not-any? (fn [a] (let [f (- n a)] (and (> f 0) (some #{f} abundants)))) abundants)]
-                     n))
+(def sum-abundants (distinct (for [a abundants b abundants :let [s (+ a b)] :while (and (<= b a) (< s upper-bound))] s)))
 
-;(println (apply + non-abundants))
+(count sum-abundants)
 
-(println (take 50 abundants))
-(println (take 50 non-abundants))
+(println (apply + (remove (fn [n] (some #{n} sum-abundants)) (range upper-bound))))
+
