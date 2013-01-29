@@ -3,7 +3,8 @@
   (+ (* n n) (* a n) b))
 
 (defn prime? [n]
-  false)
+  (let [divisible? (fn [n d] (zero? (rem n d)))]
+    (not-any? (partial divisible? n) (range 2 (Math/sqrt n)))))
 
 (defn quadratic-primes [a-range b-range]
   (for [a a-range b b-range n (range)
