@@ -7,10 +7,8 @@
     (not-any? (partial divisible? n) (range 2 (Math/sqrt n)))))
 
 (defn quadratic-primes [a-range b-range]
-  (let [all-quad-primes (for [a a-range b b-range n (range)
-                              :while (prime? (solve-quadratic n a b))]
-                           [[a b] n])]
-    (last (sort-by second all-quad-primes))))
+  (let [candidates (for [a a-range b b-range :when (prime? (solve-quadratic 40 a b))] [a b])]
+    (count candidates)))
 
 
 (time (println (quadratic-primes (range -999 1000) (range -999 1000))))
