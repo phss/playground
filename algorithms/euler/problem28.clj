@@ -6,4 +6,4 @@
         idx
         (recur (+ n 2) (concat idx [(+ l n) (+ l (* n 2)) (+ l (* n 3)) (+ l (* n 4))]))))))
 
-(println (indexes 9))
+(println (indexes 101))
