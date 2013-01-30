@@ -4,7 +4,8 @@
 
 (defn prime? [n]
   (let [divisible? (fn [n d] (zero? (rem n d)))]
-    (not-any? (partial divisible? n) (range 2 (Math/sqrt n)))))
+    (and (> n 0)
+         (not-any? (partial divisible? n) (range 2 (Math/sqrt n))))))
 
 (defn max-quadratic-n [a b]
   (loop [n 0]
@@ -20,3 +21,7 @@
 
 
 (time (println (quadratic-primes (range -999 1000) (range -999 1000))))
+;
+;(println (max-quadratic-n -999 61))
+;(println (solve-quadratic 11 -999 61))
+;(println (prime? -10807))
