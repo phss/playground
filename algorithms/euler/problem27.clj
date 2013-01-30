@@ -7,7 +7,7 @@
     (not-any? (partial divisible? n) (range 2 (Math/sqrt n)))))
 
 (defn quadratic-primes [a-range b-range]
-  (let [candidates (for [a a-range b b-range :when (prime? (solve-quadratic 40 a b))] [a b])]
+  (let [candidates (for [a a-range b b-range :when (prime? (solve-quadratic 50 a b))] [a b])]
     (count candidates)))
 
 
