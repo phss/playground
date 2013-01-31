@@ -5,8 +5,7 @@
 (defn digits [n]
   (map #(Integer/parseInt (str %)) (str n)))
 
-(println (for [a (range 10)
-               b (range 10)
-               :let [sum (+ (pow a 2) (pow b 2))]
-               :when (= [a b] (digits sum))]
-           [[a b] (digits sum)]))
+(println (for [n (range 2 9999)
+               :let [sum (reduce + (map #(pow % 4) (digits n)))]
+               :when (= n sum)]
+           n))
