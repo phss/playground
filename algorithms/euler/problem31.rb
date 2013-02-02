@@ -13,4 +13,4 @@ def ways_to_make(amount)
   return ways[amount]
 end
 
-puts ways_to_make(2000)
+puts ways_to_make(200)
