@@ -1,10 +1,15 @@
+(defn update-for-coin [ways coin]
+  (reduce
+    (fn [w i] (assoc w i (+ (nth w i)
+                            (nth w (- i coin)))))
+    (vec ways)
+    (range coin (count ways))))
 
-(def coins [1 2 5 10 20 50 100 200])
-
-(defn ways-to-make [value]
-  (loop [ways [] values [value]]
-    (if (empty? values)
-      (count ways)
-      (recur (concat ways [[1 200] [200 1]]) []))))
+(defn ways-to-make [amount]
+  (let [ways-for-1p (map (fn [n] 1) (range (inc amount)))] 
+    (loop [ways ways-for-1p coins [2 5 10 20 50 100 200]]
+      (if (empty? coins)
+        (last ways)
+        (recur (update-for-coin ways (first coins)) (rest coins))))))
 
 (time (println (ways-to-make 200)))
