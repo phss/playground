@@ -1,7 +1,6 @@
 (defn update-for-coin [ways coin]
   (reduce
-    (fn [w i] (assoc w i (+ (nth w i)
-                            (nth w (- i coin)))))
+    (fn [w i] (update-in w [i] + (nth w (- i coin))))
     (vec ways)
     (range coin (count ways))))
 
