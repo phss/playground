@@ -10,12 +10,3 @@
 
 (defn nine-pan? [d]
   (= (range 1 10) (sort d)))
-
-(defn pan-prods []
-  (distinct (for [factor (range 2 (sqrt max-pan))
-        cofactor (range (quot min-pan factor) (quot max-pan factor))
-        :let [product (* factor cofactor)]
-        :when (nine-pan? (concat (digits factor) (digits cofactor) (digits product)))]
-    product)))
-
-(time (println (count (pan-prods))))
