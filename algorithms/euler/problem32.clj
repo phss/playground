@@ -10,3 +10,14 @@
 
 (defn nine-pan? [d]
   (= (range 1 10) (sort d)))
+
+(defn perms [col]
+  (loop [p (map vector col) n 1]
+    (if (= n (count col))
+      p
+      (recur (reduce (fn [ps ]) 
+                     [] p) 
+             (inc n)))))
+
+
+(println (take 5 (perms (range 1 10))))
