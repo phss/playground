@@ -1,3 +1,4 @@
+(use 'clojure.set)
 
 (def max-pan 987654321)
 (def min-pan 123456789)
@@ -11,13 +12,14 @@
 (defn nine-pan? [d]
   (= (range 1 10) (sort d)))
 
-(defn perms [col]
-  (loop [p (map vector col) n 1]
-    (if (= n (count col))
-      p
-      (recur (reduce (fn [ps ]) 
-                     [] p) 
-             (inc n)))))
+(defn permutations [col]
+  (loop [perms (map vector col) level 1]
+    (if (= level (count col))
+      perms 
+      (recur (reduce (fn [next-perms perm]
+                       (concat next-perms (map (fn [n] (conj perm n)) (difference (set col) (set perm))))) 
+                     [] perms) 
+             (inc level)))))
 
 
-(println (take 5 (perms (range 1 10))))
+(println (take 5 (permutations (range 1 10))))
