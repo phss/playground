@@ -22,4 +22,4 @@
              (inc level)))))
 
 
-(println (take 5 (permutations (range 1 10))))
+(println (take 5 (permutations (range 1 5))))
