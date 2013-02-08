@@ -14,4 +14,6 @@
         (concat perm available)
         (recur next-n (remove-idx available idx) (conj perm (nth available idx)))))))
 
-(time (println (last (map (fn [n] (nth-permutation (range 1 10) n)) (range 1 362881)))))
+(def all-permutations (map (fn [n] (nth-permutation (range 1 10) n)) (range 1 (inc (factorial 9)))))
+
+(time (println (last all-permutations)))
