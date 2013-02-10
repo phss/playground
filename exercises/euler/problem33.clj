@@ -11,3 +11,5 @@
              [canc n d]))
 
 (println fracs)
+
+(println (reduce * (map (fn [[c n d]] (/ n d)) fracs)))
