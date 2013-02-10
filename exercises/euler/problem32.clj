@@ -1,23 +1,3 @@
-(defn factorial [n]
-  (if (= 1 n) 1 (* n (factorial (dec n)))))
-
-(defn remove-idx [col idx]
-  (concat (take idx col) (drop (inc idx) col)))
-
-(defn nth-permutation [elems nt]
-  (loop [n (dec nt) available elems perm []]
-    (let [avails (count available) 
-          group-size (/ (factorial avails) avails)
-          idx (quot n group-size)
-          next-n (rem n group-size)]
-      (if (= 1 (count available))
-        (concat perm available)
-        (recur next-n (remove-idx available idx) (conj perm (nth available idx)))))))
-
-(def all-permutations (map (fn [n] (nth-permutation (range 1 10) n)) (range 1 (inc (factorial 9)))))
-
-;(time (println (last all-permutations)))
-;
 
 (defn sqrt [n]
   (int (Math/sqrt n)))
@@ -28,3 +8,12 @@
 (defn nine-pan? [d]
   (= (range 1 10) (sort d)))
 
+(def pan-prods (for [multiplicand (range 1 99)
+                     multiplier (range multiplicand 10000)
+                     :let [product (* multiplicand multiplier)]
+                     :when (nine-pan? (apply concat (map digits [multiplicand multiplier product])))]
+                 [multiplicand multiplier product]))
+
+(println pan-prods)
+
+(println (reduce + (distinct (map last pan-prods))))
