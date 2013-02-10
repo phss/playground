@@ -16,4 +16,15 @@
 
 (def all-permutations (map (fn [n] (nth-permutation (range 1 10) n)) (range 1 (inc (factorial 9)))))
 
-(time (println (last all-permutations)))
+;(time (println (last all-permutations)))
+;
+
+(defn sqrt [n]
+  (int (Math/sqrt n)))
+
+(defn digits [n]
+  (map #(Integer/parseInt (str %)) (str n)) )
+
+(defn nine-pan? [d]
+  (= (range 1 10) (sort d)))
+
