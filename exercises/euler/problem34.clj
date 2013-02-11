@@ -9,5 +9,6 @@
     (= n (reduce + facts))))
 
 (println (curious-fact? 145))
-
 (println (curious-fact? 120))
+
+(println (reduce + (filter curious-fact? (range 1 1000000))))
