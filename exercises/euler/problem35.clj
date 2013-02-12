@@ -1,3 +1,8 @@
+
+(defn prime? [n]
+  (let [divisible? (fn [n d] (zero? (rem n d)))]
+    (not-any? (partial divisible? n) (range 2 (inc (Math/sqrt n))))))
+
 (defn digits [n]
   (map #(Integer/parseInt (str %)) (str n)) )
 
@@ -11,4 +16,8 @@
              (to-num (concat aft bef)))) 
          (range (count d)))))
 
-(println (rotations 197))
+(def primes (filter prime? (range 2 1000000)))
+
+(println (take 50 primes))
+
+(time (println (first (map rotations primes))))
