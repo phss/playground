@@ -18,6 +18,6 @@
 
 (def primes (filter prime? (range 2 1000000)))
 
-(println (take 50 primes))
+(println (count primes))
 
 (time (println (first (map rotations primes))))
