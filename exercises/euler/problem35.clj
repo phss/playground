@@ -1,7 +1,9 @@
 
 (defn prime? [n]
   (let [divisible? (fn [n d] (zero? (rem n d)))]
-    (not-any? (partial divisible? n) (range 2 (inc (Math/sqrt n))))))
+    (not-any? (partial divisible? n) (range 2 (inc (int (Math/sqrt n)))))))
+
+(def primes (filter prime? (range 2 1000000)))
 
 (defn digits [n]
   (map #(Integer/parseInt (str %)) (str n)) )
@@ -16,8 +18,7 @@
              (to-num (concat aft bef)))) 
          (range (count d)))))
 
-(def primes (filter prime? (range 2 1000000)))
+(defn circular-prime? [n]
+  (every? #(prime? %) (rotations n)))
 
-(println (count primes))
-
-(time (println (first (map rotations primes))))
+(time (println (count (filter circular-prime? primes))))
