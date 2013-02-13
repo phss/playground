@@ -6,4 +6,15 @@
 ; kind of crappy way of generating palindromes below a million
 (def palindromes (sort (filter (partial > 1000000) (flatten (map gen-palindrome (range 1 1000))))))
 
-(println (last palindromes))
+(defn to-bin [n]
+  (Integer/toString n 2))
+
+(defn pal? [s]
+  (let [middle (int (/ (count s) 2))
+        left (subs s 0 middle)
+        right (apply str (reverse (subs s (if (even? (count s)) middle (inc middle)))))]
+    (= left right)))
+
+(println (pal? (to-bin (last palindromes))))
+
+(println (pal? (to-bin 585)))
