@@ -3,6 +3,7 @@
         i (apply str (reverse s))]
     (map read-string (cons (str s i) (map #(str s % i) (range 10))))))
 
-(def palindromes (sort (flatten (map gen-palindrome (range 1 100)))))
+; kind of crappy way of generating palindromes below a million
+(def palindromes (sort (filter (partial > 1000000) (flatten (map gen-palindrome (range 1 1000))))))
 
 (println (last palindromes))
