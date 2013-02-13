@@ -15,6 +15,4 @@
         right (apply str (reverse (subs s (if (even? (count s)) middle (inc middle)))))]
     (= left right)))
 
-(println (pal? (to-bin (last palindromes))))
-
-(println (pal? (to-bin 585)))
+(println (reduce + (filter #(pal? (to-bin %)) palindromes)))
