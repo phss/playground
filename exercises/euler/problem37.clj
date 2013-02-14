@@ -9,4 +9,6 @@
 
 (def primes (filter #(> % 10) (primes-up-to 10000000)))
 
-(println (all-truncations 3797))
+(def truncatable-primes (filter #(every? prime? (all-truncations %)) primes))
+
+(time (println (take 11 truncatable-primes)))
