@@ -1,3 +1,5 @@
+(ns commons)
+
 ; Prime checking and generation
 (defn prime? [n]
   (let [divisible? (fn [n d] (zero? (rem n d)))]
