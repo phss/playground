@@ -16,3 +16,11 @@
 
 (defn number-from [digits]
   (Integer/parseInt (apply str digits)))
+
+
+; Pandigitals
+(defn pandigital-1-9? [digits]
+  (= (range 1 10) (sort digits)))
+
+(defn pandigita-1-9-num? [number]
+  (pandigital-1-9? (digits-from number)))
