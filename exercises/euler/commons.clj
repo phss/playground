@@ -17,6 +17,9 @@
 (defn number-from [digits]
   (Integer/parseInt (apply str digits)))
 
+(defn long-from [digits]
+  (Long/parseLong (apply str digits)))
+
 
 ; Pandigitals
 (defn pandigital-1-9? [digits]
