@@ -1,14 +1,16 @@
 (use 'commons)
 
-(defn all-truncations [n]
+(defn truncations [truncate-f n]
   (let [d (digits-from n)]
     (loop [truncs [] r d]
       (if (empty? r)
         truncs
-        (recur (conj truncs (number-from r)) (drop 1 r))))))
+        (recur (conj truncs (number-from r)) (truncate-f 1 r))))))
 
 (def primes (filter #(> % 10) (primes-up-to 10000000)))
 
-(def truncatable-primes (filter #(every? prime? (all-truncations %)) primes))
+(def truncatable-primes (filter #(every? prime? (concat (truncations drop %) 
+                                                        (truncations drop-last %))) 
+                                primes))
 
-(time (println (take 11 truncatable-primes)))
+(time (println (reduce + (take 11 truncatable-primes))))
