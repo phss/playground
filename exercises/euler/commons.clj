@@ -39,8 +39,11 @@
 
 
 ; Pandigitals
+(defn pandigital? [digits n]
+  (= (range 1 (inc n)) (sort digits)))
+
 (defn pandigital-1-9? [digits]
-  (= (range 1 10) (sort digits)))
+  (pandigital? digits 9))
 
 (defn pandigital-1-9-num? [number]
   (pandigital-1-9? (digits-from number)))
