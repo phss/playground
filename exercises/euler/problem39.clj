@@ -1,9 +1,4 @@
-(defn pow2 [n]
-  (* n n))
-
-(defn right-tri? [a b c]
-  (= (pow2 c) (+ (pow2 a) (pow2 b))))
+(use 'commons)
 
 
-(println (right-tri? 20 48 52))
-(println (right-tri? 20 48 50))
+(println (no-decimal? (pyth 20 48)))

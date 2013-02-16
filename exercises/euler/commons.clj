@@ -1,10 +1,27 @@
 (ns commons)
 
+; Math funcs
+(defn sqrt [n]
+  (Math/sqrt n))
+
+(defn int-sqrt [n]
+  (int (sqrt n)))
+
+(defn pow2 [n]
+  (* n n))
+
+(defn no-decimal? [n]
+  (= (mod n 1) 0.0))
+
+(defn pyth [a b]
+  (sqrt (+ (pow2 a) (pow2 b))))
+
+
 ; Prime checking and generation
 (defn prime? [n]
   (let [divisible? (fn [n d] (zero? (rem n d)))]
     (and (> n 1)
-         (not-any? (partial divisible? n) (range 2 (inc (int (Math/sqrt n))))))))
+         (not-any? (partial divisible? n) (range 2 (inc (int-sqrt n)))))))
 
 (defn primes-up-to [n]
   (filter prime? (range 2 n)) )
