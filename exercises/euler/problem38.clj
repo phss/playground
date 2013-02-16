@@ -11,11 +11,6 @@
         (> possible-pan 987654321) nil
         :else (recur (conj multipliers (inc (last multipliers))))))))
 
-(println (pan-multiple 192))
-(println (pan-multiple 8))
-
-(println (multicat 192 [1 2 3]))
-
-(def all-pans (map pan-multiple (range 1 (/ 987654321 2))))
+(def all-pans (sort (remove nil? (map pan-multiple (range 1 10000000)))))
 
 (println (last all-pans))
