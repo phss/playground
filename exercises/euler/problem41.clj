@@ -1,3 +1,5 @@
 (use 'commons)
 
-(println (pandigital-1-9-num? 987654322))
+(def primes (primes-up-to 10000000))
+
+(time (println (last (sort (filter pandigital-num? primes)))))
