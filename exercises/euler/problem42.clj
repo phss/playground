@@ -11,6 +11,15 @@
 (defn nth-tri [n]
   (int (* 0.5 n (inc n))))
 
-(println (nth-tri 10))
+(def all-tris (map nth-tri (iterate inc 1)))
 
-(println (word-value "SKY"))
+(defn word-tri? [word]
+  (let [wv (word-value word)]
+    (loop [n 1]
+      (let [tri (nth-tri n)]
+        (cond 
+          (= tri wv) true
+          (> tri wv) false
+          :else (recur (inc n)))))))
+
+(time (println (count (filter word-tri? words))))
