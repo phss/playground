@@ -14,12 +14,8 @@
 (def all-tris (map nth-tri (iterate inc 1)))
 
 (defn word-tri? [word]
-  (let [wv (word-value word)]
-    (loop [n 1]
-      (let [tri (nth-tri n)]
-        (cond 
-          (= tri wv) true
-          (> tri wv) false
-          :else (recur (inc n)))))))
+  (let [wv (word-value word)
+        possible-tris (take-while (partial >= wv) all-tris)]
+    (= wv (last possible-tris))))
 
 (time (println (count (filter word-tri? words))))
