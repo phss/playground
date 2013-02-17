@@ -1,5 +1,6 @@
 (use 'commons)
 
-(def primes (primes-up-to 10000000))
+(defn pan-prime? [n] 
+  (and (pandigital-num? n) (prime? n)))
 
-(time (println (last (sort (filter pandigital-num? primes)))))
+(time (println (last (sort (filter pan-prime? (range 1 10000000))))))
