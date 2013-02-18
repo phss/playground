@@ -16,6 +16,8 @@
 (defn pyth [a b]
   (sqrt (+ (pow2 a) (pow2 b))))
 
+(defn divisible? [n d] 
+  (zero? (rem n d)))
 
 ; Prime checking and generation
 (defn prime? [n]
