@@ -9,7 +9,11 @@
         possible-pents (take-while (partial >= r) pents)]
     (= r (last possible-pents))))
 
-(println (take 10 pents))
+(defn valid-pents-upto [n] 
+  (for [j (range 1 (dec n))
+        k (range (inc j) n)
+        :when (and (pent-op? - j k) (pent-op? + j k))]
+    (map nth-pent [j k])))
 
-(println (pent-op? + 4 7))
-(println (pent-op? - 4 7))
+
+(time (println (take 5 (valid-pents-upto 10000))))
