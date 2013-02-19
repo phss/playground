@@ -12,8 +12,11 @@
 (defn valid-pents-upto [n] 
   (for [j (range 1 (dec n))
         k (range (inc j) n)
-        :when (and (pent-op? - j k) (pent-op? + j k))]
+        :when (pent-op? - j k)]
     (map nth-pent [j k])))
 
+(def valids (valid-pents-upto 2000))
 
-(time (println (take 5 (valid-pents-upto 10000))))
+(println (count valids))
+
+;(time (println (take 5 (sort-by (fn [[j k]] (- k j)) valids))))
