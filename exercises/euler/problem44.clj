@@ -14,6 +14,6 @@
         :let [jk (+ j k)
               jkk (+ k jk)]
         :when (and (not= j k) (pent? jk) (pent? jkk))]
-    [j k]))
+    [k jk]))
 
-(time (println (count sum-diff-pents)))
+(time (println sum-diff-pents))
