@@ -1,22 +1,19 @@
+(use 'commons)
 
 (defn nth-pent [n]
   (int (* n (- (* 3 n) 1) 0.5)))
 
-(def pents (map nth-pent (iterate inc 1)))
+(def pents (take 1000 (map nth-pent (iterate inc 1))))
 
-(defn pent-op? [op j k]
-  (let [r (Math/abs (op (nth-pent j) (nth-pent k)))
-        possible-pents (take-while (partial >= r) pents)]
-    (= r (last possible-pents))))
+(defn pent? [n]
+  (no-decimal? (sqrt (inc (* 24 n)))))
 
-(defn valid-pents-upto [n] 
-  (for [j (range 1 (dec n))
-        k (range (inc j) n)
-        :when (pent-op? - j k)]
-    (map nth-pent [j k])))
+(def sum-diff-pents
+  (for [j pents
+        k pents
+        :let [jk (+ j k)
+              jkk (+ k jk)]
+        :when (and (not= j k) (pent? jk) (pent? jkk))]
+    [j k]))
 
-(def valids (valid-pents-upto 2000))
-
-(println (count valids))
-
-;(time (println (take 5 (sort-by (fn [[j k]] (- k j)) valids))))
+(time (println (count sum-diff-pents)))
