@@ -1,13 +1,20 @@
 (use 'commons)
 
+(def size 4)
+
 (def factors-seq (filter (fn [[n factors]] (> (count factors) 1)) 
                          (map (fn [n] [n (distinct (prime-factors n))]) 
                               (iterate inc 10))))
 
-(def consecutives (partition 3 1 factors-seq))
+(def consecutives (filter (fn [group]
+                            (let [first-n (ffirst group)
+                                  last-n  (first (last group))]
+                              (= (dec size) (- last-n first-n)))) 
+                          (partition size 1 factors-seq)))
 
-(defn unique-factors? [group]
-  (let [all-factors (mapcat second group)]
-    (= all-factors (distinct all-factors))))
+(defn with-n-factors? [group]
+  (let [factors (map second group)]
+    (every? #(= size (count %)) factors)))
 
-(println (first (filter unique-factors? consecutives)))
+(println (first (filter with-n-factors? consecutives)))
+
