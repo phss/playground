@@ -30,6 +30,18 @@
 
 (def all-primes (filter prime? (iterate inc 2)))
 
+(defn first-factor [num]
+  (if (= 1 num)
+    nil
+    (first (filter (partial divisible? num) (iterate inc 2)))))
+
+(defn prime-factors [num]
+  (loop [n num factors []]
+    (if (= n 1)
+      factors
+      (let [f (first-factor n)]
+        (recur (quot n f) (conj factors f))))))
+
 
 ; Number wrangling
 (defn digits-from [number]
