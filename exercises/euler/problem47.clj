@@ -1,3 +1,5 @@
 (use 'commons)
 
-(println (prime-factors 644))
+(def factors-seq (map (fn [n] [n (distinct (prime-factors n))]) (iterate inc 1)))
+
+(println (take 20 factors-seq))
