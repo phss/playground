@@ -26,7 +26,9 @@
          (not-any? (partial divisible? n) (range 2 (inc (int-sqrt n)))))))
 
 (defn primes-up-to [n]
-  (filter prime? (range 2 n)) )
+  (filter prime? (range 2 n)))
+
+(def all-primes (filter prime? (iterate inc 2)))
 
 
 ; Number wrangling
