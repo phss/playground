@@ -12,4 +12,6 @@
                                      :when (odd-composite? n)] 
                                  n))))
 
-(println (count odd-comps))
+(println (first (filter (fn [n] (and (not (prime? n))
+                                     (not (some #{n} odd-comps)))) 
+                        (iterate (partial + 2) 9))))
