@@ -1,3 +1,8 @@
+(use 'commons)
+
+(defn last-10-digits [n]
+  (let [d (digits-from n)]
+    (number-from (take-last 10 d))))
 
 (defn pow [n e]
   (loop [i e p n]
@@ -6,5 +11,4 @@
       (recur (dec i) (* p n)))))
 
 
-(println (pow 2 2))
-(println (pow 3 3))
+(println (last-10-digits (reduce + (map #(pow % %) (range 1 11)))))
