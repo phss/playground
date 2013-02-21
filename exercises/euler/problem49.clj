@@ -5,7 +5,7 @@
 (def primes-by-perm (->> primes
                          (group-by #(sort (digits-from %)))
                          (map second)
-                         (filter #(= 3 (count %)))))
+                         (filter #(<= 3 (count %)))))
 
 (defn arith-seq? [numbers]
   (let [diffs (map (fn [[a b]] (- b a)) (partition 2 1 numbers))]
