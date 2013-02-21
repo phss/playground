@@ -1,6 +1,12 @@
 
 def items_to_buy(credit, items)
-  [1, 2]
+  items.each_with_index do |item1, i|
+    items.each_with_index do |item2, j|
+      next if i == j
+      
+      return [i+1, j+1] if credit == item1 + item2
+    end
+  end
 end
 
 
