@@ -8,7 +8,7 @@ def switches(engines, queries)
 
     if possible_engines.empty?
       switches += 1
-      possible_engines = engines.clone.delete(query)
+      possible_engines = engines.reject { |e| e == query }
     end
   end
   
