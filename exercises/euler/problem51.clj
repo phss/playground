@@ -16,11 +16,11 @@
       false
       (reduce = idx-digits))))
 
-(def groups (->> 
-              primes
-              (group-by (fn [p] (star-digits-from p [1])))
-              (map second)
-              (map (fn [group] (filter (fn [n] (matching-digits? n [1])) group)))
-              (remove (fn [group] (< (count group) 7)))))
+(defn digit-replacement-groups [indexes] 
+  (->> primes
+       (group-by (fn [p] (star-digits-from p indexes)))
+       (map second)
+       (map (fn [group] (filter (fn [n] (matching-digits? n indexes)) group)))
+       (remove (fn [group] (< (count group) 7)))))
 
-(println groups)
+(println (count (digit-replacement-groups [2 3])))
