@@ -23,4 +23,8 @@
        (map (fn [group] (filter (fn [n] (matching-digits? n indexes)) group)))
        (remove (fn [group] (< (count group) 7)))))
 
-(println (count (digit-replacement-groups [2 3])))
+(def max-index (count (digits-from (last primes))))
+
+(println max-index)
+
+(time (println (count (digit-replacement-groups [2 3]))))
