@@ -1,6 +1,6 @@
 (use 'commons)
 
-(def primes (take 10000 all-primes))
+(def primes (primes-up-to 1000000))
 
 (defn star-digits-from [n indexes]
   (let [d (vec (digits-from n))
@@ -17,6 +17,7 @@
       (reduce = idx-digits))))
 
 (defn digit-replacement-groups [indexes min-family-size] 
+  (println indexes)
   (->> primes
        (group-by (fn [p] (star-digits-from p indexes)))
        (map second)
@@ -25,8 +26,9 @@
 
 (def max-index (count (digits-from (last primes))))
 
-(time (println (first (for [i (range (dec max-index))
-                            j (range (inc i) max-index)
-                            :let [groups (digit-replacement-groups [i j] 7)]
-                            :when (not-empty groups)]
-                        groups))))
+(def all-indexes (distinct (map (comp sort distinct digits-from) (range))))
+
+(time (println (first (for [indexes (take-while #(< (count %) max-index) all-indexes)
+                     :let [groups (digit-replacement-groups indexes 7)]
+                     :when (not-empty groups)]
+                  groups))))
