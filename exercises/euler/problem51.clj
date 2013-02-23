@@ -18,9 +18,9 @@
 
 (def groups (->> 
               primes
-              (group-by (fn [p] (star-digits-from p [2 3])))
+              (group-by (fn [p] (star-digits-from p [1])))
               (map second)
-              (map (fn [group] (filter (fn [n] (matching-digits? n [2 3])) group)))
+              (map (fn [group] (filter (fn [n] (matching-digits? n [1])) group)))
               (remove (fn [group] (< (count group) 7)))))
 
 (println groups)
