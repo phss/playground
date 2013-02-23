@@ -1,7 +1,7 @@
 (use 'commons)
 
 (defn multi-same-digits? [n]
-  (let [multis (map (partial * n) (range 1 4))
+  (let [multis (map (partial * n) (range 1 7))
         multi-digits (map #(sort (digits-from %)) multis)]
     (apply = multi-digits)))
 
