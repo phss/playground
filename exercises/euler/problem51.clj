@@ -1,5 +1,6 @@
 (use 'commons)
 (use 'clojure.test)
+(use 'clojure.set)
 
 (def max-index 10000)
 
@@ -29,12 +30,16 @@
 
 (println (last primes))
 
-(def groups (for [i (range (dec max-index))
-                  j (range i max-index)
+(def groups-for (for [i (range (dec max-index))
+                  j (range (inc i) max-index)
                   :let [pi (nth primes i)
                         pj (nth primes j)
                         mask (mask-from pi pj)]
                   :when (not-nil? mask)]
-              [mask i j]))
+              [mask pi pj]))
 
-(time (println (count (filter (fn [[k v]] (>= 7 (count v))) (group-by first groups)))))
+(def groups (reduce (fn [g [m i j]]
+                      (update-in g [m] union #{i j})) 
+                    {} groups-for))
+
+(println (filter (fn [[k v]] (<= 7 (count v))) groups))
