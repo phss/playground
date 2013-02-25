@@ -2,9 +2,15 @@
 (use 'clojure.test)
 (use 'clojure.set)
 
-(def max-index 10000)
 
-(def primes (vec (take max-index all-primes)))
+(def raw-primes (vec (drop-while #(<= 100000 %) (take-while #(<= % 999999) all-primes))))
+
+(def primes (filter (fn [n]
+                      (let [d (digits-from n)]
+                        (= (count (distinct d)) 3))) 
+                    raw-primes))
+
+(def max-index (dec (count primes)))
 
 (println "Generated primes")
 
@@ -29,8 +35,9 @@
 (is (= nil (mask-from 1234 1344)))
 
 (println (last primes))
+(println (count primes))
 
-(def groups-for (for [i (range (dec max-index))
+(def groups-for (for [i (range (dec (dec max-index)))
                   j (range (inc i) max-index)
                   :let [pi (nth primes i)
                         pj (nth primes j)
