@@ -6,17 +6,13 @@
 
 (defn star-digits-from [n indexes]
   (let [d (vec (digits-from n))
-        in-bound-indexes (filter #(< % (count d)) indexes)
-        starred-digits (reduce (fn [sd i] (assoc-in sd [i] "*")) d in-bound-indexes)]
+        starred-digits (reduce (fn [sd i] (assoc-in sd [i] "*")) d indexes)]
     (apply str starred-digits)))
 
 (defn matching-digits? [n indexes]
-  (let [d (digits-from n)
-        in-bound-indexes (filter #(< % (count d)) indexes)
-        idx-digits (map #(nth d %) in-bound-indexes)]
-    (if (= 0 (count in-bound-indexes))
-      false
-      (reduce = idx-digits))))
+  (let [d (vec (digits-from n))
+        idx-digits (map #(nth d %) indexes)]
+    (reduce = idx-digits)))
 
 (defn digit-replacement-groups [indexes min-family-size] 
   (println indexes)
@@ -30,7 +26,10 @@
 
 (def max-index (count (digits-from (last primes))))
 
-(def all-indexes (take-while #(< (count %) max-index) (distinct (map (comp sort distinct digits-from) (range)))))
+(def all-indexes (->> (range)
+                      (map (comp sort distinct digits-from))
+                      (remove (fn [digits] (some #(<= max-index %) digits)))
+                      (take-while #(< (count %) max-index))))
 
 (time (println (first (for [indexes (take-while #(< (count %) max-index) all-indexes)
                      :let [groups (digit-replacement-groups indexes 7)]
