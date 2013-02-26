@@ -1,10 +1,6 @@
 (use 'commons)
 
-;(def primes (vec (primes-up-to 1000000)))
-;(def primes (vec (drop-while #(<= % 10000) (take-while #(<= % 99999) all-primes))))
-;(def primes (vec (drop-while #(<= % 100000) (take-while #(<= % 999999) all-primes))))
-
-(def primes (vec (filter prime? (range 10000000 100000000))))
+(def primes (vec (filter prime? (range 100000 1000000))))
 
 (println "Generated primes")
 
@@ -16,10 +12,9 @@
 (defn matching-digits? [n indexes]
   (let [d (vec (digits-from n))
         idx-digits (map #(nth d %) indexes)]
-    (reduce = idx-digits)))
+    (apply = idx-digits)))
 
 (defn digit-replacement-groups [indexes min-family-size] 
-  (println indexes)
   (->> primes
        (reduce (fn [groups prime] 
                  (if (matching-digits? prime indexes)
