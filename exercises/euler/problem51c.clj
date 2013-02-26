@@ -2,7 +2,11 @@
 
 ;(def primes (vec (primes-up-to 1000000)))
 ;(def primes (vec (drop-while #(<= % 10000) (take-while #(<= % 99999) all-primes))))
-(def primes (vec (drop-while #(<= % 100000) (take-while #(<= % 999999) all-primes))))
+;(def primes (vec (drop-while #(<= % 100000) (take-while #(<= % 999999) all-primes))))
+
+(def primes (vec (filter prime? (range 10000000 100000000))))
+
+(println "Generated primes")
 
 (defn star-digits-from [n indexes]
   (let [d (vec (digits-from n))
@@ -29,6 +33,7 @@
 (def all-indexes (->> (range)
                       (map (comp sort distinct digits-from))
                       (remove (fn [digits] (some #(<= max-index %) digits)))
+                      (distinct)
                       (take-while #(< (count %) max-index))))
 
 (time (println (first (for [indexes (take-while #(< (count %) max-index) all-indexes)
