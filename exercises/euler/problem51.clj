@@ -3,11 +3,11 @@
 (use 'clojure.set)
 
 
-(def raw-primes (vec (drop-while #(<= 100000 %) (take-while #(<= % 999999) all-primes))))
+(def raw-primes (vec (drop-while #(<= % 100000) (take-while #(<= % 999999) all-primes))))
 
 (def primes (filter (fn [n]
                       (let [d (digits-from n)]
-                        (= (count (distinct d)) 3))) 
+                        (= (count (distinct d)) 4))) 
                     raw-primes))
 
 (def max-index (dec (count primes)))
