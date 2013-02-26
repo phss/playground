@@ -20,10 +20,12 @@
 (defn digit-replacement-groups [indexes min-family-size] 
   (println indexes)
   (->> primes
-       (group-by (fn [p] (star-digits-from p indexes)))
-       (map second)
-       (map (fn [group] (filter (fn [n] (matching-digits? n indexes)) group)))
-       (remove (fn [group] (< (count group) min-family-size)))))
+       (reduce (fn [groups prime] 
+                 (if (matching-digits? prime indexes)
+                   (update-in groups [(star-digits-from prime indexes)] conj prime)
+                   groups)) 
+               {})
+       (remove (fn [[mask group]] (< (count group) min-family-size)))))
 
 (def max-index (count (digits-from (last primes))))
 
