@@ -19,6 +19,9 @@
 (defn divisible? [n d] 
   (zero? (rem n d)))
 
+(defn factorial [num]
+  (apply * (range (bigint 1) (inc (bigint num)))))
+
 ; Prime checking and generation
 (defn prime? [n]
   (let [divisible? (fn [n d] (zero? (rem n d)))]
