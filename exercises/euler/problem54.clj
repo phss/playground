@@ -1,5 +1,9 @@
 (use 'clojure.test)
 
+(defn parse-cards [string]
+  (let [cards-string (clojure.string/split string #" ")]
+    cards-string))
+
 (defn winner [hands-string]
   nil)
 
