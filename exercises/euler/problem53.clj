@@ -2,7 +2,7 @@
 
 (def limit 1000000)
 
-(def combs [n r]
+(defn combs [n r]
   (/ (factorial n) (* (factorial r) (factorial (- n r)))))
 
 (println (> (factorial 100) limit))
