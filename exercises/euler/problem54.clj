@@ -9,7 +9,10 @@
     (map card cards-string)))
 
 (defn winner [hands-string]
-  nil)
+  (let [cards (parse-cards hands-string)
+        p1-cards (take 5 cards)
+        p2-cards (drop 5 cards)]
+    p2-cards))
 
 ;(is (= :player2 (winner "5H 5C 6S 7S KD 2C 3S 8S 8D TD")))
 ;(is (= :player1 (winner "5D 8C 9S JS AC 2C 5C 7D 8S QH")))
@@ -17,4 +20,4 @@
 ;(is (= :player1 (winner "4D 6S 9H QH QC 3D 6D 7H QD QS")))
 ;(is (= :player1 (winner "2H 2D 4C 4D 4S 3C 3D 3S 9S 9D")))
 
-(println (parse-cards "5H 5C 6S 7S KD 2C 3S 8S 8D TD"))
+(println (winner "5H 5C 6S 7S KD 2C 3S 8S 8D TD"))
