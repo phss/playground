@@ -8,11 +8,14 @@
   (let [cards-string (clojure.string/split string #" ")]
     (map card cards-string)))
 
+(defn highest-card [cards]
+  (last (sort-by :value cards)))
+
 (defn winner [hands-string]
   (let [cards (parse-cards hands-string)
         p1-cards (take 5 cards)
         p2-cards (drop 5 cards)]
-    p2-cards))
+    (highest-card p2-cards)))
 
 ;(is (= :player2 (winner "5H 5C 6S 7S KD 2C 3S 8S 8D TD")))
 ;(is (= :player1 (winner "5D 8C 9S JS AC 2C 5C 7D 8S QH")))
