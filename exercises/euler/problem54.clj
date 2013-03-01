@@ -11,6 +11,15 @@
 (defn highest-card [cards]
   (last (sort-by :value cards)))
 
+(defn pair [cards]
+  (let [values (group-by :value cards)]
+    (if (= 4 (count values))
+      { :rank 1, :values [] }
+      nil)))
+
+(is (= nil (pair (parse-cards "2D 3D 4D 5D 6D"))))
+(is (= { :rank 1, :values [5] } (pair (parse-cards "2D 3D 5C 5D 6D"))))
+
 (defn winner [hands-string]
   (let [cards (parse-cards hands-string)
         p1-cards (take 5 cards)
@@ -23,4 +32,4 @@
 ;(is (= :player1 (winner "4D 6S 9H QH QC 3D 6D 7H QD QS")))
 ;(is (= :player1 (winner "2H 2D 4C 4D 4S 3C 3D 3S 9S 9D")))
 
-(println (winner "5H 5C 6S 7S KD 2C 3S 8S 8D TD"))
+;(println (winner "5H 5C 6S 7S KD 2C 3S 8S 8D TD"))
