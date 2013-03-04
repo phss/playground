@@ -19,17 +19,21 @@
     (map card cards-string)))
 
 ; Ranking
+(defn rank [r values]
+  (let [ranks {:pair 1}]
+    (concat [(ranks r)] values)))
+
 (defn highest-card [cards]
   (last (sort-by :value cards)))
 
 (defn pair [cards]
   (let [values (map :value cards)]
     (if (frequency? values [2 1 1 1])
-      { :rank 1, :values (order-by-freq values) }
+      (rank :pair (order-by-freq values))
       nil)))
 
 (is (= nil (pair (parse-cards "2D 3D 4D 5D 6D"))))
-(is (= { :rank 1, :values [5 6 3 2] } (pair (parse-cards "2D 3D 5C 5D 6D"))))
+(is (= [1 5 6 3 2] (pair (parse-cards "2D 3D 5C 5D 6D"))))
 
 (defn winner [hands-string]
   (let [cards (parse-cards hands-string)
