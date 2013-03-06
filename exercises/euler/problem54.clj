@@ -20,7 +20,7 @@
 
 ; Ranking
 (defn rank [r values]
-  (let [ranks {:highest 0, :pair 1, :two-pairs 2}]
+  (let [ranks {:highest 0, :pair 1, :two-pairs 2, :three-of-a-kind 3}]
     (concat [(ranks r)] values)))
 
 (defn highest-card [cards]
@@ -42,6 +42,15 @@
       nil)))
 (is (= nil (two-pairs (parse-cards "2D 3D 5D 5D 6D"))))
 (is (= [2 5 3 6] (two-pairs (parse-cards "3H 3D 5C 5D 6D"))))
+
+(defn three-of-a-kind [cards]
+  (let [values (map :value cards)]
+    (if (frequency? values [3 1 1])
+      (rank :three-of-a-kind (order-by-freq values))
+      nil)))
+(is (= nil (three-of-a-kind (parse-cards "2D 3D 5D 5D 6D"))))
+(is (= [3 3 6 5] (three-of-a-kind (parse-cards "3H 3D 3C 5D 6D"))))
+
 
 (defn winner [hands-string]
   (let [cards (parse-cards hands-string)
