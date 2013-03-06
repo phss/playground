@@ -9,6 +9,8 @@
   (let [freq (frequencies values)]
     (reverse (map first (sort-by (fn [[v f]] (+ v (* 100 f))) freq)))))
 
+(defn consecutive-from-ace? [values])
+
 (defn consecutive? [values]
   (let [sorted (sort values)]
     (and (apply distinct? sorted)
@@ -51,6 +53,7 @@
 (is (= [2 5 3 6] (rank-cards (parse-cards "3H 3D 5C 5D 6D"))))
 (is (= [3 3 6 5] (rank-cards (parse-cards "3H 3D 3C 5D 6D"))))
 (is (= [4 6 5 4 3 2] (rank-cards (parse-cards "2D 3D 5C 4D 6D"))))
+(is (= [4 5 4 3 2 1] (rank-cards (parse-cards "2D 3D 5C 4D AD"))))
 (is (= [5 14 6 5 3 2] (rank-cards (parse-cards "2D 3D AD 5D 6D"))))
 (is (= [6 3 5] (rank-cards (parse-cards "3H 3D 3C 5D 5H"))))
 (is (= [7 3 5] (rank-cards (parse-cards "3H 3D 3C 3S 5H"))))
