@@ -66,15 +66,23 @@
 
 
 (defn winner [hands-string]
-  (let [cards (parse-cards hands-string)
-        p1-cards (take 5 cards)
-        p2-cards (drop 5 cards)]
-    nil))
+  (let [cards (parse-cards hands-string)]
+    (loop [h1 (rank-cards (take 5 cards)) h2 (rank-cards (drop 5 cards))]
+      (let [c1 (first h1) c2 (first h2)]
+        (cond
+          (or (nil? c1) (nil? c2)) nil
+          (= c1 c2) (recur (rest h1) (rest h2))
+          (> c1 c2) :player1
+          :else :player2)))))
 
-;(is (= :player2 (winner "5H 5C 6S 7S KD 2C 3S 8S 8D TD")))
-;(is (= :player1 (winner "5D 8C 9S JS AC 2C 5C 7D 8S QH")))
-;(is (= :player2 (winner "2D 9C AS AH AC 3D 6D 7D TD QD")))
-;(is (= :player1 (winner "4D 6S 9H QH QC 3D 6D 7H QD QS")))
-;(is (= :player1 (winner "2H 2D 4C 4D 4S 3C 3D 3S 9S 9D")))
+(is (= :player2 (winner "5H 5C 6S 7S KD 2C 3S 8S 8D TD")))
+(is (= :player1 (winner "5D 8C 9S JS AC 2C 5C 7D 8S QH")))
+(is (= :player2 (winner "2D 9C AS AH AC 3D 6D 7D TD QD")))
+(is (= :player1 (winner "4D 6S 9H QH QC 3D 6D 7H QD QS")))
+(is (= :player1 (winner "2H 2D 4C 4D 4S 3C 3D 3S 9S 9D")))
 
-;(println (winner "5H 5C 6S 7S KD 2C 3S 8S 8D TD"))
+(def hands (clojure.string/split-lines (slurp "files/problem54.txt")))
+(println (count hands))
+
+(def winners (map winner hands))
+(println (count (filter (partial = :player1) winners)))
