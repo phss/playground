@@ -25,14 +25,15 @@
 
 ; Ranking
 (defn rank [r values]
-  (let [ranks [:highest :pair :two-pairs :three-of-a-kind :straight :flush :full-house :four-of-a-kind :straighflush :royal-flush]]
+  (let [ranks [:highest :pair :two-pairs :three-of-a-kind :straight :flush :full-house :four-of-a-kind :straigh-flush :royal-flush]]
     (concat [(.indexOf ranks r)] values)))
 
 (defn highest-rank [cards]
   (let [values (map :value cards)
         suits (map :suit cards)]
     (cond
-      (and (consecutive? values) (frequency? suits [5])) :straighflush
+      (and (consecutive? values) (frequency? suits [5]) (= 14 (last (sort values)))) :royal-flush
+      (and (consecutive? values) (frequency? suits [5])) :straigh-flush
       (frequency? values [4 1]) :four-of-a-kind
       (frequency? values [3 2]) :full-house
       (frequency? suits [5]) :flush
@@ -53,8 +54,8 @@
 (is (= [5 14 6 5 3 2] (rank-cards (parse-cards "2D 3D AD 5D 6D"))))
 (is (= [6 3 5] (rank-cards (parse-cards "3H 3D 3C 5D 5H"))))
 (is (= [7 3 5] (rank-cards (parse-cards "3H 3D 3C 3S 5H"))))
-(is (= [8 13 12 11 10 9 8] (rank-cards (parse-cards "TD 9D KD QD JD 8D"))))
-(is (= [9 14 13 12 11 10 9] (rank-cards (parse-cards "AD 9D KD QD JD TD"))))
+(is (= [8 13 12 11 10 9] (rank-cards (parse-cards "TD 9D KD QD JD"))))
+(is (= [9 14 13 12 11 10] (rank-cards (parse-cards "AD KD QD JD TD"))))
 
 
 (defn winner [hands-string]
