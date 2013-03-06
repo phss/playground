@@ -1,22 +1,24 @@
 (use 'clojure.test)
-(use '[clojure.walk :only [prewalk-replace]])
 
 ; Checks 
+(defn cons? [values]
+  (let [sorted (sort values)]
+    (and (apply distinct? sorted)
+         (= (dec (count sorted)) (- (last sorted) (first sorted))))))
+
+(defn consecutive-from-ace? [values]
+  (cons? (replace {14 1} values)))
+
+(defn consecutive? [values]
+  (or (cons? values) (consecutive-from-ace? values)))
+
 (defn frequency? [values expected]
   (let [freq (map second (frequencies values))]
     (= (sort freq) (sort expected))))
 
 (defn order-by-freq [values]
-  (let [freq (frequencies values)]
+  (let [freq (frequencies (if (consecutive-from-ace? values) (replace {14 1} values) values))]
     (reverse (map first (sort-by (fn [[v f]] (+ v (* 100 f))) freq)))))
-
-(defn consecutive-from-ace? [values]
-  )
-
-(defn consecutive? [values]
-  (let [sorted (sort values)]
-    (and (apply distinct? sorted)
-         (= (dec (count sorted)) (- (last sorted) (first sorted))))))
 
 ; Card parsing
 (defn card [string]
