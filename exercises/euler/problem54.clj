@@ -1,4 +1,5 @@
 (use 'clojure.test)
+(use '[clojure.walk :only [prewalk-replace]])
 
 ; Checks 
 (defn frequency? [values expected]
@@ -9,7 +10,8 @@
   (let [freq (frequencies values)]
     (reverse (map first (sort-by (fn [[v f]] (+ v (* 100 f))) freq)))))
 
-(defn consecutive-from-ace? [values])
+(defn consecutive-from-ace? [values]
+  )
 
 (defn consecutive? [values]
   (let [sorted (sort values)]
