@@ -20,11 +20,13 @@
 
 ; Ranking
 (defn rank [r values]
-  (let [ranks {:pair 1}]
+  (let [ranks {:highest 0, :pair 1}]
     (concat [(ranks r)] values)))
 
 (defn highest-card [cards]
-  (last (sort-by :value cards)))
+  (rank :highest (reverse (sort (map :value cards)))))
+
+(is (= [0 6 5 5 3 2] (highest-card (parse-cards "2D 3D 5C 5D 6D"))))
 
 (defn pair [cards]
   (let [values (map :value cards)]
