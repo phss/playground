@@ -1,6 +1,6 @@
 (use 'clojure.test)
 
-; Frequency 
+; Checks 
 (defn frequency? [values expected]
   (let [freq (map second (frequencies values))]
     (= (sort freq) (sort expected))))
@@ -8,6 +8,11 @@
 (defn order-by-freq [values]
   (let [freq (frequencies values)]
     (reverse (map first (sort-by (fn [[v f]] (+ v (* 100 f))) freq)))))
+
+(defn consecutive? [values]
+  (let [sorted (sort values)]
+    (and (apply distinct? sorted)
+         (= (dec (count sorted)) (- (last sorted) (first sorted))))))
 
 ; Card parsing
 (defn card [string]
@@ -20,12 +25,13 @@
 
 ; Ranking
 (defn rank [r values]
-  (let [ranks {:highest 0, :pair 1, :two-pairs 2, :three-of-a-kind 3}]
-    (concat [(ranks r)] values)))
+  (let [ranks [:highest :pair :two-pairs :three-of-a-kind :straight :flush :full-house :four-of-a-kind :straigh-flush :royal-flush]]
+    (concat [(.indexOf ranks r)] values)))
 
 (defn highest-rank [cards]
   (let [values (map :value cards)]
     (cond
+      (consecutive? values) :straight
       (frequency? values [3 1 1]) :three-of-a-kind
       (frequency? values [2 2 1]) :two-pairs
       (frequency? values [2 1 1 1]) :pair
@@ -38,6 +44,7 @@
 (is (= [1 5 6 3 2] (rank-cards (parse-cards "2D 3D 5C 5D 6D"))))
 (is (= [2 5 3 6] (rank-cards (parse-cards "3H 3D 5C 5D 6D"))))
 (is (= [3 3 6 5] (rank-cards (parse-cards "3H 3D 3C 5D 6D"))))
+(is (= [4 6 5 4 3 2] (rank-cards (parse-cards "2D 3D 5C 4D 6D"))))
 
 
 (defn winner [hands-string]
