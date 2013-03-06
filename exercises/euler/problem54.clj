@@ -23,7 +23,7 @@
   (let [ranks {:highest 0, :pair 1, :two-pairs 2, :three-of-a-kind 3}]
     (concat [(ranks r)] values)))
 
-(defn find-rank [cards]
+(defn highest-rank [cards]
   (let [values (map :value cards)]
     (cond
       (frequency? values [3 1 1]) :three-of-a-kind
@@ -32,9 +32,7 @@
       :else :highest)))
 
 (defn rank-cards [cards]
-  (let [values (map :value cards)
-        r (find-rank cards)]
-    (rank r (order-by-freq values))))
+  (rank (highest-rank cards) (order-by-freq (map :value cards))))
 
 (is (= [0 14 6 5 3 2] (rank-cards (parse-cards "2D 3D AC 5D 6D"))))
 (is (= [1 5 6 3 2] (rank-cards (parse-cards "2D 3D 5C 5D 6D"))))
