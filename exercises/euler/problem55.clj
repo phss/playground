@@ -16,3 +16,4 @@
 (is (= false (lychrel? 349)))
 (is (= true (lychrel? 196)))
 
+(println (count (filter lychrel? (range 1 10001))))
