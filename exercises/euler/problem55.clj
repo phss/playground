@@ -4,7 +4,7 @@
 (defn lychrel? [n]
   false)
 
-(is (= true (lychrel? 47)))
-(is (= true (lychrel? 349)))
-(is (= false (lychrel? 196)))
+(is (= false (lychrel? 47)))
+(is (= false (lychrel? 349)))
+(is (= true (lychrel? 196)))
 
