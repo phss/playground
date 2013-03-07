@@ -56,6 +56,9 @@
 (defn long-from [digits]
   (Long/parseLong (apply str digits)))
 
+(defn bigint-from [digits]
+  (bigint (apply str digits)))
+
 
 ; Pandigitals
 (defn pandigital? [digits]
@@ -69,3 +72,12 @@
 
 (defn pandigital-1-9-num? [number]
   (pandigital-1-9? (digits-from number)))
+
+; Palindromes
+
+(defn palindrome? [number]
+  (let [s (str number)
+        middle (int (/ (count s) 2))
+        left (subs s 0 middle)
+        right (apply str (reverse (subs s (if (even? (count s)) middle (inc middle)))))]
+    (= left right)))
