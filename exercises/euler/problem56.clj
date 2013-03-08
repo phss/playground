@@ -9,4 +9,8 @@
 
 (is (= 59049 (pow 3 10)))
 
-(println (digits-from (pow 100 100)))
+(def all-powers (for [a (range 1 101)
+                      b (range 1 101)]
+                  (reduce + (digits-from (pow a b)))))
+
+(println (last (sort all-powers)))
