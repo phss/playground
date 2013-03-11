@@ -14,4 +14,6 @@
     (/ (count prime-diag) (count spiral-diag))))
 
 
-(println (spiral-prime-percent 7))
+(def percents (map (fn [n] [n (spiral-prime-percent n)]) (iterate (partial + 2) 3)))
+
+(time (println (last (take-while #(> (second %) 0.1) percents))))
