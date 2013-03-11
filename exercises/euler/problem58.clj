@@ -1,3 +1,4 @@
+(use 'commons)
 
 (defn indexes [size]
   (loop [n 2 idx [0]]
@@ -7,9 +8,10 @@
 
 (defn spiral-prime-percent [size]
   (let [idx (indexes size)
-        spiral (iterate inc 1)]
-    (println (map (partial nth spiral) idx))
-    (apply + (map (partial nth spiral) idx))))
+        spiral (iterate inc 1)
+        spiral-diag (map (partial nth spiral) idx)
+        prime-diag (filter prime? spiral-diag)]
+    (/ (count prime-diag) (count spiral-diag))))
 
 
 (println (spiral-prime-percent 7))
