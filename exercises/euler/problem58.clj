@@ -11,9 +11,11 @@
         spiral (iterate inc 1)
         spiral-diag (map (partial nth spiral) idx)
         prime-diag (filter prime? spiral-diag)]
+    (println idx)
     (/ (count prime-diag) (count spiral-diag))))
 
 
 (def percents (map (fn [n] [n (spiral-prime-percent n)]) (iterate (partial + 2) 3)))
 
-(time (println (last (take-while #(> (second %) 0.1) percents))))
+(println (indexes 102))
+;(time (println (last (take-while #(> (second %) 0.1) percents))))
