@@ -47,4 +47,4 @@
         (empty? combs) nil
         :else (recur new-ps (rest combs))))))
 
-(time (println (prime-set-with-size 5)))
+;(time (println (prime-set-with-size 5)))
