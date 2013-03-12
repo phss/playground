@@ -3,7 +3,7 @@
 (use 'clojure.set)
 (use 'clojure.math.combinatorics)
 
-(def primes (vec (primes-up-to 1000)))
+(def primes (vec (primes-up-to 10000)))
 
 (defn concat-primes? [p1 p2]
   (let [p1d (digits-from p1)
