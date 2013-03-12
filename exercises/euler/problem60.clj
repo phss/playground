@@ -32,12 +32,19 @@
       (update-in [pi] conj pj)
       (update-in [pj] conj pi)))
 
-(defn prime-set-wtih-size [n]
+(defn prime-set? [prime-sets s n]
+  (let [combs (combinations (map prime-sets s) n)
+        intersects (map #(apply intersection %) combs)]
+    (first (filter #(= n (count %)) intersects))))
+
+(defn prime-set-with-size [n]
   (loop [ps init-prime-sets combs prime-combinations]
     (let [[pi pj] (first combs)
-          new-ps (update-sets ps pi pj)]
-      (if (empty? combs)
-        ps
-        (recur new-ps (rest combs))))))
+          new-ps (update-sets ps pi pj)
+          prime-set (prime-set? new-ps (new-ps pj) n)]
+      (cond 
+        prime-set prime-set
+        (empty? combs) nil
+        :else (recur new-ps (rest combs))))))
 
-(time (println (prime-set-wtih-size 4)))
+(time (println (prime-set-with-size 4)))
