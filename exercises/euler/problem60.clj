@@ -3,7 +3,7 @@
 (use 'clojure.set)
 (use 'clojure.math.combinatorics)
 
-(def primes (vec (primes-up-to 10000)))
+(def primes (vec (rest (primes-up-to 1000))))
 
 (defn concat-primes? [p1 p2]
   (let [p1d (digits-from p1)
@@ -38,13 +38,13 @@
     (first (filter #(= n (count %)) intersects))))
 
 (defn prime-set-with-size [n]
-  (loop [ps init-prime-sets combs prime-combinations]
+  (loop [ps [] combs prime-combinations]
     (let [[pi pj] (first combs)
           new-ps (update-sets ps pi pj)
-          prime-set (prime-set? new-ps (new-ps pj) n)]
+          prime-set (first (filter #(= n (count %)) new-ps))]
       (cond 
         prime-set prime-set
         (empty? combs) nil
         :else (recur new-ps (rest combs))))))
 
-;(time (println (prime-set-with-size 5)))
+(time (println (prime-set-with-size 4)))
