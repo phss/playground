@@ -59,6 +59,8 @@
 (defn bigint-from [digits]
   (bigint (apply str digits)))
 
+(defn to-int [s]
+  (Integer/parseInt s))
 
 ; Pandigitals
 (defn pandigital? [digits]

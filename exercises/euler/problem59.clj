@@ -1,6 +1,10 @@
 (use 'commons)
 
-(def message (map clojure.string/trim (clojure.string/split (slurp "files/problem59.txt") #",")))
+(def message (map (comp to-int clojure.string/trim) (clojure.string/split (slurp "files/problem59.txt") #",")))
 
-(println (first message))
-(println (last message))
+(def char-codes (concat (range (int \A) (inc (int \Z))) (range (int \a) (inc (int \z)))))
+
+(defn stringify [m]
+  (apply str (map char m)))
+
+(println char-codes)
