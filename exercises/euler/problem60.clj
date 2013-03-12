@@ -1,7 +1,9 @@
 (use 'commons)
 (use 'clojure.test)
+(use 'clojure.set)
+(use 'clojure.math.combinatorics)
 
-(def primes (vec (take 1000 all-primes)))
+(def primes (vec (primes-up-to 1000)))
 
 (defn concat-primes? [p1 p2]
   (let [p1d (digits-from p1)
@@ -17,11 +19,21 @@
 (is (= true (concat-primes? 109 673)))
 (is (= false (concat-primes? 5 673)))
 
-(def concats (for [i (range (dec (count primes)))
-                   j (range (inc i) (count primes))
-                   :let [pi (nth primes i)
-                         pj (nth primes j)]
-                   :when (concat-primes? pi pj)]
-               [pi pj]))
 
-(println (filter (fn [[k v]] (> v 3)) (frequencies (map first concats))))
+(def sets (apply merge (map (fn [p] {p (conj (set (filter (partial concat-primes? p) primes)) p)}) primes)))
+
+(println (count sets))
+
+(defn pair-set [ss]
+  (let [ps (apply intersection (map second ss))]
+    ps))
+
+(def pair-sets (filter #(= 4 (count (pair-set %))) (combinations sets 3)))
+
+(time (println (count pair-sets)))
+
+(println (pair-set (first pair-sets)))
+
+(def elems (map pair-set pair-sets))
+
+(time (println (take 20 (sort-by first (map (fn [e] [(reduce + e) e]) elems)))))
