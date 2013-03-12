@@ -3,7 +3,7 @@
 (use 'clojure.set)
 (use 'clojure.math.combinatorics)
 
-(def primes (vec (primes-up-to 10000)))
+(def primes (vec (primes-up-to 1000)))
 
 (defn concat-primes? [p1 p2]
   (let [p1d (digits-from p1)
@@ -19,21 +19,25 @@
 (is (= true (concat-primes? 109 673)))
 (is (= false (concat-primes? 5 673)))
 
+(def init-prime-sets (apply merge (map (fn [p] { p #{p} }) primes)))
 
-(def sets (apply merge (map (fn [p] {p (conj (set (filter (partial concat-primes? p) primes)) p)}) primes)))
+(def prime-combinations (for [pi primes 
+                              pj primes 
+                              :while (> pi pj)
+                              :when (concat-primes? pi pj)] 
+                          [pi pj]))
 
-(println (count sets))
+(defn update-sets [sets pi pj]
+  (-> sets
+      (update-in [pi] conj pj)
+      (update-in [pj] conj pi)))
 
-(defn pair-set [ss]
-  (let [ps (apply intersection (map second ss))]
-    ps))
+(defn prime-set-wtih-size [n]
+  (loop [ps init-prime-sets combs prime-combinations]
+    (let [[pi pj] (first combs)
+          new-ps (update-sets ps pi pj)]
+      (if (empty? combs)
+        ps
+        (recur new-ps (rest combs))))))
 
-(def pair-sets (filter #(= 5 (count (pair-set %))) (combinations sets 4)))
-
-(time (println (count pair-sets)))
-
-(println (pair-set (first pair-sets)))
-
-(def elems (map pair-set pair-sets))
-
-(time (println (take 20 (sort-by first (map (fn [e] [(reduce + e) e]) elems)))))
+(time (println (prime-set-wtih-size 4)))
