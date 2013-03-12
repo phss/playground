@@ -28,7 +28,7 @@
   (let [ps (apply intersection (map second ss))]
     ps))
 
-(def pair-sets (filter #(= 4 (count (pair-set %))) (combinations sets 3)))
+(def pair-sets (filter #(= 5 (count (pair-set %))) (combinations sets 4)))
 
 (time (println (count pair-sets)))
 
