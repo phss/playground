@@ -1,7 +1,7 @@
 (use 'commons)
 
 (defn take-in-range [f]
-  (take-while #(>= 9999 %) (map f (iterate inc 1))))
+  (drop-while #(> 1000 %) (take-while #(>= 9999 %) (map f (iterate inc 1)))))
 
 (defn tri [n]
   (int (* n (+ 1 n) 0.5)))
@@ -33,15 +33,23 @@
 
 (def octs (take-in-range oct))
 
-(println (count tris))
-(println (take 5 tris))
-(println (count sqs))
-(println (take 5 sqs))
-(println (count pents))
-(println (take 5 pents))
-(println (count hexs))
-(println (take 5 hexs))
-(println (count hepts))
-(println (take 5 hepts))
-(println (count octs))
-(println (take 5 octs))
+(defn linked? [a b]
+  (let [a-link (take-last 2 (digits-from a))
+        b-link (take 2 (digits-from b))]
+    (= a-link b-link)))
+
+(defn any-link? [a b c]
+  (or (and (linked? a b) (linked? b c) (linked? c a))
+      (and (linked? a c) (linked? c b) (linked? b a))
+      (and (linked? b a) (linked? a c) (linked? c b))
+      (and (linked? b c) (linked? c a) (linked? a b))
+      (and (linked? c a) (linked? a b) (linked? b c))
+      (and (linked? c b) (linked? b a) (linked? a c))))
+
+(def cyclics (for [t tris
+                   s sqs
+                   p pents
+                   :when (any-link? t s p)]
+               [t s p]))
+
+(time (println cyclics))
