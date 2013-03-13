@@ -1,4 +1,5 @@
 (use 'commons)
+(use 'clojure.math.combinatorics)
 
 (defn take-in-range [f]
   (drop-while #(> 1000 %) (take-while #(>= 9999 %) (map f (iterate inc 1)))))
