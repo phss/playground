@@ -12,13 +12,16 @@ Prime.each do |prime|
   prime_sets << Set.new([prime])
   
   prime_sets.each do |set|
-    set << prime if set.all? { |prime_in_set| concat_primes?(prime, prime_in_set) }
+    if set.all? { |prime_in_set| concat_primes?(prime, prime_in_set) }
+      prime_sets << Set.new(set.to_a << prime)
+    end
   end
 
   first_prime = prime_sets.find { |set| set.size == 5 }
   if first_prime
     puts first_prime.to_a.join(" ")
     exit
+    #break
   end
 end
 
