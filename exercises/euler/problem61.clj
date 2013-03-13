@@ -39,18 +39,19 @@
         b-link (take 2 (digits-from b))]
     (= a-link b-link)))
 
-(defn any-link? [a b c]
-  (or (and (linked? a b) (linked? b c) (linked? c a))
-      (and (linked? a c) (linked? c b) (linked? b a))
-      (and (linked? b a) (linked? a c) (linked? c b))
-      (and (linked? b c) (linked? c a) (linked? a b))
-      (and (linked? c a) (linked? a b) (linked? b c))
-      (and (linked? c b) (linked? b a) (linked? a c))))
+(defn any-link? [p1 p2 p3 p4 p5 p6]
+  (some (fn [[a b c d e f]] 
+          (and (linked? a b) (linked? b c) (linked? c d)
+               (linked? d e) (linked? e f) (linked? f a)))
+        (permutations [p1 p2 p3 p4 p5 p6])))
 
 (def cyclics (for [t tris
                    s sqs
                    p pents
-                   :when (any-link? t s p)]
-               [t s p]))
+                   hx hexs
+                   hp hepts
+                   o octs
+                   :when (any-link? t s p hx hp o)]
+               [t s p hx hp o]))
 
-(time (println cyclics))
+(time (println (first cyclics)))
