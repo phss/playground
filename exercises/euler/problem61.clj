@@ -1,8 +1,7 @@
 (use 'commons)
-(use 'clojure.math.combinatorics)
 
 (defn take-in-range [f]
-  (drop-while #(> 1000 %) (take-while #(>= 9999 %) (map f (iterate inc 1)))))
+  (map (fn [n] {:type (str f) :num n}) (drop-while #(> 1000 %) (take-while #(>= 9999 %) (map f (iterate inc 1))))))
 
 (defn tri [n]
   (int (* n (+ 1 n) 0.5)))
@@ -39,19 +38,14 @@
         b-link (take 2 (digits-from b))]
     (= a-link b-link)))
 
-(defn any-link? [p1 p2 p3 p4 p5 p6]
-  (some (fn [[a b c d e f]] 
-          (and (linked? a b) (linked? b c) (linked? c d)
-               (linked? d e) (linked? e f) (linked? f a)))
-        (permutations [p1 p2 p3 p4 p5 p6])))
+(def polygs (concat sqs pents))
 
-(def cyclics (for [t tris
-                   s sqs
-                   p pents
-                   hx hexs
-                   hp hepts
-                   o octs
-                   :when (any-link? t s p hx hp o)]
-               [t s p hx hp o]))
+(def cyclics (for [a tris
+                   b (filter #(linked? (a :num) (% :num)) polygs)
+                   c (filter #(and (not= (b :type) (% :type)) (linked? (b :num) (% :num)) (linked? (% :num) (a :num))) polygs)]
+               [a b c]))
 
-(time (println (first cyclics)))
+(time (println (map :num (first cyclics))))
+
+
+(println (map count [tris sqs pents hexs hepts octs]))
