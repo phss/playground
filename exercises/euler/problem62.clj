@@ -14,7 +14,7 @@
           k (to-key c)
           new-perms (update-in perms [k] conj c)
           cube-perms (new-perms k)]
-      (if (= 3 (count cube-perms))
+      (if (= 5 (count cube-perms))
         (sort cube-perms)
         (recur new-perms (inc n))))))
 
