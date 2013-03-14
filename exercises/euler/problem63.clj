@@ -17,3 +17,5 @@
 
 (println (with-nth-power? 5))
 (println (with-nth-power? 9))
+
+(println (take 10 (filter with-nth-power? (iterate inc 1))))
