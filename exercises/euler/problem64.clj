@@ -9,14 +9,15 @@
 (is (true? (perfect-square? 4)))
 
 (defn sqrt-period [n]
-  (let [a0 (int (Math/floor (Math/sqrt n)))
-        delta (Math/sqrt (* 4 n))]
-    (loop [p [] a 1 b (* 2 a0) c (- (pow2 a0) n)]
-      (let [d (int (/ (+ b delta) (* 2 c)))
-            new-p (conj p (Math/abs d))]
-        (if (= 1 (Math/abs c))
-          new-p
-          (recur new-p c (+ (- b) (* 2 c d)) (+ a (* b d -1) (* c (pow2 d)))))))))
+  (let [a0 (floor (sqrt n))]
+   (loop [i [[0 1 a0]]]
+    (let [[mp dp ap] (last i)
+          m (- (* dp ap) mp)
+          d (/ (- n (pow2 m)) dp)
+          a (floor (/ (+ a0 m) d))]
+      (if (some #{[m d a]} i)
+        (rest (map last i))
+        (recur (conj i [m d a])))))))
 
 (is (= [2] (sqrt-period 2)))
 (is (= [1 1 1 4] (sqrt-period 7)))
