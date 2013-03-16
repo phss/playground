@@ -86,3 +86,30 @@
         left (subs s 0 middle)
         right (apply str (reverse (subs s (if (even? (count s)) middle (inc middle)))))]
     (= left right)))
+
+; Continued fractions and convergence
+(defn perfect-square? [n]
+  (let [s (Math/sqrt n)]
+    (no-decimal? s)))
+
+(defn root-continued-fractions [n]
+  (let [a0 (floor (sqrt n))]
+   (loop [i [[0 1 a0]]]
+    (let [[mp dp ap] (last i)
+          m (- (* dp ap) mp)
+          d (/ (- n (pow2 m)) dp)
+          a (floor (/ (+ a0 m) d))]
+      (if (some #{[m d a]} i)
+        (map last i)
+        (recur (conj i [m d a])))))))
+
+(defn convergent [fracs]
+  (let [as (reverse fracs)]
+    (loop [c (first as) remas (rest as)]
+      (let [a (first remas)]
+        (if (nil? a)
+          c
+          (recur (+ a (/ 1 c)) (rest remas)))))))
+
+(defn all-convergents [fracs]
+  (map #(take % fracs) (range 1 (inc (count fracs)))))
