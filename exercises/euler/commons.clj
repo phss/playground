@@ -112,4 +112,5 @@
           (recur (+ a (/ 1 c)) (rest remas)))))))
 
 (defn all-convergents [fracs]
-  (map #(take % fracs) (range 1 (inc (count fracs)))))
+  (let [frac-groups (map #(take % fracs) (range 1 (inc (count fracs))))]
+    (map convergent frac-groups)))
