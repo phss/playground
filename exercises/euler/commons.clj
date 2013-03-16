@@ -112,5 +112,7 @@
           (recur (+ a (/ 1 c)) (rest remas)))))))
 
 (defn all-convergents [fracs]
-  (let [frac-groups (map #(take % fracs) (range 1 (inc (count fracs))))]
+  (let [a0 (first fracs)
+        infinite-fracs (concat [a0] (apply concat (repeat (rest fracs))))
+        frac-groups (map #(take % infinite-fracs) (iterate inc 1))]
     (map convergent frac-groups)))

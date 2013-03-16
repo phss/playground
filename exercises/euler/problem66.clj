@@ -2,17 +2,16 @@
 (use 'clojure.test)
 
 (defn numer [n]
-  (if (ratio? n)
-    (numerator n)
-    n))
+  (if (ratio? n) (numerator n) n))
 
 (defn denom [n]
-  (if (ratio? n)
-    (denominator n)
-    1))
+  (if (ratio? n) (denominator n) 1))
+
+(defn pell-equation [x y d]
+  (- (* x x) (* d y y)))
 
 (defn solve-pell? [x y d]
-  (= 1 (- (pow2 x) (* d (pow2 y)))))
+  (= 1 (pell-equation x y d)))
 
 (defn solve-dio [d]
   (if (perfect-square? d)
@@ -28,27 +27,10 @@
 
 (println (map (comp first solve-dio) [2 3 5 6 7]))
 
-;(doseq [i (range 900 911)]
-;  (println i (solve-dio i)))
-
-; 900 nil
-; 901 [1801 60]
-; 902 [901 30]
-; 903 [601 20]
-; 904 [451 15]
-; 905 [361 12]
-; 906 [301 10]
-; 907 [1028830619 34161760]
-; 908 [102151 3390]
-; 909 [80801 2680]
-; 910 [181 6]
-
-
 (println (->>
            (range 2 1001)
-           (map (comp first solve-dio))
-           (sort)
+           (map (fn [d] 
+                  (let [[x y] (solve-dio d)]
+                    [d x y])))
+           (sort-by second)
            (last)))
-
-;(doseq [p (partition-all 50 x-col)]
-;  (println (last (sort p))))
