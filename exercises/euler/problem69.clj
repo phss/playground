@@ -15,3 +15,10 @@
 
 (doseq [n (range 2 max-n)]
   (println n (totient n)))
+
+(def totients (map (fn [n]
+                     (let [t (totient n)]
+                       [n t (/ n t)])) 
+                   (range 2 max-n)))
+
+(time (println (last (sort-by last totients))))
