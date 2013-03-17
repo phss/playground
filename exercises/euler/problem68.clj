@@ -5,4 +5,4 @@
 
 (def ring-numbers (combinations numbers 3))
 
-(println (count ring-numbers))
+(println (take 5 ring-numbers))
