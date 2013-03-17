@@ -9,7 +9,7 @@
 (defn relative-primes? [a b]
   (not-any? (set (factors a)) (factors b)))
 
-(def rels (for [n (range 2 (inc max-n))
+(def rels (for [n (remove prime? (range 2 (inc max-n)))
                 i (range 1 n)
                 :when (relative-primes? n i)]
             [n i]))
