@@ -1,6 +1,6 @@
 (use 'commons)
 
-(def max-n 10001)
+(def max-n 1001)
 
 (def factors (apply merge (map (fn [n] {n (prime-factors n)}) (range 1 (inc max-n)))))
 
