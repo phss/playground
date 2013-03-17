@@ -2,19 +2,22 @@
 
 (def max-n 11)
 
-(def factors (apply merge (map (fn [n] {n (prime-factors n)}) (range 1 (inc max-n)))))
-
-(time (println (count factors)))
-
-(defn relative-primes? [a b]
-  (not-any? (set (factors a)) (factors b)))
-
-
 (defn totient [n]
-  (count (filter #(relative-primes? n %) (range 1 n))))
+  (let [f (distinct (prime-factors n))]
+    (int (reduce * (conj (map #(- 1 (/ 1 %)) f) n)))))
 
 (doseq [n (range 2 max-n)]
   (println n (totient n)))
+
+;2 1
+;3 2
+;4 2
+;5 4
+;6 2
+;7 6
+;8 4
+;9 6
+;10 4
 
 (def totients (map (fn [n]
                      (let [t (totient n)]
