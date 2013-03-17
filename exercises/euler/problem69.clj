@@ -1,27 +1,15 @@
 (use 'commons)
 
-(def max-n 101)
-
 (defn totient [n]
   (let [f (distinct (prime-factors n))]
     (int (reduce * (conj (map #(- 1 (/ 1 %)) f) n)))))
 
-(doseq [n (range 2 max-n)]
-  (println n (totient n)))
+(def tots (for [n (range 2 10000)
+                :let [t (totient n)
+                      f (prime-factors n)]]
+            [n t (/ n t) f]))
 
-;2 1
-;3 2
-;4 2
-;5 4
-;6 2
-;7 6
-;8 4
-;9 6
-;10 4
+(doseq [t (sort-by #(nth % 2) tots)]
+  (println t))
 
-(def totients (map (fn [n]
-                     (let [t (totient n)]
-                       [n t (/ n t)])) 
-                   (range 2 max-n)))
-
-(time (println (last (sort-by last totients))))
+(println (take-while (partial > 1000000) (reductions * all-primes)))
