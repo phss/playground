@@ -1,19 +1,22 @@
 (use 'commons)
+(use 'clojure.math.combinatorics)
 
-(defn totient [n]
-  (let [f (distinct (prime-factors n))]
-    (int (reduce * (conj (map #(- 1 (/ 1 %)) f) n)))))
+(defn prod-seq [n f]
+  (int (reduce * (conj (map #(- 1 (/ 1 %)) f) n))))
 
-(defn totient-perm? [n]
-  (let [tot (totient n)]
-    (= (sort (digits-from n)) (sort (digits-from tot)))))
+(defn perm? [a b]
+  (= (sort (digits-from a)) (sort (digits-from b))))
 
-(def tot-perms (map (fn [n]
-                      (let [t (totient n)]
-                        [n t (double (/ n t)) (prime-factors n)])) 
-                    (filter totient-perm? (range 2 10001))))
+(def primes (primes-up-to 5000))
 
-(println (count tot-perms))
+(def composites (map (fn [f] [(reduce * f) f]) (combinations primes 2)))
 
-(doseq [t (reverse (sort-by #(nth % 2) tot-perms))]
+(def tots (->> 
+            composites
+            (map (fn [[n f]]
+                   (let [t (prod-seq n f)]
+                     [n t (double (/ n t))])))
+            (filter (fn [[n t r]] (perm? n t)))))
+
+(doseq [t (reverse (sort-by last tots))]
   (println t))
