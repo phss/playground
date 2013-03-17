@@ -24,6 +24,6 @@
             nil
             (recur (concat sets (concat [e] g)) (rest remaining))))))))
 
-(println (gon-ring [3 2 1]))
-(println (gon-ring [3 6 1]))
-;(println (first (remove nil? (map gon-ring ring-numbers))))
+;(println (gon-ring [3 2 1]))
+;(println (gon-ring [3 6 1]))
+(println (first (remove nil? (map gon-ring ring-numbers))))
