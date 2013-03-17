@@ -1,6 +1,6 @@
 (use 'commons)
 
-(def max-n 11)
+(def max-n 101)
 
 (defn totient [n]
   (let [f (distinct (prime-factors n))]
