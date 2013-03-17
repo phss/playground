@@ -1,10 +1,10 @@
 (use 'commons)
 (use 'clojure.math.combinatorics)
 
-(def numbers (range 1 7))
+(def numbers (range 1 11))
 
 (def ring-numbers (->>
-                    (combinations numbers 3)
+                    (combinations numbers 5)
                     (mapcat (comp reverse permutations))))
 
 (defn groups-for [ring]
@@ -20,10 +20,10 @@
         sets
         (let [g (first remaining)
               e (- sum (reduce + g))]
-          (if (> e (last numbers))
+          (if (or (> e (last numbers)) (some #{e} sets))
             nil
             (recur (concat sets (concat [e] g)) (rest remaining))))))))
 
 ;(println (gon-ring [3 2 1]))
 ;(println (gon-ring [3 6 1]))
-(println (first (remove nil? (map gon-ring ring-numbers))))
+(println (apply str (first (remove nil? (map gon-ring ring-numbers)))))
