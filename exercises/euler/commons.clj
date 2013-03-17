@@ -25,6 +25,11 @@
 (defn floor [n]
   (int (Math/floor n)))
 
+(defn gcd [a b]
+  (if (zero? b)
+    a
+    (recur b (mod a b))))
+
 ; Prime checking and generation
 (defn prime? [n]
   (let [divisible? (fn [n d] (zero? (rem n d)))]
