@@ -10,4 +10,10 @@
                 :when (relative-primes? n i)]
             [n i]))
 
-(println (frequencies (map first rels)))
+(def totients (frequencies (map first rels)))
+
+(println (->>
+           totients
+           (map (fn [[n t]] [n (/ n t)]))
+           (sort-by second)
+           (last)))
