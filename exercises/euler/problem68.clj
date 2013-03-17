@@ -3,6 +3,9 @@
 
 (def numbers (range 1 7))
 
-(def ring-numbers (combinations numbers 3))
+(def ring-numbers (->>
+                    (combinations numbers 3)
+                    (mapcat (comp reverse permutations))
+                    ))
 
-(println (take 5 ring-numbers))
+(println (take 10 ring-numbers))
