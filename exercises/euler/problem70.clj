@@ -8,10 +8,12 @@
   (let [tot (totient n)]
     (= (sort (digits-from n)) (sort (digits-from tot)))))
 
-(println (totient-perm? 87109))
-
-(def tot-perms (filter totient-perm? (range 2 10001)))
+(def tot-perms (map (fn [n]
+                      (let [t (totient n)]
+                        [n t (double (/ n t)) (prime-factors n)])) 
+                    (filter totient-perm? (range 2 10001))))
 
 (println (count tot-perms))
-(doseq [tp tot-perms]
-  (println tp (prime-factors tp)))
+
+(doseq [t (reverse (sort-by #(nth % 2) tot-perms))]
+  (println t))
