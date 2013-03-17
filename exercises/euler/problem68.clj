@@ -5,7 +5,9 @@
 
 (def ring-numbers (->>
                     (combinations numbers 3)
-                    (mapcat (comp reverse permutations))
-                    ))
+                    (mapcat (comp reverse permutations))))
 
-(println (take 10 ring-numbers))
+(defn gon-ring [ring]
+  ring)
+
+(println (first (map gon-ring ring-numbers)))
