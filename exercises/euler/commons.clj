@@ -25,6 +25,9 @@
 (defn floor [n]
   (int (Math/floor n)))
 
+(defn ceil [n]
+  (int (Math/ceil n)))
+
 (defn gcd [a b]
   (if (zero? b)
     a

@@ -3,12 +3,14 @@
 (def goal (/ 3 7))
 
 (defn closest-rpf [d]
-  (let [candidates (filter #(gcd % d) (iterate dec (int (/ d 2))))
-        ratios (map (fn [n] [n (/ n d)]) candidates)]
-    (first (drop-while (fn [[n r]] (< goal r)) ratios))))
+  (let [closest-n (dec (floor (* d goal)))]
+    (if (gcd closest-n d)
+      [closest-n d (/ closest-n d)]
+      nil)))
 
 (time (println (closest-rpf 9876543))) ; 4232804/9876543
 
-(def closest-rpfs (map closest-rpf (remove #{7} (range 2 1000))))
+(def closest-rpfs (map closest-rpf (remove #{7} (range 2 1000001))))
 
 (time (println (last (sort-by last closest-rpfs))))
+
