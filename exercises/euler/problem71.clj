@@ -9,6 +9,6 @@
 
 (time (println (closest-rpf 9876543))) ; 4232804/9876543
 
-(def closest-rpfs (map closest-rpf (remove #{7} (range 2 9))))
+(def closest-rpfs (map closest-rpf (remove #{7} (range 2 1000))))
 
 (time (println (last (sort-by last closest-rpfs))))
