@@ -3,7 +3,7 @@
 (def bottom (/ 1 3))
 (def top (/ 1 2))
 
-(def rpf (for [d (range 2 9)
+(def rpf (for [d (range 2 12001)
                n (range 1 d)
                :let [r (/ n d)]
                :while (< r top)
