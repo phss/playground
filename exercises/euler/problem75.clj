@@ -14,7 +14,7 @@
 ;(println (brute-force-count-bend-ways 12))
 ;(println (brute-force-count-bend-ways 120))
 
-(def one-way-bend (filter #(= 1 (brute-force-count-bend-ways %)) (iterate inc 1)))
+(def one-way-bend (filter #(= 1 (brute-force-count-bend-ways %)) (iterate (partial + 2) 2)))
 
 
-(println (take 100 one-way-bend))
+(time (println (take 100 one-way-bend)))
