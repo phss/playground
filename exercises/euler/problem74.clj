@@ -1,8 +1,19 @@
 (use 'commons)
+(use 'clojure.test)
 
 (defn sum-facts [n]
   (let [digits (digits-from n)
         facts (map factorial digits)]
     (reduce + facts)))
 
-(println (sum-facts 145))
+(is (= 145 (sum-facts 145)))
+
+(defn count-fact-chain [n]
+  (loop [chain [n] next-n (sum-facts n)]
+    (if (some #{next-n} chain)
+      (count chain)
+      (recur (conj chain next-n) (sum-facts next-n)))))
+
+(is (= 5 (count-fact-chain 69)))
+(is (= 4 (count-fact-chain 78)))
+(is (= 2 (count-fact-chain 540)))
