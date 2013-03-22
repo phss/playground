@@ -9,7 +9,7 @@
                :let [c (- l (+ a b))]
                :when (and (< a b c)
                           (pyth? a b c))]
-           [a b c])))
+           (sort [a b c]))))
 
 ;(println (brute-force-count-bend-ways 12))
 ;(println (brute-force-count-bend-ways 120))
@@ -23,9 +23,7 @@
   (let [a (- (pow2 m) (pow2 n))
         b (* 2 m n)
         c (+ (pow2 m) (pow2 n))]
-    (if (and (> a 0) (> b 0) (> c 0)) 
-      [a b c]
-      nil)))
+    [a b c]))
 
 (println (pyth-triple 5 3))
 
@@ -33,4 +31,12 @@
                    n (range 1 1000)]
                (pyth-triple m n)))
 
-(println (take 20 (sort-by first (remove #(nil? (second %)) (map (fn [n] [(reduce + n) n]) triples)))))
+;(println (take 20 (sort-by first (remove #(nil? (second %)) (map (fn [n] [(reduce + n) n]) triples)))))
+
+(def prim-tri (for [m (iterate inc 2)
+        n (range 1 m)
+        :when (and (= 1 (gcd m n)) (odd? (- m n)))
+        :let [tri (pyth-triple m n)]]
+  (reduce + tri)))
+
+(println (take 10 (take-while #(<= % 1500000) prim-tri)))
