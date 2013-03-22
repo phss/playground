@@ -23,12 +23,14 @@
   (let [a (- (pow2 m) (pow2 n))
         b (* 2 m n)
         c (+ (pow2 m) (pow2 n))]
-    [a b c]))
+    (if (and (> a 0) (> b 0) (> c 0)) 
+      [a b c]
+      nil)))
 
 (println (pyth-triple 5 3))
 
-(def triples (for [m (iterate inc 2)
-                   n (range 1 m)]
+(def triples (for [m (range 1 1000)
+                   n (range 1 1000)]
                (pyth-triple m n)))
 
-(println (take 10 triples))
+(println (take 20 (sort-by first (remove #(nil? (second %)) (map (fn [n] [(reduce + n) n]) triples)))))
