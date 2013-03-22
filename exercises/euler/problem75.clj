@@ -25,5 +25,10 @@
         c (+ (pow2 m) (pow2 n))]
     [a b c]))
 
-
 (println (pyth-triple 5 3))
+
+(def triples (for [m (iterate inc 2)
+                   n (range 1 m)]
+               (pyth-triple m n)))
+
+(println (take 10 triples))
