@@ -1,5 +1,8 @@
 (use 'commons)
 
+(def limit 3000000)
+;(def limit 400)
+
 (defn pyth? [a b c]
   (= (pow2 c) (+ (pow2 a) (pow2 b))))
 
@@ -11,11 +14,7 @@
                           (pyth? a b c))]
            (sort [a b c]))))
 
-;(println (brute-force-count-bend-ways 12))
-;(println (brute-force-count-bend-ways 120))
-
 (def one-way-bend (filter #(= 1 (brute-force-count-bend-ways %)) (iterate (partial + 2) 2)))
-
 
 (time (println (take 50 one-way-bend)))
 
@@ -25,18 +24,23 @@
         c (+ (pow2 m) (pow2 n))]
     [a b c]))
 
-(println (pyth-triple 5 3))
-
-(def triples (for [m (range 1 1000)
-                   n (range 1 1000)]
-               (pyth-triple m n)))
-
-;(println (take 20 (sort-by first (remove #(nil? (second %)) (map (fn [n] [(reduce + n) n]) triples)))))
-
-(def prim-tri (for [m (iterate inc 2)
-        n (range 1 m)
-        :when (and (= 1 (gcd m n)) (odd? (- m n)))
-        :let [tri (pyth-triple m n)]]
+(def prime-triplet-lengths (for [m (iterate inc 2)
+                           n (range 1 m)
+                          :when (and (= 1 (gcd m n)) (odd? (- m n)))
+                          :let [tri (pyth-triple m n)]]
   (reduce + tri)))
 
-(println (take 10 (take-while #(<= % 1500000) prim-tri)))
+(def triplet-lengths (for [ptl (take-while #(<= % limit) prime-triplet-lengths)
+                           c (iterate inc 1)
+                           :let [l (* ptl c)]
+                           :while (<= l limit)]
+                       l))
+
+(time (println (->>
+                 triplet-lengths
+                 (frequencies)
+                 (filter (fn [[len freq]]
+                           (and (<= len 1500000)
+                                (= 1 freq))))
+                 (sort)
+                 (count))))
