@@ -10,7 +10,7 @@
 
 (defn p-div-by [n]
   (loop [ways #{[1]}]
-    (if (= n (count ways))
+    (if (divisible? (count ways) 1000000)
       ways
       (recur (add-coin ways)))))
 
