@@ -1,12 +1,17 @@
 (use 'commons)
 
+(defn new-ways [way]
+  (let [idx (range 0 (count way))
+        possible-ways (map #(vec (sort (update-in way [%] inc))) idx)]
+    (conj possible-ways (vec (sort (conj way 1))))))
+
 (defn add-coin [ways]
-  (conj ways [1]))
+  (set (mapcat new-ways ways)))
 
 (defn p-div-by [n]
-  (loop [ways [[1]]]
+  (loop [ways #{[1]}]
     (if (= n (count ways))
       ways
       (recur (add-coin ways)))))
 
-(time (println (p-div-by 7)))
+(time (println (filter #(= 1 (count %)) (p-div-by 7))))
