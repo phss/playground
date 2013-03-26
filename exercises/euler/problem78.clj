@@ -8,11 +8,11 @@
 (defn add-coin [ways]
   (set (mapcat new-ways ways)))
 
-(defn p-div-by [n]
-  (loop [ways #{[1]}]
-    (println (count ways) (sort-by first (frequencies (map count ways))))
-    (if (divisible? (count ways) n)
+(defn p-div-by [pn]
+  (loop [ways #{[1]} n 1]
+    (println n (count ways) (sort-by first (frequencies (map count ways))))
+    (if (divisible? (count ways) pn)
       ways
-      (recur (add-coin ways)))))
+      (recur (add-coin ways) (inc n)))))
 
 (time (println (filter #(= 1 (count %)) (p-div-by 100))))
