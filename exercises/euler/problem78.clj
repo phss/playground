@@ -10,9 +10,9 @@
 
 (defn p-div-by [n]
   (loop [ways #{[1]}]
-    (println (count ways) ways)
-    (if (divisible? (count ways) 1000000)
+    (println (count ways) (sort-by first (frequencies (map count ways))))
+    (if (divisible? (count ways) n)
       ways
       (recur (add-coin ways)))))
 
-(time (println (filter #(= 1 (count %)) (p-div-by 7))))
+(time (println (filter #(= 1 (count %)) (p-div-by 100))))
