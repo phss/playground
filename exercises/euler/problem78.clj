@@ -1,18 +1,16 @@
 (use 'commons)
 
-(defn new-ways [way]
-  (let [idx (range 0 (count way))
-        possible-ways (map #(vec (sort (update-in way [%] inc))) idx)]
-    (conj possible-ways (vec (sort (conj way 1))))))
+(defn k-partitions [k n]
+  (cond
+    (> k n) 0
+    (= k n) 1
+    :else (+ (k-partitions (inc k) n) (k-partitions k (- n k)))))
 
-(defn add-coin [ways]
-  (set (mapcat new-ways ways)))
+(defn partitions [n]
+  (let [ks (range 1 (inc (floor (/ n 2))))]
+    (inc (reduce + (map (fn [k] (k-partitions k (- n k))) ks)))))
 
-(defn p-div-by [pn]
-  (loop [ways #{[1]} n 1]
-    (println n (count ways) (sort-by first (frequencies (map count ways))))
-    (if (divisible? (count ways) pn)
-      ways
-      (recur (add-coin ways) (inc n)))))
+(def all-partitions (map partitions (iterate inc 1)))
 
-(time (println (filter #(= 1 (count %)) (p-div-by 100))))
+(doseq [n (iterate inc 1)]
+  (println n (partitions n)))
