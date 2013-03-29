@@ -1,15 +1,8 @@
 (use 'commons)
 
-(def rpf (for [d (range 2 1001)
-               n (range 1 d)
-               :when (= 1 (gcd n d))]
-            [n d]))
+(defn rpf-for [n]
+  (let [pf (frequencies (prime-factors n))
+        perms (fn [[p f]] (* (dec p) (pow p (dec f))))]
+    (reduce * (map perms pf))))
 
-(defn count-rpf-to [n]
-  (loop [c 0 d 2]
-    (if (= n d)
-      c
-      (let [rpfs (filter #(= 1 (gcd % d)) (range 1 d))]
-        (recur (+ c (count rpfs)) (inc d))))))
-
-(time (println (count-rpf-to 1000001)))
+(time (println (reduce + (map rpf-for (range 2 1000001)))))

@@ -10,6 +10,9 @@
 (defn pow2 [n]
   (* n n))
 
+(defn pow [n e]
+  (int (Math/pow n e)))
+
 (defn no-decimal? [n]
   (= (mod n 1) 0.0))
 
@@ -24,6 +27,9 @@
 
 (defn floor [n]
   (int (Math/floor n)))
+
+(defn ceil [n]
+  (int (Math/ceil n)))
 
 (defn gcd [a b]
   (if (zero? b)
@@ -41,10 +47,16 @@
 
 (def all-primes (filter prime? (iterate inc 2)))
 
-(defn first-factor [num]
+(defn first-factor-prev [num]
   (if (= 1 num)
     nil
     (first (filter (partial divisible? num) (iterate inc 2)))))
+
+(defn first-factor [n]
+  (if (= 1 n)
+    nil
+    (let [f (first (filter (partial divisible? n) (range 2 (inc (int-sqrt n)))))]
+      (if (nil? f) n f))))
 
 (defn prime-factors [num]
   (loop [n num factors []]
@@ -52,7 +64,6 @@
       factors
       (let [f (first-factor n)]
         (recur (quot n f) (conj factors f))))))
-
 
 ; Number wrangling
 (defn digits-from [number]
