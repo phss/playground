@@ -10,4 +10,11 @@ Twitter.configure do |config|
   config.oauth_token_secret = keys["token_secret"]
 end
 
-puts Twitter.home_timeline
+Twitter.home_timeline.each do |tweet|
+  puts
+  puts tweet.from_user
+  puts "\"#{tweet.text}\""
+  tweet.urls.each do |url|
+    puts "- #{url.expanded_url}"
+  end
+end
