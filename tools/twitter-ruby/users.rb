@@ -10,7 +10,7 @@ Twitter.configure do |config|
   config.oauth_token_secret = keys["token_secret"]
 end
 
-users_frequency = Twitter.home_timeline.
+users_frequency = Twitter.home_timeline(:count => 200).
                           group_by(&:from_user).
                           map { |k, v| [k, v.length] }.
                           sort_by(&:last).
