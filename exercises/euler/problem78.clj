@@ -13,4 +13,5 @@
 (def all-partitions (map partitions (iterate inc 1)))
 
 (doseq [n (iterate inc 1)]
-  (println n (partitions n)))
+  (let [parts (partitions n)]
+    (println n parts (divisible? parts 1000000))))
