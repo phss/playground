@@ -22,4 +22,14 @@ def partitions(n)
   return 1 + (1..max).map { |k| k_partition(k, n - k) }.reduce(&:+)
 end
 
-puts partitions(5)
+n = 2
+
+while true
+  p_n = partitions(n)
+  puts "#{n}: #{p_n}" if n % 100 == 0
+  if p_n % 1000000 == 0
+    puts n 
+    exit
+  end
+  n += 1
+end
