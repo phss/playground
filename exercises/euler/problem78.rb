@@ -1,4 +1,4 @@
-KPARTS = {}
+KPART = {}
 
 def k_partition(k, n)
   key = [k, n]
@@ -18,7 +18,8 @@ def k_partition(k, n)
 end
 
 def partitions(n)
-  
+  max = (0.5*n).to_i
+  return 1 + (1..max).map { |k| k_partition(k, n - k) }.reduce(&:+)
 end
 
 puts partitions(5)
