@@ -30,4 +30,4 @@
 
 (def general-pents (map nth-pent (gen-seq)))
 
-(println (take 1000 general-pents))
+(println (last (take 10000 general-pents)))
