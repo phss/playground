@@ -27,7 +27,7 @@ n = 2
 while true
   p_n = partitions(n)
   puts "#{n}: #{p_n}" if n % 100 == 0
-  if p_n % 1000000 == 0
+  if p_n % 10000 == 0
     puts n 
     exit
   end
