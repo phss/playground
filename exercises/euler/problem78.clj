@@ -28,6 +28,16 @@
   ([] (concat [0] (gen-seq 1)))
   ([n] (concat [n (- n)] (lazy-seq (gen-seq (inc n))))))
 
-(def general-pents (map nth-pent (gen-seq)))
+(def general-pents (vec (take 10000 (map nth-pent (gen-seq)))))
 
-(println (last (take 10000 general-pents)))
+(println (last general-pents))
+
+(defn p [n]
+  (let [idx (map #(nth general-pents %) (range 1 (inc n)))
+        composing-ps (map #(p (- n %)) idx)]
+    (cond
+      (> 0 n) 0
+      (zero? n) 1
+      :else composing-ps)))
+
+(println (p 70))
