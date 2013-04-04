@@ -4,8 +4,8 @@
 
 (defn k-partitions [k n]
   (cond
-    (> k n) 0
-    (= k n) 1
+    (> k n) (bigint 0)
+    (= k n) (bigint 1)
     :else (+ (k-fast (inc k) n) (k-fast k (- n k)))))
 
 (def k-fast (memoize k-partitions))
@@ -16,4 +16,4 @@
 
 (def all-partitions (map partitions (iterate inc 1)))
 
-(time (println (first (filter #(divisible? % 100) all-partitions))))
+(time (println (first (filter #(divisible? % 100000) all-partitions))))
