@@ -17,7 +17,7 @@
 
 (def all-partitions (map partitions (iterate inc 1)))
 
-;(time (println (first (filter #(divisible? % 100000) all-partitions))))
+;(time (println (partitions 100)))
 
 ; Generative
 
@@ -30,14 +30,16 @@
 
 (def general-pents (vec (take 10000 (map nth-pent (gen-seq)))))
 
-(println (last general-pents))
+(declare p-fast)
 
 (defn p [n]
-  (let [idx (map #(nth general-pents %) (range 1 (inc n)))
-        composing-ps (map #(p (- n %)) idx)]
-    (cond
-      (> 0 n) 0
-      (zero? n) 1
-      :else composing-ps)))
+  (let [pents (take-while #(<= % n) (rest general-pents))
+        signs (cycle [1 1 -1 -1])
+        composing-ps (map (fn [k s] (* s (p-fast (- n k))) ) pents signs)]
+    (if (zero? n) 
+      (bigint 1)
+      (reduce + composing-ps))))
 
-(println (p 70))
+(def p-fast (memoize p))
+
+(time (println (first (filter #(divisible? (second %) 1000000) (map (fn [i] [i (p-fast i)]) (iterate inc 1))))))
