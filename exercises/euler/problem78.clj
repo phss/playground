@@ -1,5 +1,6 @@
 (use 'commons)
 
+; Recursive
 (declare k-fast)
 
 (defn k-partitions [k n]
@@ -16,4 +17,17 @@
 
 (def all-partitions (map partitions (iterate inc 1)))
 
-(time (println (first (filter #(divisible? % 100000) all-partitions))))
+;(time (println (first (filter #(divisible? % 100000) all-partitions))))
+
+; Generative
+
+(defn nth-pent [n]
+  (int (* n (- (* 3 n) 1) 0.5))) 
+
+(defn gen-seq 
+  ([] (concat [0] (gen-seq 1)))
+  ([n] (concat [n (- n)] (lazy-seq (gen-seq (inc n))))))
+
+(def general-pents (map nth-pent (gen-seq)))
+
+(println (take 1000 general-pents))
