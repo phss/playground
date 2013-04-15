@@ -7,9 +7,12 @@
 
 (def integer-digit-pairs (map digit-pair (iterate inc 1)))
 
-(println (nth integer-digit-pairs 102))
+;(println (nth integer-digit-pairs 102))
 
 (defn root-digits [integer-digit-pair upto]
   (loop [digit-pairs (concat integer-digit-pairs (repeat [0 0])) 
-         p 0 x 0 y 0 
-         root-digits []]))
+         p 0
+         root-digits []]
+    (let [x 0 y 0])))
+
+(println (root-digits (digit-pair 2) 5))
