@@ -53,7 +53,7 @@ def trains_needed(turnaround, trips)
 
     available = available_times[from].find { |t| t <= trip.departure }
     if available
-      available_times[from].delete(available)
+      available_times[from].delete_at(available_times[from].index(available) || available_times[from].length)
     else
       trains[from] += 1
     end
