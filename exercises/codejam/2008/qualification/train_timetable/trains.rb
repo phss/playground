@@ -13,6 +13,7 @@ class HourMinutes
       @hour += 1
       @minutes -= 60
     end
+    self
   end
 
   def stamp
@@ -39,17 +40,27 @@ class Trip
 end
 
 def trains_needed(turnaround, trips)
-  trains_at_a, trains_at_b = 0, 0
+  trains = { :a => 0, :b => 0}
+  available_times = { :a => [], :b => [] }
 
   trips.sort_by(&:departure).each do |trip|
-    puts trip.from_station
+    from, to = trip.from_station, trip.from_station == :a ? :b : :a
+
+    available = available_times[from].find { |t| t <= trip.departure }
+    if available
+      available_times[from].delete(available)
+    else
+      trains[from] += 1
+    end
+
+    available_times[to] << trip.arrival.add(turnaround)
   end
 
-  return "#{trains_at_a} #{trains_at_b}"
+  return "#{trains[:a]} #{trains[:b]}"
 end
 
 gets.to_i.times do |case_id|
-  t = gets # Skip one
+  t = gets.to_i
   na, nb = gets.split
   trips = []
   na.to_i.times { trips << Trip.from(:a, gets) }
