@@ -1,19 +1,24 @@
 class HourMinutes
   include Comparable
 
-  def initialize(hm_string)
+  def initialize(h, m)
+    @hour = h
+    @minutes = m
+  end
+
+  def self.from_string(hm_string)
     h, m = hm_string.split(":")
-    @hour = h.to_i
-    @minutes = m.to_i
+    self.new(h.to_i, m.to_i)
   end
 
   def add(minutes)
-    @minutes += minutes
-    if @minutes >= 60
-      @hour += 1
-      @minutes -= 60
+    h = @hour
+    m = @minutes + minutes
+    if m >= 60
+      h += 1
+      m -= 60
     end
-    self
+    HourMinutes.new(h, m)
   end
 
   def stamp
@@ -35,7 +40,7 @@ class Trip
 
   def self.from(station, time_string)
     d, a = time_string.split
-    self.new(station, HourMinutes.new(d), HourMinutes.new(a))
+    self.new(station, HourMinutes.from_string(d), HourMinutes.from_string(a))
   end
 end
 
