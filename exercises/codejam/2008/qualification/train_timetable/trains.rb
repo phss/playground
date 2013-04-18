@@ -1,3 +1,29 @@
+class HourMinutes
+  include Comparable
+
+  def initialize(hm_string)
+    h, m = hm_string.split(":")
+    @hour = h.to_i
+    @minutes = m.to_i
+  end
+
+  def add(minutes)
+    @minutes += minutes
+    if @minutes >= 60
+      @hour += 1
+      @minutes -= 60
+    end
+  end
+
+  def stamp
+    @hour * 100 + @minutes
+  end
+
+  def <=>(other)
+    stamp <=> other.stamp 
+  end
+end
+
 class Trip
 
   attr_reader :from_station, :departure, :arrival
@@ -8,15 +34,14 @@ class Trip
 
   def self.from(station, time_string)
     d, a = time_string.split
-    self.new(station, d, a)
+    self.new(station, HourMinutes.new(d), HourMinutes.new(a))
   end
-
 end
 
 def trains_needed(turnaround, trips)
   trains_at_a, trains_at_b = 0, 0
 
-  trips.sort_by { |t| t.departure }.each do |trip|
+  trips.sort_by(&:departure).each do |trip|
     puts trip.from_station
   end
 
