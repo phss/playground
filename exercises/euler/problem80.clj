@@ -10,7 +10,9 @@
 ;(println (nth integer-digit-pairs 102))
 ;
 (defn determine-root-x-y [c p]
-  [1 1])
+  (let [xs (reverse (range 10))
+        ys (map (fn [x] (* x (+ x (* 20 p)))) xs)]
+    [x x]))
 
 (defn root-digits [integer-digit-pair upto]
   (loop [digit-pairs (concat integer-digit-pair (repeat [0 0])) 
