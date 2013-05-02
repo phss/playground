@@ -23,3 +23,4 @@
         (recur (rest digit-pairs) (- c y) (+ x (* p 10)) (conj root-digits x))))))
 
 (println (apply + (root-digits (digit-pair 2) 100)))
+(println (apply + (root-digits (digit-pair 4) 100)))
