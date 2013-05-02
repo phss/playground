@@ -23,4 +23,10 @@
         (recur (rest digit-pairs) (- c y) (+ x (* p 10)) (conj root-digits x))))))
 
 (println (apply + (root-digits (digit-pair 2) 100)))
-(println (apply + (root-digits (digit-pair 4) 100)))
+
+(time (println 
+  (->>
+    (range 1 101)
+    (remove #(no-decimal? (sqrt %)))
+    (map (fn [i] (apply + (root-digits (digit-pair i) 100))))
+    (apply +))))
