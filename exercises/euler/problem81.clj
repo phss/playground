@@ -4,14 +4,15 @@
               "files/problem81.txt"
               (slurp)
               (clojure.string/split-lines)
-              (map #(map number-from (clojure.string/split % #",")))))
+              (map #(vec (map number-from (clojure.string/split % #","))))
+              (vec)))
 
-(def test-matrix [
-[131	673	234	103	18]
-[201	96	342	965	150]
-[630	803	746	422	111]
-[537	699	497	121	956]
-[805	732	524	37	331]]) 
+(def test-matrix 
+  [[131	673	234	103	18]
+   [201	96	342	965	150]
+   [630	803	746	422	111]
+   [537	699	497	121	956]
+   [805	732	524	37	331]]) 
 
 (defn cost
   [m [x y]]
@@ -22,8 +23,10 @@
   (reduce + (map (partial cost m) path)))
 
 (defn valid-next-steps
-  [m [x y]]
-  (let [valid? (fn [[nx ny]] (and (< ny (count m)) (< nx (count (nth m y)))))]
+  [m [x y] explored]
+  (let [valid? (fn [[nx ny]] (and (< ny (count m))
+                                  (< nx (count (nth m y)))
+                                  (not-any? #{[nx ny]} explored)))]
     (filter valid? [[(inc x) y] [x (inc y)]])))
 
 (defn min-path-sum
@@ -34,9 +37,9 @@
             last-visited (last shortest)]
         (if (= goal last-visited)
           (path-cost m shortest)
-          (recur (concat other (map (partial conj shortest) (valid-next-steps m last-visited))) 
-                 (conj explored last-visited)))))))
+          (recur (concat other (map (partial conj shortest) (valid-next-steps m last-visited explored))) 
+                 (concat explored (valid-next-steps m last-visited explored))))))))
 
 
-(time (println (min-path-sum test-matrix)))
+(time (println (min-path-sum matrix)))
 
