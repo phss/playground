@@ -13,9 +13,21 @@
 [537	699	497	121	956]
 [805	732	524	37	331]]) 
 
+(defn cost
+  [m [x y]]
+  ((m y) x))
+
+(defn path-cost
+  [m path]
+  (reduce + (map (partial cost m) path)))
+
 (defn min-path-sum
   [m]
   nil)
 
+(println (cost test-matrix [2 0]))
+(println (path-cost test-matrix [[0 0] [1 0] [1 1]]))
+
 ;(println (count matrix))
 (time (println (min-path-sum test-matrix)))
+
