@@ -21,13 +21,22 @@
   [m path]
   (reduce + (map (partial cost m) path)))
 
+(defn valid-next-steps
+  [m [x y]]
+  (let [valid? (fn [[nx ny]] (and (< ny (count m)) (< nx (count (nth m y)))))]
+    (filter valid? [[(inc x) y] [x (inc y)]])))
+
 (defn min-path-sum
   [m]
-  nil)
+  (let [goal [(dec (count m)) (dec (count m))]]
+    (loop [paths [[[0 0]]] explored [[0 0]]]
+      (let [[shortest & other] (sort-by (partial path-cost m) paths)
+            last-visited (last shortest)]
+        (if (= goal last-visited)
+          (path-cost m shortest)
+          (recur (concat other (map (partial conj shortest) (valid-next-steps m last-visited))) 
+                 (conj explored last-visited)))))))
 
-(println (cost test-matrix [2 0]))
-(println (path-cost test-matrix [[0 0] [1 0] [1 1]]))
 
-;(println (count matrix))
 (time (println (min-path-sum test-matrix)))
 
