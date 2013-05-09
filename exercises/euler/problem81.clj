@@ -32,14 +32,14 @@
 (defn min-path-sum
   [m]
   (let [goal [(dec (count m)) (dec (count m))]]
-    (loop [paths [[[0 0]]] explored [[0 0]]]
-      (let [[shortest & other] (sort-by (partial path-cost m) paths)
-            last-visited (last shortest)]
+    (loop [paths [[[0 0] (cost m [0 0])]] explored [[0 0]]]
+      (let [[[last-visited pc] & other] (sort-by second paths)]
         (if (= goal last-visited)
-          (path-cost m shortest)
-          (recur (concat other (map (partial conj shortest) (valid-next-steps m last-visited explored))) 
+          pc
+          (recur (concat other (map (fn [n] [n (+ pc (cost m n))]) (valid-next-steps m last-visited explored))) 
                  (concat explored (valid-next-steps m last-visited explored))))))))
 
 
+(time (println (min-path-sum test-matrix)))
 (time (println (min-path-sum matrix)))
 
