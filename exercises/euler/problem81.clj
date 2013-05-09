@@ -13,5 +13,9 @@
 [537	699	497	121	956]
 [805	732	524	37	331]]) 
 
-(println (count matrix))
-(println (count test-matrix))
+(defn min-path-sum
+  [m]
+  nil)
+
+;(println (count matrix))
+(time (println (min-path-sum test-matrix)))
