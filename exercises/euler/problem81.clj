@@ -18,10 +18,6 @@
   [m [x y]]
   ((m y) x))
 
-(defn path-cost
-  [m path]
-  (reduce + (map (partial cost m) path)))
-
 (defn valid-next-steps
   [m [x y] explored]
   (let [valid? (fn [[nx ny]] (and (< ny (count m))
@@ -31,13 +27,16 @@
 
 (defn min-path-sum
   [m]
-  (let [goal [(dec (count m)) (dec (count m))]]
-    (loop [paths [[[0 0] (cost m [0 0])]] explored [[0 0]]]
-      (let [[[last-visited pc] & other] (sort-by second paths)]
+  (let [initial [0 0]
+        goal [(dec (count m)) (dec (count m))]
+        cost-of (partial cost m)]
+    (loop [paths [[initial (cost-of initial)]] explored [initial]]
+      (let [[[last-visited path-cost] & other] (sort-by second paths)]
         (if (= goal last-visited)
-          pc
-          (recur (concat other (map (fn [n] [n (+ pc (cost m n))]) (valid-next-steps m last-visited explored))) 
-                 (concat explored (valid-next-steps m last-visited explored))))))))
+          path-cost
+          (let [next-steps (valid-next-steps m last-visited explored)
+                next-paths (map (fn [n] [n (+ path-cost (cost-of n))]) next-steps)] 
+            (recur (concat other next-paths) (concat explored next-steps))))))))
 
 
 (time (println (min-path-sum test-matrix)))
