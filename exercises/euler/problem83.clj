@@ -19,23 +19,24 @@
   ((m y) x))
 
 (defn valid-next-steps
-  [m [x y] explored]
-  (let [valid? (fn [[nx ny]] (and (< -1 ny (count m))
-                                  (< -1 nx (count (nth m y)))
-                                  (not-any? #{[nx ny]} explored)))]
-    (filter valid? [[(inc x) y] [x (inc y)] [(dec x) y] [x (dec y)]])))
+  [m [x y]]
+  (let [valid? (fn [[nx ny]] (and (< -1 ny (count m)) (< -1 nx (count (nth m y)))))]
+    (filter valid? [[(inc x) y] [x (inc y)] 
+                    [(dec x) y] [x (dec y)]])))
 
 (defn min-path-sum
   [m]
   (let [initial [0 0]
         goal [(dec (count m)) (dec (count m))]
-        cost-of (partial cost m)]
-    (loop [paths [[initial (cost-of initial)]] explored [initial]]
+        cost-of (partial cost m)
+        path-to (fn [pos cost-so-far] [pos (+ cost-so-far (cost-of pos))])]
+    (loop [paths [path-to initial 0] explored [initial]]
       (let [[[last-visited path-cost] & other] (sort-by second paths)]
         (if (= goal last-visited)
           path-cost
-          (let [next-steps (valid-next-steps m last-visited explored)
-                next-paths (map (fn [n] [n (+ path-cost (cost-of n))]) next-steps)] 
+          (let [unexplored? #(not-any? #{%} explored)
+                next-steps (filter unexplored? (valid-next-steps m last-visited))
+                next-paths (map (fn [n] (path-to n path-cost)) next-steps)] 
             (recur (concat other next-paths) (concat explored next-steps))))))))
 
 
