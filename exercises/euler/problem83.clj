@@ -20,10 +20,10 @@
 
 (defn valid-next-steps
   [m [x y] explored]
-  (let [valid? (fn [[nx ny]] (and (< ny (count m))
-                                  (< nx (count (nth m y)))
+  (let [valid? (fn [[nx ny]] (and (< -1 ny (count m))
+                                  (< -1 nx (count (nth m y)))
                                   (not-any? #{[nx ny]} explored)))]
-    (filter valid? [[(inc x) y] [x (inc y)]])))
+    (filter valid? [[(inc x) y] [x (inc y)] [(dec x) y] [x (dec y)]])))
 
 (defn min-path-sum
   [m]
