@@ -1,7 +1,7 @@
 (use 'commons)
 
 (def matrix (->> 
-              "files/problem82.txt"
+              "files/problem83.txt"
               (slurp)
               (clojure.string/split-lines)
               (map #(vec (map number-from (clojure.string/split % #","))))
@@ -20,19 +20,19 @@
 
 (defn valid-next-steps
   [m [x y] explored]
-  (let [valid? (fn [[nx ny]] (and (< -1 ny (count m))
-                                  (< -1 nx (count (nth m y)))
+  (let [valid? (fn [[nx ny]] (and (< ny (count m))
+                                  (< nx (count (nth m y)))
                                   (not-any? #{[nx ny]} explored)))]
-    (filter valid? [[(inc x) y] [x (inc y)] [x (dec y)]])))
+    (filter valid? [[(inc x) y] [x (inc y)]])))
 
 (defn min-path-sum
   [m]
-  (let [initial-places (map (fn [y] [0 y]) (range 0 (count m)))
-        goal-column (dec (count m))
+  (let [initial [0 0]
+        goal [(dec (count m)) (dec (count m))]
         cost-of (partial cost m)]
-    (loop [paths (map (fn [i] [i (cost-of i)]) initial-places) explored initial-places]
+    (loop [paths [[initial (cost-of initial)]] explored [initial]]
       (let [[[last-visited path-cost] & other] (sort-by second paths)]
-        (if (= goal-column (first last-visited))
+        (if (= goal last-visited)
           path-cost
           (let [next-steps (valid-next-steps m last-visited explored)
                 next-paths (map (fn [n] [n (+ path-cost (cost-of n))]) next-steps)] 
