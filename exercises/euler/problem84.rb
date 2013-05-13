@@ -21,6 +21,12 @@ end
 
 
 roller = DiceRoller.new(6)
-
 board = Board.new(40)
-puts board.position_from(35, roller.roll(2))
+positions = [0]
+
+100.times do
+  current = positions.last
+  positions << board.position_from(current, roller.roll(2))
+end
+
+puts positions
