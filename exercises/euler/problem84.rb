@@ -1,11 +1,18 @@
 class DiceRoller
   def initialize(sides)
     @sides = sides    
+    @consecutive_doubles = 0 # a bit of terrible state
   end
 
   def roll(dices)
     rolls = dices.times.map { rand(@sides) + 1 }
-    rolls.reduce(:+)
+    @consecutive_doubles = rolls.uniq.size == 1 ? @consecutive_doubles + 1 : 0
+
+    return rolls.reduce(:+)
+  end
+
+  def three_doubles?
+    @consecutive_doubles == 3
   end
 end
 
@@ -43,7 +50,7 @@ positions = [0]
   current = positions.last
   positions << next_pos = board.position_from(current, roller.roll(2))
 
-  if board.go_to_jail?(next_pos)
+  if board.go_to_jail?(next_pos) || roller.three_doubles?
     positions << board.jail
   end
 end
