@@ -35,6 +35,15 @@ class Board
   end
 end
 
+class Cards
+  def initialize
+    
+  end
+
+  def draw
+    
+  end
+end
 
 def frequency(array)
   array.group_by { |obj| obj }
