@@ -36,12 +36,15 @@ class Board
 end
 
 class Cards
-  def initialize
-    
+  def initialize(cards)
+    @cards = cards.shuffle
   end
 
   def draw
-    
+    card = @cards.shift
+    @cards.push(card)
+
+    return card
   end
 end
 
@@ -53,6 +56,8 @@ end
 
 roller = DiceRoller.new(6)
 board = Board.new
+chest_cards = Cards.new([:go, :jail, :nop, :nop, :nop, :nop, :nop, :nop, :nop, :nop, :nop, :nop, :nop, :nop, :nop, :nop])
+chance_cards = Cards.new([:go, :jail, :c1, :e3, :h2, :r1, :next_r, :next_r, :next_u, :back_3, :nop, :nop, :nop, :nop, :nop, :nop])
 positions = [0]
 
 10000.times do
