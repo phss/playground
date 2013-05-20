@@ -20,9 +20,10 @@ class Board
   attr_reader :jail
 
   def initialize
-
     @size = 40
     @gtj_pos = 30 
+    @chest_pos = [2, 17, 33]
+    @chance_pos = [???]
     @jail = 10
   end
 
@@ -32,6 +33,14 @@ class Board
 
   def go_to_jail?(position)
     @gtj_pos == position
+  end
+
+  def community_chest?(position)
+    @chest_pos.include? position
+  end
+
+  def chance?(position)
+    @chance_pos.include? position
   end
 end
 
@@ -66,6 +75,12 @@ positions = [0]
 
   if board.go_to_jail?(next_pos) || roller.three_doubles?
     positions << board.jail
+  elsif board.community_chest?(next_pos)
+    card = chest_cards.draw
+    positions << board.position_from_card(next_pos, card) unless card == :nop
+  elsif board.chance?(next_pos)
+    card = chest_cards.draw
+    positions << board.position_from_card(next_pos, card) unless card == :nop
   end
 end
 
