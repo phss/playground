@@ -90,7 +90,7 @@ def frequency(array)
        .sort_by { |obj| obj.last }
 end
 
-roller = DiceRoller.new(6)
+roller = DiceRoller.new(4)
 board = Board.new
 chest_cards = Cards.new([:go, :jail, :nop, :nop, :nop, :nop, :nop, :nop, :nop, :nop, :nop, :nop, :nop, :nop, :nop, :nop])
 chance_cards = Cards.new([:go, :jail, :c1, :e3, :h2, :r1, :next_r, :next_r, :next_u, :back_3, :nop, :nop, :nop, :nop, :nop, :nop])
