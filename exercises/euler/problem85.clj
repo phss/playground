@@ -6,8 +6,7 @@
 
 (def combs (for [[p q] natnum-sum-tuples :while (<= q boundary)
                  [r s] natnum-sum-tuples :while (<= r p)
-                 :let [area (* p r)
-                       rects (* q s)]
+                 :let [area (* p r) rects (* q s)]
                  :when (<= rects boundary)]
              [area rects]))
 
