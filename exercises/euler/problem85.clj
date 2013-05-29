@@ -4,4 +4,11 @@
 
 (def natnum-sum-tuples (map vector (range) (reductions + (range))))
 
-(println (take 10 natnum-sum-tuples))
+(def combs (for [[p q] natnum-sum-tuples
+                 [r s] natnum-sum-tuples
+                 :let [area (* p r)
+                       rects (* q s)]
+                 :while (and (<= r p) (<= rects boundary)) ]
+             [area rects]))
+
+(println (take 10 combs))
