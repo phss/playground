@@ -7,3 +7,13 @@
 
 (println (integer-shortest-route? 6 5 3))
 (println (integer-shortest-route? 5 6 3))
+
+(defn integer-routes-for
+  [m]
+  (let [routes (for [d2 (range 1 (inc m))
+                     d3 (range 1 (inc d2))
+                     :when (integer-shortest-route? m d2 d3)]
+                 [m d2 d3])]
+    routes))
+
+(println (integer-routes-for 6))
