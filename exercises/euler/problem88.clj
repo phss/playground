@@ -11,8 +11,11 @@
 ;   (sort nums))))
 
 (defn increment [path]
-  (for [i (range (count path))]
-    (conj (update-in path [i] inc) 1)))
+  (let [next-level-path (conj path 1)] 
+    (for [i (range (count next-level-path))
+          :let [new-path (update-in next-level-path [i] inc)]
+          :when (= new-path (sort-by #(* % -1) new-path))]
+      new-path)))
 
 
 (defn increment-all [paths]
@@ -20,5 +23,5 @@
 
 (println (increment-all [[2]]))
 (println (increment-all [[3 1] [2 2]]))
-;(println (increment-all (increment-all [[3 1] [2 2]])))
+(println (increment-all (increment-all [[3 1] [2 2]])))
 
