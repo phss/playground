@@ -11,17 +11,23 @@
 ;   (sort nums))))
 
 (defn increment [path]
-  (let [next-level-path (conj path 1)] 
-    (for [i (range (count next-level-path))
-          :let [new-path (update-in next-level-path [i] inc)]
+  (let [base-path (conj path 1)] 
+    (for [i (range (count base-path))
+          :let [new-path (update-in base-path [i] inc)]
           :when (= new-path (sort-by #(* % -1) new-path))]
       new-path)))
 
+(defn next-level [level]
+  (set (mapcat increment level)))
 
-(defn increment-all [paths]
-  (set (mapcat increment paths)))
+(defn paths
+  ([] (paths [[2]]))
+  ([level] (concat level (lazy-seq (paths (next-level level)))) ))
 
-(println (increment-all [[2]]))
-(println (increment-all [[3 1] [2 2]]))
-(println (increment-all (increment-all [[3 1] [2 2]])))
+(defn equal-sum-prod? [path k]
+  (let [sum (reduce + (conj path (- k (count path))))
+        prod (reduce * path)]
+    (= sum prod)))
 
+
+(println (first (filter #(equal-sum-prod? % 8000) (paths))))
