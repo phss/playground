@@ -4,10 +4,10 @@ title: Your New Jekyll Site
 ---
 
 <div id="home">
-  <h1>Blog Posts</h1>
+  <h1>Patterns</h1>
   <ul class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.pattern }}</span> &raquo; <a href="{{ post.url }}">{{ post.question }}</a></li>
+    {% for pattern in site.pages %}
+      <li><span>{{ pattern.title }}</span> - <a href="{{ pattern.url }}">{{ pattern.question }}</a></li>
     {% endfor %}
   </ul>
 </div>
