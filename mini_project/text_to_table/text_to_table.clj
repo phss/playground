@@ -11,7 +11,14 @@
 
 (defn parse-patterns [category patterns-text]
   (let [break #" - "
-        flat-patterns ]))
+        flat-patterns (partition-by #(re-find break %) patterns-text)
+        grouped-patterns (apply hash-map flat-patterns)]
+    (for [[p t] grouped-patterns
+          :let [[pattern question] (clojure.string/split (first p) break)]]
+      {:category category,
+       :pattern pattern,
+       :question question,
+       :answer t})))
 
 (defn parse-text [text]
   (let [header? #(= \# (first %))
