@@ -16,7 +16,7 @@
       (for [[group-list group-strings] grouped]
         [(first group-list) group-strings]))))
 
-(defn parse-patterns [category patterns-text]
+(defn parse-patterns [[category patterns-text]]
   (let [break #" - "
         flat-patterns (partition-by #(re-find break %) patterns-text)
         grouped-patterns (apply hash-map flat-patterns)]
@@ -28,11 +28,8 @@
        :answer t})))
 
 (defn parse-text [text]
-  (let [header-pattern #"^#"
-        categories (break-by header-pattern text)] 
-    (flatten
-      (for [[category patterns] categories]
-        (parse-patterns category patterns)))))
+  (let [categories (break-by #"^#" text)] 
+    (mapcat parse-patterns categories)))
 
 ; 'Main'
 
