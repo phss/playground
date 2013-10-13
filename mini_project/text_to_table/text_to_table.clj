@@ -23,7 +23,7 @@
           :let [[pattern question] (clojure.string/split title title-pattern)]]
       {:category category, :pattern pattern, :question question, :answer text})))
 
-(defn parse-text [text]
+(defn patterns-from [text]
   (let [categories (break-by #"^#" text)] 
     (mapcat parse-patterns categories)))
 
@@ -33,4 +33,6 @@
 
 (def text (remove-blank-lines (file-to-lines filename)))
 
-(println (parse-text text))
+(def patterns (patterns-from text))
+
+(println patterns)
