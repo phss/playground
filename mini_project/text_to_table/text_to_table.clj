@@ -21,8 +21,8 @@
        :answer t})))
 
 (defn parse-text [text]
-  (let [header? #(= \# (first %))
-        flat-categories (partition-by header? text)
+  (let [header-pattern #"^#"
+        flat-categories (partition-by #(re-find header-pattern %) text)
         grouped-categories (apply hash-map flat-categories)] 
     (flatten
       (for [[category patterns] grouped-categories]
