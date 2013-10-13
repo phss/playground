@@ -9,6 +9,13 @@
 
 ; Parse
 
+(defn break-by [pattern strings]
+  (let [flat (partition-by #(re-find pattern %) strings)
+        grouped (apply hash-map flat)] 
+    (into {}
+      (for [[group-list group-strings] grouped]
+        [(first group-list) group-strings]))))
+
 (defn parse-patterns [category patterns-text]
   (let [break #" - "
         flat-patterns (partition-by #(re-find break %) patterns-text)
@@ -22,11 +29,10 @@
 
 (defn parse-text [text]
   (let [header-pattern #"^#"
-        flat-categories (partition-by #(re-find header-pattern %) text)
-        grouped-categories (apply hash-map flat-categories)] 
+        categories (break-by header-pattern text)] 
     (flatten
-      (for [[category patterns] grouped-categories]
-        (parse-patterns (first category) patterns)))))
+      (for [[category patterns] categories]
+        (parse-patterns category patterns)))))
 
 ; 'Main'
 
