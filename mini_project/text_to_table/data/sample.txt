@@ -1,4 +1,4 @@
-Header 1
+#Header 1
 
 First Thing - What is the first thing?
 
@@ -12,7 +12,7 @@ Second Thing - What about the second thing?
 This be the second. Following a long test, repeatedly.Following a long test, repeatedly.Following a long test, repeatedly.Following a long test, repeatedly.Following a long test, repeatedly.Following a long test, repeatedly.Following a long test, repeatedly.
 
 
-Header 2
+#Header 2
 
 
 Another thing - More things?
