@@ -17,15 +17,11 @@
         [(first group-list) group-strings]))))
 
 (defn parse-patterns [[category patterns-text]]
-  (let [break #" - "
-        flat-patterns (partition-by #(re-find break %) patterns-text)
-        grouped-patterns (apply hash-map flat-patterns)]
-    (for [[p t] grouped-patterns
-          :let [[pattern question] (clojure.string/split (first p) break)]]
-      {:category category,
-       :pattern pattern,
-       :question question,
-       :answer t})))
+  (let [title-pattern #" - "
+        patterns (break-by title-pattern patterns-text)]
+    (for [[title text] patterns
+          :let [[pattern question] (clojure.string/split title title-pattern)]]
+      {:category category, :pattern pattern, :question question, :answer text})))
 
 (defn parse-text [text]
   (let [categories (break-by #"^#" text)] 
