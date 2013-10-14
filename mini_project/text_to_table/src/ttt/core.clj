@@ -1,3 +1,5 @@
+(ns ttt.core)
+
 ; File stuff
 
 (defn file-to-lines [filename]
@@ -30,12 +32,9 @@
   (let [categories (break-by #"^#" text)] 
     (mapcat parse-patterns categories)))
 
-; 'Main'
 
-(def filename "data/sample.txt")
 
-(def text (text-from filename))
-
-(def patterns (patterns-from text))
-
-(println patterns)
+(defn -main
+  [filename & args]
+  (let [text (text-from filename)]
+    (println (patterns-from text))))
