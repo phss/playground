@@ -35,8 +35,13 @@
 
 ; Output
 
-(defn html-table [patterns]
-  (html [:span "blah"]))
+(defn table-from [patterns]
+  [:table])
+
+(defn make-html [patterns]
+  (html [:html [:body 
+    (for [[category patterns] (group-by :category patterns)]
+      [:div [:h1 category] (table-from patterns)])]]))
 
 
 
@@ -44,4 +49,4 @@
   [filename & args]
   (let [text (text-from filename)
         patterns (patterns-from text)]
-    (println (html-table patterns))))
+    (println (make-html patterns))))
