@@ -36,7 +36,12 @@
 ; Output
 
 (defn table-from [patterns]
-  [:table])
+  [:table
+    [:tr
+      [:td "Pattern"] [:td "Question"] [:td "Answer"]]
+    (for [pattern patterns]
+      [:tr
+       [:td (pattern :pattern)] [:td (pattern :question)] [:td "Blah"]])])
 
 (defn make-html [patterns]
   (html [:html [:body 
