@@ -39,9 +39,9 @@
   [:table
     [:tr
       [:td "Pattern"] [:td "Question"] [:td "Answer"]]
-    (for [pattern patterns]
+    (for [{pattern :pattern question :question} patterns]
       [:tr
-       [:td (pattern :pattern)] [:td (pattern :question)] [:td "Blah"]])])
+       [:td pattern] [:td question] [:td "Blah"]])])
 
 (defn make-html [patterns]
   (html [:html [:body 
