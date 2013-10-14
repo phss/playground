@@ -36,7 +36,7 @@
 ; Output
 
 (defn shorten [text]
-  (let [limit (min 20 (count text))]
+  (let [limit (.indexOf text ".")]
     (subs text 0 limit)))
 
 (defn table-from [patterns]
