@@ -35,13 +35,15 @@
 
 ; Output
 
+(defn shorten [text]
+  (let [limit (min 20 (count text))]
+    (subs text 0 limit)))
+
 (defn table-from [patterns]
   [:table
-    [:tr
-      [:td "Pattern"] [:td "Question"] [:td "Answer"]]
-    (for [{pattern :pattern question :question} patterns]
-      [:tr
-       [:td pattern] [:td question] [:td "Blah"]])])
+    [:tr [:td "Pattern"] [:td "Question"] [:td "Answer"]]
+    (for [{pattern :pattern question :question answer :answer} patterns]
+      [:tr [:td pattern] [:td question] [:td (shorten (first answer))]])])
 
 (defn make-html [patterns]
   (html [:html [:body 
