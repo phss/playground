@@ -1,4 +1,5 @@
-(ns ttt.core)
+(ns ttt.core
+  (:use [hiccup.core]))
 
 ; File stuff
 
@@ -32,9 +33,15 @@
   (let [categories (break-by #"^#" text)] 
     (mapcat parse-patterns categories)))
 
+; Output
+
+(defn html-table [patterns]
+  (html [:span "blah"]))
+
 
 
 (defn -main
   [filename & args]
-  (let [text (text-from filename)]
-    (println (patterns-from text))))
+  (let [text (text-from filename)
+        patterns (patterns-from text)]
+    (println (html-table patterns))))
