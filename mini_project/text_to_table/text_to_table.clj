@@ -7,6 +7,9 @@
 (defn remove-blank-lines [lines]
   (remove clojure.string/blank? lines))
 
+(defn text-from [filename]
+  (remove-blank-lines (file-to-lines filename)))
+
 ; Parse
 
 (defn break-by [pattern strings]
@@ -31,7 +34,7 @@
 
 (def filename "data/sample.txt")
 
-(def text (remove-blank-lines (file-to-lines filename)))
+(def text (text-from filename))
 
 (def patterns (patterns-from text))
 
