@@ -53,7 +53,8 @@
     (subs text 0 limit)))
 
 (defn table-from [patterns]
-  [:table
+  [:table {:style "border-collapse:separate; border-spacing:0 1.2em;"}
+    [:col {:width "150px"}] [:col {:width "400px"}] [:col {:width "400px"}]
     [:tr  (header "Pattern") (header "Question") (header "Answer")]
     (for [{pattern :pattern question :question answer :answer} patterns]
       [:tr (bold-cell pattern) (italics-cell question) [:td (shorten (first answer))]])])
