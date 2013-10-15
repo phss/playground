@@ -47,6 +47,8 @@
   (let [style {:style "font-style:italic;"}]
     [:td style s]))
 
+(defn coll-size [size]
+  [:col {:width size}])
 
 (defn shorten [text]
   (let [limit (inc (.indexOf text "."))]
@@ -54,7 +56,7 @@
 
 (defn table-from [patterns]
   [:table {:style "border-collapse:separate; border-spacing:0 1.2em;"}
-    [:col {:width "150px"}] [:col {:width "400px"}] [:col {:width "400px"}]
+    (coll-size "150px") (coll-size "400px") (coll-size "400px")
     [:tr  (header "Pattern") (header "Question") (header "Answer")]
     (for [{pattern :pattern question :question answer :answer} patterns]
       [:tr (bold-cell pattern) (italics-cell question) [:td (shorten (first answer))]])])
