@@ -35,12 +35,10 @@
 
 ; Output
 
-(defn header [s]
-  (let [style {:style "font-weight:bold; font-size:1.2em;"}]
-    [:td style s]))
-
 (defn headers [col]
-  [:tr (map header col)])
+  (let [style {:style "font-weight:bold; font-size:1.2em;"}
+        header (fn [s] [:td style s])]
+    [:tr (map header col)]))
 
 (defn bold-cell [s]
   (let [style {:style "font-weight:bold;"}]
