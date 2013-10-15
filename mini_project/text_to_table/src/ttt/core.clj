@@ -67,7 +67,7 @@
     (for [[category patterns] (group-by :category patterns)]
       [:div [:h1 category] (table-from patterns)])]]))
 
-
+; Main
 
 (defn -main
   [filename & args]
