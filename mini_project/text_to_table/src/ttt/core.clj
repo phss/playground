@@ -36,7 +36,7 @@
 ; Output
 
 (defn header [s]
-  (let [style {:style "font-weight:bold;"}]
+  (let [style {:style "font-weight:bold; font-size:1.2em;"}]
     [:td style s]))
 
 (defn bold-cell [s]
@@ -44,7 +44,7 @@
     [:td style s]))
 
 (defn italics-cell [s]
-  (let [style {:style "font-weight:bold;"}]
+  (let [style {:style "font-style:italic;"}]
     [:td style s]))
 
 
