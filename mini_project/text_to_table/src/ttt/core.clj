@@ -39,6 +39,9 @@
   (let [style {:style "font-weight:bold; font-size:1.2em;"}]
     [:td style s]))
 
+(defn headers [col]
+  [:tr (map header col)])
+
 (defn bold-cell [s]
   (let [style {:style "font-weight:bold;"}]
     [:td style s]))
@@ -57,7 +60,7 @@
 (defn table-from [patterns]
   [:table {:style "border-collapse:separate; border-spacing:0 1.2em;"}
     (coll-size "150px") (coll-size "400px") (coll-size "400px")
-    [:tr  (header "Pattern") (header "Question") (header "Answer")]
+    (headers ["Pattern" "Question" "Answer"])
     (for [{pattern :pattern question :question answer :answer} patterns]
       [:tr (bold-cell pattern) (italics-cell question) [:td (shorten (first answer))]])])
 
