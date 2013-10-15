@@ -39,15 +39,24 @@
   (let [style {:style "font-weight:bold;"}]
     [:td style s]))
 
+(defn bold-cell [s]
+  (let [style {:style "font-weight:bold;"}]
+    [:td style s]))
+
+(defn italics-cell [s]
+  (let [style {:style "font-weight:bold;"}]
+    [:td style s]))
+
+
 (defn shorten [text]
-  (let [limit (.indexOf text ".")]
+  (let [limit (inc (.indexOf text "."))]
     (subs text 0 limit)))
 
 (defn table-from [patterns]
   [:table
     [:tr  (header "Pattern") (header "Question") (header "Answer")]
     (for [{pattern :pattern question :question answer :answer} patterns]
-      [:tr [:td pattern] [:td question] [:td (shorten (first answer))]])])
+      [:tr (bold-cell pattern) (italics-cell question) [:td (shorten (first answer))]])])
 
 (defn make-html [patterns]
   (html [:html [:body 
