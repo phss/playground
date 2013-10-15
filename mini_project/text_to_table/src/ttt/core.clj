@@ -59,7 +59,7 @@
       [:tr (bold-cell pattern) (italics-cell question) [:td (shorten (first answer))]])])
 
 (defn make-html [patterns]
-  (html [:html [:body 
+  (html [:html [:body {:style "font-family:\"nta\",Arial,sans-serif;"} 
     (for [[category patterns] (group-by :category patterns)]
       [:div [:h1 category] (table-from patterns)])]]))
 
