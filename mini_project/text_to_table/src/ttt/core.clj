@@ -35,13 +35,17 @@
 
 ; Output
 
+(defn header [s]
+  (let [style {:style "font-weight:bold;"}]
+    [:td style s]))
+
 (defn shorten [text]
   (let [limit (.indexOf text ".")]
     (subs text 0 limit)))
 
 (defn table-from [patterns]
   [:table
-    [:tr [:td "Pattern"] [:td "Question"] [:td "Answer"]]
+    [:tr  (header "Pattern") (header "Question") (header "Answer")]
     (for [{pattern :pattern question :question answer :answer} patterns]
       [:tr [:td pattern] [:td question] [:td (shorten (first answer))]])])
 
