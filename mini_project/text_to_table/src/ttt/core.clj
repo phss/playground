@@ -18,7 +18,7 @@
 (defn break-by [pattern strings]
   (let [flat (partition-by #(re-find pattern %) strings)
         grouped (apply array-map flat)] 
-    (into {}
+    (into []
       (for [[group-list group-strings] grouped]
         [(first group-list) group-strings]))))
 
