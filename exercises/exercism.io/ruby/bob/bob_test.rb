@@ -37,22 +37,18 @@ class TeenagerTest < MiniTest::Unit::TestCase
   end
 
   def test_talking_forcefully
-    skip
     assert_equal 'Whatever.', teenager.hey("Let's go make out behind the gym!")
   end
 
   def test_using_acronyms_in_regular_speech
-    skip
     assert_equal 'Whatever.', teenager.hey("It's OK if you don't want to go to the DMV.")
   end
 
   def test_forceful_questions
-    skip
     assert_equal 'Woah, chill out!', teenager.hey('WHAT THE HELL WERE YOU THINKING?')
   end
 
   def test_shouting_numbers
-    skip
     assert_equal 'Woah, chill out!', teenager.hey('1, 2, 3 GO!')
   end
 
