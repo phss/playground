@@ -29,12 +29,10 @@ class TeenagerTest < MiniTest::Unit::TestCase
   end
 
   def test_asking_a_question
-    skip
     assert_equal 'Sure.', teenager.hey('Does this cryogenic chamber make me look fat?')
   end
 
   def test_asking_a_numeric_question
-    skip
     assert_equal 'Sure.', teenager.hey('You are, what, like 15?')
   end
 
