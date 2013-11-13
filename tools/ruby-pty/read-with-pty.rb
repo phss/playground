@@ -4,7 +4,7 @@ def read_from(stream)
   begin
     stream.read_nonblock(1000).split("\n").map(&:chomp)
   rescue
-    nil
+    retry
   end
 end
 
@@ -14,10 +14,8 @@ pid = spawn("./sample-script", :in=>read, :out=>slave)
 
 puts "PID: #{pid}"
 
-text = nil
-while text.nil?
-  text = read_from(master)
-end
+puts "Script said: '#{read_from(master)}'"
 
-puts "Script said: '#{text}'"
+write.puts "42"
 
+puts "Script said again: '#{read_from(master)}'"
