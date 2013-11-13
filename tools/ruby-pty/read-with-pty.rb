@@ -1,11 +1,18 @@
 require 'pty'
 
 def read_from(stream)
+  output = []
+  count = 0
   begin
-    stream.read_nonblock(1000).split("\n").map(&:chomp)
-  rescue Errno::EAGAIN => e
-    retry
+    while true
+      output += stream.read_nonblock(100000).split("\n").map(&:chomp)
+      count = 0
+    end
+  rescue IO::WaitReadable => e
+    count += 1
+    retry if output.empty? || count < 1000
   end
+  return output
 end
 
 master, slave = PTY.open
