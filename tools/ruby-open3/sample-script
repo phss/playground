@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+puts "Give me a number!"
+
+number = gets.chomp
+
+puts "So, #{number} is not a parakeet."
