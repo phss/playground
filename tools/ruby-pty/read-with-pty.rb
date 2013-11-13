@@ -3,7 +3,7 @@ require 'pty'
 def read_from(stream)
   begin
     stream.read_nonblock(1000).split("\n").map(&:chomp)
-  rescue
+  rescue Errno::EAGAIN => e
     retry
   end
 end
