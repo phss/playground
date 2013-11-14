@@ -57,42 +57,34 @@ class TeenagerTest < MiniTest::Unit::TestCase
   end
 
   def test_question_with_only_numbers
-    skip
     assert_equal 'Sure.', teenager.hey('4?')
   end
 
   def test_shouting_with_special_characters
-    skip
     assert_equal 'Woah, chill out!', teenager.hey('ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!')
   end
 
   def test_shouting_with_no_exclamation_mark
-    skip
     assert_equal 'Woah, chill out!', teenager.hey('I HATE YOU')
   end
 
   def test_statement_containing_question_mark
-    skip
     assert_equal 'Whatever.', teenager.hey('Ending with ? means a question.')
   end
 
   def test_prattling_on
-    skip
     assert_equal 'Sure.', teenager.hey("Wait! Hang on. Are you going to be OK?")
   end
 
   def test_silence
-    skip
     assert_equal 'Fine. Be that way!', teenager.hey('')
   end
 
   def test_prolonged_silence
-    skip
     assert_equal 'Fine. Be that way!', teenager.hey('    ')
   end
 
   def test_on_multiple_line_questions
-    skip
     assert_equal 'Whatever.', teenager.hey(%{
 Does this cryogenic chamber make me look fat?
 no})

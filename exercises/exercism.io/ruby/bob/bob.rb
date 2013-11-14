@@ -5,6 +5,8 @@ class Bob
       'Woah, chill out!'
     elsif question?(phrase)
       'Sure.'
+    elsif quiet?(phrase)
+      'Fine. Be that way!'
     else
       'Whatever.'
     end
@@ -18,6 +20,10 @@ class Bob
 
   def question?(phrase)
     /\?$/.match(phrase)
+  end
+
+  def quiet?(phrase)
+    phrase.strip == ''
   end
 
 end
