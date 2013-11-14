@@ -13,11 +13,11 @@ class Bob
  private
 
   def shouting?(phrase)
-    phrase == phrase.upcase
+    /^([A-Z]|\d|\W)+$/.match(phrase)
   end
 
   def question?(phrase)
-    phrase =~ /\?$/
+    /\?$/.match(phrase)
   end
 
 end
