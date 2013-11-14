@@ -1,6 +1,7 @@
 class Bob
 
-  def hey(phrase)
+  def hey(raw_phrase)
+    phrase = raw_phrase.gsub("\n", '')
     if shouting?(phrase)
       'Woah, chill out!'
     elsif question?(phrase)
