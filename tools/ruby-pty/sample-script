@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+puts "Hey man!"
+puts "Give me a number."
+
+100.times { |i| puts "Printing #{i}" }
+
+number = gets.chomp
+
+puts "So, #{number} is not a parakeet."
