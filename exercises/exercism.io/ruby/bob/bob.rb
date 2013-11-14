@@ -13,7 +13,7 @@ class Bob
  private
 
   def shouting?(phrase)
-    /^([A-Z]|\d|\W)+$/.match(phrase)
+    /[A-Z]/.match(phrase) && !/[a-z]/.match(phrase)
   end
 
   def question?(phrase)
