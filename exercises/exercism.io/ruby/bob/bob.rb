@@ -14,8 +14,6 @@ class Bob
     end
   end
 
- private
-
 end
 
 class Conversation
