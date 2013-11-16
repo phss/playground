@@ -17,7 +17,7 @@ class Bob
  private
 
   def shouting?(phrase)
-    /[A-Z]/.match(phrase) && !/[a-z]/.match(phrase)
+    /[[:upper:]]/.match(phrase) && !/[[:lower:]]/.match(phrase)
   end
 
   def question?(phrase)
