@@ -23,15 +23,21 @@ class Conversation
   end
 
   def shouting?
-    /[[:upper:]]/.match(@phrase) && !/[[:lower:]]/.match(@phrase)
+    matches(/[[:upper:]]/) && !matches(/[[:lower:]]/)
   end
 
   def question?
-    /\?$/.match(@phrase)
+    matches(/\?$/)
   end
 
   def quiet?
     @phrase.strip.empty?
+  end
+
+ private
+
+  def matches(regexp)
+    regexp.match(@phrase)
   end
 
 end
