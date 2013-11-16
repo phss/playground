@@ -1,13 +1,13 @@
 class Bob
 
   def hey(multiline_phrase)
-    phrase = multiline_phrase.gsub("\n", '')
+    conversation = Conversation.new(multiline_phrase)
 
-    if shouting?(phrase)
+    if conversation.shouting?
       'Woah, chill out!'
-    elsif question?(phrase)
+    elsif conversation.question?
       'Sure.'
-    elsif quiet?(phrase)
+    elsif conversation.quiet?
       'Fine. Be that way!'
     else
       'Whatever.'
@@ -16,16 +16,24 @@ class Bob
 
  private
 
-  def shouting?(phrase)
-    /[[:upper:]]/.match(phrase) && !/[[:lower:]]/.match(phrase)
+end
+
+class Conversation
+
+  def initialize(multiline_phrase)
+    @phrase = multiline_phrase.gsub("\n", '')
   end
 
-  def question?(phrase)
-    /\?$/.match(phrase)
+  def shouting?
+    /[[:upper:]]/.match(@phrase) && !/[[:lower:]]/.match(@phrase)
   end
 
-  def quiet?(phrase)
-    phrase.strip == ''
+  def question?
+    /\?$/.match(@phrase)
+  end
+
+  def quiet?
+    @phrase.strip == ''
   end
 
 end
