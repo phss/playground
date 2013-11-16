@@ -1,7 +1,7 @@
 class Bob
 
-  def hey(multiline_phrase)
-    conversation = Conversation.new(multiline_phrase)
+  def hey(phrase)
+    conversation = Conversation.new(phrase)
 
     if conversation.shouting?
       'Woah, chill out!'
@@ -18,8 +18,8 @@ end
 
 class Conversation
 
-  def initialize(multiline_phrase)
-    @phrase = multiline_phrase.gsub("\n", '')
+  def initialize(phrase)
+    @phrase = phrase
   end
 
   def shouting?
@@ -27,7 +27,7 @@ class Conversation
   end
 
   def question?
-    matches(/\?$/)
+    @phrase.end_with?('?')
   end
 
   def quiet?
