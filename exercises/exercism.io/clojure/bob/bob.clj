@@ -2,7 +2,8 @@
   (:use clojure.string))
 
 (defn shouting? [phrase]
-  (= phrase (upper-case phrase)))
+  (and (re-find #"\p{Upper}" phrase)
+      (not (re-find #"\p{Lower}" phrase))))
 
 (defn quiet? [phrase]
   (= (trim phrase) ""))
@@ -12,7 +13,7 @@
 
 (defn response-for [phrase]
   (cond
-    (quiet? phrase) "Fine. Be that way!"
     (shouting? phrase) "Woah, chill out!"
     (question? phrase) "Sure."
+    (quiet? phrase) "Fine. Be that way!"
     :else "Whatever."))
