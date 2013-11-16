@@ -31,7 +31,7 @@ class Conversation
   end
 
   def quiet?
-    @phrase.strip == ''
+    @phrase.strip.empty?
   end
 
 end
