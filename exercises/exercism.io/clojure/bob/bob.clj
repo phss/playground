@@ -1,5 +1,5 @@
 (ns bob
-  (:use clojure.string))
+  (:use [clojure.string :only [trim]]))
 
 (defn shouting? [phrase]
   (and (re-find #"\p{Upper}" phrase)
