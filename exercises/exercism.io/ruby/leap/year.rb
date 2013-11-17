@@ -5,7 +5,7 @@ class Year
   end
 
   def leap?
-    evenly_divisible_by?(4) && !evenly_divisible_by?(100)
+    evenly_divisible_by?(4) && (evenly_divisible_by?(400) || !evenly_divisible_by?(100))
   end
 
  private

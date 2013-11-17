@@ -15,7 +15,6 @@ class YearTest < MiniTest::Unit::TestCase
   end
 
   def test_exceptional_century
-    skip
     assert Year.new(2400).leap?
   end
 
