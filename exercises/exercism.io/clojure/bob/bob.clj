@@ -9,5 +9,5 @@
     (cond
       shouting? "Woah, chill out!"
       question? "Sure."
-      quiet? "Fine. Be that way!"
-      :else "Whatever.")))
+      quiet?    "Fine. Be that way!"
+      :else     "Whatever.")))
