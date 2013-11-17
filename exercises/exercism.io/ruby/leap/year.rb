@@ -1,10 +1,11 @@
 class Year
 
   def initialize(year)
+    @year = year
   end
 
   def leap?
-    true
+    @year % 4 == 0
   end
 
 end
