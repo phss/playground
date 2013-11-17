@@ -11,7 +11,6 @@ class YearTest < MiniTest::Unit::TestCase
   end
 
   def test_century
-    skip
     refute Year.new(1900).leap?
   end
 
