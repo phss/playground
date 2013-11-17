@@ -2,7 +2,8 @@
   (:use [clojure.string :only [trim]]))
 
 (defn response-for [phrase]
-  (let [shouting? (and (re-find #"\p{Upper}" phrase) (not (re-find #"\p{Lower}" phrase)))
+  (let [matches (fn [& patterns] (every? #(re-find % phrase) patterns))
+        shouting? (matches #"\p{Upper}" #"^[^\p{Lower}]*$")
         question? (= \? (last phrase))
         quiet? (= (trim phrase) "")] 
     (cond
