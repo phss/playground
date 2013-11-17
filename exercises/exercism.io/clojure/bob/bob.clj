@@ -1,5 +1,4 @@
-(ns bob
-  (:use [clojure.string :only [trim]]))
+(ns bob)
 
 (defn response-for [phrase]
   (let [matches (fn [& patterns] (every? #(re-find % phrase) patterns))
