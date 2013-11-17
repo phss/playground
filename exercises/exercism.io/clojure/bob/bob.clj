@@ -4,8 +4,8 @@
 (defn response-for [phrase]
   (let [matches (fn [& patterns] (every? #(re-find % phrase) patterns))
         shouting? (matches #"\p{Upper}" #"^[^\p{Lower}]*$")
-        question? (= \? (last phrase))
-        quiet? (= (trim phrase) "")] 
+        question? (matches #"\?$")
+        quiet?    (matches #"^\s*$")] 
     (cond
       shouting? "Woah, chill out!"
       question? "Sure."
