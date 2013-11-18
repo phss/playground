@@ -2,4 +2,5 @@
   (:use [clojure.string :only [replace]]))
 
 (defn to-rna [dna]
-  (replace dna #"T" "U"))
+  (let [thymidine "T" uracil "U"]
+    (replace dna thymidine uracil)))
