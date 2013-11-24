@@ -6,6 +6,7 @@
     lower-phrase))
 
 (defn word-count [phrase]
-  (let [words (split (sanitize phrase) #" ")]
+  (let [space #"\s"
+        words (split (sanitize phrase) space)]
     (frequencies words)))
 
