@@ -12,7 +12,21 @@
       cal.init({
         start: new Date(2013, 0),
         data: "github.json",
+        cellSize: 15,
+        domainGutter: 20,
         domain: "month",
+        subDomain: "x_day",
+        subDomainTextFormat: "%d",
+        displayLegend: false,
+        verticalOrientation: true,
+        label: {
+          position: "left",
+        	offset: {
+	      		x: 20,
+	      		y: 35
+	      	},
+	      	width: 110
+        }
       });
     </script>
   </body>
