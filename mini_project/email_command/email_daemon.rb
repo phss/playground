@@ -8,6 +8,8 @@ Mail.defaults do
                           :password => ARGV.shift
 end
 
-mail = Mail.last
+mails = Mail.find_and_delete
 
-puts mail.text_part.body
+mails.each do |mail|
+  puts mail.text_part.body
+end
