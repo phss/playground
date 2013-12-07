@@ -8,4 +8,6 @@ Mail.defaults do
                           :password => ARGV.shift
 end
 
-puts Mail.first
+mail = Mail.last
+
+puts mail.text_part.body
