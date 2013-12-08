@@ -1,7 +1,11 @@
 require "mail"
+require "yaml"
 
-username = ARGV.shift
-password = ARGV.shift
+config = YAML.load_file('config.yaml')
+
+username = config['username']
+password = config['password']
+master = config['master']
 
 Mail.defaults do
   retriever_method :imap, :address => "imap.gmail.com",
@@ -24,8 +28,8 @@ mails.each do |mail|
 end
 
 Mail.deliver do
-  to '???'
-  from "#{username}@gmail.com"
+  to master
+  from username
   subject 'Testing'
   body 'This stuff'
 end
