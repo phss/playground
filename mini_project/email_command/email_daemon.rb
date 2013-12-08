@@ -21,15 +21,16 @@ Mail.defaults do
                          :password => password
 end
 
-mails = Mail.find_and_delete
+
+#mails = Mail.find_and_delete
+mails = Mail.all
 
 mails.each do |mail|
-  puts mail.text_part.body
+  if mail.from.include? master
+    puts "Replying to #{master}"
+    mail.reply do
+      body "This is what you said: #{mail.text_part.body}"
+    end.deliver
+  end
 end
 
-Mail.deliver do
-  to master
-  from username
-  subject 'Testing'
-  body 'This stuff'
-end
