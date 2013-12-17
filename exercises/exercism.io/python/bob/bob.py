@@ -20,4 +20,4 @@ class Conversation(object):
     return not self.phrase.strip()
     
   def is_a_question(self):
-    pass
+    return self.phrase.endswith('?')
