@@ -1,5 +1,6 @@
 (ns anagram)
 
-(defn anagrams-for [s col]
-  (let [anagram? (fn [a] (= (sort s) (sort a)))]
-    (filter anagram? col)))
+(defn anagrams-for [word candidates]
+  (let [keify #(sort %)
+        anagram? (fn [a] (= (keify word) (keify a)))]
+    (filter anagram? candidates)))
