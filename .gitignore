@@ -1,3 +1,4 @@
 rawr/todo
 *.swp
 *~
+*.pyc
