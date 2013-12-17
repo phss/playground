@@ -7,7 +7,7 @@ class Bob(object):
         return 'Fine. Be that way!'
     elif conversation.is_shouting():
         return 'Woah, chill out!'
-    elif conversation.is_a_question():
+    elif conversation.is_asking():
         return 'Sure.'
     else:
         return 'Whatever.'
@@ -21,7 +21,7 @@ class Conversation(object):
   def is_quiet(self):
     return not self.phrase.strip()
 
-  def is_a_question(self):
+  def is_asking(self):
     return self.phrase.endswith('?')
 
   def is_shouting(self):
