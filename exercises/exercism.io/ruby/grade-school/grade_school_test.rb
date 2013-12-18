@@ -41,7 +41,6 @@ class SchoolTest < MiniTest::Unit::TestCase
   end
 
   def test_get_students_in_a_non_existant_grade
-    skip
     assert_equal [], school.grade(1)
   end
 
