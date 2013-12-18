@@ -1,28 +1,28 @@
 class Bob(object):
 
   def hey(self, phrase):
-    conversation = Conversation(phrase)
+    utterance = Utterance(phrase)
 
-    if conversation.is_quiet():
+    if utterance.is_silence():
         return 'Fine. Be that way!'
-    elif conversation.is_shouting():
+    elif utterance.is_a_shout():
         return 'Woah, chill out!'
-    elif conversation.is_asking():
+    elif utterance.is_a_question():
         return 'Sure.'
     else:
         return 'Whatever.'
 
 
-class Conversation(object):
+class Utterance(object):
 
   def __init__(self, phrase):
     self.phrase = phrase
 
-  def is_quiet(self):
+  def is_silence(self):
     return not self.phrase.strip()
 
-  def is_asking(self):
+  def is_a_question(self):
     return self.phrase.endswith('?')
 
-  def is_shouting(self):
+  def is_a_shout(self):
     return self.phrase.isupper()
