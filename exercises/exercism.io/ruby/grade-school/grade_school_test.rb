@@ -34,7 +34,6 @@ class SchoolTest < MiniTest::Unit::TestCase
   end
 
   def test_get_students_in_a_grade
-    skip
     school.add("Franklin", 5)
     school.add("Bradley", 5)
     school.add("Jeff", 1)
