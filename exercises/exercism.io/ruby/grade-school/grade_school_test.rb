@@ -16,7 +16,6 @@ class SchoolTest < MiniTest::Unit::TestCase
   end
 
   def test_add_student
-    skip
     school.add("Aimee", 2)
     assert_equal({2 => ["Aimee"]}, school.db)
   end
