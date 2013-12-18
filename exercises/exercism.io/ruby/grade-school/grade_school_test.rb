@@ -28,7 +28,6 @@ class SchoolTest < MiniTest::Unit::TestCase
   end
 
   def test_add_students_to_different_grades
-    skip
     school.add("Chelsea", 3)
     school.add("Logan", 7)
     assert_equal({3 => ["Chelsea"], 7 => ["Logan"]}, school.db)
