@@ -8,7 +8,8 @@ class School
   end
 
   def add(student_name, grade)
-    @db[grade] = [student_name]
+    @db[grade] ||= []
+    @db[grade] << student_name
   end
 
 end

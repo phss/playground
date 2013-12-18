@@ -21,7 +21,6 @@ class SchoolTest < MiniTest::Unit::TestCase
   end
 
   def test_add_more_students_in_same_class
-    skip
     school.add("James", 2)
     school.add("Blair", 2)
     school.add("Paul", 2)
