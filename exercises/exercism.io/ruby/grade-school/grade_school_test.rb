@@ -45,7 +45,6 @@ class SchoolTest < MiniTest::Unit::TestCase
   end
 
   def test_sort_school
-    skip
     school.add("Jennifer", 4)
     school.add("Kareem", 6)
     school.add("Christopher", 4)
