@@ -4,7 +4,7 @@ class School
   attr_reader :db
 
   def initialize
-    @db = Hash.new { |h, k| h[k] = [] }
+    @db = Hash.new { |db, grade| db[grade] = [] }
   end
 
   def add(student_name, grade_number)
