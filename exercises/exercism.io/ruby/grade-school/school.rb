@@ -16,8 +16,7 @@ class School
   end
 
   def sort
-    sorted_db = Hash[@db.sort]
-    sorted_db.each { |grade, students| students.sort! }
+    Hash[@db.sort].each { |_, students| students.sort! }
   end
 
 end
