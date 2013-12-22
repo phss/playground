@@ -7,22 +7,18 @@ class HammingTest < MiniTest::Unit::TestCase
   end
 
   def test_complete_hamming_distance_of_for_single_nucleotide_strand
-    skip
     assert_equal 1, Hamming.compute('A','G')
   end
 
   def test_complete_hamming_distance_of_for_small_strand
-    skip
     assert_equal 2, Hamming.compute('AG','CT')
   end
 
   def test_small_hamming_distance
-    skip
     assert_equal 1, Hamming.compute('AT','CT')
   end
 
   def test_small_hamming_distance_in_longer_strand
-    skip
     assert_equal 1, Hamming.compute('GGACG', 'GGTCG')
   end
 
