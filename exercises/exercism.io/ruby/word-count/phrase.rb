@@ -5,7 +5,8 @@ class Phrase
   end
 
   def word_count
-    { @raw_phrase => 1 }
+    words = @raw_phrase.split
+    words.inject(Hash.new(0)) { |hash, word| hash[word] += 1; hash }
   end
 
 end

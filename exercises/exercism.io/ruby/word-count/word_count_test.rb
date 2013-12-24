@@ -10,21 +10,18 @@ class PhraseTest < MiniTest::Unit::TestCase
   end
 
   def test_count_one_of_each
-    skip
     phrase = Phrase.new("one of each")
     counts = {"one" => 1, "of" => 1, "each" => 1}
     assert_equal counts, phrase.word_count
   end
 
   def test_count_multiple_occurrences
-    skip
     phrase = Phrase.new("one fish two fish red fish blue fish")
     counts = {"one" => 1, "fish" => 4, "two" => 1, "red" => 1, "blue" => 1}
     assert_equal counts, phrase.word_count
   end
 
   def test_count_everything_just_once
-    skip
     phrase = Phrase.new("all the kings horses and all the kings men")
     phrase.word_count # count it an extra time
     counts = {
