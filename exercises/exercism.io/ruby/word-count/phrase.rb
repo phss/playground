@@ -5,7 +5,7 @@ class Phrase
   end
 
   def word_count
-    words = @raw_phrase.scan(/\w+/)
+    words = @raw_phrase.scan(/\w+/).map(&:downcase)
     words.frequency
   end
 
