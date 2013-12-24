@@ -6,7 +6,15 @@ class Phrase
 
   def word_count
     words = @raw_phrase.split
-    words.inject(Hash.new(0)) { |hash, word| hash[word] += 1; hash }
+    words.frequency
+  end
+
+end
+
+module Enumerable
+
+  def frequency
+    inject(Hash.new(0)) { |hash, elem| hash[elem] += 1; hash }
   end
 
 end
