@@ -3,6 +3,6 @@
 
 (defn anagrams-for [word candidates]
   (let [keify #(sort (lower-case %))
-        anagram? (fn [candidate] (and (= (keify word) (keify candidate))
-                                      (not= word candidate)))]
+        anagram? #(and (= (keify word) (keify %))
+                                      (not= word %))]
     (filter anagram? candidates)))
