@@ -1,3 +1,5 @@
+THYMIDINE = "T"
+URACIL = "U"
 
 class DNA(object):
 
@@ -5,5 +7,5 @@ class DNA(object):
     self.dna_string = dna_string
 
   def to_rna(self):
-    return self.dna_string.replace("T", "U")
+    return self.dna_string.replace(THYMIDINE, URACIL)
 
