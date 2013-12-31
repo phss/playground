@@ -7,6 +7,6 @@ class Phrase(object):
 
   def word_count(self):
     occurences = defaultdict(int)
-    for word in self.string.split():
+    for word in self.string.lower().split():
       occurences[word] += 1
     return occurences
