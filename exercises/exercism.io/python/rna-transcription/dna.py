@@ -5,5 +5,5 @@ class DNA(object):
     self.dna_string = dna_string
 
   def to_rna(self):
-    return self.dna_string
+    return self.dna_string.replace("T", "U")
 
