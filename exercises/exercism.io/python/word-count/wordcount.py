@@ -4,4 +4,4 @@ class Phrase(object):
     self.string = string
 
   def word_count(self):
-    pass
+    return { self.string: 1 }
