@@ -1,4 +1,5 @@
 from collections import defaultdict
+import re
 
 class Phrase(object):
 
@@ -12,4 +13,5 @@ class Phrase(object):
     return occurences
 
   def __normalised_words(self):
-    return self.string.lower().split()
+    normalised_string = self.string.lower()
+    return re.compile("[\w']+").findall(normalised_string)
