@@ -7,10 +7,7 @@ class Phrase(object):
     self.string = string
 
   def word_count(self):
-    occurences = Counter()
-    for word in self.__normalised_words():
-      occurences[word] += 1
-    return occurences
+    return Counter(self.__normalised_words())
 
   def __normalised_words(self):
     normalised_string = self.string.lower()
