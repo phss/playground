@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import Counter
 import re
 
 class Phrase(object):
@@ -7,7 +7,7 @@ class Phrase(object):
     self.string = string
 
   def word_count(self):
-    occurences = defaultdict(int)
+    occurences = Counter()
     for word in self.__normalised_words():
       occurences[word] += 1
     return occurences
