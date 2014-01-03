@@ -22,9 +22,18 @@ def k_product_sum(numbers)
   return numbers.size + product - sum
 end
 
-puts k_product_sum([2, 2, 2])
-
 upper = 6
 ks = {}
-#for_all_permutations do |permutation|
-#end
+counter = 0
+for_all_permutations do |permutation|
+  break if counter > 1000
+  counter += 1
+
+  k = k_product_sum(permutation)
+  product = permutation.reduce(&:*)
+  if k <= upper && (!ks.has_key?(k) || ks[k] > product)
+    ks[k] = product
+  end
+end
+
+puts ks.values.uniq.reduce(&:+)
