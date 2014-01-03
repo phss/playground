@@ -22,11 +22,11 @@ def k_product_sum(numbers)
   return numbers.size + product - sum
 end
 
-upper = 6
+upper = 500
 ks = {}
 counter = 0
 for_all_permutations do |permutation|
-  break if counter > 1000
+  break if counter > 100000
   counter += 1
 
   k = k_product_sum(permutation)
@@ -36,4 +36,6 @@ for_all_permutations do |permutation|
   end
 end
 
+puts ks.size
+puts ks.values.sort.join(', ')
 puts ks.values.uniq.reduce(&:+)
