@@ -25,4 +25,17 @@
     (let [next-nums (next-permutations nums)]
       (concat next-nums (lazy-seq (all-permutations next-nums))))))
 
-(println (take 100 (all-permutations)))
+(defn sum-min-product-sum [lower upper]
+  (loop [ks {} nums (all-permutations)]
+    (if (= (count ks) (dec upper))
+      ks
+      (let [comb (first nums)
+            prod (reduce * comb)
+            k (k-product-sum comb)]
+        (if (or (not (contains? ks k)) (< prod (ks k)))
+          (recur (assoc ks k prod) (next nums))
+          (recur ks (next nums)))))))
+
+
+(println (sum-min-product-sum 2 6))
+
