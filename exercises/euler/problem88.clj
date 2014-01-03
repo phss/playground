@@ -14,5 +14,15 @@
         sum (reduce + numbers)]
     (+ (count numbers) (- product sum))))
 
-(println (k-product-sum [2 3]))
-(println (k-product-sum [2 2 2]))
+(defn next-permutations [nums]
+  (for [n nums
+        nx (range (last n) 10)]
+    (conj n nx)))
+
+(defn all-permutations
+  ([] (all-permutations (map (fn [n] [n]) (range 2 10))))
+  ([nums]
+    (let [next-nums (next-permutations nums)]
+      (concat next-nums (lazy-seq (all-permutations next-nums))))))
+
+(println (take 100 (all-permutations)))
