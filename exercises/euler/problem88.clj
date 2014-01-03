@@ -37,5 +37,8 @@
           (recur ks (next nums)))))))
 
 
-(println (sum-min-product-sum 2 6))
+(def prod-sums (map (fn [comb] {(k-product-sum comb) (reduce * comb)}) (take 12001 (all-permutations))))
 
+(def smallest-prod-sums (reduce (partial merge-with min) prod-sums))
+
+(println (reduce + (set (vals (select-keys smallest-prod-sums (range 2 12001))))))
