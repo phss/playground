@@ -15,11 +15,16 @@ def for_all_permutations
   end
 end
 
-counter = 0
-for_all_permutations do |permutation|
-  puts permutation.join
-  if counter > 100
-    break
-  end
-  counter += 1
+def k_product_sum(numbers)
+  product = numbers.reduce(&:*) 
+  sum = numbers.reduce(&:+) 
+
+  return numbers.size + product - sum
 end
+
+puts k_product_sum([2, 2, 2])
+
+upper = 6
+ks = {}
+#for_all_permutations do |permutation|
+#end
