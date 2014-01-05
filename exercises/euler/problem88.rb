@@ -22,11 +22,11 @@ def k_product_sum(numbers)
   return numbers.size + product - sum
 end
 
-upper = 500
+upper = 15
 ks = {}
 counter = 0
 for_all_permutations do |permutation|
-  break if counter > 100000
+  break if counter > 10000
   counter += 1
 
   k = k_product_sum(permutation)
