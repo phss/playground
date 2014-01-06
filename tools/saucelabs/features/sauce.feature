@@ -1,6 +1,6 @@
-Feature: Showing off behave
+Feature: Connecting to Sauce Labs
 
-  Scenario: Run a simple test
-    Given we have behave installed
-     When we implement 5 tests
-     Then behave will test them for us!
+  Scenario: Simple assertion
+    Given I am in the test page
+     When I submit with "Hello from Sauce Labs"
+     Then I have a comment with "Hello from Sauce Labs"

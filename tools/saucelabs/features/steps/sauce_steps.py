@@ -1,15 +1,13 @@
 from behave import given, when, then, step
 
-@given('we have behave installed')
+@given(u'I am in the test page')
 def step_impl(context):
-  pass
+  assert False
 
-@when('we implement {number:d} tests')
-def step_impl(context, number):  # -- NOTE: number is converted into integer
-  assert number > 1 or number == 0
-  context.tests_count = number
-
-@then('behave will test them for us!')
+@when(u'I submit with "Hello from Sauce Labs"')
 def step_impl(context):
-  assert context.failed is False
-  assert context.tests_count >= 0
+  assert False
+      
+@then(u'I have a comment with "Hello from Sauce Labs"')
+def step_impl(context):
+  assert False
