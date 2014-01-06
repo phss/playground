@@ -7,6 +7,8 @@ from selenium import webdriver
 class Selenium2OnSauce(unittest.TestCase):
 
     def setUp(self):
+        sauce_executor = open('.config').read().rstrip()
+
         desired_capabilities = webdriver.DesiredCapabilities.IPHONE
         desired_capabilities['version'] = '5.0'
         desired_capabilities['platform'] = 'MAC'
@@ -14,8 +16,7 @@ class Selenium2OnSauce(unittest.TestCase):
 
         self.driver = webdriver.Remote(
             desired_capabilities=desired_capabilities,
-            command_executor="http://username-string:access-key-string@ondemand.saucelabs.com:80/wd/hub"
-        )
+            command_executor=sauce_executor)
         self.driver.implicitly_wait(30)
 
     def test_sauce(self):
