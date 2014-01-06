@@ -11,6 +11,7 @@ def step_impl(context, text):
   comments.send_keys(text)
   context.driver.find_element_by_id('submit').click()
       
-@then(u'I have a comment with "Hello from Sauce Labs"')
-def step_impl(context):
-  assert False
+@then(u'I have a comment with "{text}"')
+def step_impl(context, text):
+  commented = context.driver.find_element_by_id('your_comments')
+  assert text in commented.text
