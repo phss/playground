@@ -1,6 +1,8 @@
 import unittest
 from selenium import webdriver
 
+# Instructions: https://saucelabs.com/docs/ondemand/getting-started/env/python/se2/mac
+# Example: https://saucelabs.com/jobs/73b79dcea77f4a429487ab49ee75ed66
 
 class Selenium2OnSauce(unittest.TestCase):
 
