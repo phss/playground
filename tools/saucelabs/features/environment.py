@@ -12,3 +12,6 @@ def before_all(context):
       desired_capabilities=desired_capabilities,
       command_executor=sauce_executor)
   context.driver.implicitly_wait(30)
+
+def after_all(context):
+  context.driver.quit()
