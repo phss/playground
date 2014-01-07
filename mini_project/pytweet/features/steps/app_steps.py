@@ -11,7 +11,9 @@ def step(context):
 
 @when(u'I create a new account "{name}" with password "{password}"')
 def impl(context, name, password):
-    assert False
+    context.response = context.client.post('/create-account', data=dict(
+        username=name,
+        password=password))
 
 @then(u'I see the app name is "{app_name}"')
 def step(context, app_name):
@@ -19,4 +21,4 @@ def step(context, app_name):
 
 @then(u'Then I should see a message "{message}"')
 def step(context, message):
-    assert False
+    assert_that(context.response.data, contains_string(message))
