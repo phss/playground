@@ -1,12 +1,19 @@
 #!/usr/bin/env python
 
-from app.models import Base, engine, Config, session
+from app.models import Base, engine, Config, make_session
 
-if __name__ == "__main__":
+
+def reset_db():
     Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
 
-    config = Config(app_name="PyTweet")
-    session = session()
-    session.add(config)
+
+def create_default_config():
+    session = make_session()
+    session.add(Config(app_name="PyTweet"))
     session.commit()
+
+
+if __name__ == "__main__":
+    reset_db()
+    create_default_config()

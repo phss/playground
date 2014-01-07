@@ -7,7 +7,7 @@ Base = declarative_base()
 
 engine = create_engine("postgresql+psycopg2://vagrant@/pytweet?host=/var/run/postgresql")
 
-def session():
+def make_session():
     Session = sessionmaker()
     Session.configure(bind=engine)
     return Session()
