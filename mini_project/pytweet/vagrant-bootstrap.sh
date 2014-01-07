@@ -11,3 +11,4 @@ sudo -u postgres createdb $USER
 echo "## Installing python"
 
 sudo apt-get -y install python
+sudo apt-get -y install python-pip
