@@ -1,4 +1,4 @@
-from app.models import make_session, Config
+from app.models import Session, Config
 
 def app_name():
-    return make_session().query(Config).first().app_name
+    return Session().query(Config).first().app_name
