@@ -1,5 +1,6 @@
 from app import routes
 from hamcrest import *
+from behave import given, when, then
 
 @given('the app is running')
 def step(context):
