@@ -7,6 +7,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.define "development", primary: true do |development|
       development.vm.network "forwarded_port", guest: 8000, host: 9000
+      development.vm.provision :shell, path: "vagrant-bootstrap.sh"
     end
 
 end
