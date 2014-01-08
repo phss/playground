@@ -14,4 +14,6 @@ class RoutesTest(TestCase):
         mock_api.return_value = 'Some interesting name'
         response = self.client.get('/')
 
+        self.assert200(response)
+        self.assertTemplateUsed("homepage.html")
         assert_that(response.data, contains_string('Some interesting name'))
