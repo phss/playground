@@ -24,10 +24,12 @@ class RoutesTest(TestCase):
         self.assert_200(response)
         self.assert_template_used('create_account.html')
 
-    def test_creating_an_user(self):
+    @patch('app.api.create_user')
+    def test_creating_an_user(self, mock_api):
         response = self.client.post('/create-account', data=dict(
             username='someuser',
             password='somepassword'))
 
         self.assert_200(response)
         self.assert_template_used('account_created.html')
+        mock_api.assert_called_with()
