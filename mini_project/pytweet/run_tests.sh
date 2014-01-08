@@ -6,4 +6,6 @@ sudo pip install -r requirements.txt
 
 nosetests unit/
 
+nosetests integration/
+
 behave --tags=-wip
