@@ -5,5 +5,5 @@ def app_name():
     return Session().query(Config).first().app_name
 
 
-def create_user():
+def create_account():
     raise NotImplementedError

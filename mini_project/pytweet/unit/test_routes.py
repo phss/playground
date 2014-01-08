@@ -24,7 +24,7 @@ class RoutesTest(TestCase):
         self.assert_200(response)
         self.assert_template_used('create_account.html')
 
-    @patch('app.api.create_user')
+    @patch('app.api.create_account')
     def test_creating_an_user(self, mock_api):
         response = self.client.post('/create-account', data=dict(
             username='someuser',

@@ -12,5 +12,5 @@ def create_account():
     if request.method == 'GET':
         return render_template('create_account.html')
     else:
-        api.create_user(request.form['username'], request.form['password'])
+        api.create_account(request.form['username'], request.form['password'])
         return render_template('account_created.html')
