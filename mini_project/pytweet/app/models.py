@@ -16,3 +16,11 @@ class Config(Base):
 
     config_id = Column(Integer, primary_key=True)
     app_name = Column(String, nullable=False)
+
+
+class User(Base):
+    __tablename__ = 'users'
+
+    user_id = Column(Integer, primary_key=True)
+    username = Column(String, nullable=False)
+    password = Column(String, nullable=False)
