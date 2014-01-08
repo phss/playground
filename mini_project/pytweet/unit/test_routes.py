@@ -23,3 +23,11 @@ class RoutesTest(TestCase):
 
         self.assert_200(response)
         self.assert_template_used('create_account.html')
+
+    def test_creating_an_user(self):
+        response = self.client.post('/create-account', data=dict(
+            username='someuser',
+            password='somepassword'))
+
+        self.assert_200(response)
+        self.assert_template_used('account_created.html')

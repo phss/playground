@@ -1,5 +1,5 @@
 from app import api
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 app = Flask(__name__)
 
 
@@ -9,4 +9,7 @@ def homepage():
 
 @app.route('/create-account', methods=['GET', 'POST'])
 def create_account():
-    return render_template('create_account.html')
+    if request.method == 'GET':
+        return render_template('create_account.html')
+    else:
+        return render_template('account_created.html')
