@@ -15,5 +15,5 @@ class RoutesTest(TestCase):
         response = self.client.get('/')
 
         self.assert200(response)
-        self.assertTemplateUsed("homepage.html")
-        assert_that(response.data, contains_string('Some interesting name'))
+        self.assertTemplateUsed('homepage.html')
+        self.assertContext('app_name', 'Some interesting name')
