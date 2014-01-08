@@ -20,6 +20,6 @@ def impl(context, name, password):
 def step(context, app_name):
     assert_that(context.response.data, contains_string(app_name))
 
-@then(u'Then I should see a message "{message}"')
+@then(u'I should see a message "{message}"')
 def step(context, message):
     assert_that(context.response.data, contains_string(message))

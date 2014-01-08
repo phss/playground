@@ -13,4 +13,4 @@ def create_account():
         return render_template('create_account.html')
     else:
         api.create_account(request.form['username'], request.form['password'])
-        return render_template('account_created.html')
+        return render_template('account_created.html', username=request.form['username'])
