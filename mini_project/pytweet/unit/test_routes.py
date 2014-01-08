@@ -32,4 +32,4 @@ class RoutesTest(TestCase):
 
         self.assert_200(response)
         self.assert_template_used('account_created.html')
-        mock_api.assert_called_with()
+        mock_api.assert_called_with('someuser', 'somepassword')
