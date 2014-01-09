@@ -17,6 +17,9 @@ class UserAccountTest(unittest.TestCase):
         session.query(User).delete()
         session.commit()
 
+    def test_returns_none_when_getting_inexistant_account(self):
+        assert_that(get_account('noone'), is_(None))
+
     def test_create_an_account(self):
         create_account('somename', 'somepass')
 
