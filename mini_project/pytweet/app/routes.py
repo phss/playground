@@ -45,7 +45,7 @@ def log_user():
         return render_template('failure.html', message='Failed to authenticate')
 
 
-@app.route('/logout', methods=['POST'])
+@app.route('/logout', methods=['GET', 'POST'])
 def logout():
     session.pop('logged_in_user', None)
     return redirect(url_for('homepage'))
