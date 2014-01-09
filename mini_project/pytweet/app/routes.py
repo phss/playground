@@ -14,5 +14,8 @@ def create_account():
     else:
         username = request.form['username']
         password = request.form['password']
-        api.create_account(username, password)
-        return render_template('account_created.html', username=username)
+        try:
+            api.create_account(username, password)
+            return render_template('account_created.html', username=username)
+        except ValueError as e:
+            return render_template('failure.html')
