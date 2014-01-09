@@ -2,10 +2,11 @@
 
 sudo pip install -r requirements.txt
 
-./clean_slate_db
 
 nosetests unit/
 
+./clean_slate_db
 nosetests integration/
 
+./clean_slate_db
 behave --tags=-wip
