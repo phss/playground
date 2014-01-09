@@ -44,3 +44,9 @@ class RoutesTest(TestCase):
         self.assert_200(response)
         self.assert_template_used('failure.html')
         self.assert_context('message', 'Failed to create account')
+
+    def test_login_page_rendering(self):
+        response = self.client.get('/login')
+
+        self.assert_200(response)
+        self.assert_template_used('login.html')

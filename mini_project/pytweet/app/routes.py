@@ -22,3 +22,8 @@ def create_account():
         return render_template('account_created.html', username=username)
     except ValueError as e:
         return render_template('failure.html', message=e.message)
+
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
