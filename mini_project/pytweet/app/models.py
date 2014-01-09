@@ -27,5 +27,6 @@ class User(Base):
 
     @validates('username', 'password')
     def validate_not_blank(self, key, value):
-        assert value
+        if not value:
+            raise ValueError("Field %s can't be blank" % key)
         return value

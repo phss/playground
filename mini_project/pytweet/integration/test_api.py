@@ -18,5 +18,5 @@ class ApiTest(unittest.TestCase):
         assert_that(user.password, equal_to('somepass'))
 
     def test_fails_to_create_account_if_username_or_password_are_blank(self):
-        self.assertRaises(AssertionError, create_account, '', 'somepass')
-        self.assertRaises(AssertionError, create_account, 'someuser', '')
+        self.assertRaises(ValueError, create_account, '', 'somepass')
+        self.assertRaises(ValueError, create_account, 'someuser', '')
