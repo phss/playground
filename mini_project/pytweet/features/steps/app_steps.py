@@ -20,6 +20,12 @@ def impl(context, name, password):
         username=name,
         password=password))
 
+@when(u'I login as "{name}" with password "{password}"')
+def impl(context, name, password):
+    context.response = context.client.post('/login', data=dict(
+        username=name,
+        password=password))
+
 @then(u'I see the app name is "{app_name}"')
 def step(context, app_name):
     assert_that(context.response.data, contains_string(app_name))
