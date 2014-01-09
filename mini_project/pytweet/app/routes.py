@@ -1,5 +1,5 @@
 from app import api
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, redirect, url_for
 
 app = Flask(__name__)
 app.secret_key = 'super-secret'
@@ -30,6 +30,6 @@ def create_account():
 def login():
     if request.method == 'POST':
         session['logged_in_user'] = request.form['username']
-        return render_template('homepage.html')
+        return redirect(url_for('homepage'))
     else:
         return render_template('login.html')

@@ -60,7 +60,6 @@ class RoutesTest(TestCase):
             username='someuser',
             password='somepassword'))
 
-        self.assert_200(response)
-        self.assert_template_used('homepage.html')
+        self.assert_redirects(response, '/')
         with self.client.session_transaction() as session:
             assert_that(session['logged_in_user'], equal_to('someuser'))
