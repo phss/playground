@@ -19,4 +19,4 @@ def create_account(username, password):
 
 
 def authenticate(username, password):
-    return True
+    return get_account(username)

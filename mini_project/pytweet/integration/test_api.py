@@ -46,3 +46,6 @@ class AuthenticationTest(unittest.TestCase):
         create_account('somename', 'somepass')
 
         assert authenticate('somename', 'somepass')
+
+    def test_fail_authentication_of_inexistant_user(self):
+        assert not authenticate('dont', 'exist')
