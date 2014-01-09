@@ -8,14 +8,17 @@ def homepage():
     return render_template('homepage.html', app_name=api.app_name())
 
 @app.route('/create-account', methods=['GET', 'POST'])
-def create_account():
-    if request.method == 'GET':
-        return render_template('create_account.html')
+def account_page():
+    if request.method == 'POST':
+        return create_account()
     else:
-        username = request.form['username']
-        password = request.form['password']
-        try:
-            api.create_account(username, password)
-            return render_template('account_created.html', username=username)
-        except ValueError as e:
-            return render_template('failure.html', message=e.message)
+        return render_template('create_account.html')
+
+
+def create_account():
+    username, password = request.form['username'], request.form['password']
+    try:
+        api.create_account(username, password)
+        return render_template('account_created.html', username=username)
+    except ValueError as e:
+        return render_template('failure.html', message=e.message)
