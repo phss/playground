@@ -21,3 +21,11 @@ Feature: pytweet app
       And there's an account "me" with password "notyou"
      When I login as "me" with password "notyou"
      Then I should be logged in as "me"
+
+  @wip
+  Scenario: Logout user
+    Given the app is running
+      And there's an account "me" with password "notyou"
+     When I login as "me" with password "notyou"
+      And I logout
+     Then no one should be logged in
