@@ -12,6 +12,6 @@ Feature: pytweet app
 
   Scenario: Cannot create user with the same name
     Given the app is running
-     When I create a new account "joe" with password "abc"
-      And I create a new account "joe" with password "fail!"
+      And there's an account "joe" with password "abc"
+     When I create a new account "joe" with password "fail!"
      Then I should see a message "There&#39;s already an user with the name of joe"

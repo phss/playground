@@ -1,10 +1,14 @@
-from app import routes
+from app import routes, api
 from hamcrest import *
 from behave import given, when, then
 
 @given('the app is running')
 def step(context):
     context.client = routes.app.test_client()
+
+@given(u"there's an account \"{name}\" with password \"{password}\"")
+def impl(context, name, password):
+    api.create_account(name, password)
 
 @when(u'I go to the homepage')
 def step(context):
