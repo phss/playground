@@ -1,5 +1,7 @@
-<form name="create-account" action="/create-account" method="post">
-    Username: <input type="text" name="username" /><br>
-    Password: <input type="password" name="password" />
-    <input type="submit" value="Submit">
-</form>
+{% block content %}
+    <form name="create-account" action="/create-account" method="post">
+        Username: <input type="text" name="username" /><br>
+        Password: <input type="password" name="password" />
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
