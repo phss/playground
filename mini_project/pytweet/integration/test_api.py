@@ -1,7 +1,6 @@
 import unittest
 from hamcrest import *
 from app.api import *
-from app.models import *
 
 
 class ConfigTest(unittest.TestCase):
@@ -13,9 +12,8 @@ class ConfigTest(unittest.TestCase):
 class UserAccountTest(unittest.TestCase):
 
     def setUp(self):
-        session = Session()
-        session.query(User).delete()
-        session.commit()
+        with WriteSession() as session:
+            session.query(User).delete()
 
     def test_returns_none_when_getting_inexistant_account(self):
         assert_that(get_account('noone'), is_(None))

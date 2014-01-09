@@ -11,6 +11,18 @@ Session = sessionmaker()
 Session.configure(bind=engine)
 
 
+class WriteSession():
+
+    def __init__(self):
+        self.session = Session()
+
+    def __enter__(self):
+        return self.session
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.session.commit()
+
+
 class Config(Base):
     __tablename__ = 'config'
 

@@ -14,6 +14,5 @@ def create_account(username, password):
     if user:
         raise ValueError("There's already an user with the name of %s" % username)
 
-    session = Session()
-    session.add(User(username=username, password=password))
-    session.commit()
+    with WriteSession() as session:
+        session.add(User(username=username, password=password))
