@@ -25,7 +25,7 @@ Feature: pytweet app
   @wip
   Scenario: Logout user
     Given the app is running
-      And there's an account "me" with password "notyou"
-     When I login as "me" with password "notyou"
+      And there's an account "not" with password "logged"
+     When I login as "not" with password "logged"
       And I logout
      Then no one should be logged in

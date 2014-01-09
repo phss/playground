@@ -27,6 +27,10 @@ def impl(context, name, password):
         username=name,
         password=password))
 
+@when(u'I logout')
+def impl(context):
+    context.response = context.client.post('/logout')
+
 @then(u'I see the app name is "{app_name}"')
 def step(context, app_name):
     assert_that(context.response.data, contains_string(app_name))
@@ -39,3 +43,8 @@ def step(context, message):
 def impl(context, name):
     with context.client.session_transaction() as session:
         assert_that(session['logged_in_user'], equal_to(name))
+
+@then(u'no one should be logged in')
+def impl(context):
+    with context.client.session_transaction() as session:
+            assert_that(session, is_not(has_key('logged_in_user')))
