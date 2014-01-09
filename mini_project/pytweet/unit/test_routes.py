@@ -65,9 +65,9 @@ class LoginRouteTest(TestCase):
         self.assert_200(response)
         self.assert_template_used('login.html')
 
-    @patch('app.api.get_account')
+    @patch('app.api.authenticate')
     def test_login_existing_user(self, mock_api):
-        mock_api.return_value = User('someuser', 'somepassword')
+        mock_api.return_value = True
         response = self.client.post('/login', data=dict(
             username='someuser',
             password='somepassword'))

@@ -16,3 +16,7 @@ def create_account(username, password):
 
     with WriteSession() as session:
         session.add(User(username, password))
+
+
+def authenticate(username, password):
+    raise NotImplementedError
