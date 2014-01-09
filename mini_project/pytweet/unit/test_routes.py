@@ -21,6 +21,16 @@ class HomepageRouteTest(TestCase):
         self.assert_context('app_name', 'Some interesting name')
         self.assert_context('user', None)
 
+    def test_homepage_rendering_logged_in_user(self):
+        with self.client.session_transaction() as session:
+            session['logged_in_user'] = 'loggedin'
+
+        response = self.client.get('/')
+
+        self.assert_200(response)
+        self.assert_template_used('homepage.html')
+        self.assert_context('user', 'loggedin')
+
 
 class CreateAccountRouteTest(TestCase):
 

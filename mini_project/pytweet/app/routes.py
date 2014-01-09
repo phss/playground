@@ -7,7 +7,9 @@ app.secret_key = 'super-secret'
 
 @app.route('/')
 def homepage():
-    return render_template('homepage.html', app_name=api.app_name(), user=None)
+    return render_template('homepage.html',
+                           app_name=api.app_name(),
+                           user=session.get('logged_in_user'))
 
 @app.route('/create-account', methods=['GET', 'POST'])
 def account_page():
