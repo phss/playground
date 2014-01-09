@@ -10,7 +10,7 @@ class ConfigTest(unittest.TestCase):
         assert_that(app_name(), equal_to('PyTweet'))
 
 
-class CreateAccountTest(unittest.TestCase):
+class UserAccountTest(unittest.TestCase):
 
     def setUp(self):
         session = Session()
@@ -20,7 +20,7 @@ class CreateAccountTest(unittest.TestCase):
     def test_create_an_account(self):
         create_account('somename', 'somepass')
 
-        user = Session().query(User).filter_by(username='somename').first()
+        user = get_account('somename')
 
         assert_that(user.username, equal_to('somename'))
         assert_that(user.password, equal_to('somepass'))
