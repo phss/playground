@@ -34,3 +34,15 @@ class UserAccountTest(unittest.TestCase):
         create_account('somename', 'somepass')
 
         self.assertRaises(ValueError, create_account, 'somename', 'somepass')
+
+
+class AuthenticationTest(unittest.TestCase):
+
+    def setUp(self):
+        with WriteSession() as session:
+            session.query(User).delete()
+
+    def test_authenticate_existing_user(self):
+        create_account('somename', 'somepass')
+
+        assert authenticate('somename', 'somepass')
