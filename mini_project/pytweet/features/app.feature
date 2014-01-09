@@ -9,3 +9,9 @@ Feature: pytweet app
     Given the app is running
      When I create a new account "tweetie" with password "bird"
      Then I should see a message "Successfully created account tweetie"
+
+  Scenario: Cannot create user with the same name
+    Given the app is running
+     When I create a new account "joe" with password "abc"
+      And I create a new account "joe" with password "fail!"
+     Then I should see a message "There's already an user with the name of joe"
