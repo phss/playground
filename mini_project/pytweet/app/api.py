@@ -1,10 +1,6 @@
 from app.models import *
 
 
-def app_name():
-    return Session().query(Config).first().app_name
-
-
 def get_account(username):
     return Session().query(User).filter_by(username=username).first()
 

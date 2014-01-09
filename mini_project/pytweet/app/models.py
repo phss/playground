@@ -23,13 +23,6 @@ class WriteSession():
         self.session.commit()
 
 
-class Config(Base):
-    __tablename__ = 'config'
-
-    id = Column(Integer, primary_key=True)
-    app_name = Column(String, nullable=False)
-
-
 class User(Base):
     __tablename__ = 'users'
 

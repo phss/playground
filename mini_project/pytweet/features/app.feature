@@ -1,10 +1,5 @@
 Feature: pytweet app
 
-  Scenario: App name in homepage
-    Given the app is running
-     When I go to the homepage
-     Then I see the app name is "PyTweet"
-
   Scenario: Creating a new user
     Given the app is running
      When I create a new account "tweetie" with password "bird"
