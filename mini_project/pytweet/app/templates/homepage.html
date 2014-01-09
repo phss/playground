@@ -1,4 +1,6 @@
 {% block content %}
     <div>{{ app_name }}</div>
-    <div>Hello {{user}}!</div>
+    {% if user %}
+        <div>Hello {{user}}!</div>
+    {% endif %}
 {% endblock %}
