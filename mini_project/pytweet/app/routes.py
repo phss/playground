@@ -1,6 +1,8 @@
 from app import api
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
+
 app = Flask(__name__)
+app.secret_key = 'super-secret'
 
 
 @app.route('/')
@@ -24,6 +26,10 @@ def create_account():
         return render_template('failure.html', message=e.message)
 
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login.html')
+    if request.method == 'POST':
+        session['logged_in_user'] = request.form['username']
+        return render_template('homepage.html')
+    else:
+        return render_template('login.html')

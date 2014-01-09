@@ -1,6 +1,8 @@
 from flask.ext.testing import TestCase
+from app.models import User
 from app.routes import app
 from mock import patch
+from hamcrest import *
 
 
 class RoutesTest(TestCase):
@@ -50,3 +52,15 @@ class RoutesTest(TestCase):
 
         self.assert_200(response)
         self.assert_template_used('login.html')
+
+    @patch('app.api.get_account')
+    def test_login_existing_user(self, mock_api):
+        mock_api.return_value = User('someuser', 'somepassword')
+        response = self.client.post('/login', data=dict(
+            username='someuser',
+            password='somepassword'))
+
+        self.assert_200(response)
+        self.assert_template_used('homepage.html')
+        with self.client.session_transaction() as session:
+            assert_that(session['logged_in_user'], equal_to('someuser'))
