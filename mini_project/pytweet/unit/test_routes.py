@@ -75,3 +75,14 @@ class LoginRouteTest(TestCase):
         self.assert_redirects(response, '/')
         with self.client.session_transaction() as session:
             assert_that(session['logged_in_user'], equal_to('someuser'))
+
+    @patch('app.api.authenticate')
+    def test_dont_login_if_failed_to_authenticate(self, mock_api):
+        mock_api.return_value = False
+        response = self.client.post('/login', data=dict(
+            username='wrong',
+            password='wrong'))
+
+        self.assert_200(response)
+        self.assert_template_used('failure.html')
+        self.assert_context('message', 'Failed to authenticate')

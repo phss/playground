@@ -29,7 +29,11 @@ def create_account():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        session['logged_in_user'] = request.form['username']
-        return redirect(url_for('homepage'))
+        username, password = request.form['username'], request.form['password']
+        if api.authenticate(username, password):
+            session['logged_in_user'] = username
+            return redirect(url_for('homepage'))
+        else:
+            return render_template('failure.html', message='Failed to authenticate')
     else:
         return render_template('login.html')
