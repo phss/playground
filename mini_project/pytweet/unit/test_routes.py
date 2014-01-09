@@ -86,3 +86,5 @@ class LoginRouteTest(TestCase):
         self.assert_200(response)
         self.assert_template_used('failure.html')
         self.assert_context('message', 'Failed to authenticate')
+        with self.client.session_transaction() as session:
+            assert_that(session, is_not(has_key('logged_in_user')))
