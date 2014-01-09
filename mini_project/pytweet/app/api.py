@@ -19,4 +19,5 @@ def create_account(username, password):
 
 
 def authenticate(username, password):
-    return get_account(username)
+    user = get_account(username)
+    return user and user.password == password
