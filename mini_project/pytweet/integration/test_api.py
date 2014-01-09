@@ -4,15 +4,18 @@ from app.api import *
 from app.models import *
 
 
-class ApiTest(unittest.TestCase):
+class ConfigTest(unittest.TestCase):
+
+    def test_app_name_is_set_in_the_db(self):
+        assert_that(app_name(), equal_to('PyTweet'))
+
+
+class CreateAccountTest(unittest.TestCase):
 
     def setUp(self):
         session = Session()
         session.query(User).delete()
         session.commit()
-
-    def test_app_name_is_set_in_the_db(self):
-        assert_that(app_name(), equal_to('PyTweet'))
 
     def test_create_an_account(self):
         create_account('somename', 'somepass')
