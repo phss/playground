@@ -22,7 +22,6 @@ Feature: pytweet app
      When I login as "me" with password "notyou"
      Then I should be logged in as "me"
 
-  @wip
   Scenario: Logout user
     Given the app is running
       And there's an account "not" with password "logged"

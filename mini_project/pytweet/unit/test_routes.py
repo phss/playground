@@ -88,3 +88,15 @@ class LoginRouteTest(TestCase):
         self.assert_context('message', 'Failed to authenticate')
         with self.client.session_transaction() as session:
             assert_that(session, is_not(has_key('logged_in_user')))
+
+    @patch('app.api.authenticate')
+    def test_logout_clear_session(self, mock_api):
+        mock_api.return_value = True
+        self.client.post('/login', data=dict(
+            username='someuser',
+            password='somepassword'))
+        response = self.client.post('/logout')
+
+        self.assert_redirects(response, '/')
+        with self.client.session_transaction() as session:
+            assert_that(session, is_not(has_key('logged_in_user')))
