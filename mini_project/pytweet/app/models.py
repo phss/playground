@@ -1,7 +1,7 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, validates
-from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import sessionmaker, validates, relationship
+from sqlalchemy import Column, Integer, String, Text, ForeignKey
 
 Base = declarative_base()
 
@@ -26,14 +26,14 @@ class WriteSession():
 class Config(Base):
     __tablename__ = 'config'
 
-    config_id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
     app_name = Column(String, nullable=False)
 
 
 class User(Base):
     __tablename__ = 'users'
 
-    user_id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
     username = Column(String, nullable=False)
     password = Column(String, nullable=False)
 
@@ -46,3 +46,11 @@ class User(Base):
         if not value:
             raise ValueError("Field %s can't be blank" % key)
         return value
+
+
+class Tweet(Base):
+    __tablename__ = 'tweets'
+
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('users.id'))
+    message = Column(Text, nullable=False)
