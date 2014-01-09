@@ -15,4 +15,4 @@ def create_account(username, password):
         raise ValueError("There's already an user with the name of %s" % username)
 
     with WriteSession() as session:
-        session.add(User(username=username, password=password))
+        session.add(User(username, password))

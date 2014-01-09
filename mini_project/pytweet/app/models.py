@@ -37,6 +37,10 @@ class User(Base):
     username = Column(String, nullable=False)
     password = Column(String, nullable=False)
 
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
     @validates('username', 'password')
     def validate_not_blank(self, key, value):
         if not value:
