@@ -5,7 +5,7 @@ from mock import patch
 from hamcrest import *
 
 
-class RoutesTest(TestCase):
+class HomepageRouteTest(TestCase):
 
     def create_app(self):
         return app
@@ -19,6 +19,12 @@ class RoutesTest(TestCase):
         self.assert_200(response)
         self.assert_template_used('homepage.html')
         self.assert_context('app_name', 'Some interesting name')
+
+
+class CreateAccountRouteTest(TestCase):
+
+    def create_app(self):
+        return app
 
     def test_create_account_rendering(self):
         response = self.client.get('/create-account')
@@ -46,6 +52,12 @@ class RoutesTest(TestCase):
         self.assert_200(response)
         self.assert_template_used('failure.html')
         self.assert_context('message', 'Failed to create account')
+
+
+class LoginRouteTest(TestCase):
+
+    def create_app(self):
+        return app
 
     def test_login_page_rendering(self):
         response = self.client.get('/login')
