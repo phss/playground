@@ -1,6 +1,7 @@
 from app import routes, api
 from hamcrest import *
 from behave import given, when, then
+import flask
 
 @given('the app is running')
 def step(context):
@@ -33,3 +34,9 @@ def step(context, app_name):
 @then(u'I should see a message "{message}"')
 def step(context, message):
     assert_that(context.response.data, contains_string(message))
+
+@then(u'I should be logged in as "{name}"')
+def impl(context, name):
+    with context.client.session_transaction() as session:
+        user = session['logged_in_user']
+        assert_that(user.username, equal_to(name))

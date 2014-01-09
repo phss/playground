@@ -21,4 +21,4 @@ Feature: pytweet app
     Given the app is running
       And there's an account "me" with password "notyou"
      When I login as "me" with password "notyou"
-     Then I should see a message "Hi me!"
+     Then I should be logged in as "me"
