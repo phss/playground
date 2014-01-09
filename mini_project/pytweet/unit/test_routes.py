@@ -36,10 +36,11 @@ class RoutesTest(TestCase):
 
     @patch('app.api.create_account')
     def test_render_failure_when_failed_to_create_account(self, mock_api):
-        mock_api.side_effect = ValueError("Failed to create account")
+        mock_api.side_effect = ValueError('Failed to create account')
         response = self.client.post('/create-account', data=dict(
             username='faileduser',
             password='failedpassword'))
 
         self.assert_200(response)
         self.assert_template_used('failure.html')
+        self.assert_context('message', 'Failed to create account')

@@ -18,4 +18,4 @@ def create_account():
             api.create_account(username, password)
             return render_template('account_created.html', username=username)
         except ValueError as e:
-            return render_template('failure.html')
+            return render_template('failure.html', message=e.message)
