@@ -38,5 +38,4 @@ def step(context, message):
 @then(u'I should be logged in as "{name}"')
 def impl(context, name):
     with context.client.session_transaction() as session:
-        user = session['logged_in_user']
-        assert_that(user.username, equal_to(name))
+        assert_that(session['logged_in_user'], equal_to(name))

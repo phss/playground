@@ -16,7 +16,6 @@ Feature: pytweet app
      When I create a new account "joe" with password "fail!"
      Then I should see a message "There&#39;s already an user with the name of joe"
 
-  @wip
   Scenario: Login as existing user
     Given the app is running
       And there's an account "me" with password "notyou"
