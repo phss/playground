@@ -1,6 +1,6 @@
 # Playground 
 
-Handy place to store things that do not warrant a full repo. So far:
+Handy place to store things that do not warrant a full repo:
 
 * books: exercises from books
 * exercises: programming exercises from around the web
