@@ -124,10 +124,19 @@ class TweetTest(TestCase):
     def test_create_a_tweet(self, mock_api):
         with self.client.session_transaction() as session:
             session['logged_in_user'] = 'loggedin'
-            
+
         response = self.client.post('/tweet', data=dict(
             text='Something interesting'))
 
         self.assert_redirects(response, '/')
         mock_api.assert_called_with('Something interesting')
 
+    @patch('app.api.create_tweet')
+    def test_create_a_tweet(self, mock_api):
+        response = self.client.post('/tweet', data=dict(
+            text='Not logged in'))
+
+        self.assert_200(response)
+        self.assert_template_used('failure.html')
+        self.assert_context('message', 'Login before tweeting')
+        assert not mock_api.called

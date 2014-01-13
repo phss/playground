@@ -52,7 +52,10 @@ def logout():
 @app.route('/tweet', methods=['GET', 'POST'])
 def tweet():
     if request.method == 'POST':
-        api.create_tweet(request.form['text'])
-        return redirect(url_for('homepage'))
+        if 'logged_in_user' in session:
+            api.create_tweet(request.form['text'])
+            return redirect(url_for('homepage'))
+        else:
+            return render_template('failure.html', message='Login before tweeting')
     else:
         return render_template('tweet.html')
