@@ -17,3 +17,7 @@ def create_account(username, password):
 def authenticate(username, password):
     user = get_account(username)
     return user and user.password == password
+
+
+def create_tweet(text):
+    raise NotImplementedError()

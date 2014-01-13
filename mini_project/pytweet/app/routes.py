@@ -48,6 +48,11 @@ def logout():
     session.pop('logged_in_user', None)
     return redirect(url_for('homepage'))
 
-@app.route('/tweet')
+
+@app.route('/tweet', methods=['GET', 'POST'])
 def tweet():
-    return render_template('tweet.html')
+    if request.method == 'POST':
+        api.create_tweet(request.form['text'])
+        return redirect(url_for('homepage'))
+    else:
+        return render_template('tweet.html')

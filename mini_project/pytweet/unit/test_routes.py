@@ -119,3 +119,11 @@ class TweetTest(TestCase):
 
         self.assert_200(response)
         self.assert_template_used('tweet.html')
+
+    @patch('app.api.create_tweet')
+    def test_create_a_tweet(self, mock_api):
+        response = self.client.post('/tweet', data=dict(
+            text='Something interesting'))
+
+        self.assert_redirects(response, '/')
+        mock_api.assert_called_with('Something interesting')
