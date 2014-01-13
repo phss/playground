@@ -42,4 +42,4 @@
 
 (println (saved "VVIIIIII"))
 
-(println (last numbers))
+(println (reduce + (map saved numbers)))
