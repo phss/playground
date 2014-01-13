@@ -132,7 +132,7 @@ class TweetTest(TestCase):
         mock_api.assert_called_with('Something interesting')
 
     @patch('app.api.create_tweet')
-    def test_create_a_tweet(self, mock_api):
+    def test_dont_create_if_not_logged_in(self, mock_api):
         response = self.client.post('/tweet', data=dict(
             text='Not logged in'))
 
