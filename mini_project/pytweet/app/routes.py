@@ -57,8 +57,10 @@ def tweet():
         return render_template('tweet.html')
 
 def create_tweet():
-    if 'logged_in_user' in session:
-        api.create_tweet(request.form['text'])
+    username = session.get('logged_in_user')
+    if username:
+        user = api.get_account(username)
+        api.create_tweet(user, request.form['text'])
         return redirect(url_for('homepage'))
     else:
         return render_template('failure.html', message='Login before tweeting')

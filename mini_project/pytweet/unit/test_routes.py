@@ -120,8 +120,11 @@ class TweetTest(TestCase):
         self.assert_200(response)
         self.assert_template_used('tweet.html')
 
+    @patch('app.api.get_account')
     @patch('app.api.create_tweet')
-    def test_create_a_tweet(self, mock_api):
+    def test_create_a_tweet(self, mock_tweet_api, mock_user_api):
+        submitter = User('loggedin', 'any')
+        mock_user_api.return_value = submitter
         with self.client.session_transaction() as session:
             session['logged_in_user'] = 'loggedin'
 
@@ -129,7 +132,7 @@ class TweetTest(TestCase):
             text='Something interesting'))
 
         self.assert_redirects(response, '/')
-        mock_api.assert_called_with('Something interesting')
+        mock_tweet_api.assert_called_with(submitter, 'Something interesting')
 
     @patch('app.api.create_tweet')
     def test_dont_create_if_not_logged_in(self, mock_api):
