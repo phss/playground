@@ -107,3 +107,15 @@ class LoginRouteTest(TestCase):
         self.assert_redirects(response, '/')
         with self.client.session_transaction() as session:
             assert_that(session, is_not(has_key('logged_in_user')))
+
+
+class TweetTest(TestCase):
+
+    def create_app(self):
+        return app
+
+    def test_create_tweet_page_rendering(self):
+        response = self.client.get('/tweet')
+
+        self.assert_200(response)
+        self.assert_template_used('tweet.html')

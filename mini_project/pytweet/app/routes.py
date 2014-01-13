@@ -47,3 +47,7 @@ def log_user():
 def logout():
     session.pop('logged_in_user', None)
     return redirect(url_for('homepage'))
+
+@app.route('/tweet')
+def tweet():
+    return render_template('tweet.html')
