@@ -122,8 +122,12 @@ class TweetTest(TestCase):
 
     @patch('app.api.create_tweet')
     def test_create_a_tweet(self, mock_api):
+        with self.client.session_transaction() as session:
+            session['logged_in_user'] = 'loggedin'
+            
         response = self.client.post('/tweet', data=dict(
             text='Something interesting'))
 
         self.assert_redirects(response, '/')
         mock_api.assert_called_with('Something interesting')
+
