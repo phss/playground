@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Send a tweet</h2>
+    <form name="tweet" action="/tweet" method="post">
+        Text: <input type="text" name="text" /><br>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
