@@ -7,6 +7,7 @@ class UserAccountTest(unittest.TestCase):
 
     def setUp(self):
         with WriteSession() as session:
+            session.query(Tweet).delete()
             session.query(User).delete()
 
     def test_returns_none_when_getting_inexistant_account(self):
@@ -34,6 +35,7 @@ class AuthenticationTest(unittest.TestCase):
 
     def setUp(self):
         with WriteSession() as session:
+            session.query(Tweet).delete()
             session.query(User).delete()
 
     def test_authenticate_existing_user(self):
@@ -48,3 +50,11 @@ class AuthenticationTest(unittest.TestCase):
         create_account('somename', 'somepass')
 
         assert not authenticate('somename', 'anotherpass')
+
+
+class TweetingTest(unittest.TestCase):
+
+    def setUp(self):
+        with WriteSession() as session:
+            session.query(Tweet).delete()
+            session.query(User).delete()
