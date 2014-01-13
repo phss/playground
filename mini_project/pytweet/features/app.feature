@@ -23,3 +23,9 @@ Feature: pytweet app
      When I login as "not" with password "logged"
       And I logout
      Then no one should be logged in
+
+  Scenario: Tweeting
+    Given the app is running
+      And I am logged as "tweeter"
+     When I submit a tweet "Nothing really interesting going on"
+     Then tweet should exist
