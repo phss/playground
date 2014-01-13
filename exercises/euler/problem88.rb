@@ -1,6 +1,6 @@
 
 def for_all_permutations(max, levels)
-  current = (2..Math.sqrt(max).floor).map { |i| [i] } 
+  current = (2..Math.sqrt(max).ceil).map { |i| [i] } 
   while current.size > 0 && current.first.size <= levels
     next_permutation = []
     current.each do |permutation|
@@ -24,10 +24,10 @@ def k_product_sum(numbers)
   return numbers.size + product - sum
 end
 
-upper = 12
+upper = 12000
 ks = {}
 
-for_all_permutations(upper*2, 5) do |permutation|
+for_all_permutations(upper*2, 14) do |permutation|
   k = k_product_sum(permutation)
   product = permutation.reduce(&:*)
   if k <= upper && (!ks.has_key?(k) || ks[k] > product)
@@ -36,5 +36,5 @@ for_all_permutations(upper*2, 5) do |permutation|
 end
 
 puts ks.size
-puts ks.values.sort.join(', ')
+#puts ks.values.sort.join(', ')
 puts ks.values.uniq.reduce(&:+)
