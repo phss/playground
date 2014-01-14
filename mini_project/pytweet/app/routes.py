@@ -15,9 +15,9 @@ def user_from_session():
 def homepage():
     user = user_from_session()
     if user:
-        return render_template('homepage.html', user=user.username, tweets=api.get_tweets(user))
+        return render_template('homepage.html', user=user, tweets=api.get_tweets(user))
     else:
-        return render_template('homepage.html', user=session.get('logged_in_user'))
+        return render_template('homepage.html', user=user)
 
 @app.route('/create-account', methods=['GET', 'POST'])
 def account_page():

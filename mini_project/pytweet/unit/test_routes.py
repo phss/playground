@@ -31,7 +31,7 @@ class HomepageRouteTest(TestCase):
 
         self.assert_200(response)
         self.assert_template_used('homepage.html')
-        self.assert_context('user', 'loggedin')
+        self.assert_context('user', user)
         self.assert_context('tweets', sentinel.some_object)
 
 

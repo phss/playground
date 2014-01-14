@@ -2,7 +2,7 @@
 
 {% block content %}
     {% if user %}
-        <div>Hello {{user}}!</div>
+        <div>Hello {{user.username}}!</div>
         <a href="/tweet">Create a tweet</a>
     {% else %}
         <a href="/create-account">Create an account</a> or <a href="/login">login</a>
