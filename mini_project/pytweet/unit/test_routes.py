@@ -23,7 +23,7 @@ class HomepageRouteTest(TestCase):
     def test_shows_list_of_tweets(self, mock_tweet_api, mock_user_api):
         user = User('loggedin', 'any')
         mock_user_api.return_value = user
-        mock_tweet_api.return_value = sentinel.some_object
+        mock_tweet_api.return_value = [sentinel.some_object]
         with self.client.session_transaction() as session:
             session['logged_in_user'] = 'loggedin'
 
@@ -32,7 +32,7 @@ class HomepageRouteTest(TestCase):
         self.assert_200(response)
         self.assert_template_used('homepage.html')
         self.assert_context('user', user)
-        self.assert_context('tweets', sentinel.some_object)
+        self.assert_context('tweets', [sentinel.some_object])
 
 
 class CreateAccountRouteTest(TestCase):
