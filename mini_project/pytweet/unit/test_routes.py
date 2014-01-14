@@ -16,7 +16,7 @@ class HomepageRouteTest(TestCase):
         self.assert_200(response)
         self.assert_template_used('homepage.html')
         self.assert_context('user', None)
-        #self.assert_context('tweets', None)
+        self.assert_context('tweets', None)
 
     @patch('app.api.get_account')
     @patch('app.api.get_tweets')
