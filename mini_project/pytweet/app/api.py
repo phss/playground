@@ -19,5 +19,7 @@ def authenticate(username, password):
     return user and user.password == password
 
 
-def create_tweet(text):
-    raise NotImplementedError()
+def create_tweet(user, text):
+    session = Session()
+    session.add(Tweet(user_id=user.id, text=text))
+    session.commit()

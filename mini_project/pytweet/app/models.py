@@ -29,6 +29,7 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String, nullable=False)
     password = Column(String, nullable=False)
+    tweets = relationship('Tweet')
 
     def __init__(self, username, password):
         self.username = username
@@ -46,4 +47,4 @@ class Tweet(Base):
 
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'))
-    message = Column(Text, nullable=False)
+    text = Column(Text, nullable=False)

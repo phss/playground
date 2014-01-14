@@ -58,3 +58,11 @@ class TweetingTest(unittest.TestCase):
         with WriteSession() as session:
             session.query(Tweet).delete()
             session.query(User).delete()
+        create_account('somename', 'somepass')
+        self.user = get_account('somename')
+
+    def test_create_a_new_tweet(self):
+        create_tweet(self.user, 'Creating a tweet')
+
+        assert_that(self.user.tweets, has_length(1))
+        assert_that(self.user.tweets[0].text, equal_to('Creating a tweet'))
