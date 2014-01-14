@@ -40,7 +40,9 @@ def impl(context):
 @when(u'I submit a tweet "{tweet}"')
 def impl(context, tweet):
     context.tweet = tweet
-    context.response = context.client.post('/tweet', data=dict(text=tweet))
+    context.response = context.client.post('/tweet',
+                                           data=dict(text=tweet),
+                                           follow_redirects=True)
 
 @then(u'I see the app name is "{app_name}"')
 def step(context, app_name):
@@ -62,4 +64,4 @@ def impl(context):
 
 @then(u'tweet should exist')
 def impl(context):
-    assert False
+    assert_that(context.response.data, contains_string(context.tweet))
