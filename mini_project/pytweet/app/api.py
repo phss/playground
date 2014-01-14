@@ -25,4 +25,4 @@ def create_tweet(user, text):
 
 
 def get_tweets(user):
-    raise NotImplementedError()
+    return user.tweets

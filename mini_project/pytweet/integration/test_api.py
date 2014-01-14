@@ -66,3 +66,13 @@ class TweetingTest(unittest.TestCase):
 
         assert_that(self.user.tweets, has_length(1))
         assert_that(self.user.tweets[0].text, equal_to('Creating a tweet'))
+
+
+    def test_fetching_tweets(self):
+        create_tweet(self.user, 'A, B, C')
+        create_tweet(self.user, '1, 2, 3')
+        create_tweet(self.user, 'You and me')
+
+        tweet_texts = [tweet.text for tweet in get_tweets(self.user)]
+
+        assert_that(tweet_texts, contains('A, B, C', '1, 2, 3', 'You and me'))
