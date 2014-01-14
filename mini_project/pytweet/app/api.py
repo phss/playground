@@ -20,6 +20,5 @@ def authenticate(username, password):
 
 
 def create_tweet(user, text):
-    session = Session()
-    session.add(Tweet(user_id=user.id, text=text))
-    session.commit()
+    with WriteSession() as session:
+        session.add(Tweet(user_id=user.id, text=text))
