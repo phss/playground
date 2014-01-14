@@ -12,7 +12,8 @@ class Hamming
  private
 
   def self.join_strands(a, b)
-    a.chars.zip(b.chars).reject { |sa, sb| sa.nil? || sb.nil? }
+    a, b = b, a if a.size > b.size
+    a.chars.zip(b.chars)
   end
 
 end
