@@ -22,3 +22,7 @@ def authenticate(username, password):
 def create_tweet(user, text):
     with WriteSession() as session:
         session.add(Tweet(user_id=user.id, text=text))
+
+
+def get_tweets(user):
+    raise NotImplementedError()

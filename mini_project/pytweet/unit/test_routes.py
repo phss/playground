@@ -1,7 +1,7 @@
 from flask.ext.testing import TestCase
 from app.models import User
 from app.routes import app
-from mock import patch
+from mock import patch, sentinel
 from hamcrest import *
 
 
@@ -10,14 +10,20 @@ class HomepageRouteTest(TestCase):
     def create_app(self):
         return app
 
-    def test_homepage_rendering_when_not_logged_in(self):
+    def test_when_not_logged_in(self):
         response = self.client.get('/')
 
         self.assert_200(response)
         self.assert_template_used('homepage.html')
         self.assert_context('user', None)
+        #self.assert_context('tweets', None)
 
-    def test_homepage_rendering_logged_in_user(self):
+    @patch('app.api.get_account')
+    @patch('app.api.get_tweets')
+    def test_shows_list_of_tweets(self, mock_tweet_api, mock_user_api):
+        user = User('loggedin', 'any')
+        mock_user_api.return_value = user
+        mock_tweet_api.return_value = sentinel.some_object
         with self.client.session_transaction() as session:
             session['logged_in_user'] = 'loggedin'
 
@@ -26,6 +32,7 @@ class HomepageRouteTest(TestCase):
         self.assert_200(response)
         self.assert_template_used('homepage.html')
         self.assert_context('user', 'loggedin')
+        self.assert_context('tweets', sentinel.some_object)
 
 
 class CreateAccountRouteTest(TestCase):
