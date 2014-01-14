@@ -12,7 +12,7 @@ class Hamming
  private
 
   def self.join_strands(a, b)
-    a.split('').zip(b.split(''))
+    a.chars.zip(b.chars)
   end
 
 end
