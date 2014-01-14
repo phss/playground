@@ -4,13 +4,18 @@ from flask import Flask, render_template, request, session, redirect, url_for
 app = Flask(__name__)
 app.secret_key = 'super-secret'
 
+def user_from_session():
+    username = session.get('logged_in_user')
+    if username:
+        return api.get_account(username)
+    else:
+        return None
 
 @app.route('/')
 def homepage():
-    username = session.get('logged_in_user')
-    if username:
-        user = api.get_account(username)
-        return render_template('homepage.html', user=username, tweets=api.get_tweets(user))
+    user = user_from_session()
+    if user:
+        return render_template('homepage.html', user=user.username, tweets=api.get_tweets(user))
     else:
         return render_template('homepage.html', user=session.get('logged_in_user'))
 
@@ -62,9 +67,8 @@ def tweet():
         return render_template('tweet.html')
 
 def create_tweet():
-    username = session.get('logged_in_user')
-    if username:
-        user = api.get_account(username)
+    user = user_from_session()
+    if user:
         api.create_tweet(user, request.form['text'])
         return redirect(url_for('homepage'))
     else:
