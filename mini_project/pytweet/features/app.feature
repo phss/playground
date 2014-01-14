@@ -24,7 +24,6 @@ Feature: pytweet app
       And I logout
      Then no one should be logged in
 
-  @wip
   Scenario: Tweeting
     Given the app is running
       And I am logged as "tweeter"

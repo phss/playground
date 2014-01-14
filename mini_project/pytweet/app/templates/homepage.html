@@ -4,6 +4,9 @@
     {% if user %}
         <div>Hello {{user.username}}!</div>
         <a href="/tweet">Create a tweet</a>
+        {% for tweet in tweets %}
+            <div>{{ tweet.text }}</div>
+        {% endfor %}
     {% else %}
         <a href="/create-account">Create an account</a> or <a href="/login">login</a>
     {% endif %}
