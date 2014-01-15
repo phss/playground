@@ -4,9 +4,11 @@
         not-origin? #(not= [0 0] %)
         lower-left-tri? (and (zero? px) (zero? qy) (> qx px))
         upper-left-tri? (and (zero? px) (= py qy) (> qx px))
-        lower-right-tri? (and (zero? qy) (= px qx) (> py qy))]
+        lower-right-tri? (and (zero? qy) (= px qx) (> py qy))
+        middle-tri? (or (and (zero? qy) (even? qx) (= px py (/ qx 2)))
+                        (and (zero? px) (even? py) (= qx qy (/ py 2))))]
     (and (not-origin? p) (not-origin? q)
-         (or lower-left-tri?  upper-left-tri?  lower-right-tri?))))
+         (or lower-left-tri?  upper-left-tri?  lower-right-tri? middle-tri?))))
 
 (def upper 3)
 
