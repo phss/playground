@@ -5,14 +5,15 @@
 
 (def upper 3)
 
-(def points (for [px (range upper)
-                  py (range upper)
-                  qx (range upper)
-                  qy (range upper)
-                  :when (and (not= [0 0] [px py])
-                             (not= [0 0] [qx qy])
-                             (right-triangle? px py qx qy))]
-              [[px py] [qx qy]]))
+(def right-angles 
+  (for [px (range upper)
+        py (range upper)
+        qx (range upper)
+        qy (range upper)
+        :when (and (not= [0 0] [px py])
+                   (not= [0 0] [qx qy])
+                   (right-triangle? px py qx qy))]
+    [[px py] [qx qy]]))
 
-(println points)
-(println (count points))
+(println right-angles)
+(println (count right-angles))
