@@ -11,8 +11,7 @@ class Hamming
  private
 
   def self.zip_strands(a, b)
-    a, b = b, a if a.size > b.size
-    a.chars.zip(b.chars)
+    [a.chars.to_a, b.chars.to_a].sort_by(&:size).reduce(&:zip)
   end
 
 end
