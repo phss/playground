@@ -10,6 +10,6 @@
       n
       (recur (next-square-chain n)))))
 
-(def upper 10000001)
+(def upper 100001)
 
 (println (count (filter #{89} (map arrives (range 1 upper)))))
