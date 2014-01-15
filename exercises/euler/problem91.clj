@@ -1,3 +1,5 @@
+(use 'commons)
+
 (defn right-triangle? [p q]
   (let [[px py] p
         [qx qy] q
@@ -10,13 +12,25 @@
     (and (not-origin? p) (not-origin? q)
          (or lower-left-tri?  upper-left-tri?  lower-right-tri? middle-tri?))))
 
+(defn distance [a b]
+  (let [[ax ay] a
+        [bx by] b]
+    (int-sqrt (+ (pow2 (- ax bx)) (pow2 (- ay by))))))
+
+(defn pyth-right-triangle? [p q]
+  (let [o [0 0]
+        distances (map (fn [ps] (distance (first ps) (second ps))) [[o p] [o q] [p q]])
+        [a b c] (sort distances)]
+    (and (not= o p) (not= o q) (not= p q)
+         (= (pow2 c) (+ (pow2 a) (pow2 b))))))
+
 (def upper 3)
 
 (def right-angles 
   (for [px (range upper) py (range upper)
         qx (range upper) qy (range upper)
         :let [p [px py] q [qx qy]]
-        :when (right-triangle? p q)]
+        :when (pyth-right-triangle? p q)]
     [p q]))
 
 (println right-angles)
