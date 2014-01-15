@@ -11,7 +11,9 @@ class Hamming
  private
 
   def self.zip_strands(a, b)
-    [a.chars.to_a, b.chars.to_a].sort_by(&:size).reduce(&:zip)
+    [a, b].map { |strand| strand.chars.to_a }
+          .sort_by(&:size)
+          .reduce(&:zip)
   end
 
 end
