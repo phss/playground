@@ -3,10 +3,9 @@ class Hamming
 
   def self.compute(strand_a, strand_b)
     strands = zip_strands(strand_a, strand_b)    
-    mutations = strands.select do |nucleotide_a, nucleotide_b|
+    strands.count do |nucleotide_a, nucleotide_b|
       nucleotide_a != nucleotide_b
     end
-    mutations.size
   end
 
  private
