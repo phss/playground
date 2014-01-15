@@ -36,6 +36,11 @@
     a
     (recur b (mod a b))))
 
+(defn almost= [a b]
+  (let [delta 0.0001
+        diff (Math/abs (- a b))]
+    (< diff delta)))
+
 ; Prime checking and generation
 (defn prime? [n]
   (let [divisible? (fn [n d] (zero? (rem n d)))]

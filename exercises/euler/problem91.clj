@@ -15,23 +15,25 @@
 (defn distance [a b]
   (let [[ax ay] a
         [bx by] b]
-    (int-sqrt (+ (pow2 (- ax bx)) (pow2 (- ay by))))))
+    (sqrt (+ (pow2 (- ax bx)) (pow2 (- ay by))))))
 
 (defn pyth-right-triangle? [p q]
   (let [o [0 0]
         distances (map (fn [ps] (distance (first ps) (second ps))) [[o p] [o q] [p q]])
         [a b c] (sort distances)]
     (and (not= o p) (not= o q) (not= p q)
-         (= (pow2 c) (+ (pow2 a) (pow2 b))))))
+         (almost= (pow2 c) (+ (pow2 a) (pow2 b))))))
 
-(def upper 3)
+;(println (pyth-right-triangle? [0, 1] [1, 0]))
+
+(def upper 51)
 
 (def right-angles 
-  (for [px (range upper) py (range upper)
-        qx (range upper) qy (range upper)
+  (for [px (range upper) qy (range upper)
+        qx (range px upper) py (range qy upper)
         :let [p [px py] q [qx qy]]
         :when (pyth-right-triangle? p q)]
     [p q]))
 
-(println right-angles)
+;(println right-angles)
 (println (count right-angles))
