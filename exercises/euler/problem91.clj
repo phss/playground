@@ -1,11 +1,12 @@
 (defn right-triangle? [p q]
   (let [[px py] p
         [qx qy] q
-        not-origin? #(not= [0 0] %)]
+        not-origin? #(not= [0 0] %)
+        lower-left-tri? (and (zero? px) (zero? qy) (> qx px))
+        upper-left-tri? (and (zero? px) (= py qy) (> qx px))
+        lower-right-tri? (and (zero? qy) (= px qx) (> py qy))]
     (and (not-origin? p) (not-origin? q)
-      (or (and (zero? px) (zero? qy) (> qx px))
-          (and (zero? px) (= py qy) (> qx px))
-          (and (zero? qy) (= px qx) (> py qy))))))
+         (or lower-left-tri?  upper-left-tri?  lower-right-tri?))))
 
 (def upper 3)
 
