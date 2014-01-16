@@ -6,7 +6,7 @@ class Anagram
 
   def match(candidates)
     candidates.select do |candidate|
-      @word.chars.sort == candidate.chars.sort
+      @word.chars.sort == candidate.chars.sort && @word != candidate
     end
   end
   
