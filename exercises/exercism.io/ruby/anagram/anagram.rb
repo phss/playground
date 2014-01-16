@@ -6,9 +6,7 @@ class Anagram
 
   def match(candidates)
     candidates.select do |candidate|
-      lower_candidate = candidate.downcase
-      lower_word = @word.downcase
-      anagram?(candidate) && lower_word != lower_candidate
+      word_not(candidate) && anagram?(candidate)
     end
   end
 
@@ -20,6 +18,10 @@ class Anagram
 
   def keify(string)
     string.downcase.chars.sort
+  end
+
+  def word_not(another_word)
+    @word.casecmp(another_word) != 0
   end
   
 end
