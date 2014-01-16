@@ -6,7 +6,9 @@ class Anagram
 
   def match(candidates)
     candidates.select do |candidate|
-      @word.chars.sort == candidate.chars.sort && @word != candidate
+      lower_candidate = candidate.downcase
+      lower_word = @word.downcase
+      lower_word.chars.sort == lower_candidate.chars.sort && lower_word != lower_candidate
     end
   end
   
