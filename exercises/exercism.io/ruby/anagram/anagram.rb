@@ -4,8 +4,8 @@ class Anagram
     @word = word
   end
 
-  def match(words)
-    
+  def match(candidates)
+    []
   end
   
 end
