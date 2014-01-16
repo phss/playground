@@ -9,7 +9,6 @@ class AnagramTest < MiniTest::Unit::TestCase
   end
 
   def test_detect_simple_anagram
-    skip
     detector = Anagram.new('ant')
     anagrams = detector.match(['tan', 'stand', 'at'])
     assert_equal ['tan'], anagrams

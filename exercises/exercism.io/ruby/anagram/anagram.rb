@@ -5,7 +5,9 @@ class Anagram
   end
 
   def match(candidates)
-    []
+    candidates.select do |candidate|
+      @word.chars.sort == candidate.chars.sort
+    end
   end
   
 end
