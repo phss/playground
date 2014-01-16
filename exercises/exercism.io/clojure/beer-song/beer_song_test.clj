@@ -11,7 +11,7 @@
 
 (deftest test-verse
   (is (= verse-8 (beer/verse 8)))
-  ;(is (= verse-2 (beer/verse 2)))
+  (is (= verse-2 (beer/verse 2)))
   ;(is (= verse-1 (beer/verse 1)))
          )
 
