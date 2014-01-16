@@ -8,8 +8,18 @@ class Anagram
     candidates.select do |candidate|
       lower_candidate = candidate.downcase
       lower_word = @word.downcase
-      lower_word.chars.sort == lower_candidate.chars.sort && lower_word != lower_candidate
+      anagram?(candidate) && lower_word != lower_candidate
     end
+  end
+
+ private
+ 
+  def anagram?(another_word)
+    keify(@word) == keify(another_word)
+  end
+
+  def keify(string)
+    string.downcase.chars.sort
   end
   
 end
