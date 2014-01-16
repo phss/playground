@@ -15,7 +15,7 @@ end
 module Enumerable
 
   def frequency
-    inject(Hash.new(0)) { |hash, elem| hash[elem] += 1; hash }
+    each_with_object(Hash.new(0)) { |elem, hash| hash[elem] += 1 }
   end
 
 end
