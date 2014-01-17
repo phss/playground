@@ -5,7 +5,9 @@ class Proverb
   end
 
   def to_s
-    "For want of a #{@words.first} the #{@words.last} was lost.\nAnd all for the want of a #{@words.first}."
+    first = "For want of a #{@words.first} the #{@words.last} was lost."
+    ending = "And all for the want of a #{@words.first}."
+    [first, ending].join("\n")
   end
 
 end
