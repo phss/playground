@@ -20,7 +20,6 @@ class SpaceAgeTest < MiniTest::Unit::TestCase
   end
 
   def test_age_in_venus_years
-    skip
     age = SpaceAge.new(189_839_836)
     assert_equal 6.02, age.on_earth
     assert_equal 9.78, age.on_venus

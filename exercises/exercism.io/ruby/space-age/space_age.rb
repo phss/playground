@@ -7,7 +7,8 @@ class SpaceAge
     earth_year_in_seconds = 365.25*24*60*60 
     @year_in_seconds = {
       :earth => earth_year_in_seconds,
-      :mercury => earth_year_in_seconds * 0.2408467
+      :mercury => earth_year_in_seconds * 0.2408467,
+      :venus => earth_year_in_seconds * 0.61519726
     }
   end
 
@@ -17,6 +18,10 @@ class SpaceAge
 
   def on_mercury
     years_on_planet(:mercury)
+  end
+
+  def on_venus
+    years_on_planet(:venus)
   end
 
  private
