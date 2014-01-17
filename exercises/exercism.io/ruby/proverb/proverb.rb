@@ -1,8 +1,9 @@
 class Proverb
 
-  def initialize(*words)
-    @words = words 
-    @qualifier = @words.first
+  def initialize(*args)
+    options = args.last.is_a?(Hash) ? args.pop : {}
+    @words = args
+    @qualifier = options[:qualifier] ? options[:qualifier] + " " + @words.first : @words.first
   end
 
   def to_s
