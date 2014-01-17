@@ -14,7 +14,6 @@ class SpaceAgeTest < MiniTest::Unit::TestCase
   end
 
   def test_age_in_mercury_years
-    skip
     age = SpaceAge.new(2_134_835_688)
     assert_equal 67.65, age.on_earth
     assert_equal 280.88, age.on_mercury
