@@ -3,19 +3,26 @@ class SpaceAge
 
   def initialize(seconds)
     @seconds = seconds   
+    
+    earth_year_in_seconds = 365.25*24*60*60 
+    @year_in_seconds = {
+      :earth => earth_year_in_seconds,
+      :mercury => earth_year_in_seconds * 0.2408467
+    }
   end
 
   def on_earth
-    year_in_days = 365.25
-    year_in_seconds = year_in_days*24*60*60
-    (@seconds / year_in_seconds).round(2)
+    years_on_planet(:earth)
   end
 
   def on_mercury
-    year_in_days = 365.25
-    year_in_seconds = year_in_days*24*60*60
-    year_in_seconds_merc = year_in_seconds * 0.2408467
-    (@seconds / year_in_seconds_merc).round(2)
+    years_on_planet(:mercury)
+  end
+
+ private
+
+  def years_on_planet(planet)
+    (@seconds / @year_in_seconds[planet]).round(2)
   end
 
 end
