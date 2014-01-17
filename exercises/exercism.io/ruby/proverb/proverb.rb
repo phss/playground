@@ -7,8 +7,8 @@ class Proverb
   end
 
   def to_s
-    verses = @words.each_cons(2).map do |(wanted, lost)|
-      "For want of a #{wanted} the #{lost} was lost."
+    verses = @words.each_cons(2).map do |(want, lost)|
+      "For want of a #{want} the #{lost} was lost."
     end
     verses << "And all for the want of a #{@final_consequence}."
     verses.join("\n")
