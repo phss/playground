@@ -3,17 +3,16 @@ class SpaceAge
 
   def initialize(seconds)
     @seconds = seconds   
-    
-    earth_year_in_seconds = 365.25*24*60*60 
+    @earth_year_in_seconds = 365.25*24*60*60 
     @year_in_seconds = {
-      "earth" => earth_year_in_seconds,
-      "mercury" => earth_year_in_seconds * 0.2408467,
-      "venus" => earth_year_in_seconds * 0.61519726,
-      "mars" => earth_year_in_seconds * 1.8808158,
-      "jupiter" => earth_year_in_seconds * 11.862615,
-      "saturn" => earth_year_in_seconds * 29.447498,
-      "uranus" => earth_year_in_seconds * 84.016846,
-      "neptune" => earth_year_in_seconds * 164.79132
+      "earth" => 1,
+      "mercury" => 0.2408467,
+      "venus" => 0.61519726,
+      "mars" => 1.8808158,
+      "jupiter" => 11.862615,
+      "saturn" => 29.447498,
+      "uranus" => 84.016846,
+      "neptune" => 164.79132
     }
   end
 
@@ -26,7 +25,8 @@ class SpaceAge
  private
 
   def years_on_planet(planet)
-    (@seconds / @year_in_seconds[planet]).round(2)
+    planet_year_in_seconds = @year_in_seconds[planet] * @earth_year_in_seconds
+    (@seconds / planet_year_in_seconds).round(2)
   end
 
 end
