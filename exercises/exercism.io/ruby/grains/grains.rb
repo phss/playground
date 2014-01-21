@@ -6,7 +6,7 @@ class Grains
   end
 
   def total
-    
+    (1..64).map { |i| square(i) }.reduce(&:+)
   end
 
 end
