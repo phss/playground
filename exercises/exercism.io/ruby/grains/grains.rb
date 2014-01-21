@@ -1,7 +1,7 @@
 class Grains
   
-  def square(grains)
-    
+  def square(number)
+    number
   end
 
   def total
