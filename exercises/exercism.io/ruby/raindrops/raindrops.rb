@@ -1,6 +1,6 @@
 class Raindrops
   
-  def drops
+  def convert(number)
     "1"
   end
 
