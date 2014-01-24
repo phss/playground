@@ -1,10 +1,13 @@
 class Raindrops
   
   def convert(number)
-    return "Pling" if divisible?(number, 3)
-    return "Plang" if divisible?(number, 5)
-    return "Plong" if divisible?(number, 7)
-    "1"
+    sounds = ""
+    sounds += "Pling" if divisible?(number, 3)
+    sounds += "Plang" if divisible?(number, 5)
+    sounds += "Plong" if divisible?(number, 7)
+
+    return "1" if sounds.empty?
+    sounds
   end
 
  private

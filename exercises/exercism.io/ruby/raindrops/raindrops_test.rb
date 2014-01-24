@@ -44,7 +44,6 @@ class RaindropsTest < MiniTest::Unit::TestCase
   end
 
   def test_15
-    skip
     assert_equal "PlingPlang", drops.convert(15)
   end
 
