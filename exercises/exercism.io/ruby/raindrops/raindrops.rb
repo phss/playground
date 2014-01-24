@@ -6,7 +6,7 @@ class Raindrops
     sounds += "Plang" if divisible?(number, 5)
     sounds += "Plong" if divisible?(number, 7)
 
-    return "1" if sounds.empty?
+    return number.to_s if sounds.empty?
     sounds
   end
 
