@@ -1,10 +1,16 @@
 class Raindrops
   
   def convert(number)
-    return "Pling" if number % 3 == 0
-    return "Plang" if number % 5 == 0
-    return "Plong" if number % 7 == 0
+    return "Pling" if divisible?(number, 3)
+    return "Plang" if divisible?(number, 5)
+    return "Plong" if divisible?(number, 7)
     "1"
+  end
+
+ private
+
+  def divisible?(number, divider)
+    number % divider == 0
   end
 
 end
