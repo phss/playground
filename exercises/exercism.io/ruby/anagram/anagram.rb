@@ -13,10 +13,10 @@ class Anagram
  private
  
   def anagram?(another_word)
-    keify(@word) == keify(another_word)
+    sorted_chars(@word) == sorted_chars(another_word)
   end
 
-  def keify(string)
+  def sorted_chars(string)
     string.downcase.chars.sort
   end
 
