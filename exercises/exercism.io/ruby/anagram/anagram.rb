@@ -6,7 +6,7 @@ class Anagram
 
   def match(candidates)
     candidates.select do |candidate|
-      !same_word?(candidate) && anagram?(candidate)
+      different_word?(candidate) && anagram?(candidate)
     end
   end
 
@@ -20,8 +20,8 @@ class Anagram
     string.downcase.chars.sort
   end
 
-  def same_word?(another_word)
-    @word.casecmp(another_word) == 0
+  def different_word?(another_word)
+    @word.casecmp(another_word) != 0
   end
   
 end
