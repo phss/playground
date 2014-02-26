@@ -7,12 +7,10 @@ class ScrabbleTest < MiniTest::Unit::TestCase
   end
 
   def test_whitespace_scores_zero
-    skip
     assert_equal 0, Scrabble.new(" \t\n").score
   end
 
   def test_nil_scores_zero
-    skip
     assert_equal 0, Scrabble.new(nil).score
   end
 
