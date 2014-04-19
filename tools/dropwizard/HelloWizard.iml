@@ -14,6 +14,65 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="Gradle: junit-4.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: hamcrest-core-1.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dropwizard-core-0.7.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jackson-annotations-2.3.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: guava-16.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jsr305-2.0.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: joda-time-2.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dropwizard-util-0.7.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jackson-core-2.3.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jackson-databind-2.3.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jackson-datatype-guava-2.3.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jackson-module-afterburner-2.3.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jackson-datatype-joda-2.3.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: slf4j-api-1.7.6" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: logback-core-1.1.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: logback-classic-1.1.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dropwizard-jackson-0.7.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: validation-api-1.1.0.Final" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jboss-logging-3.1.1.GA" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: classmate-1.0.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: hibernate-validator-5.0.2.Final" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javax.el-api-2.2.5" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javax.el-2.2.6" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dropwizard-validation-0.7.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jackson-dataformat-yaml-2.3.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: commons-lang-2.6" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dropwizard-configuration-0.7.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: metrics-core-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: metrics-logback-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jul-to-slf4j-1.7.6" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: log4j-over-slf4j-1.7.6" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-util-9.0.7.v20131107" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dropwizard-logging-0.7.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javax.servlet-3.0.0.v201112011016" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-http-9.0.7.v20131107" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-io-9.0.7.v20131107" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-server-9.0.7.v20131107" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dropwizard-lifecycle-0.7.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dropwizard-metrics-0.7.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jersey-core-1.18.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jersey-server-1.18.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jersey-servlet-1.18.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: metrics-annotation-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: metrics-jersey-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jackson-jaxrs-base-2.3.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jackson-module-jaxb-annotations-2.3.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jackson-jaxrs-json-provider-2.3.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dropwizard-jersey-0.7.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dropwizard-servlets-0.7.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: metrics-jetty9-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-security-9.0.7.v20131107" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-servlet-9.0.7.v20131107" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-continuation-9.0.7.v20131107" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-servlets-9.0.7.v20131107" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dropwizard-jetty-0.7.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: metrics-jvm-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: metrics-healthchecks-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: metrics-json-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: metrics-servlets-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: argparse4j-0.4.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-setuid-java-1.0.2" level="project" />
   </component>
 </module>
 
