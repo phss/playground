@@ -2,7 +2,8 @@ package phss.playground;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
 
 public class ThingyTest {
 
@@ -10,6 +11,6 @@ public class ThingyTest {
     public void helloWithStuff() {
         Thingy thingy = new Thingy("coisa");
 
-        assertEquals(thingy.saidHelloToTheStuff(), "Hello to you, coisa");
+        assertThat(thingy.saidHelloToTheStuff(), equalTo("Hello to you, coisa"));
     }
 }
