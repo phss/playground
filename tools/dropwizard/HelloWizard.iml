@@ -81,6 +81,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: objenesis-2.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: fest-util-1.2.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: fest-assert-core-2.0M10" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: jersey-client-1.18.1" level="project" />
   </component>
 </module>
 
