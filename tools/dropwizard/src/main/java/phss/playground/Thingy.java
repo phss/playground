@@ -1,5 +1,9 @@
 package phss.playground;
 
+import java.util.Arrays;
+
+import static java.util.Arrays.sort;
+
 public class Thingy {
 
     private String stuff;
@@ -10,5 +14,13 @@ public class Thingy {
 
     public String saidHelloToTheStuff() {
         return "Hello to you, " + this.stuff;
+    }
+
+    public String[] sortAnArray() {
+        String[] things = { "aaa", "bbbb", "cc" };
+
+        sort(things, (s1, s2) -> s1.length() - s2.length());
+
+        return things;
     }
 }
