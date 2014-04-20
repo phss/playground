@@ -82,6 +82,9 @@
     <orderEntry type="library" scope="TEST" name="Gradle: fest-util-1.2.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: fest-assert-core-2.0M10" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: jersey-client-1.18.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dropwizard-views-mustache-0.7.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dropwizard-views-0.7.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: compiler-0.8.14" level="project" />
   </component>
 </module>
 

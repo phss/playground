@@ -3,6 +3,7 @@ package phss.playground.wiz;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.dropwizard.views.ViewBundle;
 
 public class HelloWizardApplication extends Application<HelloWizardConfiguration> {
 
@@ -13,7 +14,7 @@ public class HelloWizardApplication extends Application<HelloWizardConfiguration
 
     @Override
     public void initialize(Bootstrap<HelloWizardConfiguration> bootstrap) {
-
+        bootstrap.addBundle(new ViewBundle());
     }
 
     @Override
