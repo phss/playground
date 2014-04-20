@@ -73,6 +73,20 @@
     <orderEntry type="library" exported="" name="Gradle: metrics-servlets-3.0.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: argparse4j-0.4.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: jetty-setuid-java-1.0.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: dropwizard-testing-0.6.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: metrics-core-2.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: metrics-servlet-2.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: metrics-jetty-2.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: metrics-logback-2.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: metrics-annotation-2.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: metrics-jersey-2.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: dropwizard-core-0.6.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: javax.servlet-api-3.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: jersey-test-framework-core-1.17.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: jersey-test-framework-inmemory-1.17.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: mockito-all-1.9.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: fest-util-1.2.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: fest-assert-core-2.0M10" level="project" />
   </component>
 </module>
 
