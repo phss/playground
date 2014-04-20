@@ -8,7 +8,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-
 import java.util.concurrent.atomic.AtomicLong;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;

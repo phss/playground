@@ -1,7 +1,5 @@
 package phss.playground;
 
-import java.util.Arrays;
-
 import static java.util.Arrays.sort;
 
 public class Thingy {
