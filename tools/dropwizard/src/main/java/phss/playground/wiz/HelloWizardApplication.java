@@ -20,6 +20,7 @@ public class HelloWizardApplication extends Application<HelloWizardConfiguration
     public void run(HelloWizardConfiguration configuration, Environment environment) throws Exception {
         final HelloWizardResource wizardResource = new HelloWizardResource(configuration.getWizard());
         environment.jersey().register(wizardResource);
+        environment.healthChecks().register("wizard", new HelloWizardHealthcheck());
     }
 
     public static void main(String[] args) throws Exception {
