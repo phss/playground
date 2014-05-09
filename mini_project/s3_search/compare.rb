@@ -10,7 +10,11 @@ AWS.config(access_key_id: config['access'], secret_access_key: config['secret'],
 
 s3 = AWS::S3.new
 
-keys_a = s3.buckets[bucket_name_1].objects.map(&:key).map(&:strip).uniq
-keys_b = s3.buckets[bucket_name_2].objects.map(&:key).map(&:strip).uniq
+def keys_from(s3, bucket_name)
+  s3.buckets[bucket_name].objects.map(&:key).map(&:strip).uniq
+end
+
+keys_a = keys_from(s3, bucket_name_1)
+keys_b = keys_from(s3, bucket_name_2)
 
 puts keys_b
