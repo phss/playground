@@ -10,12 +10,15 @@ AWS.config(access_key_id: config['access'], secret_access_key: config['secret'],
 
 s3 = AWS::S3.new
 
-s3.buckets[bucket_name].objects.each do |obj|
+s3.buckets[bucket_name].objects.each_with_index do |obj, i|
+  if i % 100 == 0
+    puts "Object #{i} and up"
+  end
+
   content = obj.read
 
   if content.include?(search_term)
     puts "Key with term #{search_term}: #{obj.key}"
-    exit
   end
 end
 
