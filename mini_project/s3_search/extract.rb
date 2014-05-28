@@ -4,21 +4,24 @@ require 'rexml/document'
 include REXML
 
 bucket_name = ARGV.shift
+DESTINATION = ARGV.shift
 tag = /<([\/]?[\w|:|-]+)/
 
 
-def process(tags)
+def process(key, tags)
   level = []
 
-  tags.each do |tag_match|
-    tag = tag_match.first
-    close_tag = tag.start_with?("/")
+  File.open("#{DESTINATION}/#{key}.txt", 'w') do |file|
+    tags.each do |tag_match|
+      tag = tag_match.first
+      close_tag = tag.start_with?("/")
 
-    if close_tag
-      puts level.join("/")
-      level.pop
-    else
-      level << tag
+      if close_tag
+        level.pop
+      else
+        level << tag
+        file.write(level.join("/") + "\n")
+      end
     end
   end
 end
@@ -33,15 +36,13 @@ unique_tags = []
 
 s3.buckets[bucket_name].objects.each_with_index do |obj, i|
   if i % 100 == 0
-    #puts "Object #{i} and up"
+    puts "Object #{i} and up"
   end
 
   content = obj.read
 
   tags = content.scan(tag)
-#  puts tags
-#  puts tags.size
-  process(tags)
+  process(obj.key, tags)
   
   break
 end
