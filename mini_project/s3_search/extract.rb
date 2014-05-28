@@ -8,18 +8,17 @@ tag = /<([\/]?[\w|:|-]+)/
 
 
 def process(tags)
-  level = 0
+  level = []
 
   tags.each do |tag_match|
     tag = tag_match.first
     close_tag = tag.start_with?("/")
-#    puts "#{level} - #{tag}"    
 
     if close_tag
-      level -= 1
+      puts level.join("/")
+      level.pop
     else
-      puts ("  " * level) + tag
-      level += 1
+      level << tag
     end
   end
 end
