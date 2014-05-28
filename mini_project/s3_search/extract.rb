@@ -43,7 +43,5 @@ s3.buckets[bucket_name].objects.each_with_index do |obj, i|
 
   tags = content.scan(tag)
   process(obj.key, tags)
-  
-  break
 end
 
