@@ -4,8 +4,7 @@ require 'rexml/document'
 include REXML
 
 bucket_name = ARGV.shift
-search_term = ARGV.shift
-tag = /\<[\w|:]+\>/
+tag = /\<[\w|:|-]+\>/
 
 config = YAML::load(File.open('config'))
 
@@ -24,7 +23,6 @@ s3.buckets[bucket_name].objects.each_with_index do |obj, i|
 
   unique_tags += content.scan(tag)
   unique_tags.uniq!
-
 end
 
 puts unique_tags.sort
