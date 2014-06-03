@@ -5,18 +5,24 @@ include REXML
 
 bucket_name = ARGV.shift
 DESTINATION = ARGV.shift
-tag = /<([\/]?[\w|:|-]+)/
+tag = /<([\/]?[\w|:|-]+).*?(\/)?>/
 
 
 def process(key, tags)
   level = []
 
   File.open("#{DESTINATION}/#{key}.txt", 'w') do |file|
+    previous_tag = ""
     tags.each do |tag_match|
-      tag = tag_match.first
+      tag = tag_match.chomp
       close_tag = tag.start_with?("/")
+      self_close_tag = tag.end_with?("/")
 
       if close_tag
+        level.pop
+      elsif self_close_tag
+        level << tag
+        file.write(level.join("/") + "\n")
         level.pop
       else
         level << tag
@@ -41,7 +47,7 @@ s3.buckets[bucket_name].objects.each_with_index do |obj, i|
 
   content = obj.read
 
-  tags = content.scan(tag)
+  tags = content.scan(tag).map(&:join)
   process(obj.key, tags)
 end
 
