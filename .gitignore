@@ -2,3 +2,4 @@ rawr/todo
 *.swp
 *~
 *.pyc
+.DS_Store
