@@ -11,6 +11,9 @@ white = 255, 255, 255
 
 screen = pygame.display.set_mode(size)
 
+x_options = ["Doesn't work", "It REALLY doesn't work", "Stop selecting this option", "OK, last chance"]
+x_current_option = 0
+
 font = pygame.font.Font('VeraMono.ttf', 15)
 
 def draw_text(text, x, y, color):
@@ -33,12 +36,17 @@ def draw_options(options):
 
 while True:
     for event in pygame.event.get():
-        if event.type == pygame.QUIT: sys.exit()
+        if event.type == pygame.QUIT or \
+          (event.type == pygame.KEYDOWN and event.key == pygame.K_q):
+          sys.exit()
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_x:
+          x_current_option += 1
 
     screen.fill(black)
     draw_banner()
-    draw_options([
-        ("X", "Doesn't work"),
-        ("Q", "Quit")
-    ])
+    if x_current_option < len(x_options): 
+        options = [("X", x_options[x_current_option]), ("Q", "Quit")]
+    else:
+        options = [("Q", "I told you")]
+    draw_options(options)
     pygame.display.flip()
