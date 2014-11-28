@@ -5,6 +5,6 @@ import com.testlab.optionalchain.support.ServiceResponse;
 
 import java.util.Optional;
 
-public interface ServicerThingy {
+public interface ServiceResponseHandler {
     Account handle(Optional<ServiceResponse> serviceResponse);
 }

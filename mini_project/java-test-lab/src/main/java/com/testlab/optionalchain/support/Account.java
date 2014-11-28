@@ -5,7 +5,7 @@ public class Account {
     private final int accountNumber;
     private final AccessType accessType;
 
-    enum AccessType {
+    public enum AccessType {
         FULL, PARTIAL, GUEST
     }
 
