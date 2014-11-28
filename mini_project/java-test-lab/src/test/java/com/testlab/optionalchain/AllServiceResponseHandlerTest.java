@@ -11,6 +11,7 @@ import static com.testlab.optionalchain.support.Account.AccessType.GUEST;
 import static com.testlab.optionalchain.support.Account.AccessType.PARTIAL;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 public class AllServiceResponseHandlerTest {
 
@@ -34,5 +35,6 @@ public class AllServiceResponseHandlerTest {
 
         assertThat(account.getAccountNumber(), equalTo(-1));
         assertThat(account.getAccessType(), equalTo(GUEST));
+        assertThat(account, is(Account.getFallback()));
     }
 }

@@ -19,7 +19,7 @@ public class IffyServiceResponseHandler implements ServiceResponseHandler {
         if (serviceResponse.isPresent()) {
             return converter.convert(serviceResponse.get());
         } else {
-            return new Account(-1, Account.AccessType.GUEST);
+            return Account.getFallback();
         }
     }
 }
