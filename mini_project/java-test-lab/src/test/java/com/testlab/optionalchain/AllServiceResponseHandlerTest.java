@@ -4,18 +4,37 @@ import com.testlab.optionalchain.support.Account;
 import com.testlab.optionalchain.support.ResponseToAccountConverter;
 import com.testlab.optionalchain.support.ServiceResponse;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Optional;
 
 import static com.testlab.optionalchain.support.Account.AccessType.GUEST;
 import static com.testlab.optionalchain.support.Account.AccessType.PARTIAL;
+import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
+@RunWith(Parameterized.class)
 public class AllServiceResponseHandlerTest {
 
-    private final IffyServiceResponseHandler handler = new IffyServiceResponseHandler(new ResponseToAccountConverter());
+    @Parameters
+    public static Collection<Object[]> data() {
+        ResponseToAccountConverter converter = new ResponseToAccountConverter();
+        return asList(new Object[][] {
+                { new IffyServiceResponseHandler(converter) }
+        });
+    }
+
+    public ServiceResponseHandler handler;
+
+    public AllServiceResponseHandlerTest(ServiceResponseHandler handler) {
+        this.handler = handler;
+    }
 
     @Test
     public void convertsResponseToAccountWhenAvailable() {
