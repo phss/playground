@@ -1,4 +1,4 @@
-package any.thing;
+package com.testlab;
 
 public class Main {
 
