@@ -28,7 +28,8 @@ public class AllServiceResponseHandlerTest {
         return asList(new Object[][] {
                 { new IffyServiceResponseHandler(converter) },
                 { new PatternMatchingResponseHandler(converter) },
-                { new BuilderResponseHandler(converter) }
+                { new BuilderResponseHandler(converter) },
+                { new OptionalMapResponseHandler(converter) }
         });
     }
 
