@@ -26,7 +26,8 @@ public class AllServiceResponseHandlerTest {
     public static Collection<Object[]> data() {
         ResponseToAccountConverter converter = new ResponseToAccountConverter();
         return asList(new Object[][] {
-                { new IffyServiceResponseHandler(converter) }
+                { new IffyServiceResponseHandler(converter) },
+                { new PatternMatchingResponseHandler(converter) }
         });
     }
 
