@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.util.Optional;
 
+import static com.testlab.optionalchain.support.Account.AccessType.GUEST;
 import static com.testlab.optionalchain.support.Account.AccessType.PARTIAL;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -23,5 +24,15 @@ public class AllServiceResponseHandlerTest {
 
         assertThat(account.getAccountNumber(), equalTo(1234));
         assertThat(account.getAccessType(), equalTo(PARTIAL));
+    }
+
+    @Test
+    public void fallbackWhenUnavailable() {
+        Optional<ServiceResponse> response = Optional.empty();
+
+        Account account = handler.handle(response);
+
+        assertThat(account.getAccountNumber(), equalTo(-1));
+        assertThat(account.getAccessType(), equalTo(GUEST));
     }
 }

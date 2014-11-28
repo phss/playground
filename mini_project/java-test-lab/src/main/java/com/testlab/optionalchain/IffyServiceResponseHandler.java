@@ -16,6 +16,10 @@ public class IffyServiceResponseHandler implements ServiceResponseHandler {
 
     @Override
     public Account handle(Optional<ServiceResponse> serviceResponse) {
-        return converter.convert(serviceResponse.get());
+        if (serviceResponse.isPresent()) {
+            return converter.convert(serviceResponse.get());
+        } else {
+            return new Account(-1, Account.AccessType.GUEST);
+        }
     }
 }
