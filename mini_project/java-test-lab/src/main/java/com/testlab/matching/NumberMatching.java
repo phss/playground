@@ -1,8 +1,7 @@
 package com.testlab.matching;
 
-import javafx.util.Pair;
+import com.testlab.matching.impl.Case;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -26,29 +25,4 @@ public class NumberMatching {
         return null;
     }
 
-    private static class Case<T, V> {
-        private final When<T> when;
-        private final Action<T, V> action;
-
-        public Case(When<T> when, Action<T, V> action) {
-            this.when = when;
-            this.action = action;
-        }
-
-        public boolean canApply(T value) {
-            return when.canApply(value);
-        }
-
-        public V doIt(T value) {
-            return action.doIt(value);
-        }
-    }
-
-    private static interface When<T> {
-        boolean canApply(T value);
-    }
-
-    private static interface Action<T, V> {
-        V doIt(T value);
-    }
 }
