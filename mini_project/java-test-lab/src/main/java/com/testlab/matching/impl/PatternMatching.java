@@ -10,12 +10,7 @@ public class PatternMatching<T, V> {
     public V match(T value, CasesBlock<T, V> casesBlock) {
         casesBlock.collectCases(this);
 
-        for (Case<T, V> c : cases) {
-            if (c.canApply(value)) {
-                return c.doIt(value);
-            }
-        }
-        return null;
+        return cases.stream().filter((c) -> c.canApply(value)).findFirst().map((c) -> c.doIt(value)).orElseGet(null);
     }
 
     public void when(When<T> when, Action<T, V> action) {
