@@ -5,16 +5,13 @@
 def largest_consecutive_sum(numbers)
   largest_sum = numbers.max
   current_sum = 0
+
   numbers.each do |number|
     current_sum += number
-    if current_sum < 0
-      current_sum = 0
-      next
-    end
-    if current_sum > largest_sum
-      largest_sum = current_sum
-    end
+    largest_sum = current_sum if current_sum > largest_sum
+    current_sum = 0 if current_sum < 0
   end
+
   return largest_sum
 end
 
