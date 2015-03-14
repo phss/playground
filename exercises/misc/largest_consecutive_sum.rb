@@ -23,3 +23,6 @@ def calc_and_output(numbers, expected)
 end
 
 puts calc_and_output([1, 0, -2, 3, 2, 2, -10], 7)
+puts calc_and_output([-1, -2, 3, -2, -2, 10], 10) # edge case: last number is largest
+puts calc_and_output([10, -20, 3, -2, 2, -10], 10) # edge case: first number is largest
+puts calc_and_output([7, -2, 3, -2, 2, -10], 8) # sum goes up and down
