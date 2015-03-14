@@ -3,11 +3,15 @@
 
 
 (defn largest-consecutive-sum [numbers]
-  (loop [[number & remaining] numbers current-sum 0 largest-sum (apply max numbers)]
+  (loop [[number & remaining] numbers
+         current-sum 0
+         largest-sum (apply max numbers)]
     (if (nil? number)
       largest-sum
       (let [new-sum (+ current-sum number)]
-        (recur remaining (max 0 new-sum) (max largest-sum new-sum))))))
+        (recur remaining
+               (max 0 new-sum)
+               (max largest-sum new-sum))))))
 
 
 (println (largest-consecutive-sum [1, 0, -2, 3, 2, 2, -10])) ; => 7
