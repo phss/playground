@@ -1,14 +1,16 @@
 ; Given an array with positive and negative numbers (e.g. [1, 0, -2, 3, 2, 2, -10])
 ; calculate the largest sum of consecutive numbers. On the previous example, it would be 7
 
+
 (defn largest-consecutive-sum [numbers]
   (loop [nums numbers current-sum 0 largest-sum (apply max numbers)]
     (if (empty? nums)
       largest-sum
-      (let [new-sum (+ current-sum (first nums))
-            new-largest (if (> new-sum largest-sum) new-sum largest-sum)
-            new-current (if (> 0 new-sum) 0 new-sum)]
-        (recur (rest nums) new-current new-largest)))))
+      (let [new-sum (+ current-sum (first nums))]
+        (recur (rest nums) 
+               (if (> 0 new-sum) 0 new-sum)
+               (if (> new-sum largest-sum) new-sum largest-sum))))))
+
 
 (println (largest-consecutive-sum [1, 0, -2, 3, 2, 2, -10])) ; => 7
 (println (largest-consecutive-sum [-1, -2, 3, -2, -2, 10])) ; => 10, edge case: last number is largest
