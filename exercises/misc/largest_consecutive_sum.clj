@@ -7,9 +7,7 @@
     (if (empty? nums)
       largest-sum
       (let [new-sum (+ current-sum (first nums))]
-        (recur (rest nums) 
-               (if (> 0 new-sum) 0 new-sum)
-               (if (> new-sum largest-sum) new-sum largest-sum))))))
+        (recur (rest nums) (max 0 new-sum) (max largest-sum new-sum))))))
 
 
 (println (largest-consecutive-sum [1, 0, -2, 3, 2, 2, -10])) ; => 7
