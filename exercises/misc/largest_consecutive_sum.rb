@@ -3,8 +3,7 @@
 
 
 def largest_consecutive_sum(numbers)
-  largest_sum = numbers.max
-  current_sum = 0
+  largest_sum = current_sum = 0
 
   numbers.each do |number|
     current_sum += number
