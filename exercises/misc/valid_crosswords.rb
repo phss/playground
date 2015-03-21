@@ -1,7 +1,7 @@
 # Given a crossword solution as a two dimensional array, find all the words
 # that are not in the dictionary
 
-DICTIONARY = %w{AA CF CE ABCD AB CV CEC}
+DICTIONARY = %w{AA CF CE ABCD AB CB CEC}
 
 def in_dictionary?(word)
   DICTIONARY.include?(word)
@@ -14,8 +14,8 @@ def words_from(matrix)
 end
 
 def invalid_crossword_words(solution)
-  words = words_from(solution)
-  words.reject { |word| in_dictionary?(word) }
+  all_words = words_from(solution) + words_from(solution.transpose)
+  all_words.reject { |word| in_dictionary?(word) }
 end
 
 
