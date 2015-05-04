@@ -16,3 +16,8 @@
   (let [initial-perm [[[] col]]
         levels (count col)]
     (map first (nth (iterate next-permutation-level initial-perm) levels))))
+
+(defn permutations-by-n [col n]
+  (let [next-level (fn [perms] (for [p perms e col] (conj p e)))]
+    (nth (iterate next-level [[]]) n)))
+

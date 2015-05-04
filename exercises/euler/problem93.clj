@@ -3,6 +3,6 @@
 
 (def operations [+ - * /])
 
-(def s [1 2 3 4])
+(def s (all-permutations [1 2 3 4]))
 
-(all-permutations s)
+(permutations-by-n operations 3)
