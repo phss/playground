@@ -22,5 +22,11 @@
   (let [results (sort (distinct (all-results s)))]
     (last (last (take-while (fn [[x y]] (= (inc x) y)) (partition 2 1 results))))))
 
-(longest-set-n [1 2 3 4])
+(def x
+  (for [all (permutations-by-n [1 2 3 4 5 6 7 8 9] 4)]
+    [all (longest-set-n all)]
+    )
+  )
 
+(sort (distinct (all-results [1 2 5 6])))
+;(last (sort-by second x))
