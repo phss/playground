@@ -20,7 +20,7 @@
 
 (defn longest-set-n [s]
   (let [results (sort (distinct (all-results s)))]
-    results))
+    (last (last (take-while (fn [[x y]] (= (inc x) y)) (partition 2 1 results))))))
 
 (longest-set-n [1 2 3 4])
 
