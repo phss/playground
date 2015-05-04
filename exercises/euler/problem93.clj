@@ -2,21 +2,25 @@
   (:use [combinatorics]))
 
 (def operations (permutations-by-n [+ - * /] 3))
-(def set-combinations (all-permutations [1 2 3 4]))
 
-(defn combine [[a b c d] 
-               [op1 op2 op3]]
-  (op3 (op2 (op1 a b) c) d))
+(defn combine [[a b c d] [op1 op2 op3]]
+  (-> (op1 a b)
+      (op2 c)  
+      (op3 d)))
 
 (defn valid? [result]
   (and (pos? result) (integer? result)))
 
-(def r 
-  (for [nums set-combinations
+(defn all-results [s] 
+  (for [nums (all-permutations s)
         ops operations
         :let [result (combine nums ops)]
         :when (valid? result)]
     result))
 
-(sort (distinct r))
+(defn longest-set-n [s]
+  (let [results (sort (distinct (all-results s)))]
+    results))
+
+(longest-set-n [1 2 3 4])
 
