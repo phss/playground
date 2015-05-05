@@ -1,7 +1,7 @@
 (ns problem94
   (:use [commons]))
 
-(def max-perimeter 10000000)
+(def max-perimeter 1000000)
 
 (defn almost-perimeter [equal-side diff-side]
   (+ equal-side equal-side diff-side))
@@ -18,8 +18,7 @@
         diff-side [(dec equal-side) (inc equal-side)]
         :when (integral-area? equal-side diff-side)
         :let [perimeter (almost-perimeter equal-side diff-side)]
-        :while (< perimeter max-perimeter)
-        ]
-    perimeter))
+        :while (< perimeter max-perimeter)]
+    [equal-side diff-side perimeter]))
 
-(reduce + perimeters)
+perimeters
