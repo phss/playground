@@ -1,8 +1,7 @@
 (ns problem94
   (:use [commons]))
 
-; ([5 6 16] [17 16 50] [65 66 196] [241 240 722] [901 902 2704] [3361 3360 10082] [12545 12546 37636]
-; [46817 46816 140450] [93686 93687 281059] [174725 174726 524176] [302828 302829 908485]) 
+(def max-perimeter 1000000000)
 
 (defn almost-perimeter [equal-side diff-side]
   (+ equal-side equal-side diff-side))
@@ -18,13 +17,13 @@
 
 (def p1 (->> heros-plus-one
              (map (fn [n] (almost-perimeter n (inc n))))
-             (filter #(< % 1000000000))
+             (filter #(< % max-perimeter))
              (reduce +)
              ))
 
 (def p2 (->> heros-minus-one
              (map (fn [n] (almost-perimeter (inc n) n)))
-             (filter #(< % 1000000000))
+             (filter #(< % max-perimeter))
              (reduce +)
              ))
 (+ p1 p2)
