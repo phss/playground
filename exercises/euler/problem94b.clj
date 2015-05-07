@@ -18,4 +18,17 @@
   ([] (solutions [x1 y1]))
   ([curr] (cons curr (lazy-seq (solutions (next-solution curr))))))
 
-(take 5 (solutions))
+; Solving the problem
+(defn solve [op]
+  (for [[x y] (solutions)
+        :let [side (/ (op (* 2 x) 1) 3)
+              area (* (op x 2) y 1/3)
+              perimeter (+ side side (op side 1))]
+        :when (and (integer? side) (integer? area))
+        :while (< perimeter max-perimeter)]
+    perimeter))
+
+(def plus-one-case (solve +)) 
+(def minus-one-case (solve -)) 
+
+(reduce + (concat plus-one-case minus-one-case))
