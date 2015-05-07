@@ -10,8 +10,12 @@
 (def y1 1)
 (def n 3)
 
-(defn next-solution [x y]
+(defn next-solution [[x y]]
   [(+ (* x1 x) (* n y1 y))
    (+ (* x1 y) (* y1 x))])
 
-(next-solution 7 4)
+(defn solutions
+  ([] (solutions [x1 y1]))
+  ([curr] (cons curr (lazy-seq (solutions (next-solution curr))))))
+
+(take 5 (solutions))
