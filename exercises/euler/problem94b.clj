@@ -24,7 +24,7 @@
         :let [side (/ (op (* 2 x) 1) 3)
               area (* (op x 2) y 1/3)
               perimeter (+ side side (op side 1))]
-        :when (and (integer? side) (integer? area))
+        :when (and (integer? side) (integer? area) (pos? area))
         :while (< perimeter max-perimeter)]
     perimeter))
 
