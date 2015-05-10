@@ -15,8 +15,11 @@
   (map puzzle-from-raw)))
 
 ; Solution
+(defn index-of [row column]
+  (+ column (* row 9)))
+
 (defn value-at [puzzle row column]
-  (puzzle (+ column (* row 9))))
+  (puzzle (index-of row column)))
 
 (defn values-at [puzzle rows columns]
   (->> (map #(value-at puzzle %1 %2) rows columns)
@@ -37,9 +40,25 @@
              (mapcat (partial repeat 3) (indexes row))
              (flatten (repeat 3 (indexes column)))))
 
-;(row-values (first puzzles) 3)
-;(column-values (first puzzles) 4)
-;(box-values (first puzzles) 4 4)
+(defn all-values [puzzle row column]
+  (->> (concat
+         (row-values puzzle row)
+         (column-values puzzle column)
+         (box-values puzzle row column))
+       (distinct)))
+
+(defn update [puzzle row column value]
+  (assoc puzzle (index-of row column) value))
+
+(defn possible-values-at [puzzle row column]
+  (let [filled-values (all-values puzzle row column)]
+    (remove #(some #{%} filled-values) (range 1 10))))
+
+(defn positions-to-fill [puzzle]
+  (for [row (range 9)
+        column (range 9)
+        :when (zero? (value-at puzzle row column))]
+    [row column]))
 
 ;(defn solve [puzzle])
 
