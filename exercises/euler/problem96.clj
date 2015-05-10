@@ -54,12 +54,20 @@
   (let [filled-values (all-values puzzle row column)]
     (remove #(some #{%} filled-values) (range 1 10))))
 
+(defn next-puzzles [puzzle [row column]]
+  (map #(update puzzle row column %) (possible-values-at puzzle row column)))
+
 (defn positions-to-fill [puzzle]
   (for [row (range 9)
         column (range 9)
         :when (zero? (value-at puzzle row column))]
     [row column]))
 
-;(defn solve [puzzle])
+(defn solve [puzzle]
+  (loop [puzzle-steps [puzzle] positions (positions-to-fill puzzle)]
+    (if (empty? positions) puzzle-steps
+      (recur 
+        (mapcat #(next-puzzles % (first positions)) puzzle-steps)
+        (rest positions)))))
 
-;(solve (first puzzles))
+(solve (first puzzles))
