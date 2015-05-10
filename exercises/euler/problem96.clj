@@ -65,9 +65,11 @@
 
 (defn solve [puzzle]
   (loop [puzzle-steps [puzzle] positions (positions-to-fill puzzle)]
-    (if (empty? positions) puzzle-steps
+    (if (empty? positions) (number-from (take 3 (first puzzle-steps)))
       (recur 
         (mapcat #(next-puzzles % (first positions)) puzzle-steps)
         (rest positions)))))
 
-(solve (first puzzles))
+(->> puzzles
+     (map solve)
+     (reduce +))
