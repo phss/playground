@@ -2,7 +2,7 @@
 
 (def fibonacci-seq (map first (iterate (fn [[prev curr]] [curr (+ prev curr)]) [0 1])))
 
-(def fibbys (take 6 fibonacci-seq))
+(def fibbys (take 21 fibonacci-seq))
 
 (def max-num (reduce + fibbys))
 
@@ -13,5 +13,9 @@
             new-sums (map #(+ fib %) sums)] 
         (recur (concat sums new-sums [fib]) fib-rest)))))
 
-all-sums
+(def missing-nums
+  (->> (range (inc max-num))
+       (remove #(some #{%} all-sums))))
 
+;missing-nums
+[max-num (count all-sums)]
