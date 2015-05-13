@@ -7,7 +7,7 @@
   (->> (digits-from n)
        (take-last 10)
        (apply str)
-       (read-string)))
+       (bigdec)))
 
 ;(last-10-digits 99999991234567890)
 
@@ -18,4 +18,9 @@
 
 (def doubles-seq (iterate next-doubled-10 1))
 
-(nth doubles-seq 40)
+(def big-double (nth doubles-seq 7830457))
+
+(->> big-double
+     (* 28433)
+     (inc)
+     (last-10-digits))
