@@ -5,5 +5,15 @@
   (slurp)
   (re-seq #"\w+")))
 
-words
+(defn str-identity [s]
+  (apply str (sort s)))
 
+;(str-identity "dsad1231")
+
+(def anagrams (->>
+  words
+  (group-by str-identity)
+  (filter #(> (count (second %)) 1))))
+
+
+anagrams
