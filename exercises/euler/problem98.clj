@@ -16,15 +16,20 @@
   (group-by str-identity)
   (filter #(> (count (second %)) 1))))
 
-(sort-by #(count (first %)) anagrams)
-
-;(def squares (map pow2 (range))) ; Biggest has 9 digits
+;(sort-by #(count (first %)) anagrams)
 
 (defn unique-digits? [n]
   (let [digits (digits-from n)]
     (= digits (distinct digits))))
 
+(def squares (map pow2 (range))) ; Biggest has 9 digits
 (def some-squares (take-while #(< % 1000000000) squares))
 
-(filter unique-digits? some-squares)
+(def square-anagrams (->>
+  some-squares
+  (map str)
+  (group-by str-identity)
+  (filter #(> (count (second %)) 1))
+  (filter #(unique-digits? (first %)))))
 
+(sort-by #(count (first %)) square-anagrams)
