@@ -1,7 +1,18 @@
 (ns challenge1
   (:use [clojure.test]))
 
-(defn hex-to-bytes [s])
+(def zero (int \0))
+(def letter-a (int \a))
+
+(defn hex-to-decimal [s]
+  (let [letter? #(>= (int %) letter-a)
+        offset #(if (letter? %) (- letter-a 10) zero)
+        to-decimal #(- (int %) (offset %))]
+    (map to-decimal s)))
+
+(defn hex-to-bytes [s]
+  (let [decimals (hex-to-decimal s)]
+    decimals))
 
 (defn bytes-to-base64 [bs])
 
