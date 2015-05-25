@@ -5,7 +5,7 @@ def print_matrix(m)
 end
 
 def rotations(i, s, e)
-  [[i, s], [e, i], [e-i, e], [s, e-i]]
+  [[i, s], [e, i], [e-i+s, e], [s, e-i+s]]
 end
 
 def apply_rotations(m, rots)
@@ -16,7 +16,17 @@ def apply_rotations(m, rots)
   end
 end
 
-#puts rotations(0, 0, 4).map { |c| "(#{c.join(', ')})"}.join(' ')
+def rotate_90(m)
+  0.upto(m.size/2) do |s|
+    e = m.size - 1 - s
+    s.upto(e-1) do |i|
+      rots = rotations(i, s, e)
+      apply_rotations(m, rots)
+    end
+  end
+end
+
+puts rotations(1, 1, 3).map { |c| "(#{c.join(', ')})"}.join(' ')
 
 matrix = [
   ["00", "01", "02", "03", "04"],
@@ -28,7 +38,8 @@ matrix = [
 
 print_matrix(matrix)
 
-apply_rotations(matrix, rotations(0, 0, 4))
+#apply_rotations(matrix, rotations(0, 0, 4))
+rotate_90(matrix)
 puts
 
 print_matrix(matrix)
