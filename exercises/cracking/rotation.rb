@@ -8,7 +8,16 @@ def rotations(i, s, e)
   [[i, s], [e, i], [e-i, e], [s, e-i]]
 end
 
-#puts rotations(3, 0, 4).map { |c| "(#{c.join(', ')})"}.join(' ')
+def apply_rotations(m, rots)
+  values = rots.map { |r, c| m[c][r] }.rotate(-1) 
+  rots.zip(values).each do |rot, value|
+    r, c = rot
+    m[c][r] = value
+  end
+end
+
+#puts rotations(0, 0, 4).map { |c| "(#{c.join(', ')})"}.join(' ')
+
 matrix = [
   ["00", "01", "02", "03", "04"],
   ["10", "11", "12", "13", "14"],
@@ -18,3 +27,9 @@ matrix = [
 ]
 
 print_matrix(matrix)
+
+apply_rotations(matrix, rotations(0, 0, 4))
+puts
+
+print_matrix(matrix)
+
