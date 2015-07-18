@@ -3,8 +3,9 @@
             [sudoku-solver.loader :refer :all]))
 
 (defmacro puzzle [& rows]
-  (let [nr (fn [row] (vec (map #(if (= '_ %) nil %) row)))]
-    (vec (map nr rows))))
+  (letfn [(nil-for-missing-val [v] (if (not= '_ v) v))
+          (row-with-missing-val [row] (vec (map nil-for-missing-val row)))]
+    (vec (map row-with-missing-val rows))))
 
 
 (deftest loading
@@ -19,6 +20,3 @@
                  [_ _ _ _ 7 1 _ _ 6]) 
          (load-from-file "resources/sample.txt"))))
 
-;(puzzle [1 _ 2 3]
-        ;[_ _ _ 2])
-;(macroexpand-1 '(puzzle [1 _ 2 3]))
