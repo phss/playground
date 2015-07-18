@@ -11,5 +11,3 @@
        (map to-rows)))
 
 (load-from-file "resources/sample.txt")
-;(->> (to-rows "1**92****")
-     ;(map #(if (= % "*") nil %)))

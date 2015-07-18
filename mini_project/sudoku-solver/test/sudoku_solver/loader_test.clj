@@ -2,14 +2,23 @@
   (:require [clojure.test :refer :all]
             [sudoku-solver.loader :refer :all]))
 
+(defmacro puzzle [& rows]
+  (let [nr (fn [row] (vec (map #(if (= '_ %) nil %) row)))]
+    (vec (map nr rows))))
+
+
 (deftest loading
-  (is (= [[1 nil nil 9 2 nil nil nil nil]
-          [5 2 4 nil 1 nil nil nil nil]
-          [nil nil nil nil nil nil nil 7 nil]
-          [nil 5 nil nil nil 8 1 nil 2]
-          [nil nil nil nil nil nil nil nil nil]
-          [4 nil 2 7 nil nil nil 9 nil]
-          [nil 6 nil nil nil nil nil nil nil]
-          [nil nil nil nil 3 nil 9 4 5]
-          [nil nil nil nil 7 1 nil nil 6]] 
+  (is (= (puzzle [1 _ _ 9 2 _ _ _ _]
+                 [5 2 4 _ 1 _ _ _ _]
+                 [_ _ _ _ _ _ _ 7 _]
+                 [_ 5 _ _ _ 8 1 _ 2]
+                 [_ _ _ _ _ _ _ _ _]
+                 [4 _ 2 7 _ _ _ 9 _]
+                 [_ 6 _ _ _ _ _ _ _]
+                 [_ _ _ _ 3 _ 9 4 5]
+                 [_ _ _ _ 7 1 _ _ 6]) 
          (load-from-file "resources/sample.txt"))))
+
+;(puzzle [1 _ 2 3]
+        ;[_ _ _ 2])
+;(macroexpand-1 '(puzzle [1 _ 2 3]))
