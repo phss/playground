@@ -1,13 +1,12 @@
 (ns sudoku-solver.loader
   (:use [clojure.string :only [split-lines]]))
 
-(defn to-rows [row-string]
-  (map #(if (= "*" %) nil (Integer/parseInt %)) (map str (map str (seq row-string)))))
+(defn- to-row [row-string]
+  (letfn [(to-val [c] (if (not= \* c) (Integer/parseInt (str c))))]
+    (map to-val (seq row-string))))
 
 (defn load-from-file [filename]
-  (->> filename
-       (slurp)
+  (->> (slurp filename)
        (split-lines)
-       (map to-rows)))
+       (map to-row)))
 
-(load-from-file "resources/sample.txt")
