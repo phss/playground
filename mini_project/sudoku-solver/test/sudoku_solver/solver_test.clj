@@ -1,12 +1,7 @@
 (ns sudoku-solver.solver-test
   (:require [clojure.test :refer :all]
+            [sudoku-solver.puzzle-helper :refer :all]
             [sudoku-solver.solver :refer :all]))
-
-(defmacro puzzle [& rows]
-  (letfn [(nil-for-missing-val [v] (if (not= '_ v) v))
-          (row-with-missing-val [row] (vec (map nil-for-missing-val row)))]
-    (vec (map row-with-missing-val rows))))
-
 
 (def initial-puzzle
   (puzzle [1 _ _ 9 2 _ _ _ _]
