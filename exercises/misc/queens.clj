@@ -17,4 +17,17 @@
 (valid? [0 1]) ;=> false
 (valid? [1 3 0 2]) ;=> true
 
+(defn solve [n]
+  (loop [state (map vector (range n)) i (dec n)]
+    (if (zero? i)
+      state
+      (recur
+        (->> state
+             (mapcat (fn [board] (map #(conj board %) (range n))))
+             (filter valid?)) 
+        (dec i)))))
+
+
+(solve 8)
+
 
