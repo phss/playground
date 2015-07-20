@@ -28,6 +28,15 @@
         (dec i)))))
 
 
-(solve 8)
+;(solve 8)
+
+(defn solve-recursive [i n]
+  (if (= i 1)
+    (map vector (range n))
+    (for [solutions (solve-recursive (dec i) n)
+          next-solutions (map #(conj solutions %) (range n))
+          :when (valid? next-solutions)]
+      next-solutions)))
 
 
+(solve-recursive 8 8)
