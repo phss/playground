@@ -3,15 +3,24 @@
   (:require [clojure.core.logic.fd :as fd])
   (:use [clojure.core.logic]))
 
+
+(defn all-infd [vars interval]
+  (if (seq vars)
+    (all
+      (fd/in (first vars) interval)
+      (all-infd (next vars) interval))
+    succeed))
+
 (defn solve [puzzle]
   (run* [q]
-    (fresh [a b c d]
-      (== q [a b c d])
-      (fd/in a b c d (fd/interval 1 4))
-      (fd/distinct q)
-      (== a 1)
-      (== b 2)
-      (== d 3)
+    (let [v (repeatedly 4 lvar)]
+      (all 
+        (== q v)
+        (all-infd v (fd/interval 1 4))
+        (fd/distinct q)
+        (== (nth v 0) 1)
+        (== (nth v 1) 2)
+        (== (nth v 3) 3))
       ))) 
 
 ; Hacky for testing
