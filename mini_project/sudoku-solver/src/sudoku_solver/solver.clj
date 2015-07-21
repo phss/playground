@@ -5,15 +5,17 @@
 
 (defn solve [puzzle]
   (run* [q]
-    (fresh [s1 s2 s3 s4 s5 s6 s7 s8 s9]
-      (== q [s1 s2 s3 s4 s5 s6 s7 s8 s9])
-      (fd/in s1 s2 s3 s4 s5 s6 s7 s8 s9 (fd/interval 1 9))
+    (fresh [a b c d]
+      (== q [a b c d])
+      (fd/in a b c d (fd/interval 1 4))
       (fd/distinct q)
-      (== q puzzle)
+      (== a 1)
+      (== b 2)
+      (== d 3)
       ))) 
 
 ; Hacky for testing
-(defmacro puzzle [& rows]
+(defmacro puzzle [& rows]1
   (letfn [(nil-for-missing-val [v] (if (not= '_ v) v))
           (row-with-missing-val [row] (vec (map nil-for-missing-val row)))]
     (vec (map row-with-missing-val rows))))
@@ -29,4 +31,4 @@
           [_ _ _ _ 3 _ 9 4 5]
           [_ _ _ _ 7 1 _ _ 6]))
 
-(solve initial-puzzle)
+(solve (puzzle [1 2 _ 3]))
