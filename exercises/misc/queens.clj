@@ -39,4 +39,4 @@
       next-solutions)))
 
 
-(solve-recursive 8 8)
+(solve-recursive 4 4)
