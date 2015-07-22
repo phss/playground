@@ -6,19 +6,10 @@
 
 (defn- all-values-within [vars low high]
   (let [interval (fd/interval low high)]
-    (if (seq vars)
-      (all
-        (fd/in (first vars) interval)
-        (all-values-within (next vars) low high))
-      succeed)))
+    (everyg #(fd/in % interval) vars)))
 
 (defn all-puzzle-locations [vars p]
-  (let [pos (first p)]
-    (if pos
-      (all
-        (== (nth vars (first pos)) (second pos))
-        (all-puzzle-locations vars (rest p)))
-      succeed)))
+  (everyg #(== (nth vars (first %)) (second %)) p))
 
 (defn- dynamic-lvars [n]
   (repeatedly n lvar))
