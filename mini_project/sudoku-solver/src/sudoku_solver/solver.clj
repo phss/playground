@@ -4,12 +4,13 @@
   (:use [clojure.core.logic]))
 
 
-(defn all-infd [vars interval]
-  (if (seq vars)
-    (all
-      (fd/in (first vars) interval)
-      (all-infd (next vars) interval))
-    succeed))
+(defn- all-values-within [vars low high]
+  (let [interval (fd/interval low high)]
+    (if (seq vars)
+      (all
+        (fd/in (first vars) interval)
+        (all-values-within (next vars) low high))
+      succeed)))
 
 (defn all-puzzle-locations [vars p]
   (let [pos (first p)]
@@ -19,12 +20,15 @@
         (all-puzzle-locations vars (rest p)))
       succeed)))
 
+(defn- dynamic-lvars [n]
+  (repeatedly n lvar))
+
 (defn solve [puzzle]
   (run* [q]
-    (let [v (repeatedly 4 lvar)]
+    (let [v (dynamic-lvars 4)]
       (all 
         (== q v)
-        (all-infd v (fd/interval 1 4))
+        (all-values-within v 1 4)
         (fd/distinct q)
         (all-puzzle-locations v (remove #(nil? (second %)) (map list (range) (first puzzle)))))))) 
 
