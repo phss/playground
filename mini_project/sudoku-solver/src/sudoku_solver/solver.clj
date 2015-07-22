@@ -25,12 +25,13 @@
 
 (defn solve [puzzle]
   (run* [q]
-    (let [v (dynamic-lvars 4)]
+    (let [v (dynamic-lvars 4)
+          puzzle-pos (remove #(nil? (second %)) (map list (range) (first puzzle)))]
       (all 
         (== q v)
         (all-values-within v 1 4)
         (fd/distinct q)
-        (all-puzzle-locations v (remove #(nil? (second %)) (map list (range) (first puzzle)))))))) 
+        (all-puzzle-locations v puzzle-pos))))) 
 
 ; Hacky for testing
 (defmacro puzzle [& rows]1
