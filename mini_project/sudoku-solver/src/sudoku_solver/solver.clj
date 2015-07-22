@@ -11,6 +11,14 @@
       (all-infd (next vars) interval))
     succeed))
 
+(defn all-puzzle-locations [vars p]
+  (let [pos (first p)]
+    (if pos
+      (all
+        (== (nth vars (first pos)) (second pos))
+        (all-puzzle-locations vars (rest p)))
+      succeed)))
+
 (defn solve [puzzle]
   (run* [q]
     (let [v (repeatedly 4 lvar)]
@@ -18,10 +26,7 @@
         (== q v)
         (all-infd v (fd/interval 1 4))
         (fd/distinct q)
-        (== (nth v 0) 1)
-        (== (nth v 1) 2)
-        (== (nth v 3) 3))
-      ))) 
+        (all-puzzle-locations v (remove #(nil? (second %)) (map list (range) (first puzzle)))))))) 
 
 ; Hacky for testing
 (defmacro puzzle [& rows]1
