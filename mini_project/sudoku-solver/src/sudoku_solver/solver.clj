@@ -5,11 +5,10 @@
 
 
 (defn- all-values-within [vars low high]
-  (let [interval (fd/interval low high)]
-    (everyg #(fd/in % interval) vars)))
+  (everyg #(fd/in % (fd/interval low high)) vars))
 
 (defn all-puzzle-locations [vars p]
-  (everyg #(== (nth vars (first %)) (second %)) p))
+  (everyg (fn [[i v]] (== (nth vars i) v)) p))
 
 (defn- dynamic-lvars [n]
   (repeatedly n lvar))
