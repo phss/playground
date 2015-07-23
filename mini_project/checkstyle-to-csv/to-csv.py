@@ -11,9 +11,10 @@ fanout_metric = Metric("com.puppycrawl.tools.checkstyle.checks.metrics.ClassFanO
 def compile_metric(xml, metric):
   error = xml.find(source=metric.checkstyle_class)
   if error:
-    return metric.regexp.match(error['message']).group(1)
+    value_string = metric.regexp.match(error['message']).group(1)
+    return int(value_string)
   else:
-    return "0"
+    return 0
 
 def file_size(xml):
   return compile_metric(xml, size_metric)
@@ -30,7 +31,7 @@ def main(filename):
     size = file_size(f) 
     cyclomatic = 0
     fanout = file_fanout(f) 
-    print "%s, %s, %d, %s" % (name, size, cyclomatic, fanout)
+    print "%s, %d, %d, %d" % (name, size, cyclomatic, fanout)
 
 if __name__ == '__main__':
   main(sys.argv[1])
