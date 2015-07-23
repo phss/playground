@@ -6,6 +6,7 @@ from collections import namedtuple
 Metric = namedtuple("Metric", "checkstyle_class regexp")
 size_metric = Metric("com.puppycrawl.tools.checkstyle.checks.sizes.FileLengthCheck", re.compile("File length is (\d+)"))
 fanout_metric = Metric("com.puppycrawl.tools.checkstyle.checks.metrics.ClassFanOutComplexityCheck", re.compile("Class Fan-Out Complexity is (\d+)"))
+cyclomatic_metric = Metric("com.puppycrawl.tools.checkstyle.checks.metrics.CyclomaticComplexityCheck", re.compile("Cyclomatic Complexity is (\d+)"))
 
 
 def compile_metric(xml, metric):
@@ -19,6 +20,9 @@ def compile_metric(xml, metric):
 def file_size(xml):
   return compile_metric(xml, size_metric)
 
+def file_cyclomatic(xml):
+  return compile_metric(xml, cyclomatic_metric)
+
 def file_fanout(xml):
   return compile_metric(xml, fanout_metric)
 
@@ -29,7 +33,7 @@ def main(filename):
   for f in checkstyle.find_all("file"):
     name = f['name']
     size = file_size(f) 
-    cyclomatic = 0
+    cyclomatic = file_cyclomatic(f)
     fanout = file_fanout(f) 
     print "%s, %d, %d, %d" % (name, size, cyclomatic, fanout)
 
