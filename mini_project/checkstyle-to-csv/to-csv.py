@@ -22,11 +22,11 @@ def main(filename):
   checkstyle = BeautifulSoup(open(filename), 'xml')
 
   print "file,size,cyclomatic,fanout"
-  for f in checkstyle.find_all("file"):
-    name = f['name']
-    size = compile_metric(f, size_metric)
-    cyclomatic = compile_metric(f, cyclomatic_metric)
-    fanout = compile_metric(f, fanout_metric)
+  for file_xml in checkstyle.find_all("file"):
+    name = file_xml['name']
+    size = compile_metric(file_xml, size_metric)
+    cyclomatic = compile_metric(file_xml, cyclomatic_metric)
+    fanout = compile_metric(file_xml, fanout_metric)
     print "%s, %d, %d, %d" % (name, size, cyclomatic, fanout)
 
 if __name__ == '__main__':
