@@ -17,14 +17,6 @@ def compile_metric(xml, metric):
       max_value = value
   return max_value
 
-def file_size(xml):
-  return compile_metric(xml, size_metric)
-
-def file_cyclomatic(xml):
-  return compile_metric(xml, cyclomatic_metric)
-
-def file_fanout(xml):
-  return compile_metric(xml, fanout_metric)
 
 def main(filename):
   checkstyle = BeautifulSoup(open(filename), 'xml')
@@ -32,9 +24,9 @@ def main(filename):
   print "file,size,cyclomatic,fanout"
   for f in checkstyle.find_all("file"):
     name = f['name']
-    size = file_size(f) 
-    cyclomatic = file_cyclomatic(f)
-    fanout = file_fanout(f) 
+    size = compile_metric(f, size_metric)
+    cyclomatic = compile_metric(f, cyclomatic_metric)
+    fanout = compile_metric(f, fanout_metric)
     print "%s, %d, %d, %d" % (name, size, cyclomatic, fanout)
 
 if __name__ == '__main__':
