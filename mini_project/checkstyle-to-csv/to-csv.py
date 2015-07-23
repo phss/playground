@@ -9,12 +9,12 @@ fanout_metric = Metric("com.puppycrawl.tools.checkstyle.checks.metrics.ClassFanO
 
 
 def compile_metric(xml, metric):
-  error = xml.find(source=metric.checkstyle_class)
-  if error:
-    value_string = metric.regexp.match(error['message']).group(1)
-    return int(value_string)
-  else:
-    return 0
+  max_value = 0
+  for error in xml.find_all(source=metric.checkstyle_class):
+    value = int(metric.regexp.match(error['message']).group(1))
+    if value > max_value:
+      max_value = value
+  return max_value
 
 def file_size(xml):
   return compile_metric(xml, size_metric)
