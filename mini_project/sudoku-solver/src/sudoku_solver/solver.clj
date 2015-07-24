@@ -24,6 +24,13 @@
     (for [c (range dim)]
       (map (comp lvar-at (partial index-of c)) (range dim)))))
 
+(defn- lvar-squares [vars dim]
+  (let []
+    (for [c (range dim)])
+    )
+  )
+
+
 (defn- all-distinct [& groups]
   (everyg fd/distinct (apply concat groups)))
 
@@ -56,7 +63,9 @@
           [_ _ _ _ 3 _ 9 4 5]
           [_ _ _ _ 7 1 _ _ 6]))
 
-(solve (puzzle [1 2 _ 3]
-               [2 3 _ 4]
-               [3 4 _ 1]
-               [4 _ _ 2]))
+;(solve (puzzle [1 2 _ 3]
+               ;[2 3 _ 4]
+               ;[3 4 _ 1]
+               ;[4 _ _ 2]))
+;(solve initial-puzzle)
+(lvar-squares (range 16) 4)
