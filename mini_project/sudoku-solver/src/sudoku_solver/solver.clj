@@ -8,20 +8,26 @@
   (everyg #(fd/in % (fd/interval low high)) vars))
 
 (defn all-puzzle-locations [vars puz]
-  (let [puz-pos (remove #(nil? (second %)) (map list (range) (first puz)))]
+  (let [puz-pos (remove #(nil? (second %)) (map list (range) (apply concat puz)))]
     (everyg (fn [[i v]] (== (nth vars i) v)) puz-pos)))
 
 (defn- dynamic-lvars-for [puz]
   (let [n (reduce + (map count puz))]
     (repeatedly n lvar)))
 
+(defn- row-lvars [vars row]
+  (nth (partition 4 vars) row))
+
 (defn solve [puzzle]
   (run* [q]
-    (let [v (dynamic-lvars-for puzzle)]
+    (let [v (dynamic-lvars-for puzzle)
+          row1 (row-lvars v 0)
+          row2 (row-lvars v 1)]
       (all 
-        (== q v)
+        (== q [row1 row2])
         (all-values-within v 1 4)
-        (fd/distinct q)
+        (fd/distinct row1)
+        (fd/distinct row2)
         (all-puzzle-locations v puzzle))))) 
 
 ; Hacky for testing
@@ -42,6 +48,4 @@
           [_ _ _ _ 7 1 _ _ 6]))
 
 (solve (puzzle [1 2 _ 3]
-               ;[_ 3 4 1]
-               
-               ))
+               [_ 3 4 1]))
