@@ -7,8 +7,9 @@
 (defn- all-values-within [vars low high]
   (everyg #(fd/in % (fd/interval low high)) vars))
 
-(defn all-puzzle-locations [vars p]
-  (everyg (fn [[i v]] (== (nth vars i) v)) p))
+(defn all-puzzle-locations [vars puz]
+  (let [puz-pos (remove #(nil? (second %)) (map list (range) (first puz)))]
+    (everyg (fn [[i v]] (== (nth vars i) v)) puz-pos)))
 
 (defn- dynamic-lvars-for [puz]
   (let [n (reduce + (map count puz))]
@@ -16,13 +17,12 @@
 
 (defn solve [puzzle]
   (run* [q]
-    (let [v (dynamic-lvars-for puzzle)
-          puzzle-pos (remove #(nil? (second %)) (map list (range) (first puzzle)))]
+    (let [v (dynamic-lvars-for puzzle)]
       (all 
         (== q v)
         (all-values-within v 1 4)
         (fd/distinct q)
-        (all-puzzle-locations v puzzle-pos))))) 
+        (all-puzzle-locations v puzzle))))) 
 
 ; Hacky for testing
 (defmacro puzzle [& rows]1
