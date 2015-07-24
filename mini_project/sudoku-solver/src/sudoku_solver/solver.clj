@@ -19,10 +19,10 @@
   (partition dim vars))
 
 (defn- lvar-columns [vars dim]
-  (for [i (range dim)]
-    (->> (range dim)
-         (map #(+ (* dim %) i))
-         (map #(nth vars %))))) 
+  (let [index-of (fn [c r] (+ (* dim r) c))
+        lvar-at #(nth vars %)] 
+    (for [c (range dim)]
+      (map (comp lvar-at (partial index-of c)) (range dim)))))
 
 (defn solve [puzzle]
   (run* [q]
