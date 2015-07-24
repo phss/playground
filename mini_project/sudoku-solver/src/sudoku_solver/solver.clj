@@ -15,13 +15,14 @@
   (let [n (reduce + (map count puz))]
     (repeatedly n lvar)))
 
-(defn- lvar-rows [vars]
-  (partition 4 vars))
+(defn- lvar-rows [vars dim]
+  (partition dim vars))
 
 (defn solve [puzzle]
   (run* [q]
     (let [v (dynamic-lvars-for puzzle)
-          rows (lvar-rows v)]
+          dim (count (first puzzle))
+          rows (lvar-rows v dim)]
       (all 
         (== q rows)
         (all-values-within v 1 4)
@@ -47,4 +48,5 @@
 
 (solve (puzzle [1 2 _ 3]
                [_ 3 4 1]
+               [_ 3 _ 1]
                [_ 3 4 1]))
