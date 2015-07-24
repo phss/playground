@@ -18,15 +18,23 @@
 (defn- lvar-rows [vars dim]
   (partition dim vars))
 
+(defn- lvar-columns [vars dim]
+  (for [i (range dim)]
+    (->> (range dim)
+         (map #(+ (* dim %) i))
+         (map #(nth vars %))))) 
+
 (defn solve [puzzle]
   (run* [q]
     (let [v (dynamic-lvars-for puzzle)
           dim (count (first puzzle))
-          rows (lvar-rows v dim)]
+          rows (lvar-rows v dim)
+          columns (lvar-columns v dim)]
       (all 
         (== q rows)
         (all-values-within v 1 4)
         (everyg fd/distinct rows)
+        (everyg fd/distinct columns)
         (all-puzzle-locations v puzzle))))) 
 
 ; Hacky for testing
@@ -47,6 +55,6 @@
           [_ _ _ _ 7 1 _ _ 6]))
 
 (solve (puzzle [1 2 _ 3]
-               [_ 3 4 1]
-               [_ 3 _ 1]
-               [_ 3 4 1]))
+               [2 3 _ 4]
+               [3 4 _ 1]
+               [4 _ _ 2]))
