@@ -24,6 +24,9 @@
     (for [c (range dim)]
       (map (comp lvar-at (partial index-of c)) (range dim)))))
 
+(defn- all-distinct [& groups]
+  (everyg fd/distinct (apply concat groups)))
+
 (defn solve [puzzle]
   (run* [q]
     (let [v (dynamic-lvars-for puzzle)
@@ -32,9 +35,8 @@
           columns (lvar-columns v dim)]
       (all 
         (== q rows)
-        (all-values-within v 1 4)
-        (everyg fd/distinct rows)
-        (everyg fd/distinct columns)
+        (all-values-within v 1 dim)
+        (all-distinct rows columns)
         (all-puzzle-locations v puzzle))))) 
 
 ; Hacky for testing
