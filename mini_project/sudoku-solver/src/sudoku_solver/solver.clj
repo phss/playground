@@ -10,12 +10,13 @@
 (defn all-puzzle-locations [vars p]
   (everyg (fn [[i v]] (== (nth vars i) v)) p))
 
-(defn- dynamic-lvars [n]
-  (repeatedly n lvar))
+(defn- dynamic-lvars-for [puz]
+  (let [n (reduce + (map count puz))]
+    (repeatedly n lvar)))
 
 (defn solve [puzzle]
   (run* [q]
-    (let [v (dynamic-lvars 4)
+    (let [v (dynamic-lvars-for puzzle)
           puzzle-pos (remove #(nil? (second %)) (map list (range) (first puzzle)))]
       (all 
         (== q v)
@@ -40,4 +41,7 @@
           [_ _ _ _ 3 _ 9 4 5]
           [_ _ _ _ 7 1 _ _ 6]))
 
-(solve (puzzle [1 2 _ 3]))
+(solve (puzzle [1 2 _ 3]
+               ;[_ 3 4 1]
+               
+               ))
