@@ -24,19 +24,18 @@
     (for [c (range dim)]
       (map (comp lvar-at (partial index-of c)) (range dim)))))
 
-
 (defn- lvar-squares [vars dim]
   (let [sqdim (/ dim 3)
         groups-of-3 (nth (iterate (partial partition sqdim) vars) 3)]
     (->> groups-of-3
          (map #(->> (apply (partial mapcat vector) %)
-                   (apply concat)
-                   (partition 9)))
+                    (apply concat)
+                    (partition 9)))
          (apply concat))))
-
 
 (defn- all-distinct [& groups]
   (everyg fd/distinct (apply concat groups)))
+
 
 (defn solve [puzzle]
   (run* [q]
@@ -52,21 +51,3 @@
         (all-puzzle-locations v puzzle)
         (all-distinct rows columns squares))))) 
 
-; Hacky for testing
-(defmacro puzzle-hack [& rows]
-  (letfn [(nil-for-missing-val [v] (if (not= '_ v) v))
-          (row-with-missing-val [row] (vec (map nil-for-missing-val row)))]
-    (vec (map row-with-missing-val rows))))
-
-(def initial-puzzle-hack
-  (puzzle-hack [1 _ _ 9 2 _ _ _ _]
-          [5 2 4 _ 1 _ _ _ _]
-          [_ _ _ _ _ _ _ 7 _]
-          [_ 5 _ _ _ 8 1 _ 2]
-          [_ _ _ _ _ _ _ _ _]
-          [4 _ 2 7 _ _ _ 9 _]
-          [_ 6 _ _ _ _ _ _ _]
-          [_ _ _ _ 3 _ 9 4 5]
-          [_ _ _ _ 7 1 _ _ 6]))
-
-(solve initial-puzzle-hack)
