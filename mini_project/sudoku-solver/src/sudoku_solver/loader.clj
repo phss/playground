@@ -16,8 +16,6 @@
 
 (defn load-single-line-from-file [filename]
   (->> (read-all filename)
-       (first)
-       (to-values)
-       (partition 9)))
+       (map #(partition 9 (to-values %)))))
 
 (load-single-line-from-file "resources/sample-single-line.txt")
