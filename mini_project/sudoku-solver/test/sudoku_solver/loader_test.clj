@@ -13,7 +13,7 @@
                  [_ 6 _ _ _ _ _ _ _]
                  [_ _ _ _ 3 _ 9 4 5]
                  [_ _ _ _ 7 1 _ _ 6]) 
-         (load-from-file "resources/sample.txt"))))
+         (load-grid-from-file "resources/sample.txt"))))
 
 (deftest loading-single-line
   (is (= (puzzle [4 _ _ _ _ _ 8 _ 5]

@@ -5,6 +5,6 @@
 
 (defn -main [filename]
   (->> filename
-       (loader/load-from-file)
+       (loader/load-grid-from-file)
        (solver/solve)
        (console/print-puzzle)))

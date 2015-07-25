@@ -7,7 +7,7 @@
   (letfn [(to-val [c] (if (not= empty-value-char c) (Integer/parseInt (str c))))]
     (map to-val (seq row-string))))
 
-(defn load-from-file [filename]
+(defn load-grid-from-file [filename]
   (->> (slurp filename)
        (split-lines)
        (map to-row)))
