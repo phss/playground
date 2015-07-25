@@ -12,3 +12,12 @@
        (split-lines)
        (map to-row)))
 
+(defn load-single-line-from-file [filename]
+  (->> (slurp filename)
+       (split-lines)
+       (first)
+       (seq)
+       (map #(if (not= \. %) (Integer/parseInt (str %))))
+       (partition 9)))
+
+(load-single-line-from-file "resources/sample-single-line.txt")
