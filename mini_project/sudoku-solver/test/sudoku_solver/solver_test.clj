@@ -26,5 +26,5 @@
           [3 4 9 5 7 1 8 2 6]))
 
 (deftest solving
-  (is (= solution (first (solve initial-puzzle)))))
+  (is (= solution (solve initial-puzzle))))
 

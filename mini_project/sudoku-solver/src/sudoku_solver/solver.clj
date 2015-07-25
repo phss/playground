@@ -34,7 +34,7 @@
   (everyg fd/distinct (apply concat groups)))
 
 
-(defn solve [puzzle]
+(defn all-solutions-for [puzzle]
   (run* [q]
     (let [vars (dynamic-lvars-for puzzle)
           rows (lvar-rows vars)
@@ -45,3 +45,6 @@
         (all-values-within vars 1 9)
         (all-puzzle-locations vars puzzle)
         (all-distinct rows columns squares))))) 
+
+(defn solve [puzzle]
+  (first (all-solutions-for puzzle)))
