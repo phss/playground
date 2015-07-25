@@ -16,19 +16,17 @@
     (repeatedly n lvar)))
 
 (defn- lvar-rows [vars dim]
-  (partition dim vars))
+  (vec (map vec (partition dim vars))))
 
 (defn- lvar-columns [rows]
   (apply map vector rows))
 
-(defn- lvar-squares [vars dim]
-  (let [sqdim (/ dim 3)
-        groups-of-3 (nth (iterate (partial partition sqdim) vars) 3)]
-    (->> groups-of-3
-         (map #(->> (apply (partial mapcat vector) %)
-                    (apply concat)
-                    (partition 9)))
-         (apply concat))))
+(defn- lvar-squares [rows]
+  (for [sqr-start-x (range 0 9 3)
+        sqr-start-y (range 0 9 3)]
+    (for [x (range sqr-start-x (+ sqr-start-x 3))
+          y (range sqr-start-y (+ sqr-start-y 3))]
+      (get-in rows [x y]))))
 
 (defn- all-distinct [& groups]
   (everyg fd/distinct (apply concat groups)))
@@ -37,11 +35,10 @@
 (defn solve [puzzle]
   (run* [q]
     (let [v (dynamic-lvars-for puzzle)
-          at #(nth v %)
           dim (count (first puzzle))
           rows (lvar-rows v dim)
           columns (lvar-columns rows)
-          squares (lvar-squares v dim)]
+          squares (lvar-squares rows)]
       (all 
         (== q rows)
         (all-values-within v 1 dim)
