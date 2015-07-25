@@ -27,14 +27,12 @@
 
 (defn- lvar-squares [vars dim]
   (let [sqdim (/ dim 3)
-        a (partition sqdim vars)
-        b (partition sqdim a)
-        c (partition sqdim b)]
-    (apply concat (for [i c]
-      (partition 9 (apply concat (apply (partial mapcat vector) i)))
-      ))
-    )
-  )
+        groups-of-3 (nth (iterate (partial partition sqdim) vars) 3)]
+    (->> groups-of-3
+         (map #(->> (apply (partial mapcat vector) %)
+                   (apply concat)
+                   (partition 9)))
+         (apply concat))))
 
 
 (defn- all-distinct [& groups]
