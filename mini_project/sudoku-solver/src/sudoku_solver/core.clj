@@ -4,7 +4,6 @@
             [sudoku-solver.console :as console]))
 
 (defn -main [filename]
-  (->> filename
-       (loader/load-grid-from-file)
-       (solver/solve)
-       (console/print-puzzle)))
+  (doseq [puzzle (loader/load-single-line-from-file filename)]
+    (->> (solver/solve puzzle)
+         (console/print-puzzle))))
