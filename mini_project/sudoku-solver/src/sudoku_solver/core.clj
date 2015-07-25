@@ -5,5 +5,5 @@
 
 (defn -main [filename]
   (doseq [puzzle (loader/load-single-line-from-file filename)]
-    (->> (solver/solve puzzle)
+    (->> (time (solver/solve puzzle))
          (console/print-puzzle))))
