@@ -10,4 +10,7 @@ func main() {
 	calc_text := "this is a calculation"
 
 	fmt.Println(hello, calc_text, num+another)
+
+	var e int
+	fmt.Println(e)
 }
