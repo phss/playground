@@ -11,6 +11,5 @@ func main() {
 
 	const d = 3e20 / n
 	fmt.Println(d)
-	// fmt.Println(int64(d)) // error, overflow
 	fmt.Println(int64(d / 100000))
 }
