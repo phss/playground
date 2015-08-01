@@ -4,6 +4,7 @@ import "fmt"
 
 func main() {
 	loop()
+	branching()
 }
 
 func loop() {
@@ -23,5 +24,23 @@ func loop() {
 	fmt.Println("-- Classic for loop --")
 	for a := 0; a < 3; a++ {
 		fmt.Println(a)
+	}
+}
+
+func branching() {
+	fmt.Println("-- if/else --")
+	if 2+2 == 4 {
+		fmt.Println("Math works!!")
+	} else {
+		fmt.Println("Math fails :(")
+	}
+
+	fmt.Println("-- if/else if/else --")
+	if 2+2 == 5 {
+		fmt.Println("Math fails I think!!")
+	} else if 2+3 == 1 {
+		fmt.Println("Math fails again :(")
+	} else {
+		fmt.Println("Oh well...")
 	}
 }
