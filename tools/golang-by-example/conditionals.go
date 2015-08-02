@@ -25,6 +25,12 @@ func loop() {
 	for a := 0; a < 3; a++ {
 		fmt.Println(a)
 	}
+
+	fmt.Println("-- Going over array --")
+	arr := [5]int{1, 2, 3, 4, 5}
+	for _, e := range arr {
+		fmt.Println(e)
+	}
 }
 
 func branching() {
