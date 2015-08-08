@@ -1,13 +1,14 @@
 package main
 
 import "fmt"
+import "os"
 
 func hexToBase64(str string) string {
 	return str
 }
 
 func main() {
-	str := "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d"
+	hexString := os.Args[1]
 
-	fmt.Println(hexToBase64(str))
+	fmt.Println(hexToBase64(hexString))
 }
