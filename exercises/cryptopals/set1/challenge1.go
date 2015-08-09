@@ -13,12 +13,12 @@ func runeToDecimal(char rune) byte {
 }
 
 func hexToBytes(hexString string) []byte {
-	decimals := make([]byte, len(hexString)/2)
+	bytes := make([]byte, len(hexString)/2)
 	for i := 0; i < len(hexString); i += 2 {
 		j := i + 1
-		decimals[i/2] = runeToDecimal(rune(hexString[i]))*16 + runeToDecimal(rune(hexString[j]))
+		bytes[i/2] = runeToDecimal(rune(hexString[i]))*16 + runeToDecimal(rune(hexString[j]))
 	}
-	return decimals
+	return bytes
 }
 
 func bytesToBase64(bytes []byte) string {
