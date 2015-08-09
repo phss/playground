@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 import "os"
+import b64 "encoding/base64"
 
 func runeToDecimal(char rune) byte {
 	dec := char - '0'
@@ -12,16 +13,20 @@ func runeToDecimal(char rune) byte {
 }
 
 func hexToBytes(hexString string) []byte {
-	decimals := make([]byte, len(hexString))
-	for i, char := range hexString {
-		decimals[i] = runeToDecimal(char)
+	decimals := make([]byte, len(hexString)/2)
+	for i := 0; i < len(hexString); i += 2 {
+		j := i + 1
+		decimals[i/2] = runeToDecimal(rune(hexString[i]))*16 + runeToDecimal(rune(hexString[j]))
 	}
-	fmt.Println(byte(10) + byte(5))
 	return decimals
 }
 
+func bytesToBase64(bytes []byte) string {
+	return b64.StdEncoding.EncodeToString(bytes)
+}
+
 func hexToBase64(str string) string {
-	return str
+	return bytesToBase64(hexToBytes(str))
 }
 
 func main() {
@@ -29,5 +34,5 @@ func main() {
 
 	fmt.Println(hexToBase64(hexString))
 
-	fmt.Println(hexToBytes("4927ff"))
+	//fmt.Println(bytesToBase64(hexToBytes("4927ff")))
 }
