@@ -13,10 +13,16 @@ func TestHexToBase64Conversion(t *testing.T) {
 }
 
 func TestHexToBytesConversion(t *testing.T) {
-	hexInputString := "4927ff"
-	expectedBytes := []byte{73, 39, 255}
-	actualBytes := hexToBytes(hexInputString)
-	if !bytes.Equal(actualBytes, expectedBytes) {
-		t.Errorf("Expected '%s', but got '%s'", expectedBytes, actualBytes)
+	cases := []struct {
+		input    string
+		expected []byte
+	}{
+		{"4927ff", []byte{73, 39, 255}},
+	}
+	for _, c := range cases {
+		actual := hexToBytes(c.input)
+		if !bytes.Equal(actual, c.expected) {
+			t.Errorf("Expected '%s', but got '%s'", c.expected, actual)
+		}
 	}
 }
