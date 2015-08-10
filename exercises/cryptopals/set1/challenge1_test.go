@@ -1,6 +1,7 @@
 package main
 
 import "testing"
+import "bytes"
 
 func TestHexToBase64Conversion(t *testing.T) {
 	hexInputString := "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d"
@@ -8,5 +9,14 @@ func TestHexToBase64Conversion(t *testing.T) {
 	actualBase64String := hexToBase64(hexInputString)
 	if expectedBase64String != actualBase64String {
 		t.Errorf("Expected '%s', but got '%s'", expectedBase64String, actualBase64String)
+	}
+}
+
+func TestHexToBytesConversion(t *testing.T) {
+	hexInputString := "4927ff"
+	expectedBytes := []byte{73, 39, 255}
+	actualBytes := hexToBytes(hexInputString)
+	if !bytes.Equal(actualBytes, expectedBytes) {
+		t.Errorf("Expected '%s', but got '%s'", expectedBytes, actualBytes)
 	}
 }

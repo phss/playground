@@ -34,5 +34,5 @@ func main() {
 
 	fmt.Println(hexToBase64(hexString))
 
-	//fmt.Println(bytesToBase64(hexToBytes("4927ff")))
+	fmt.Println(hexToBytes("4927ff"))
 }
