@@ -4,7 +4,7 @@ import "fmt"
 import "os"
 import b64 "encoding/base64"
 
-func runeToDecimal(char rune) byte {
+func charToDecimal(char uint8) byte {
 	dec := char - '0'
 	if dec > 9 {
 		dec = char - 'a' + 10
@@ -16,7 +16,7 @@ func hexToBytes(hexString string) []byte {
 	bytes := make([]byte, len(hexString)/2)
 	for i := 0; i < len(hexString); i += 2 {
 		j := i + 1
-		bytes[i/2] = runeToDecimal(rune(hexString[i]))*16 + runeToDecimal(rune(hexString[j]))
+		bytes[i/2] = charToDecimal(hexString[i])*16 + charToDecimal(hexString[j])
 	}
 	return bytes
 }
