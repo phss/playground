@@ -19,7 +19,7 @@ func hexToBytes(hexString string) []byte {
 	}
 	bytes := make([]byte, (len(chars))/2)
 
-	for i := 0; i < len(hexString); i += 2 {
+	for i := 0; i < len(chars); i += 2 {
 		j := i + 1
 		bytes[i/2] = charToDecimal(chars[i])*16 + charToDecimal(chars[j])
 	}
