@@ -4,7 +4,7 @@ import "fmt"
 import "os"
 import b64 "encoding/base64"
 
-func charToDecimal(char uint8) byte {
+func charToDecimal(char rune) byte {
 	dec := char - '0'
 	if dec > 9 {
 		dec = char - 'a' + 10
@@ -13,14 +13,17 @@ func charToDecimal(char uint8) byte {
 }
 
 func hexToBytes(hexString string) []byte {
-	bytes := make([]byte, (len(hexString)+1)/2)
+	chars := []rune(hexString)
+	if len(chars)%2 == 1 {
+		chars = append(chars, rune('0'))
+	}
+	bytes := make([]byte, (len(chars))/2)
+
 	for i := 0; i < len(hexString); i += 2 {
 		j := i + 1
-		bytes[i/2] = charToDecimal(hexString[i]) * 16
-		if j < len(hexString) {
-			bytes[i/2] += charToDecimal(hexString[j])
-		}
+		bytes[i/2] = charToDecimal(chars[i])*16 + charToDecimal(chars[j])
 	}
+
 	return bytes
 }
 
