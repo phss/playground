@@ -13,10 +13,13 @@ func charToDecimal(char uint8) byte {
 }
 
 func hexToBytes(hexString string) []byte {
-	bytes := make([]byte, len(hexString)/2)
+	bytes := make([]byte, (len(hexString)+1)/2)
 	for i := 0; i < len(hexString); i += 2 {
 		j := i + 1
-		bytes[i/2] = charToDecimal(hexString[i])*16 + charToDecimal(hexString[j])
+		bytes[i/2] = charToDecimal(hexString[i]) * 16
+		if j < len(hexString) {
+			bytes[i/2] += charToDecimal(hexString[j])
+		}
 	}
 	return bytes
 }

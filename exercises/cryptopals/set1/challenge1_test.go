@@ -18,7 +18,7 @@ func TestHexToBytesConversion(t *testing.T) {
 		expected []byte
 	}{
 		{"4927ff", []byte{73, 39, 255}},
-		{"4927f", []byte{73, 39, 255}},
+		{"4927f", []byte{73, 39, 240}},
 	}
 
 	for _, c := range cases {
