@@ -1,1 +1,1 @@
-go run converter.go challenge1.go
+go run converter.go xor.go challenge1.go
