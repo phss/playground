@@ -16,4 +16,9 @@
        (reduce +)
        (str)))
 
-(sum-of-digits initial-num)
+(def solution
+  (->> (iterate sum-of-digits initial-num)
+       (filter #(= 1 (count %)))
+       (first)))
+
+(println solution)
