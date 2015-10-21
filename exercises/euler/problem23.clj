@@ -1,10 +1,10 @@
 (ns problem23)
 
-;(def upper-bound 28123)
-(def upper-bound 200)
+(def upper-bound 28123)
+;(def upper-bound 200)
 
 (defn sum-of-divisors [n]
-  (->> (range 1 n)
+  (->> (range 1 (inc (/ n 2)))
        (filter #(zero? (rem n %)))
        (apply +)))
 
