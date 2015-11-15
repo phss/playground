@@ -3,3 +3,4 @@ rawr/todo
 *~
 *.pyc
 .DS_Store
+.vagrant
