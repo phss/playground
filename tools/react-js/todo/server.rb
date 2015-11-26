@@ -34,4 +34,10 @@ put '/api/tasks/:id/:status' do
   task[:status] = params[:status]
   task.to_json
 end
-# Delete task
+
+delete '/api/tasks/:id' do
+  content_type :json
+  task_id = params[:id].to_i
+  @@data.reject! {|d| d[:id] == task_id}
+  @@data.to_json
+end
