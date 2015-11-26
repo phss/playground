@@ -12,17 +12,22 @@ get '/' do
   send_file File.join(settings.public_folder, 'index.html')
 end
 
-get '/api/list' do
+get '/api/tasks' do
   content_type :json
   @@data.to_json
 end
 
-post '/api/new' do
+post '/api/tasks/new' do
   content_type :json
-  new_entry = JSON.parse(request.body.read)
-  new_entry[:id] = @@next_id
-  new_entry[:status] = 'open'
+  new_task = JSON.parse(request.body.read)
+  new_task[:id] = @@next_id
+  new_task[:status] = 'open'
   @@next_id += 1
-  @@data << new_entry
-  new_entry.to_json
+  @@data << new_task
+  new_task.to_json
 end
+
+
+# Mark task as done
+# Mark task as undone
+# Delete task
