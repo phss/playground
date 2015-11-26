@@ -27,7 +27,11 @@ post '/api/tasks/new' do
   new_task.to_json
 end
 
-
-# Mark task as done
-# Mark task as undone
+put '/api/tasks/:id/:status' do
+  content_type :json
+  task_id = params[:id].to_i
+  task = @@data.find {|d| d[:id] == task_id}
+  task[:status] = params[:status]
+  task.to_json
+end
 # Delete task
