@@ -29,9 +29,9 @@ var TodoEntry = React.createClass({
   }
 });
 
-var data = [
-  {"id": 1, "task": "Don't hard code data"},
-  {"id": 2, "task": "Finish everything"}
-];
+var client = new TaskServiceClient("/api/tasks");
 
-ReactDOM.render(<Todo tasks={data}/>, document.getElementById("content"));
+client.getTasks(function(data) {
+  ReactDOM.render(<Todo tasks={data}/>, document.getElementById("content"));
+});
+
