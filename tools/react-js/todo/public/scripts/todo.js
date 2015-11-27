@@ -3,16 +3,22 @@ var Todo = React.createClass({
     return {tasks: []};
   },
   componentDidMount: function() {
-    var self = this;
+    this.refreshTaskList();
+  },
+  refreshTaskList: function() {
     this.props.client.getTasks(function(tasks) {
-      self.setState({tasks: tasks});
-    });
+      this.setState({tasks: tasks});
+    }.bind(this));
+  },
+  onTaskDelete: function(taskId) {
+    this.props.client.deleteTask(taskId, this.refreshTaskList);
   },
   render: function() {
     return (
       <div>
         <h1>Hacky todo list</h1>
-        <TodoList tasks={this.state.tasks}/>
+        <TodoList tasks={this.state.tasks}
+                  onTaskDelete={this.onTaskDelete}/>
         <TodoEntry />
       </div>
     );
@@ -20,10 +26,17 @@ var Todo = React.createClass({
 });
 
 var TodoList = React.createClass({
+  deleteTask: function(id) {
+    this.props.onTaskDelete(id);
+  },
   render: function() {
     var taskNodes = this.props.tasks.map(function (task) {
-      return (<li key={task.id}>{task.task}</li>);
-    });
+      return (
+        <li key={task.id}>
+          {task.task}
+          (<a onClick={this.deleteTask.bind(this, task.id)}>Hi</a>)
+        </li>);
+    }.bind(this));
     return (
       <ul>{taskNodes}</ul>
     );
