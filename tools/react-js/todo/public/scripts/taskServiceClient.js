@@ -12,3 +12,12 @@ TaskServiceClient.prototype.deleteTask = function(taskId, callback) {
     type: 'DELETE',
     success: callback});
 };
+
+TaskServiceClient.prototype.createTask = function(task, callback) {
+  $.ajax({
+    url: this.serviceUrl + "/new",
+    type: 'POST',
+    dataType: 'json',
+    data: JSON.stringify(task),
+    success: callback});
+};

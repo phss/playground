@@ -13,13 +13,16 @@ var Todo = React.createClass({
   onTaskDelete: function(taskId) {
     this.props.client.deleteTask(taskId, this.refreshTaskList);
   },
+  onTaskCreated: function(task) {
+    this.props.client.createTask(task, this.refreshTaskList);
+  },
   render: function() {
     return (
       <div>
         <h1>Hacky todo list</h1>
         <TodoList tasks={this.state.tasks}
                   onTaskDelete={this.onTaskDelete}/>
-        <TodoEntry />
+        <TodoEntry onTaskCreated={this.onTaskCreated} />
       </div>
     );
   }
@@ -44,9 +47,21 @@ var TodoList = React.createClass({
 });
 
 var TodoEntry = React.createClass({
+  createNewTask: function(e) {
+    e.preventDefault();
+    var task = this.refs.task.value.trim();
+    if (!task) {
+      return;
+    }
+    this.refs.task.value = '';
+    this.props.onTaskCreated({task: task});
+  },
   render: function() {
     return (
-      <p>Nothing here</p>
+      <form onSubmit={this.createNewTask}>
+        <input type="text" ref="task"/>
+        <input type="submit" ref="Create"/>
+      </form>
     );
   }
 });
