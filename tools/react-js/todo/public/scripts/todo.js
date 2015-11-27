@@ -1,9 +1,18 @@
 var Todo = React.createClass({
+  getInitialState: function() {
+    return {tasks: []};
+  },
+  componentDidMount: function() {
+    var self = this;
+    this.props.client.getTasks(function(tasks) {
+      self.setState({tasks: tasks});
+    });
+  },
   render: function() {
     return (
       <div>
         <h1>Hacky todo list</h1>
-        <TodoList tasks={this.props.tasks}/>
+        <TodoList tasks={this.state.tasks}/>
         <TodoEntry />
       </div>
     );
@@ -30,8 +39,5 @@ var TodoEntry = React.createClass({
 });
 
 var client = new TaskServiceClient("/api/tasks");
-
-client.getTasks(function(data) {
-  ReactDOM.render(<Todo tasks={data}/>, document.getElementById("content"));
-});
+ReactDOM.render(<Todo client={client}/>, document.getElementById("content"));
 
