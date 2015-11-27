@@ -34,7 +34,7 @@ var TodoList = React.createClass({
       return (
         <li key={task.id}>
           {task.task}
-          (<a onClick={this.deleteTask.bind(this, task.id)}>Hi</a>)
+          (<a onClick={this.deleteTask.bind(this, task.id)}>Delete</a>)
         </li>);
     }.bind(this));
     return (
