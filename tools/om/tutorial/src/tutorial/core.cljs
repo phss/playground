@@ -10,11 +10,15 @@
 
 (defonce app-state  (atom  {:list  ["Lion" "Zebra" "Buffalo" "Antelope"]}))
 
+(defn stripe  [text bgc]
+  (let [st #js  {:backgroundColor bgc}]
+    (dom/li #js  {:style st} text)))
+
 (om/root
   (fn [data owner]
     (om/component
       (apply dom/ul #js {:className "animals"}
-        (map #(dom/li nil %) (:list data)))))
+        (map stripe (:list data) (cycle ["#ff0" "#fff"])))))
   app-state
   {:target (. js/document (getElementById "app0"))})
 
