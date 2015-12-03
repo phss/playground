@@ -16,7 +16,7 @@
       (render [_]
         (dom/h1 nil (:text data)))))
   app-state
-  {:target (. js/document (getElementById "app"))})
+  {:target (. js/document (getElementById "app0"))})
 
 
 (defn on-js-reload []
