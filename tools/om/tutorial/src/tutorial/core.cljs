@@ -26,7 +26,9 @@
   (reify
     om/IRender
     (render [this]
-      (dom/li nil (display-name contact)))))
+      (dom/li nil 
+        (dom/span nil (display-name contact))
+        (dom/button nil "Delete")))))
 
 (defn contacts-view [data owner]
   (reify
