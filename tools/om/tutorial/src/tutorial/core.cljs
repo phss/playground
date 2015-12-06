@@ -2,7 +2,8 @@
   (:require-macros  [cljs.core.async.macros :refer  [go]])
   (:require [om.core :as om :include-macros true]
             [om.dom :as dom :include-macros true]
-            [cljs.core.async :refer [put! chan <!]]))
+            [cljs.core.async :refer [put! chan <!]]
+            [clojure.string :as string]))
 
 (enable-console-print!)
 
@@ -15,6 +16,16 @@
       {:first "Louis" :last "Reasoner" :email "prolog@mit.edu"}
       {:first "Cy" :middle-initial "D" :last "Effect" :email "bugs@mit.edu"}
       {:first "Lem" :middle-initial "E" :last "Tweakit" :email "morebugs@mit.edu"}]}))
+
+(defn parse-contact [contact-str]
+  (let [[first middle last :as parts] (string/split contact-str #"\s+")
+        [first last middle] (if (nil? last) [first middle] [first last middle])
+        middle (when middle (string/replace middle "." ""))
+        c (if middle (count middle) 0)]
+    (when (>= (count parts) 2)
+      (cond-> {:first first :last last}
+        (== c 1) (assoc :middle-initial middle)
+        (>= c 2) (assoc :middle middle)))))
 
 (defn middle-name [{:keys [middle middle-initial]}]
   (cond
