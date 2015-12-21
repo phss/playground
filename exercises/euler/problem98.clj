@@ -1,6 +1,5 @@
-;(ns problem98
-  ;(:use [commons]))
-(use 'commons)
+(ns problem98
+  (:use [commons]))
 
 (def words (->>
   "files/problem98.txt"
