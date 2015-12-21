@@ -16,7 +16,7 @@
   (group-by str-identity)
   (filter #(> (count (second %)) 1))))
 
-;(sort-by #(count (first %)) anagrams)
+;(println (sort-by #(count (first %)) anagrams))
 
 (defn unique-digits? [n]
   (let [digits (digits-from n)]
@@ -32,4 +32,5 @@
   (filter #(> (count (second %)) 1))
   (filter #(unique-digits? (first %)))))
 
-(sort-by #(count (first %)) square-anagrams)
+;(println (sort-by #(count (first %)) square-anagrams))
+
