@@ -1,5 +1,6 @@
-(ns problem98
-  (:use [commons]))
+;(ns problem98
+  ;(:use [commons]))
+(use 'commons)
 
 (def words (->>
   "files/problem98.txt"
@@ -16,7 +17,7 @@
   (group-by str-identity)
   (filter #(> (count (second %)) 1))))
 
-;(println (sort-by #(count (first %)) anagrams))
+(println (map second anagrams))
 
 (defn unique-digits? [n]
   (let [digits (digits-from n)]
