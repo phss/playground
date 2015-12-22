@@ -1,4 +1,5 @@
 (ns problem98
+  (:require  [clojure.math.combinatorics :as combo])
   (:use [commons]))
 
 (def words (->>
@@ -9,14 +10,15 @@
 (defn str-identity [s]
   (apply str (sort s)))
 
-;(str-identity "dsad1231")
+(def possible-anagram-pairs
+  (->>
+    words
+    (group-by str-identity)
+    (map second)
+    (filter #(> (count %) 1))  
+    (mapcat #(combo/combinations % 2))))
 
-(def anagrams (->>
-  words
-  (group-by str-identity)
-  (filter #(> (count (second %)) 1))))
-
-;(println (map second anagrams))
+;(println possible-anagram-pairs)
 
 (defn unique-digits? [n]
   (let [digits (digits-from n)]
@@ -41,5 +43,4 @@
       (map index-mask)
       (apply str))))
 
-
-(pair-mask ["care" "race"])
+;(pair-mask ["care" "race"])
