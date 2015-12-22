@@ -17,24 +17,31 @@
     (map second)
     (filter #(> (count %) 1))  
     (mapcat #(combo/combinations % 2))))
-
 ;(println possible-anagram-pairs)
 
-(defn unique-digits? [n]
-  (let [digits (digits-from n)]
-    (= digits (distinct digits))))
+(def some-squares
+  (->>
+    (range)
+    (map pow2)
+    (take-while #(< % 1000000000))))
 
-(def squares (map pow2 (range))) ; Biggest has 9 digits
-(def some-squares (take-while #(< % 1000000000) squares))
-
-(def square-anagrams (->>
-  some-squares
-  (map str)
-  (group-by str-identity)
-  (filter #(> (count (second %)) 1))
-  (filter #(unique-digits? (first %)))))
+(def square-anagrams
+  (->>
+    some-squares
+    (map str)
+    (group-by str-identity)
+    (filter #(> (count (second %)) 1))
+    (filter #(unique-digits? (first %)))))
 
 ;(println (sort-by #(count (first %)) square-anagrams))
+(def possible-square-pairs
+  (->>
+    square-anagrams
+    (map second)
+    (mapcat #(combo/combinations % 2))
+    ))
+
+(println possible-square-pairs)
 
 (defn pair-mask [pair]
   (let [index-mask (into {} (map vector (first pair) (range)))]
