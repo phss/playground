@@ -16,7 +16,7 @@
   (group-by str-identity)
   (filter #(> (count (second %)) 1))))
 
-(println (map second anagrams))
+;(println (map second anagrams))
 
 (defn unique-digits? [n]
   (let [digits (digits-from n)]
@@ -34,3 +34,12 @@
 
 ;(println (sort-by #(count (first %)) square-anagrams))
 
+(defn pair-mask [pair]
+  (let [index-mask (into {} (map vector (first pair) (range)))]
+    (->>
+      (apply str pair)
+      (map index-mask)
+      (apply str))))
+
+
+(pair-mask ["care" "race"])
