@@ -30,11 +30,28 @@
 (def possible-square-pairs (generate-possible-pairs (map str some-squares)))
 ;(println (count possible-square-pairs))
 
+(def possible-square-pairs-by-length (group-by #(count (first %)) possible-square-pairs))
+
 (defn pair-mask [pair]
   (let [index-mask (into {} (map vector (first pair) (range)))]
     (->>
       (apply str pair)
       (map index-mask)
       (apply str))))
-
 ;(pair-mask ["care" "race"])
+
+(def anagramic-squares
+  (for [anagram possible-anagram-pairs
+        square (possible-square-pairs-by-length (count (first anagram)))
+        :let [anagram-mask-a (pair-mask anagram)
+              anagram-mask-b (pair-mask (reverse anagram))
+              square-mask (pair-mask square)]
+        :when (or (= square-mask anagram-mask-a) (= square-mask anagram-mask-b))]
+    [anagram square]))
+
+(println
+  (->> 
+    anagramic-squares
+    (mapcat second)
+    (map to-int)
+    (apply max)))
