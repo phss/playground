@@ -12,6 +12,12 @@
   (->>
     (/ (- (math/expt t 2) t) 2)
     (math/sqrt)
-    (math/ceil)))
+    (math/ceil)
+    (int)))
 
 ;(possible-solution 21)
+
+(println (->>
+  (range 4 200)
+  (map (fn [t] [t (possible-solution t)]))
+  (filter #(apply valid? %))))
