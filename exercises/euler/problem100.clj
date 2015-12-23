@@ -13,11 +13,16 @@
     (/ (- (math/expt t 2) t) 2)
     (math/sqrt)
     (math/ceil)
-    (int)))
+    (bigint)))
 
 ;(possible-solution 21)
 
 (println (->>
-  (range 4 200)
+  (range 10 3000000)
+  ;[1000000000000]
+  ;(iterate inc 1000000000000)
   (map (fn [t] [t (possible-solution t)]))
-  (filter #(apply valid? %))))
+  (filter #(apply valid? %))
+  ;(first)
+  
+  ))
