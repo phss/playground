@@ -2,7 +2,7 @@
   (:require  [clojure.math.numeric-tower :as math]))
 
 (defn valid? [t b]
-  (= 0.5 (* (/ b t) (/ (dec b) (dec t)))))
+  (= 1/2 (* (/ b t) (/ (dec b) (dec t)))))
 
 (defn always-false [t b] false)
 
@@ -22,20 +22,20 @@
 
 
 (defn possible-solution-from-b [b]
-  (math/floor (* square-of-2 b)))
+  (bigint (math/floor (* square-of-2 b))))
 
 ;(possible-solution 21)
 
 (time (println (->>
-  ;(range 10.0 1000000000.0)
-  (range 1000000000000 2000000000000)
+  (range 10 10009)
+  ;(range 1000000000000 2000000000000)
   ;[1000000000000]
   ;(iterate inc 1000000000000)
-  (map (fn [b] [b b]))
-  ;(map (fn [b] [(possible-solution-from-b b) b]))
+  ;(map (fn [b] [b b]))
+  (map (fn [b] [(possible-solution-from-b b) b]))
   ;(map (fn [t] [t (possible-solution t)]))
-  (filter #(apply always-false %))
-  ;(filter #(apply valid? %))
+  ;(filter #(apply always-false %))
+  (filter #(apply valid? %))
   ;(map (fn [[a b]] [a b (double (/ a b))]))
   ;(first)
   
