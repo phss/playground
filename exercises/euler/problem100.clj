@@ -11,4 +11,8 @@
 
 (def solutions (iterate next-solution [21 15]))
 
-(println (take 10 solutions))
+(println
+  (->>
+    solutions
+    (drop-while (fn [[t b]] (< t 1000000000000)))
+    (first)))
