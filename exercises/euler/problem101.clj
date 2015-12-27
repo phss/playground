@@ -6,17 +6,16 @@
     (->>
       (range (count coefficients))
       (map (partial math/expt n))
-      (map vector coefficients)
-      (map (fn [[coefficient n]] (* coefficient n)))
+      (map * coefficients)
       (reduce +))))
 
 (def cube (polynomial-fun [0 0 0 1]))
 
-(def polynomial (polynomial-fun (take 11 (cycle [1 -1]))))
+(def problem (polynomial-fun (take 11 (cycle [1 -1]))))
 
 
 (println
   (->>
     (range 1 12)
-    (map cube)))
+    (map problem)))
 
