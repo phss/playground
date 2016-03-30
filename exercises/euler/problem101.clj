@@ -14,8 +14,21 @@
 (def problem (polynomial-fun (take 11 (cycle [1 -1]))))
 
 
-(println
-  (->>
-    (range 1 12)
-    (map problem)))
+;(println
+  ;(->>
+    ;(range 1 12)
+    ;(map problem)))
+
+; From http://mathworld.wolfram.com/LagrangeInterpolatingPolynomial.html
+
+(def xs [1 2 3])
+(def ys [1 8 27])
+
+(defn pj-x [xs ys j x]
+  (let [ks (remove #{j} (range (count xs)))
+        c (map (fn [k] (/ (- x (xs k)) (- (xs j) (xs k)))) ks)]
+    (reduce * (conj c (ys j)))))
+
+(println (pj-x xs ys 2 3))
+
 
