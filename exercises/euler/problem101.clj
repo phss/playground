@@ -29,6 +29,9 @@
         c (map (fn [k] (/ (- x (xs k)) (- (xs j) (xs k)))) ks)]
     (reduce * (conj c (ys j)))))
 
-(println (pj-x xs ys 2 3))
+(defn p-x [xs ys x]
+  (reduce + (map #(pj-x xs ys % x) (range (count xs)))))
+
+(println (p-x xs ys 4))
 
 
