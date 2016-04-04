@@ -32,6 +32,11 @@
 (defn p-x [xs ys x]
   (reduce + (map #(pj-x xs ys % x) (range (count xs)))))
 
-(println (p-x xs ys 4))
+(defn lagrange-fun [xs ys]
+  (fn [x] (p-x xs ys x)))
+
+(def lagrange-cube (lagrange-fun xs ys))
+
+(println (lagrange-cube 4))
 
 
