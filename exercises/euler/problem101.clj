@@ -2,10 +2,10 @@
   (:require  [clojure.math.numeric-tower :as math]))
 
 (defn polynomial-fun [coefficients]
-  (fn [n]
+  (fn [x]
     (->>
       (range (count coefficients))
-      (map (partial math/expt n))
+      (map (partial math/expt x))
       (map * coefficients)
       (reduce +))))
 
