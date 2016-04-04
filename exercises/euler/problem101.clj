@@ -25,9 +25,12 @@
 (def ys [1 8 27])
 
 (defn pj-x [xs ys j x]
-  (let [ks (remove #{j} (range (count xs)))
-        c (map (fn [k] (/ (- x (xs k)) (- (xs j) (xs k)))) ks)]
-    (reduce * (conj c (ys j)))))
+  (->>
+    (range (count xs))
+    (remove #{j})
+    (map (fn [k] (/ (- x (xs k)) (- (xs j) (xs k))))) 
+    (concat [(ys j)])
+    (reduce *)))
 
 (defn lagrange-fun [xs ys]
   (fn [x]
