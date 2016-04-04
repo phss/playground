@@ -29,11 +29,9 @@
         c (map (fn [k] (/ (- x (xs k)) (- (xs j) (xs k)))) ks)]
     (reduce * (conj c (ys j)))))
 
-(defn p-x [xs ys x]
-  (reduce + (map #(pj-x xs ys % x) (range (count xs)))))
-
 (defn lagrange-fun [xs ys]
-  (fn [x] (p-x xs ys x)))
+  (fn [x]
+    (reduce + (map #(pj-x xs ys % x) (range (count xs))))))
 
 (def lagrange-cube (lagrange-fun xs ys))
 
