@@ -27,14 +27,15 @@
 
 (defn lagrange-fun [xs ys]
   (fn [x]
-    (let [pj-x (fn [j]
-      (->>
-        (range (count xs))
-        (remove #{j})
-        (map (fn [k] (/ (- x (xs k)) (- (xs j) (xs k))))) 
-        (concat [(ys j)])
-        (reduce *)))]
-      (reduce + (map pj-x (range (count xs)))))))
+    (let [indexes (range (count xs))
+          pj-x (fn [j]
+            (->>
+              indexes
+              (remove #{j})
+              (map (fn [k] (/ (- x (xs k)) (- (xs j) (xs k))))) 
+              (concat [(ys j)])
+              (reduce *)))]
+      (reduce + (map pj-x indexes)))))
 
 (def lagrange-cube (lagrange-fun xs ys))
 
