@@ -24,17 +24,17 @@
 (def xs [1 2 3])
 (def ys [1 8 27])
 
-(defn pj-x [xs ys j x]
-  (->>
-    (range (count xs))
-    (remove #{j})
-    (map (fn [k] (/ (- x (xs k)) (- (xs j) (xs k))))) 
-    (concat [(ys j)])
-    (reduce *)))
 
 (defn lagrange-fun [xs ys]
   (fn [x]
-    (reduce + (map #(pj-x xs ys % x) (range (count xs))))))
+    (let [pj-x (fn [j]
+      (->>
+        (range (count xs))
+        (remove #{j})
+        (map (fn [k] (/ (- x (xs k)) (- (xs j) (xs k))))) 
+        (concat [(ys j)])
+        (reduce *)))]
+      (reduce + (map pj-x (range (count xs)))))))
 
 (def lagrange-cube (lagrange-fun xs ys))
 
