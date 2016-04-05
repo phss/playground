@@ -18,7 +18,7 @@
     ;(range 1 12)
     ;(map problem)))
 
-(def xs (vec (range 1 4)))
+(def xs (vec (range 1 5)))
 (def ys (vec (map cube xs)))
 
 ; From http://mathworld.wolfram.com/LagrangeInterpolatingPolynomial.html
@@ -36,4 +36,12 @@
 
 (def lagrange-cube (lagrange-fun xs ys))
 
-
+(for [k xs
+      x xs
+      :let [y (cube x)
+            lfun (lagrange-fun (subvec xs 0 k) (subvec ys 0 k))
+            ly (lfun x)
+            ]
+      ]
+  [k x y ly]
+  )
