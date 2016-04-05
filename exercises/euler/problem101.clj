@@ -13,18 +13,15 @@
 
 (def problem (polynomial-fun (take 11 (cycle [1 -1]))))
 
-
 ;(println
   ;(->>
     ;(range 1 12)
     ;(map problem)))
 
+(def xs (vec (range 1 4)))
+(def ys (vec (map cube xs)))
+
 ; From http://mathworld.wolfram.com/LagrangeInterpolatingPolynomial.html
-
-(def xs [1 2 3])
-(def ys [1 8 27])
-
-
 (defn lagrange-fun [xs ys]
   (fn [x]
     (let [indexes (range (count xs))
@@ -38,7 +35,5 @@
       (reduce + (map pj-x indexes)))))
 
 (def lagrange-cube (lagrange-fun xs ys))
-
-(println (lagrange-cube 4))
 
 
