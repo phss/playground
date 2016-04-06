@@ -36,12 +36,13 @@
 
 (def lagrange-cube (lagrange-fun xs ys))
 
-(for [k xs
-      x xs
-      :let [y (cube x)
-            lfun (lagrange-fun (subvec xs 0 k) (subvec ys 0 k))
-            ly (lfun x)
-            ]
-      ]
-  [k x y ly]
-  )
+(defn bop [xs ys k]
+  (let [lfun (lagrange-fun (subvec xs 0 k) (subvec ys 0 k))
+        lys (map lfun xs)
+        ]
+    (->>
+      (map vector lys ys)
+      (filter #(apply not= %))
+      (ffirst))))
+
+(println (bop xs ys 3))
