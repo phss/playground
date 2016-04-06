@@ -13,11 +13,6 @@
 
 (def problem (polynomial-fun (take 11 (cycle [1 -1]))))
 
-;(println
-  ;(->>
-    ;(range 1 12)
-    ;(map problem)))
-
 (def xs (vec (range 1 5)))
 (def ys (vec (map cube xs)))
 
@@ -45,4 +40,8 @@
       (filter #(apply not= %))
       (ffirst))))
 
-(println (bop xs ys 3))
+(->>
+  xs
+  (map #(bop xs ys %))
+  (filter (complement nil?))
+  (reduce +))
