@@ -13,8 +13,13 @@
 
 (def problem (polynomial-fun (take 11 (cycle [1 -1]))))
 
-(def xs (vec (range 1 5)))
-(def ys (vec (map cube xs)))
+; Cube
+;(def xs (vec (range 1 5)))
+;(def ys (vec (map cube xs)))
+
+; Problem
+(def xs (vec (range 1 12)))
+(def ys (vec (map problem xs)))
 
 ; From http://mathworld.wolfram.com/LagrangeInterpolatingPolynomial.html
 (defn lagrange-fun [xs ys]
