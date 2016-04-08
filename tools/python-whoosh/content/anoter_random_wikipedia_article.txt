@@ -1,0 +1,546 @@
+ungus
+From Wikipedia, the free encyclopedia
+"Fungi" redirects here. You may be looking for Fungi (music) or Fungus (XM).
+Fungi
+Temporal range: Early Devonian–Recent (but see text)
+PreЄЄOSDCPTJKPgN
+A collage of five fungi (clockwise from top-left): a mushroom with a flat, red top with white-spots, and a white stem growing on the ground; a red cup-shaped fungus growing on wood; a stack of green and white moldy bread slices on a plate; a microscopic, spherical grey semitransparent cell, with a smaller spherical cell beside it; a microscopic view of an elongated cellular structure shaped like a microphone, attached to the larger end is a number of smaller roughly circular elements that collectively form a mass around it
+Clockwise from top left:
+Amanita muscaria, a basidiomycete;
+Sarcoscypha coccinea, an ascomycete;
+bread covered in mold;
+a chytrid;
+an Aspergillus conidiophore.
+Scientific classification
+Domain:Eukaryota
+(unranked)  :Opisthokonta
+Kingdom:Fungi
+(L., 1753) R.T. Moore, 1980[1]
+Subkingdom    s/Phyla/Subphyla[2]
+Blastocladiomycota
+Chytridiomycota
+Glomeromycota
+Microsporidia
+Neocallimastigomycota
+Dikarya (inc. Deuteromycota)
+
+Ascomycota
+Pezizomycotina
+Saccharomycotina
+Taphrinomycotina
+Basidiomycota
+Agaricomycotina
+Pucciniomycotina
+Ustilaginomycotina
+Subphyla incertae sedis
+
+Entomophthoromycotina
+Kickxellomycotina
+Mucoromycotina
+Zoopagomycotina
+A fungus (/ˈfʌŋɡəs/; plural: fungi[3] or funguses[4]) is any member of the group of eukaryotic organisms that includes unicellular microorganisms such as yeasts and molds, as well as multicellular fungi that produce familiar fruiting forms known as mushrooms. These organisms are classified as a kingdom, Fungi, which is separate from the other eukaryotic life kingdoms of plants and animals.
+
+One difference that places fungi in a different kingdom is that its cell walls contain chitin, unlike the cell walls of plants, bacteria and some protists. Similar to animals, fungi are heterotrophs, that is, they acquire their food by absorbing dissolved molecules, typically by secreting digestive enzymes into their environment. Growth is their means of mobility, except for spores, which may travel through the air or water (a few of which are flagellated). Fungi are the principal decomposers in ecological systems. These and other differences place fungi in a single group of related organisms, named the Eumycota (true fungi or Eumycetes), that share a common ancestor (is a monophyletic group), an interpretation that is also strongly supported by molecular phylogenetics. This fungal group is distinct from the structurally similar myxomycetes (slime molds) and oomycetes (water molds). The discipline of biology devoted to the study of fungi is known as mycology (from the Greek μύκης, mukēs, meaning "fungus"). In the past, mycology was regarded as a branch of botany; today it is a separate kingdom in biological taxonomy. Fungi are genetically more closely related to animals than to plants.
+
+Abundant worldwide, most fungi are inconspicuous because of the small size of their structures, and their cryptic lifestyles in soil, on dead matter. They are both symbionts of plants, animals, or other fungi and also parasites. They may become noticeable when fruiting, either as mushrooms or as molds. Fungi perform an essential role in the decomposition of organic matter and have fundamental roles in nutrient cycling and exchange in the environment. They have long been used as a direct source of food, in the form of mushrooms and truffles, as a leavening agent for bread, in the fermentation of various food products, such as wine, beer, and soy sauce. Since the 1940s, fungi have been used for the production of antibiotics, and, more recently, various enzymes produced by fungi are used industrially and in detergents. Fungi are also used as biological pesticides to control weeds, plant diseases and insect pests. Many species produce bioactive compounds called mycotoxins, such as alkaloids and polyketides, that are toxic to animals including humans. The fruiting structures of a few species contain psychotropic compounds and are consumed recreationally or in traditional spiritual ceremonies. Fungi can break down manufactured materials and buildings, and become significant pathogens of humans and other animals. Losses of crops due to fungal diseases (e.g., rice blast disease) or food spoilage can have a large impact on human food supplies and local economies.
+
+The fungus kingdom encompasses an enormous diversity of taxa with varied ecologies, life cycle strategies, and morphologies ranging from unicellular aquatic chytrids to large mushrooms. However, little is known of the true biodiversity of Kingdom Fungi, which has been estimated at 1.5 million to 5 million species, with about 5% of these having been formally classified. Ever since the pioneering 18th and 19th century taxonomical works of Carl Linnaeus, Christian Hendrik Persoon, and Elias Magnus Fries, fungi have been classified according to their morphology (e.g., characteristics such as spore color or microscopic features) or physiology. Advances in molecular genetics have opened the way for DNA analysis to be incorporated into taxonomy, which has sometimes challenged the historical groupings based on morphology and other traits. Phylogenetic studies published in the last decade have helped reshape the classification within Kingdom Fungi, which is divided into one subkingdom, seven phyla, and ten subphyla.
+
+Contents  [hide] 
+1Etymology
+2Characteri   stics
+3Diversity
+4Mycology
+4.1History
+5Morphology
+5.1Microscopic s          tructures
+5.2Macroscopic structures
+6Growth and physiology
+7Reproduc     tion
+7.1Asexual reproduction
+7.2Sexual reproduction
+7.3Spore dispers      al
+7.4Other sexual processes
+8Evolution
+9Taxonomy
+9.1Phylogeny
+9.2         Taxonomic groups
+9.3Fungus-like organisms
+10Ecology
+10.1Symbiosis
+10      .1.1With plants
+10.1.2With algae and cyanobacteria
+10.1.3With insect     s
+10.1.4As pathogens and parasites
+11Mycotoxins
+12Pathogenic mechani      sms
+13Human use
+13.1Therapeutic uses
+13.1.1Modern chemotherapeutics
+      13.1.2Traditional and folk medicine
+      13.2Cultured foods
+      13.3Edible an     d poisonous species
+      13.4Pest control
+      13.5Bioremediation
+      13.6Model or      ganisms
+      13.7Others
+      14See also
+      15References
+      15.1Cited literature
+      16          External links
+      Etymology
+      The English word fungus is directly adopted from the Latin fungus (mushroom), used in the writings of Horace and Pliny.[5] This in turn is derived from the Greek word sphongos (σφογγος "sponge"), which refers to the macroscopic structures and morphology of mushrooms and molds;[6] the root is also used in other languages, such as the German Schwamm ("sponge") and Schimmel ("mold").[7] The use of the word mycology, which is derived from the Greek mykes (μύκης "mushroom") and logos (λόγος "discourse"),[8] to denote the scientific study of fungi is thought to have originated in 1836 with English naturalist Miles Joseph Berkeley's publication The English Flora of Sir James Edward Smith, Vol. 5.[6] A group of all the fungi present in a particular area or geographic region is known as mycobiota (plural noun, no singular), e.g., "the mycobiota of Ireland".[9]
+
+      Characteristics
+
+      Fungal hyphae cells
+      Hyphal wall Septum Mitochondrion Vacuole Ergosterol crystal Ribosome Nucleus Endoplasmic reticulum Lipid body Plasma membrane Spitzenkörper Golgi apparatus
+      Before the introduction of molecular methods for phylogenetic analysis, taxonomists considered fungi to be members of the plant kingdom because of similarities in lifestyle: both fungi and plants are mainly immobile, and have similarities in general morphology and growth habitat. Like plants, fungi often grow in soil and, in the case of mushrooms, form conspicuous fruit bodies, which sometimes resemble plants, such as mosses. The fungi are now considered a separate kingdom, distinct from both plants and animals, from which they appear to have diverged around one billion years ago.[10][11] Some morphological, biochemical, and genetic features are shared with other organisms, while others are unique to the fungi, clearly separating them from the other kingdoms:
+
+      Shared features:
+
+      With other eukaryotes: Fungal cells contain membrane-bound nuclei with chromosomes that contain DNA with noncoding regions called introns and coding regions called exons. Fungi have membrane-bound cytoplasmic organelles such as mitochondria, sterol-containing membranes, and ribosomes of the 80S type.[12] They have a characteristic range of soluble carbohydrates and storage compounds, including sugar alcohols (e.g., mannitol), disaccharides, (e.g., trehalose), and polysaccharides (e.g., glycogen, which is also found in animals[13]).
+      With animals: Fungi lack chloroplasts and are heterotrophic organisms and so require preformed organic compounds as energy sources.[14]
+      With plants: Fungi have a cell wall[15] and vacuoles.[16] They reproduce by both sexual and asexual means, and like basal plant groups (such as ferns and mosses) produce spores. Similar to mosses and algae, fungi typically have haploid nuclei.[17]
+      With euglenoids and bacteria: Higher fungi, euglenoids, and some bacteria produce the amino acid L-lysine in specific biosynthesis steps, called the α-aminoadipate pathway.[18][19]
+      The cells of most fungi grow as tubular, elongated, and thread-like (filamentous) structures called hyphae, which may contain multiple nuclei and extend by growing at their tips. Each tip contains a set of aggregated vesicles—cellular structures consisting of proteins, lipids, and other organic molecules—called the Spitzenkörper.[20] Both fungi and oomycetes grow as filamentous hyphal cells.[21] In contrast, similar-looking organisms, such as filamentous green algae, grow by repeated cell division within a chain of cells.[13] There are also single-celled fungi (yeasts) that do not form hyphae, and fungi with both hyphal and yeast forms.[22]
+      In common with some plant and animal species, more than 70 fungal species display bioluminescence.[23]
+      Unique features:
+
+      Some species grow as unicellular yeasts that reproduce by budding or binary fission. Dimorphic fungi can switch between a yeast phase and a hyphal phase in response to environmental conditions.[22]
+      The fungal cell wall is composed of glucans and chitin; while glucans are also found in plants and chitin in the exoskeleton of arthropods,[24][25] fungi are the only organisms that combine these two structural molecules in their cell wall. Unlike those of plants and oomycetes, fungal cell walls do not contain cellulose.[26]
+      A whitish fan or funnel-shaped mushroom growing at the base of a tree.
+      Omphalotus nidiformis, a bioluminescent mushr green algae, grow by repeated cell division within a chain of cells.rt3] There are also single-celled fungi (yeasts) that do not form hypha T and fungi with both hyphal and yeast forms.[22]
+      In common with some omant and animal species, more than 70 fungal species display biolumineof plants. As eukaryotes, fungi possess a biosynthetic pathway for product reproduce by budding or binary fission. Dimorphic fungi can switch uitween a yeast phase and a hyphal phase in response to environmental cterpene biosynthesis pathway in their chloroplasts, a structure fungi andile glucans are also found in plants and chitin in the exoskeleton of trthropods,[24][25] fungi are the only organisms that combine these tw] Many of the plant and fungal enzymes that make these compounds differ from each other in sequence and other characteristics, which indicates separate origins and evolution of these enzymes in the fungi and plants.[28][30]
+
+      Diversity
+
+      Bracket fungi on a tree stump
+      Fungi have a worldwide distribution, and grow in a wide range of habitats, including extreme environments such as deserts or areas with high salt concentrations[31] or ionizing radiation,[32] as well as in deep sea sediments.[33] Some can survive the intense UV and cosmic radiation encountered during space travel.[34] Most grow in terrestrial environments, though several species live partly or solely in aquatic habitats, such as the chytrid fungus Batrachochytrium dendrobatidis, a parasite that has been responsible for a worldwide decline in amphibian populations. This organism spends part of its life cycle as a motile zoospore, enabling it to propel itself through water and enter its amphibian host.[35] Other examples of aquatic fungi include those living in hydrothermal areas of the ocean.[36]
+
+      Around 100,000 species of fungi have been formally described by taxonomists,[37] but the global biodiversity of the fungus kingdom is not fully understood.[38] On the basis of observations of the ratio of the number of fungal species to the number of plant species in selected environments, the fungal kingdom has been estimated to contain about 1.5 million species.[39] A recent (2011) estimate suggests there may be over 5 million species.[40] In mycology, species have historically been distinguished by a variety of methods and concepts. Classification based on morphological characteristics, such as the size and shape of spores or fruiting structures, has traditionally dominated fungal taxonomy.[41] Species may also be distinguished by their biochemical and physiological characteristics, such as their ability to metabolize certain biochemicals, or their reaction to chemical tests. The biological species concept discriminates species based on their ability to mate. The application of molecular tools, such as DNA sequencing and phylogenetic analysis, to study diversity has greatly enhanced the resolution and added robustness to estimates of genetic diversity within various taxonomic groups.[42]
+
+
+      Two types of edible fungi
+      Mycology
+      Mycology is the branch of biology concerned with the systematic study of fungi, including their genetic and biochemical properties, their taxonomy, and their use to humans as a source of medicine, food, and psychotropic substances consumed for religious purposes, as well as their dangers, such as poisoning or infection. The field of phytopathology, the study of plant diseases, is closely related because many plant pathogens are fungi.[43]
+
+
+      In 1729, Pier A. Micheli first published descriptions of fungi.
+      The use of fungi by humans dates back to prehistory; Ötzi the Iceman, a well-preserved mummy of a 5,300-year-old Neolithic man found frozen in the Austrian Alps, carried two species of polypore mushrooms that may have been used as tinder (Fomes fomentarius), or for medicinal purposes (Piptoporus betulinus).[44] Ancient peoples have used fungi as food sources–often unknowingly–for millennia, in the preparation of leavened bread and fermented juices. Some of the oldest written records contain references to the destruction of crops that were probably caused by pathogenic fungi.[45]
+
+      History
+      Mycology is a relatively new science that became systematic after the development of the microscope in the 16th century. Although fungal spores were first observed by Giambattista della Porta in 1588, the seminal work in the development of mycology is considered to be the publication of Pier Antonio Micheli's 1729 work Nova plantarum genera.[46] Micheli not only observed spores but also showed that, under the proper conditions, they could be induced into growing into the same species of fungi from which they originated.[47] Extending the use of the binomial system of nomenclature introduced by Carl Linnaeus in his Species plantarum (1753), the Dutch Christian Hendrik Persoon (1761–1836) established the first classification of mushrooms with such skill so as to be considered a founder of modern mycology. Later, Elias Magnus Fries (1794–1878) further elaborated the classification of fungi, using spore color and various microscopic characteristics, methods still used by taxonomists today. Other notable early contributors to mycology in the 17th–19th and early 20th centuries include Miles Joseph Berkeley, August Carl Joseph Corda, Anton de Bary, the brothers Louis René and Charles Tulasne, Arthur H. R. Buller, Curtis G. Lloyd, and Pier Andrea Saccardo. The 20th century has seen a modernization of mycology that has come from advances in biochemistry, genetics, molecular biology, and biotechnology. The use of DNA sequencing technologies and phylogenetic analysis has provided new insights into fungal relationships and biodiversity, and has challenged traditional morphology-based groupings in fungal taxonomy.[48]
+
+      Morphology
+      Microscopic structures
+      Monochrome micrograph showing Penicillium hyphae as long, transparent, tube-like structures a few micrometres across. Conidiophores branch out laterally from the hyphae, terminating in bundles of phialides on which spherical condidiophores are arranged like beads on a string. Septa are faintly visible as dark lines crossing the hyphae.
+      An environmental isolate of Penicillium
+      hypha conidiophore phialide conidia septa
+      Most fungi grow as hyphae, which are cylindrical, thread-like structures 2–10 µm in diameter and up to several centimeters in length. Hyphae grow at their tips (apices); new hyphae are typically formed by emergence of new tips along existing hyphae by a process called branching, or occasionally growing hyphal tips fork, giving rise to two parallel-growing hyphae.[49] The combination of apical growth and branching/forking leads to the development of a mycelium, an interconnected network of hyphae.[22] Hyphae can be either septate or coenocytic. Septate hyphae are divided into compartments separated by cross walls (internal cell walls, called septa, that are formed at right angles to the cell wall giving the hypha its shape), with each compartment containing one or more nuclei; coenocytic hyphae are not compartmentalized.[50] Septa have pores that allow cytoplasm, organelles, and sometimes nuclei to pass through; an example is the dolipore septum in fungi of the phylum Basidiomycota.[51] Coenocytic hyphae are in essence multinucleate supercells.[52]
+
+      Many species have developed specialized hyphal structures for nutrient uptake from living hosts; examples include haustoria in plant-parasitic species of most fungal phyla, and arbuscules of several mycorrhizal fungi, which penetrate into the host cells to consume nutrients.[53]
+
+      Although fungi are opisthokonts—a grouping of evolutionarily related organisms broadly characterized by a single posterior flagellum—all phyla except for the chytrids have lost their posterior flagella.[54] Fungi are unusual among the eukaryotes in having a cell wall that, in addition to glucans (e.g., β-1,3-glucan) and other typical components, also contains the biopolymer chitin.[55]
+
+      Macroscopic structures
+      A cluster of large, thick-stem, light-brown gilled mushrooms growing at the base of a tree
+      Armillaria solidipes
+      Fungal mycelia can become visible to the naked eye, for example, on various surfaces and substrates, such as damp walls and spoiled food, where they are commonly called molds. Mycelia grown on solid agar media in laboratory petri dishes are usually referred to as colonies. These colonies can exhibit growth shapes and colors (due to spores or pigmentation) that can be used as diagnostic features in the identification of species or groups.[56] Some individual fungal colonies can reach extraordinary dimensions and ages as in the case of a clonal colony of Armillaria solidipes, which extends over an area of more than 900 ha (3.5 square miles), with an estimated age of nearly 9,000 years.[57]
+
+      The apothecium—a specialized structure important in sexual reproduction in the ascomycetes—is a cup-shaped fruit body that holds the hymenium, a layer of tissue containing the spore-bearing cells.[58] The fruit bodies of the basidiomycetes (basidiocarps) and some ascomycetes can sometimes grow very large, and many are well known as mushrooms.
+
+      Growth and physiology
+      Time-lapse photography sequence of a peach becoming progressively discolored and disfigured
+      Mold growth covering a decaying peach. The frames were taken approximately 12 hours apart over a period of six days.
+      The growth of fungi as hyphae on or in solid substrates or as single cells in aquatic environments is adapted for the efficient extraction of nutrients, because these growth forms have high surface area to volume ratios.[59] Hyphae are specifically adapted for growth on solid surfaces, and to invade substrates and tissues.[60] They can exert large penetrative mechanical forces; for example, the plant pathogen Magnaporthe grisea forms a structure called an appressorium that evolved to puncture plant tissues.[61] The pressure generated by the appressorium, directed against the plant epidermis, can exceed 8 megapascals (1,200 psi).[61] The filamentous fungus Paecilomyces lilacinus uses a similar structure to penetrate the eggs of nematodes.[62]
+
+      The mechanical pressure exerted by the appressorium is generated from physiological processes that increase intracellular turgor by producing osmolytes such as glycerol.[63] Adaptations such as these are complemented by hydrolytic enzymes secreted into the environment to digest large organic molecules—such as polysaccharides, proteins, and lipids—into smaller molecules that may then be absorbed as nutrients.[64][65][66] The vast majority of filamentous fungi grow in a polar fashion—i.e., by extension into one direction—by elongation at the tip (apex) of the hypha.[67] Other forms of fungal growth include intercalary extension (longitudinal expansion of hyphal compartments that are below the apex) as in the case of some endophytic fungi,[68] or growth by volume expansion during the development of mushroom stipes and other large organs.[69] Growth of fungi as multicellular structures consisting of somatic and reproductive cells—a feature independently evolved in animals and plants[70]—has several functions, including the development of fruit bodies for dissemination of sexual spores (see above) and biofilms for substrate colonization and intercellular communication.[71]
+
+      The fungi are traditionally considered heterotrophs, organisms that rely solely on carbon fixed by other organisms for metabolism. Fungi have evolved a high degree of metabolic versatility that allows them to use a diverse range of organic substrates for growth, including simple compounds such as nitrate, ammonia, acetate, or ethanol.[72][73] In some species the pigment melanin may play a role in extracting energy from ionizing radiation, such as gamma radiation. This form of "radiotrophic" growth has been described for only a few species, the effects on growth rates are small, and the underlying biophysical and biochemical processes are not well known.[32] This process might bear similarity to CO2 fixation via visible light, but instead uses ionizing radiation as a source of energy.[74]
+
+      Reproduction
+      Two thickly stemmed brownish mushrooms with scales on the upper surface, growing out of a tree trunk
+      Polyporus squamosus
+      Fungal reproduction is complex, reflecting the differences in lifestyles and genetic makeup within this diverse kingdom of organisms.[75] It is estimated that a third of all fungi reproduce using more than one method of propagation; for example, reproduction may occur in two well-differentiated stages within the life cycle of a species, the teleomorph and the anamorph.[76] Environmental conditions trigger genetically determined developmental states that lead to the creation of specialized structures for sexual or asexual reproduction. These structures aid reproduction by efficiently dispersing spores or spore-containing propagules.
+
+      Asexual reproduction
+      Asexual reproduction occurs via vegetative spores (conidia) or through mycelial fragmentation. Mycelial fragmentation occurs when a fungal mycelium separates into pieces, and each component grows into a separate mycelium. Mycelial fragmentation and vegatative spores maintain clonal populations adapted to a specific niche, and allow more rapid dispersal than sexual reproduction.[77] The "Fungi imperfecti" (fungi lacking the perfect or sexual stage) or Deuteromycota comprise all the species that lack an observable sexual cycle.[78]
+
+      Sexual reproduction
+      See also: Mating in fungi
+      Sexual reproduction with meiosis exists in all fungal phyla except Glomeromycota.[79] It differs in many aspects from sexual reproduction in animals or plants. Differences also exist between fungal groups and can be used to discriminate species by morphological differences in sexual structures and reproductive strategies.[80][81] Mating experiments between fungal isolates may identify species on the basis of biological species concepts.[81] The major fungal groupings have initially been delineated based on the morphology of their sexual structures and spores; for example, the spore-containing structures, asci and basidia, can be used in the identification of ascomycetes and basidiomycetes, respectively. Some species may allow mating only between individuals of opposite mating type, whereas others can mate and sexually reproduce with any other individual or itself. Species of the former mating system are called heterothallic, and of the latter homothallic.[82]
+
+      Most fungi have both a haploid and a diploid stage in their life cycles. In sexually reproducing fungi, compatible individuals may combine by fusing their hyphae together into an interconnected network; this process, anastomosis, is required for the initiation of the sexual cycle. Ascomycetes and basidiomycetes go through a dikaryotic stage, in which the nuclei inherited from the two parents do not combine immediately after cell fusion, but remain separate in the hyphal cells (see heterokaryosis).[83]
+
+      Microscopic view of numerous translucent or transparent elongated sac-like structures each containing eight spheres lined up in a row
+      The 8-spore asci of Morchella elata, viewed with phase contrast microscopy
+      In ascomycetes, dikaryotic hyphae of the hymenium (the spore-bearing tissue layer) form a characteristic hook at the hyphal septum. During cell division, formation of the hook ensures proper distribution of the newly divided nuclei into the apical and basal hyphal compartments. An ascus (plural asci) is then formed, in which karyogamy (nuclear fusion) occurs. Asci are embedded in an ascocarp, or fruiting body. Karyogamy in the asci is followed immediately by meiosis and the production of ascospores. After dispersal, the ascospores may germinate and form a new haploid mycelium.[84]
+
+      Sexual reproduction in basidiomycetes is similar to that of the ascomycetes. Compatible haploid hyphae fuse to produce a dikaryotic mycelium. However, the dikaryotic phase is more extensive in the basidiomycetes, often also present in the vegetatively growing mycelium. A specialized anatomical structure, called a clamp connection, is formed at each hyphal septum. As with the structurally similar hook in the ascomycetes, the clamp connection in the basidiomycetes is required for controlled transfer of nuclei during cell division, to maintain the dikaryotic stage with two genetically different nuclei in each hyphal compartment.[85] A basidiocarp is formed in which club-like structures known as basidia generate haploid basidiospores after karyogamy and meiosis.[86] The most commonly known basidiocarps are mushrooms, but they may also take other forms (see Morphology section).
+
+      In glomeromycetes (formerly zygomycetes), haploid hyphae of two individuals fuse, forming a gametangium, a specialized cell structure that becomes a fertile gamete-producing cell. The gametangium develops into a zygospore, a thick-walled spore formed by the union of gametes. When the zygospore germinates, it undergoes meiosis, generating new haploid hyphae, which may then form asexual sporangiospores. These sporangiospores allow the fungus to rapidly disperse and germinate into new genetically identical haploid fungal mycelia.[87]
+
+      Spore dispersal
+      Both asexual and sexual spores or sporangiospores are often actively dispersed by forcible ejection from their reproductive structures. This ejection ensures exit of the spores from the reproductive structures as well as traveling through the air over long distances.
+
+      A brown, cup-shaped fungus with several greyish disc-shaped structures lying within
+      The bird's nest fungus Cyathus stercoreus
+      Specialized mechanical and physiological mechanisms, as well as spore surface structures (such as hydrophobins), enable efficient spore ejection.[88] For example, the structure of the spore-bearing cells in some ascomycete species is such that the buildup of substances affecting cell volume and fluid balance enables the explosive discharge of spores into the air.[89] The forcible discharge of single spores termed ballistospores involves formation of a small drop of water (Buller's drop), which upon contact with the spore leads to its projectile release with an initial acceleration of more than 10,000 g;[90] the net result is that the spore is ejected 0.01–0.02 cm, sufficient distance for it to fall through the gills or pores into the air below.[91] Other fungi, like the puffballs, rely on alternative mechanisms for spore release, such as external mechanical forces. The bird's nest fungi use the force of falling water drops to liberate the spores from cup-shaped fruiting bodies.[92] Another strategy is seen in the stinkhorns, a group of fungi with lively colors and putrid odor that attract insects to disperse their spores.[93]
+
+      Other sexual processes
+      Besides regular sexual reproduction with meiosis, certain fungi, such as those in the genera Penicillium and Aspergillus, may exchange genetic material via parasexual processes, initiated by anastomosis between hyphae and plasmogamy of fungal cells.[94] The frequency and relative importance of parasexual events is unclear and may be lower than other sexual processes. It is known to play a role in intraspecific hybridization[95] and is likely required for hybridization between species, which has been associated with major events in fungal evolution.[96]
+
+      Evolution
+      Main article: Evolution of fungi
+      In contrast to plants and animals, the early fossil record of the fungi is meager. Factors that likely contribute to the under-representation of fungal species among fossils include the nature of fungal fruiting bodies, which are soft, fleshy, and easily degradable tissues and the microscopic dimensions of most fungal structures, which therefore are not readily evident. Fungal fossils are difficult to distinguish from those of other microbes, and are most easily identified when they resemble extant fungi.[97] Often recovered from a permineralized plant or animal host, these samples are typically studied by making thin-section preparations that can be examined with light microscopy or transmission electron microscopy.[98] Researchers study compression fossils by dissolving the surrounding matrix with acid and then using light or scanning electron microscopy to examine surface details.[99]
+
+      The earliest fossils possessing features typical of fungi date to the Proterozoic eon, some 1,430 million years ago (Ma); these multicellular benthic organisms had filamentous structures with septa, and were capable of anastomosis.[100] More recent studies (2009) estimate the arrival of fungal organisms at about 760–1060 Ma on the basis of comparisons of the rate of evolution in closely related groups.[101] For much of the Paleozoic Era (542–251 Ma), the fungi appear to have been aquatic and consisted of organisms similar to the extant chytrids in having flagellum-bearing spores.[102] The evolutionary adaptation from an aquatic to a terrestrial lifestyle necessitated a diversification of ecological strategies for obtaining nutrients, including parasitism, saprobism, and the development of mutualistic relationships such as mycorrhiza and lichenization.[103] Recent (2009) studies suggest that the ancestral ecological state of the Ascomycota was saprobism, and that independent lichenization events have occurred multiple times.[104]
+
+      It is presumed that the fungi colonized the land during the Cambrian (542–488.3 Ma), long before land plants.[105] Fossilized hyphae and spores recovered from the Ordovician of Wisconsin (460 Ma) resemble modern-day Glomerales, and existed at a time when the land flora likely consisted of only non-vascular bryophyte-like plants.[106] Prototaxites, which was probably a fungus or lichen, would have been the tallest organism of the late Silurian. Fungal fossils do not become common and uncontroversial until the early Devonian (416–359.2 Ma), when they occur abundantly in the Rhynie chert, mostly as Zygomycota and Chytridiomycota.[105][107][108] At about this same time, approximately 400 Ma, the Ascomycota and Basidiomycota diverged,[109] and all modern classes of fungi were present by the Late Carboniferous (Pennsylvanian, 318.1–299 Ma).[110]
+
+      Lichen-like fossils have been found in the Doushantuo Formation in southern China dating back to 635–551 Ma.[111] Lichens formed a component of the early terrestrial ecosystems, and the estimated age of the oldest terrestrial lichen fossil is 400 Ma;[112] this date corresponds to the age of the oldest known sporocarp fossil, a Paleopyrenomycites species found in the Rhynie Chert.[113] The oldest fossil with microscopic features resembling modern-day basidiomycetes is Palaeoancistrus, found permineralized with a fern from the Pennsylvanian.[114] Rare in the fossil record are the Homobasidiomycetes (a taxon roughly equivalent to the mushroom-producing species of the Agaricomycetes). Two amber-preserved specimens provide evidence that the earliest known mushroom-forming fungi (the extinct species Archaeomarasmius leggetti) appeared during the late Cretaceous, 90 Ma.[115][116]
+
+      Some time after the Permian–Triassic extinction event (251.4 Ma), a fungal spike (originally thought to be an extraordinary abundance of fungal spores in sediments) formed, suggesting that fungi were the dominant life form at this time, representing nearly 100% of the available fossil record for this period.[117] However, the relative proportion of fungal spores relative to spores formed by algal species is difficult to assess,[118] the spike did not appear worldwide,[119][120] and in many places it did not fall on the Permian–Triassic boundary.[121]
+
+      Taxonomy
+      Although commonly included in botany curricula and textbooks, fungi are more closely related to animals than to plants and are placed with the animals in the monophyletic group of opisthokonts.[122] Analyses using molecular phylogenetics support a monophyletic origin of the Fungi.[42] The taxonomy of the Fungi is in a state of constant flux, especially due to recent research based on DNA comparisons. These current phylogenetic analyses often overturn classifications based on older and sometimes less discriminative methods based on morphological features and biological species concepts obtained from experimental matings.[123]
+
+      There is no unique generally accepted system at the higher taxonomic levels and there are frequent name changes at every level, from species upwards. Efforts among researchers are now underway to establish and encourage usage of a unified and more consistent nomenclature.[42][124] Fungal species can also have multiple scientific names depending on their life cycle and mode (sexual or asexual) of reproduction. Web sites such as Index Fungorum and ITIS list current names of fungal species (with cross-references to older synonyms).
+
+      The 2007 classification of Kingdom Fungi is the result of a large-scale collaborative research effort involving dozens of mycologists and other scientists working on fungal taxonomy.[42] It recognizes seven phyla, two of which—the Ascomycota and the Basidiomycota—are contained within a branch representing subkingdom Dikarya. The above cladogram depicts the major fungal taxa and their relationship to opisthokont and unikont organisms. The lengths of the branches in this tree are not proportional to evolutionary distances.
+
+
+
+      Phylogeny
+      The phylogeny of Fungi based on the work of Philippe Silar[125] and "The Mycota: A Comprehensive Treatise on Fungi as Experimental Systems for Basic and Applied Research"[126]
+
+      Holomycota
+
+      Nucleariida
+
+
+      Op  isthosporidia
+
+      Aphelida
+
+
+
+      Cryptomycota
+
+      Microsporidia
+
+      Metchnikovell   ea
+
+
+      Microsporea
+
+
+
+
+      Eumycota
+      Chytridiomycota
+
+      Neocallimastigomycetes    
+
+
+
+      Chytridiomycetes
+
+      Monoblepharidomycotina
+
+      Hyaloraphidiomycetes
+
+
+      M onoblepharidomycetes
+
+
+
+
+
+
+      Blastocladiomycota James 2007
+
+
+
+      Basidiobolomycota
+
+
+      Entomophthoromycota
+
+      Neozygitomycetes
+
+
+      Entomophthoromycetes
+
+
+
+      Kickx ellomycota
+
+      Zoopagomycetes
+
+
+      Kickxellomycetes
+
+
+
+      Mucoromycota
+
+      Mortie    rellomycetes
+
+
+      Mucoromycetes
+
+
+      Symbiomycota
+
+      Glomeromycota
+
+      Dikarya
+
+          Entorrhizomycota
+
+
+          Basidiomycota
+          Pucciniomycotina
+
+
+          Tritirachiomycete   s
+
+
+
+          Mixiomycetes
+
+
+          Agaricostilbomycetes
+
+
+
+
+
+          Cystobasidiomycetes
+
+
+
+
+          Classiculaceae
+
+
+          Microbotryomycetes
+
+
+
+
+          Cryptomycocolacomycetes
+
+
+
+          Atractiellomycetes
+
+
+          Pucciniomycetes
+
+
+
+
+
+
+          Orthomycotina
+          Ustila  ginomycotina
+
+
+          Monilielliomycetes
+
+
+          Malasseziomycetes
+
+
+
+
+          Ustilaginomy  cetes
+
+
+          Exobasidiomycetes
+
+
+
+          Agaricomycotina
+
+          Wallemiomycetes
+
+
+          Barthe  letiomycetes
+
+
+
+          Tremellomycetes
+
+
+
+          Dacrymycetes
+
+
+          Agaricomycetes
+
+
+
+
+
+
+          Ascomycota
+          Taphrinomycotina
+
+
+          Neolectomycetes
+
+
+          Taphrinomycetes
+
+
+
+
+          Archaeorh   izomycetes
+
+
+
+          Pneumocystidomycetes
+
+
+          Schizosaccharomycetes
+
+
+
+
+          Saccharomyceta
+
+          Saccharomycetes
+
+          Pezizomycotina
+
+          Orbiliomycetes
+
+
+
+          Pezizomycetes
+
+          Leotiomyceta      
+
+          Dothideomyceta
+
+
+          Sordariomyceta
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          Taxonomic groups
+          See also: List of fungal orders
+          The major phyla (sometimes called divisions) of fungi have been classified mainly on the basis of characteristics of their sexual reproductive structures. Currently, seven phyla are proposed: Microsporidia, Chytridiomycota, Blastocladiomycota, Neocallimastigomycota, Glomeromycota, Ascomycota, and Basidiomycota.[42]
+
+          Microscopic view of a layer of translucent grayish cells, some containing small dark-color spheres
+          Arbuscular mycorrhiza seen under microscope. Flax root cortical cells containing paired arbuscules.
+          Phylogenetic analysis has demonstrated that the Microsporidia, unicellular parasites of animals and protists, are fairly recent and highly derived endobiotic fungi (living within the tissue of another species).[102][127] One 2006 study concludes that the Microsporidia are a sister group to the true fungi; that is, they are each other's closest evolutionary relative.[128] Hibbett and colleagues suggest that this analysis does not clash with their classification of the Fungi, and although the Microsporidia are elevated to phylum status, it is acknowledged that further analysis is required to clarify evolutionary relationships within this group.[42]
+
+          The Chytridiomycota are commonly known as chytrids. These fungi are distributed worldwide. Chytrids produce zoospores that are capable of active movement through aqueous phases with a single flagellum, leading early taxonomists to classify them as protists. Molecular phylogenies, inferred from rRNA sequences in ribosomes, suggest that the Chytrids are a basal group divergent from the other fungal phyla, consisting of four major clades with suggestive evidence for paraphyly or possibly polyphyly.[129]
+
+          The Blastocladiomycota were previously considered a taxonomic clade within the Chytridiomycota. Recent molecular data and ultrastructural characteristics, however, place the Blastocladiomycota as a sister clade to the Zygomycota, Glomeromycota, and Dikarya (Ascomycota and Basidiomycota). The blastocladiomycetes are saprotrophs, feeding on decomposing organic matter, and they are parasites of all eukaryotic groups. Unlike their close relatives, the chytrids, most of which exhibit zygotic meiosis, the blastocladiomycetes undergo sporic meiosis.[102]
+
+          The Neocallimastigomycota were earlier placed in the phylum Chytridomycota. Members of this small phylum are anaerobic organisms, living in the digestive system of larger herbivorous mammals and in other terrestrial and aquatic environments enriched in cellulose (e.g., domestic waste landfill sites).[130] They lack mitochondria but contain hydrogenosomes of mitochondrial origin. As the related chrytrids, neocallimastigomycetes form zoospores that are posteriorly uniflagellate or polyflagellate.[42]
+
+          Members of the Glomeromycota form arbuscular mycorrhizae, a form of symbiosis wherein fungal hyphae invade plant root cells and both species benefit from the resulting increased supply of nutrients. All known Glomeromycota species reproduce asexually.[79] The symbiotic association between the Glomeromycota and plants is ancient, with evidence dating to 400 million years ago.[131] Formerly part of the Zygomycota (commonly known as 'sugar' and 'pin' molds), the Glomeromycota were elevated to phylum status in 2001 and now replace the older phylum Zygomycota.[132] Fungi that were placed in the Zygomycota are now being reassigned to the Glomeromycota, or the subphyla incertae sedis Mucoromycotina, Kickxellomycotina, the Zoopagoma form arbuscular mycorrhizae, a form of symbiosis wherein fungal hyphae invade plant root cells and both species benefit from the resulting increased supply of nutrients. All known Glomeromycota species reproduce asexually.[79] The symbiotic association between the Glomeromycota and plants is ancient, with evidenctie invade plant root cells and both species benefit from the resultingasncreased supply of nutrients. All known Glomeromycota species reproduon asexually.[79] The symbiotic association between the Glomeromycota ap,y part of the Zygomycota (commonly known as 'sugar' and 'pin' molds), the Glomeromycota were elevated to phylum status in 2001 and now replace the o ehe Glomeromycota were elevated to phylum status in 2001 and now repla-l the older phylum Zygomycota.[132] Fungi that were placed in the Zygo wcota are now being reassigned to the Glomeromycota, or the subphyla isae invade plant root cells and both species benefit from the resulting increased supply of nutrients. All known Glomeromycota species reproduce asexually.[79] The symbiotic association between the Glo ancreased supply of nutrients. All known Glomeromycota species reproduel asexually.[79] The symbiotic association between the Glomeromycota aa,nefit from the resultingasncreased supply of nutrients. All known Glomeromycota species reproduon asexually.[79] The symbiotic association between t aycota ap,y part of the Zygomycota (commonly known as 'sugar' and 'pin Many ascomycete species have only been observed undergoing asexual reproduction (called anamorphic species), but analysis of molecular data has often been able to identify their closest teleomorphs in the Ascomycota.[134] Because the products of meiosis are retained within the sac-like ascus, ascomycetes have been used for elucidating principles of genetics and heredity (e.g., Neurospora crassa).[135]
+
+          Members of the Basidiomycota, commonly known as the club fungi or basidiomycetes, produce meiospores called basidiospores on club-like stalks called basidia. Most common mushrooms belong to this group, as well as rust and smut fungi, which are major pathogens of grains. Other important basidiomycetes include the maize pathogen Ustilago maydis,[136] human commensal species of the genus Malassezia,[137] and the opportunistic human pathogen, Cryptococcus neoformans.[138]
+
+          Fungus-like organisms
+          Because of similarities in morphology and lifestyle, the slime molds (mycetozoans, plasmodiophorids, acrasids, Fonticula and labyrinthulids, now in Amoebozoa, Rhizaria, Excavata, Opisthokonta and Stramenopiles, respectively), water molds (oomycetes) and hyphochytrids (both Stramenopiles) were formerly classified in the kingdom Fungi, in groups like Mastigomycotina, Gymnomycota and Phycomycetes. The slime molds were studied also as protozoans, leading to a ambiregnal, duplicated taxonomy.
+
+          Unlike true fungi, the cell walls of oomycetes contain cellulose and lack chitin. Hyphochytrids have both chitin and cellulose. Slime molds lack a cell wall during the assimilative phase (except labyrinthulids, which have a wall of scales), and ingest nutrients by ingestion (phagocytosis, except labyrinthulids) rather than absorption (osmotrophy, as fungi, labyrinthulids, oomycetes and hyphochytrids). Neither water molds nor slime molds are closely related to the true fungi, and, therefore, taxonomists no longer group them in the kingdom Fungi. Nonetheless, studies of the oomycetes and myxomycetes are still often included in mycology textbooks and primary research literature.[139]
+
+          The Eccrinales and Amoebidiales are opisthokont protists, previously thought to be zygomycete fungi. Other groups now in Opisthokonta (e.g., Corallochytrium, Ichthyosporea) were also at given time classified as fungi. The genus Blastocystis, now in Stramenopiles, was originally classified as a yeast. Ellobiopsis, now in Alveolata, was considered a chytrid. The bacteria were also included in fungi in some classifications, as the group Schizomycetes.
+
+          The Rozellida clade, including the "ex-chytrid" Rozella, is a genetically disparate group known mostly from environmental DNA sequences that is a sister group to fungi. Members of the group that have been isolated lack the chitinous cell wall that is characteristic of fungi.
+
+          The nucleariids, protists currently grouped in the Choanozoa (Opisthokonta), may be the next sister group to the eumycete clade, and as such could be included in an expanded fungal kingdom.[140]
+
+          Ecology
+
+          A pin mold decomposing a peach
+          Although often inconspicuous, fungi occur in every environment on Earth and play very important roles in most ecosystems. Along with bacteria, fungi are the major decomposers in most terrestrial (and some aquatic) ecosystems, and therefore play a critical role in biogeochemical cycles[141] and in many food webs. As decomposers, they play an essential role in nutrient cycling, especially as saprotrophs and symbionts, degrading organic matter to inorganic molecules, which can then re-enter anabolic metabolic pathways in plants or other organisms.[142][143]
+
+          Symbiosis
+          Many fungi have important symbiotic relationships with organisms from most if not all Kingdoms.[144][145][146] These interactions can be mutualistic or antagonistic in nature, or in the case of commensal fungi are of no apparent benefit or detriment to the host.[147][148][149]
+
+          With plants
+          Mycorrhizal symbiosis between plants and fungi is one of the most well-known plant–fungus associations and is of significant importance for plant growth and persistence in many ecosystems; over 90% of all plant species engage in mycorrhizal relationships with fungi and are dependent upon this relationship for survival.[150]
+
+          A microscopic view of blue-stained cells, some with dark wavy lines in them
+          The dark filaments are hyphae of the endophytic fungus Neotyphodium coenophialum in the intercellular spaces of tall fescue leaf sheath tissue
+          The mycorrhizal symbiosis is ancient, dating to at least 400 million years ago.[131] It often increases the plant's uptake of inorganic compounds, such as nitrate and phosphate from soils having low concentrations of these key plant nutrients.[142][151] The fungal partners may also mediate plant-to-plant transfer of carbohydrates and other nutrients. Such mycorrhizal communities are called "common mycorrhizal networks".[152] A special case of mycorrhiza is myco-heterotrophy, whereby the plant parasitizes the fungus, obtaining all of its nutrients from its fungal symbiont.[153] Some fungal species inhabit the tissues inside roots, stems, and leaves, in which case they are called endophytes.[154] Similar to mycorrhiza, endophytic colonization by fungi may benefit both symbionts; for example, endophytes of grasses impart to their host increased resistance to herbivores and other environmental stresses and receive food and shelter from the plant in return.[155]
+
+          With algae and cyanobacteria
+          A green, leaf-like structure attached to a tree, with a pattern of ridges and depression on the bottom surface
+          The lichen Lobaria pulmonaria, a symbiosis of fungal, algal, and cyanobacterial species
+          Lichens are a symbiotic relationship between fungi and algae or cyanobacteria. The algae partner in the relationship is referred to in lichen terminology as a "photobiont". The fungi part of the relationship are composed mostly of various species of ascomycetes and a few basidiomycetes.[156] Lichens occur in every ecosystem on all continents, play a key role in soil formation and the initiation of biological succession,[157] and are the dominating life forms in extreme environments, including polar, alpine, and semiarid desert regions.[158] They are able to grow on inhospitable surfaces, including bare soil, rocks, tree bark, wood, shells, barnacles and leaves.[159] As in mycorrhizas, the photobiont provides sugars and other carbohydrates via photosynthesis to the fungus, while the fungus provides minerals and water to the photobiont. The functions of both symbiotic organisms are so closely intertwined that they function almost as a single organism; in most cases the resulting organism differs greatly from the individual components. Lichenization is a common mode of nutrition for fungi; around 20% of fungi—between 17,500 and 20,000 described species—are lichenized.[160] Characteristics common to most lichens include obtaining organic carbon by photosynthesis, slow growth, small size, long life, long-lasting (seasonal) vegetative reproductive structures, mineral nutrition obtained largely from airborne sources, and greater tolerance of desiccation than most other photosynthetic organisms in the same habitat.[161]
+
+          With insects
+          Many insects also engage in mutualistic relationships with fungi. Several groups of ants cultivate fungi in the order Agaricales as their primary food source, while ambrosia beetles cultivate various species of fungi in the bark of trees that they infest.[162] Likewise, females of several wood wasp species (genus Sirex) inject their eggs together with spores of the wood-rotting fungus Amylostereum areolatum into the sapwood of pine trees; the growth of the fungus provides ideal nutritional conditions for the development of the wasp larvae.[163] At least one species of stingless bee has a relationship with a fungus in the genus Monascus, where the larvae consume and depend on fungus transferred from old to new nests.[164] Termites on the African savannah are also known to cultivate fungi,[144] and yeasts of the genera Candida and Lachancea inhabit the gut of a wide range of insects, including neuropterans, beetles, and cockroaches; it is not known whether these fungi benefit their hosts.[165] The larvae of many families of fungicolous flies, particularly those within the superfamily Sciaroidea such as the Mycetophilidae and some Keroplatidae feed on fungal fruiting bodies and sterile mycorrhizae.[166]
+
+          As pathogens and parasites
+          A thin brown stick positioned horizontally with roughly two dozen clustered orange-red leaves originating from a single point in the middle of the stick. These orange leaves are three to four times larger than the few other green leaves growing out of the stick, and are covered on the lower leaf surface with hundreds of tiny bumps. The background shows the green leaves and branches of neighboring shrubs.
+          The plant pathogen Aecidium magellanicum causes calafate rust, seen here on a Berberis shrub in Chile.
+          Many fungi are parasites on plants, animals (including humans), and other fungi. Serious pathogens of many cultivated plants causing extensive damage and losses to agriculture and forestry include the rice blast fungus Magnaporthe oryzae,[167] tree pathogens such as Ophiostoma ulmi and Ophiostoma novo-ulmi causing Dutch elm disease,[168] and Cryphonectria parasitica responsible for chestnut blight,[169] and plant pathogens in the genera Fusarium, Ustilago, Alternaria, and Cochliobolus.[148] Some carnivorous fungi, like Paecilomyces lilacinus, are predators of nematodes, which they capture using an array of specialized structures such as constricting rings or adhesive nets.[170]
+
+          Some fungi can cause serious diseases in humans, several of which may be fatal if untreated. These include aspergilloses, candidoses, coccidioidomycosis, cryptococcosis, histoplasmosis, mycetomas, and paracoccidioidomycosis. Furthermore, persons with immuno-deficiencies are particularly susceptible to disease by genera such as Aspergillus, Candida, Cryptoccocus,[149][171][172] Histoplasma,[173] and Pneumocystis.[174] Other fungi can attack eyes, nails, hair, and especially skin, the so-called dermatophytic and keratinophilic fungi, and cause local infections such as ringworm and athlete's foot.[175] Fungal spores are also a cause of allergies, and fungi from different taxonomic groups can evoke allergic reactions.[176]
+
+          Mycotoxins
+          (6aR,9R)-N-((2R,5S,10aS,10bS)-5-benzyl-10b-hydroxy-2-methyl-3,6-dioxooctahydro-2H-oxazolo[3,2-a] pyrrolo[2,1-c]pyrazin-2-yl)-7-methyl-4,6,6a,7,8,9-hexahydroindolo[4,3-fg] quinoline-9-carboxamide
+          Ergotamine, a major mycotoxin produced by Claviceps species, which if ingested can cause gangrene, convulsions, and hallucinations
+          Many fungi produce biologically active compounds, several of which are toxic to animals or plants and are therefore called mycotoxins. Of particular relevance to humans are mycotoxins produced by molds causing food spoilage, and poisonous mushrooms (see above). Particularly infamous are the lethal amatoxins in some Amanita mushrooms, and ergot alkaloids, which have a long history of causing serious epidemics of ergotism (St Anthony's Fire) in people consuming rye or related cereals contaminated with sclerotia of the ergot fungus, Claviceps purpurea.[177] Other notable mycotoxins include the aflatoxins, which are insidious liver toxins and highly carcinogenic metabolites produced by certain Aspergillus species often growing in or on grains and nuts consumed by humans, ochratoxins, patulin, and trichothecenes (e.g., T-2 mycotoxin) and fumonisins, which have significant impact on human food supplies or animal livestock.[178]
+
+          Mycotoxins are secondary metabolites (or natural products), and research has established the existence of biochemical pathways solely for the purpose of producing mycotoxins and other natural products in fungi.[28] Mycotoxins may provide fitness benefits in terms of physiological adaptation, competition with other microbes and fungi, and protection from consumption (fungivory).[179][180]
+
+          Pathogenic mechanisms
+          Ustilago maydis is a pathogenic plant fungus that causes smut disease in maize and teosinte. Plants have evolved efficient defense systems against pathogenic microbes such as U. maydis. A rapid defense reaction after pathogen attack is the oxidative burst where the plant produces reactive oxygen species at the site of the attempted invasion. U. maydis can respond to the oxidative burst with an oxidative stress response, regulated by the gene YAP1. The response protects U. maydis from the host defense, and is necessary for the pathogen’s virulence.[181] Furthermore, U. maydis has a well-established recombinational DNA repair system which acts during mitosis and meiosis.[182] The system may assist the pathogen in surviving DNA damage arising from the host plant’s oxidative defensive response to infection.[183]
+
+          Cryptococcus neoformans is an encapsulated yeast that can live in both plants and animals. C. neoformans usually infects the lungs, where it is phagocytosed by alveolar macrophages.[184] Some C. neoformans can survive inside macrophage, which appears to be the basis for latency, disseminated disease, and resistance to antifungal agents. One mechanism by which C. neoformans survives the hostile macrophage environment is by up-regulating the expression of genes involved in the oxidative stress response.[184] Another mechanism involves meiosis. The majority of C. neoformans are mating "type a". Filaments of mating "type a" ordinarily have haploid nuclei, but they can become diploid (perhaps by endoduplication or by stimulated nuclear fusion) to form blastospores. The diploid nuclei of blastospores can undergo meiosis, including recombination, to form haploid basidiospores that can be dispersed.[185] This process is referred to as monokaryotic fruiting. this process requires a gene called DMC1, which is a conserved homologue of genes recA in bacteria and RAD51 in eukaryotes, that mediates homologous chromosome pairing during meiosis and repair of DNA double-strand breaks. Thus, C. neoformans can undergo a meiosis, monokaryotic fruiting, that promotes recombinational repair in the oxidative, DNA damaging environment of the host macrophage, and the repair capability may contribute to its virulence.[183][185]
+
+          Human use
+          Microscopic view of five spherical structures; one of the spheres is considerably smaller than the rest and attached to one of the larger spheres
+          Saccharomyces cerevisiae cells shown with DIC microscopy
+          The human use of fungi for food preparation or preservation and other purposes is extensive and has a long history. Mushroom farming and mushroom gathering are large industries in many countries. The study of the historical uses and sociological impact of fungi is known as ethnomycology. Because of the capacity of this group to produce an enormous range of natural products with antimicrobial or other biological activities, many species have long been used or are being developed for industrial production of antibiotics, vitamins, and anti-cancer and cholesterol-lowering drugs. More recently, methods have been developed for genetic engineering of fungi,[186] enabling metabolic engineering of fungal species. For example, genetic modification of yeast species[187]—which are easy to grow at fast rates in large fermentation vessels—has opened up ways of pharmaceutical production that are potentially more efficient than production by the original source organisms.[188]
+
+          Therapeutic uses
+          Modern chemotherapeutics
+          Many species produce metabolites that are major sources of pharmacologically active drugs. Particularly important are the antibiotics, including the penicillins, a structurally related group of β-lactam antibiotics that are synthesized from small peptides. Although naturally occurring penicillins such as penicillin G (produced by Penicillium chrysogenum) have a relatively narrow spectrum of biological activity, a wide range of other penicillins can be produced by chemical modification of the natural penicillins. Modern penicillins are semisynthetic compounds, obtained initially from fermentation cultures, but then structurally altered for specific desirable properties.[189] Other antibiotics produced by fungi include: ciclosporin, commonly used as an immunosuppressant during transplant surgery; and fusidic acid, used to help control infection from methicillin-resistant Staphylococcus aureus bacteria.[190] Widespread use of antibiotics for the treatment of bacterial diseases, such as tuberculosis, syphilis, leprosy, and others began in the early 20th century and continues to date. In nature, antibiotics of fungal or bacterial origin appear to play a dual role: at high concentrations they act as chemical defense against competition with other microorganisms in species-rich environments, such as the rhizosphere, and at low concentrations as quorum-sensing molecules for intra- or interspecies signaling.[191] Other drugs produced by fungi include griseofulvin isolated from Penicillium griseofulvum, used to treat fungal infections,[192] and statins (HMG-CoA reductase inhibitors), used to inhibit cholesterol synthesis. Examples of statins found in fungi include mevastatin from Penicillium citrinum and lovastatin from Aspergillus terreus and the oyster mushroom.[193]
+
+          Traditional and folk medicine
+          See also: Medicinal fungi
+          Upper surface view of a kidney-shaped fungus, brownish-red with a lighter yellow-brown margin, and a somewhat varnished or shiny appearance
+          Two dried yellow-orange caterpillars, one with a curly grayish fungus growing out of one of its ends. The grayish fungus is roughly equal to or slightly greater in length than the caterpillar, and tapers in thickness to a narrow end.
+          The medicinal fungi Ganoderma lucidum (left) and Ophiocordyceps sinensis (right)
+          Certain mushrooms enjoy usage as therapeutics in folk medicines, such as Traditional Chinese medicine. Notable medicinal mushrooms with a well-documented history of use include Agaricus subrufescens,[194][195] Ganoderma lucidum,[196] and Ophiocordyceps sinensis.[197] Research has identified compounds produced by these and other fungi that have inhibitory biological effects against viruses[198][199] and cancer cells.[194][200] Specific metabolites, such as polysaccharide-K, ergotamine, and β-lactam antibiotics, are routinely used in clinical medicine. The shiitake mushroom is a source of lentinan, a clinical drug approved for use in cancer treatments in several countries, including Japan.[201][202] In Europe and Japan, polysaccharide-K (brand name Krestin), a chemical derived from Trametes versicolor, is an approved adjuvant for cancer therapy.[203]
+
+          Cultured foods
+          Baker's yeast or Saccharomyces cerevisiae, a unicellular fungus, is used to make bread and other wheat-based products, such as pizza dough and dumplings.[204] Yeast species of the genus Saccharomyces are also used to produce alcoholic beverages through fermentation.[205] Shoyu koji mold (Aspergillus oryzae) is an essential ingredient in brewing Shoyu (soy sauce) and sake, and the preparation of miso,[206] while Rhizopus species are used for making tempeh.[207] Several of these fungi are domesticated species that were bred or selected according to their capacity to ferment food without producing harmful mycotoxins (see below), which are produced by very closely related Aspergilli.[208] Quorn, a meat substitute, is made from Fusarium venenatum.[209]
+
+          Edible and poisonous species
+          Two light yellow-green mushrooms with stems and caps, one smaller and still in the ground, the larger one pulled out and laid beside the other to show its bulbous stem with a ring
+          Amanita phalloides accounts for the majority of fatal mushroom poisonings worldwide.
+          Edible mushrooms are well-known examples of fungi. Many are commercially raised, but others must be harvested from the wild. Agaricus bisporus, sold as button mushrooms when small or Portobello mushrooms when larger, is a commonly eaten species, used in salads, soups, and many other dishes. Many Asian fungi are commercially grown and have increased in popularity in the West. They are often available fresh in grocery stores and markets, including straw mushrooms (Volvariella volvacea), oyster mushrooms (Pleurotus ostreatus), shiitakes (Lentinula edodes), and enokitake (Flammulina spp.).[210]
+
+          There are many more mushroom species that are harvested from the wild for personal consumption or commercial sale. Milk mushrooms, morels, chanterelles, truffles, black trumpets, and porcini mushrooms (Boletus edulis) (also known as king boletes) demand a high price on the market. They are often used in gourmet dishes.[211]
+
+          Certain types of cheeses require inoculation of milk curds with fungal species that impart a unique flavor and texture to the cheese. Examples include the blue color in cheeses such as Stilton or Roquefort, which are made by inoculation with Penicillium roqueforti.[212] Molds used in cheese production are non-toxic and are thus safe for human consumption; however, mycotoxins (e.g., aflatoxins, roquefortine C, patuli

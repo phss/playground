@@ -7,5 +7,5 @@ contents = open(filename).read()
 
 ix = index.open_dir("index")
 writer = ix.writer()
-writer.add_document(filename=unicode(filename), content=unicode(contents))
+writer.add_document(filename=unicode(filename), content=unicode(contents, "utf-8"))
 writer.commit()

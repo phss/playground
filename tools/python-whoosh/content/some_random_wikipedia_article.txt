@@ -1,0 +1,98 @@
+Calostoma cinnabarinum is a species of gasteroid fungus in the family Sclerodermataceae, and is the type species of the genus Calostoma. It is known by several common names, including stalked puffball-in-aspic and gelatinous stalked-puffball. The fruit body has a distinctive color and overall appearance, featuring a layer of yellowish jelly surrounding a bright red, spherical head approximately 2 centimeters (0.8 in) in diameter atop a red or yellowish brown spongy stipe 1.5 to 4 cm (0.6 to 2 in) tall. The innermost layer of the head is the gleba, containing clear or slightly yellowish elliptical spores, measuring 14–20 micrometers (µm) long by 6–9 µm across. The spore surface features a pattern of small pits, producing a net-like appearance. A widely distributed species, it grows naturally in eastern North America, Central America, northeastern South America, and East Asia. C. cinnabarinum grows on the ground in deciduous forests, where it forms mycorrhizal associations with oaks.
+
+Despite its appearance and common name, C. cinnabarinum is not related to the true puffballs or to species in the genus Podaxis (also commonly called "stalked puffballs"). It is also unrelated to earthstars and stinkhorns. However, C. cinnabarinum has had a complex taxonomic history that at various times confused it with each of those groups, until the advent of molecular phylogenetics. Although eaten or used in folk medicine in some areas, it is typically considered inedible.
+
+Contents  [hide] 
+1Ta xonomy and phylogeny
+1.1Phylogenetics
+1.2Chemotaxonomy
+2Description
+      2.1Microscopic features
+      2.2Similar species
+      3Distribution, habitat, a     nd ecology
+      4Uses
+      5Notes
+      6References
+      7External links
+      Taxonomy and ph       ylogeny[edit]
+
+      Plukenet's 1692 illustration
+      Calostoma cinnabarinum has a long taxonomic history. Leonard Plukenet illustrated a "dusty fungus from Virginia, an elegant twisted work with a coral-red stipe"[Note 1] in his 1692 Phytographia[3] that was later recognized as this species.[4] In 1809, Christiaan Persoon provided the first modern scientific description, as Scleroderma callostoma, and suggested that the species might be distinctive enough to warrant the creation of a new genus.[5] Later that year, Nicaise Desvaux did just that, creating the genus Calostoma.[6] To avoid a tautonymous name, he renamed the type species C. cinnabarinum.[2]
+
+      In 1811, Louis Bosc did not mention the earlier works when describing it as Lycoperdon heterogeneum, although he also suggested it should be placed in its own genus.[7] Jean Poiret transferred Persoon's S. callostoma to Lycoperdon in 1817, while including Bosc's L. heterogeneum separately.[8] In the same year, Nees von Esenbeck noted Bosc's belief that the species deserved its own genus and created Mitremyces, without referencing Desvaux's prior assignment to Calostoma.[9] An 1825 paper by Edward Hitchcock referred to the species with the entirely novel binomial name Gyropodium coccineum; although Hitchcock claimed this name was established by Lewis Schweinitz, he admitted that no such description had been previously published,[10] and the name and its claimed origin are considered doubtful.[11]
+
+      Schweinitz assigned Bosc's Lycoperdon heterogeneum to Mitremyces under the name M. lutescens in 1822.[12] He revisited the genus a decade later, describing M. cinnabarinum as a novel species,[13] but incomplete descriptions and mislabelled specimens caused confusion.[14] August Corda separated them more clearly, providing new descriptions, and assigning cinnabarinum to Calostoma based on the descriptions of Desvaux and Persoon, while maintaining lutescens in Mitremyces.[15] George Massee's 1888 monograph of Calostoma discounted the distinction entirely, arguing that Schweinitz's two species were actually the same species at different stages of development.[16] In 1897, Charles Edward Burnap published a new description of C. lutescens, making a clear division between the two similar species[14] that has not been substantially revised since. References to this species as "C. cinnabarina" are common but incorrect.[17]
+
+      The specific epithet cinnabarinum is derived from the Ancient Greek word kinnábari (κιννάβαρι), and refers to its "cinnabar-red"[18] color, like that of dragon's blood.[19] Its names in the English vernacular include "stalked puffball-in-aspic",[17][20][21] "red slimy-stalked puffball",[22] "aspic puffball",[23] "gelatinous-stalked puffball",[18][24] and "hot lips".[18] In central Mexico, it is known as "orchid fungus" in both Spanish (hongo orquídea) and Nahuatl (huang noono).[25]
+
+      Phylogenetics[edit]
+
+
+
+
+      Scleroderma spp.
+
+
+      Gyroporus cyanescens
+
+
+
+      Pisolithus arrhizus
+
+
+
+      Calostoma cinnabarinum
+
+
+
+
+      Phlebopus portentosus
+
+
+      Boletinellus merulioides
+
+
+      Cladogram showing the phylogeny and relationships of Calostoma cinnabarinum within Sclerodermatineae[26]
+      The relationships and evolutionary origins of Calostoma were a matter of considerable historical debate. Based on various morphological features, 19th-century mycologists viewed it as a relative of, variously, Scleroderma,[27] Clathrus,[28] Geastrum,[16] or Tulostoma.[14] The advent of molecular phylogenetics in the late 20th century confirmed that the Gasteromycetales order was polyphyletic because gasteroid fungi do not form a single clade. Efforts to use nuclear and mitochondrial DNA sequencing to resolve the proper taxonomic placement of these fungi revealed that Calostoma cinnabarinum was not closely related to true puffballs, stinkhorns, most earthstars, or gasteroid agarics such as Tulostoma or Podaxis, but instead belonged within the Boletales.[24] Further research organized a group of mostly gasteroid fungi, including Calostoma, into the newly named suborder Sclerodermatineae. This analysis confirmed that C. cinnabarinum and C. ravenelii are distinct species, and identified their closest relatives outside the genus as Gyroporus, Astraeus, and Scleroderma.[29] A subsequent multigene (nuc-ssu, nuc-lsu, 5.8S, atp6, and mt-lsu) study redrew the Sclerodermatineae cladogram slightly, making Pisolithus the closest relatives of Calostoma.[26]
+
+      Calostoma cinnabarinum's physical dissimilarity to many other species in Boletales corresponds to a higher rate of genetic drift than average for the order.[24] This trait is shared with other members of the Sclerodermatineae, which as a group have undergone more rapid evolutionary change than the order as a whole.[29]
+
+      Chemotaxonomy[edit]
+      The assignment of Calostoma to the Boletales placed it in an order whose biochemistry has been the topic of research. Most members of the Boletales are characterized by compounds produced by the shikimate-chorismate pathway,[30] including several distinctive pigments.[31][32] Gennabarinum and C. ravenelii are distinct species, and identified theipounds in C. cinnabarinum, but isolated a novel polyene pigment. This compound, named calostomal, is responsible for the orange-red color of the fruit bodies. The methyl ester of calostomal was subjected to NMR spectroscopy and was identified as all-trans-16-oxohexadeca-2,4,6,8,10,12,14-heptaenoic acid.[20] Chemically related pigments, the boletocrocins, had been isolated from the brightly colored Boletus laetissimus and B. rufoaureus.[33] It is not yet clear if the results of this chemotaxonomic investigation will mandate changes to Boletales cladistics.[20]
+
+
+      Skeletal structure of calostomal
+      Description[edit]
+
+      Calostoma cinnabarinum, showing the gelatinous layer and amphibian egg-like appearance
+      The appearance of the fruit bodies has been compared to amphibian eggs[34] or "small red tomato[es] surrounded by jelly".[35] They consist of a bright red, globose head atop a net-like stipe, covered in a thick gelatinous layer.[23] These fruit bodies are initially hypogeous,[22] but emerge from the ground as the stipe continues to expand.[34]
+
+      The head is up to 2 cm (0.8 in) in diameter and typically nearly round,[17][36] although in some populations, it is visibly oval and may be slightly smaller[37] or larger.[38] The internal structure of the head is complex, sometimes described as an exoperidium and endoperidium that each possess sublayers,[22] and sometimes as distinct layers.[14] The outermost is a yellowish, translucent coating of jelly-like material 4 to 9 millimetres (0.2 to 0.4 in) thick,[38] somewhat similar to a gelatinous universal veil.[14][22] Below this coating is a thin, cinnabar-red membrane.[22][38] As the mushroom ages, these outer layers break down and fall away from the head. Pieces of the red membrane become embedded in the remaining gelatinous material, giving them the appearance of small red seeds.[36][37] This process reveals the endoperidium, a tough, non-gelatinous layer that does not break apart. When first revealed, it has a powdery, bright red surface that weathers to orange or pale yellow as the powder wears away.[22][38] Bright red apical ridges or rays form a peristome. North American specimens typically have four to five such ridges,[22][37] but Asian populations have been described with as many as seven.[38] Contained inside the endoperidium is the gleba, or spore mass, which is white when young but buff or yellow in older specimens.[17]
+
+      Like the head, the stipe is covered in a gelatinous outer layer.[36] The stipe itself consists of a number of anastomosing gelatinous strands,[18] giving the structure a reticulate[17] or spongy[36] appearance. These strands vary in color from red to yellow-brown, and fade with age.[22] The stipe is 1 to 2 cm (0.4 to 0.8 in) thick and 1.5 to 4 cm (0.6 to 2 in) long, although some or all of this length may remain buried.[17][36]
+
+      Microscopic features[edit]
+      When viewed in mass, as in a spore print, the spores generally appear yellow,[34][39] although a Korean population with a light pink spore mass has been observed.[38] Viewed with a light microscope, the spores are hyaline[18] or pale yellow,[11] elliptical, and visibly pitted. Electron microscopy or atomic force microscopy reveals the pits, or pores, to be an elaborate net-like structure called a reticulum. There are two to three such pores per micrometer, each approximately 400 nanometers deep.[40] Most spores are 14–20 by 6–9 µm,[18] but some may be as long as 24[11] or 28 µm;[17] specimens from a Korean population were reported with slightly smaller spores. Unlike others in the genus, C. cinnabarinum does not use nurse cells to supply food material to spores.[40] The basidia are 40–50 by 15–20 µm, broadly obovate,[16] club-shaped or sometimes cylindrical, with five to twelve spores distributed evenly[14] or irregularly[38] over the surface. The gleba also contains branching hyphae, 3–4 µm thick with frequent clamp connections.[14] The capillitium formed by these connections[38] is present only when the mushroom is young and disintegrates thereafter.[22]
+
+      Similar species[edit]
+
+
+      Calostoma lutescens (above) is taller, and has a yellow spore case. C. ravenelii (below) lacks the red color and gelatinous coating of C. cinnabarinum.
+      At least in North America, Calostoma cinnabarinum is distinctive and easily recognizable.[17] Two other species of Calostoma also occur in the eastern United States. C. lutescens has a thinner gelatinous layer and a predominately yellow middle layer, or mesoperidium, with the red color confined to the peristome.[11] It also possesses a well-defined collar at the base of the spore case,[18] a longer stipe, and globose, pitted spores.[17] C. ravenelii is not gelatinous, but instead has warts adorning the spore case,[11] and is smaller than C. cinnabarinum.[18] It also has a reddish peristome but is otherwise clay-colored.[41] Unlike C. lutescens, the spores of C. ravenelii cannot be distinguished from those of C. cinnabarinum except through the use of atomic force microscopy.[40]
+
+      More representatives of the genus are present in Asia. At least nine species have been recorded from mainland China, some of which also overlap C. cinnabarinum's range in Indonesia, Taiwan, or Japan.[42] Many of these species can be readily distinguished by macroscopic features. C. japonicum is pinkish orange and lacks a gelatinous outer layer,[38] while both C. jiangii[43] and C. junghuhnii[39] are brown. However, others require microscopic features of spore shape and ornamentation for identification. Unlike the uniformly elongated spores of C. cinnabarinum, C. guizhouense possesses both elliptical and globose spores.[43] C. pengii differs primarily in the pattern of ornamentation on its spore surface.[44]
+
+      Distribution, habitat, and ecology[edit]
+      Widely distributed, Calostoma cinnabarinum can be found from Massachusetts south to Florida in the United States. Its range extends at least as far west as Texas,[45] with possible populations in the Southwest,[17] but is most common in the Appalachian Mountains where it becomes more frequent with increasing elevation.[11] It is also present in Eastern Mexico, where it grows in the subtropical cloud forests of Veracruz[46] and Hidalgo.[47] In Central America, it is known from Belize's Chiquibul National Park,[48] the cloud forests[49] of Baja Verapaz and El Quiché[50] in Guatemala, and Panama.[51] The species is also recorded in South America, from Colombia[52] as far southeast as Brazil, where it is described as rare.[53] It has also been collected from a disjunct population in Asia, where it has been recorded from seven provinces in mainland China, mostly in the southeast,[38] as well as from Indonesia,[54] Taiwan,[39] Japan,[55] and Jirisan in South Korea.[40]
+
+      Calostoma cinnabarinum was thought to be saprotrophic, and has been described in this manner in both scholarly[41] and popular[18] discussions of the species. However, this classification was the result of its taxonomic history and comparisons with saprotrophic fungi that are not closely related.[24] After its assignment to the Sclerodermatineae,[29] a suborder whose members are ectomycorrhizal,[56][57][58] its ecological role came into question.[24] In 2007, Andrew Wilson and David Hibbett of Clark University and Eric Hobbie of the University of New Hampshire employed isotopic labeling, DNA sequencing, and morphological analysis to determine that this species is also ectomycorrhizal.[59] Like all mycorrhizal fungi, C. cinnabarinum establishes a mutualistic relationship with the roots of trees, allowing the fungus to exchange minerals and amino acids extracted from the soil for fixed carbon from the host. The subterranean hyphae of the fungus grow a sheath of tissue around the rootlets of the tree. This association is especially beneficial to the host, as the fungus produces enzymes that mineralize organic compounds and facilitate the transfer of nutrients to the tree.[60] The only host trees identified for C. cinnabarinus are Quercus oaks, although related members of Calostoma have been observed to associate with other trees in the Fagaceae family, such as beech.[59][61]
+
+      In addition to its required association with oaks, C. cinnabarinum appears to be restricted to wetter forests.[61] Early descriptions of its habitat found it in "rather moist situations"[14] and in "damp woods",[62] and David Arora has more recently described its preference for the humid forests of the southern Appalachians.[22] In contrast, it has not been detected in the dry oak forests of California[63][64] and is likely also absent from the dry tropical forests of western Costa Rica.[61] In Brazil it has been observed in the sandy soil and drier conditions of the Caatinga and cerrado, although only after periods of heavy rainfall.[53] Its outer layer may provide protection from desiccation.[65] Fruit bodies are most common in the late summer and fall,[22][36] although spring occurrences are known.[18]
+
+      Squirrels have been known to feed on C. cinnabarinum,[66] although its gelatinous coating deters insect predation.[40][41]
+
+      Uses[edit]
+      As with all members of its genus, C. cinnabarinum is generally considered inedible by field guides.[67] Because the fruit bodies begin development underground, they are too tough for consumption by the time they are visible,[22] and their appearance may be considered unappetizing.[21] A study of the cultural practices of mestizo descendants of the Otomi people in Tenango de Doria, Mexico, reported that immature specimens of C. cinnabarinum, known locally as yemitas, were frequently eaten raw in the past, especially by children. Consumption of the species was no longer commonplace, with only five of the 450 locals interviewed familiar with the practice.[66] The gleba of C. cinnabarinum has been described as having a mild taste[38] and, despite a local recollection to the contrary, is not sweet.[66] C. cinnabarinum has also been used in traditional medicine. A 1996 ethnomycological study of native traditions in Veracruz identified this use of huang noono, which locals roasted, then consumed as a powder with mineral water to treat gastrointestinal distress.[25] Unlike these Mexican traditions, Hunan folk beliefs hold that the mushroom is poisonous on account of its bright color.[68]
+
+      Notes[edit]
+      Jump up ^
