@@ -1,8 +1,11 @@
+import sys
 import whoosh.index as index
 from whoosh.fields import *
 
+filename = sys.argv[1]
+contents = open(filename).read()
+
 ix = index.open_dir("index")
 writer = ix.writer()
-writer.add_document(filename=u"blah", content=u"This is the first document we've added!")
-writer.add_document(filename=u"another", content=u"The second one is even more interesting!")
+writer.add_document(filename=unicode(filename), content=unicode(contents))
 writer.commit()
