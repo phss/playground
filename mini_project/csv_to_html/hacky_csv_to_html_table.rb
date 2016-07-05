@@ -17,5 +17,24 @@ File.open(csv_file, "r") do |f|
   end
 end
 
-print header
-print rows
+header_string = header.map do |val|
+  "<th>#{val}</th>" 
+end.join
+
+rows_string = rows.map do |row|
+  row_string = row.map do |val|
+    "<td>#{val}</td>" 
+  end.join
+  "<tr>#{row_string}</tr>"
+end.join
+
+puts <<-eos
+<html>
+  <body>
+    <table>
+      <tr>#{header_string}</tr>
+      #{rows_string}
+    </table>
+  </body>
+</html>
+eos
