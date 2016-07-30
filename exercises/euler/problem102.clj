@@ -25,9 +25,6 @@
 (defn tri-contain-origin? [tri]
   (every? pos? (barycentric-origin-coords tri)))
 
-;(println (tri-contain-origin? positive-tri))
-;(println (tri-contain-origin? negative-tri))
-
 (def triangles (->> 
               "files/problem102.txt"
               (slurp)
@@ -35,4 +32,4 @@
               (map #(vec (map number-from (clojure.string/split % #","))))
               (vec)))
 
-(println (count (filter tri-contain-origin? triangles)))
+(count (filter tri-contain-origin? triangles))
