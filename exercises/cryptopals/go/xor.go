@@ -1,13 +1,13 @@
 package main
 
-func xorHexStrings(str_a, str_b string) string {
-	a := hexToBytes(str_a)
-	b := hexToBytes(str_b)
+func xorHexStrings(strA, strB string) string {
+	a := hexToBytes(strA)
+	b := hexToBytes(strB)
 	xor := make([]byte, len(a))
 
 	for i, _ := range a {
 		xor[i] = a[i] ^ b[i]
 	}
 
-	return "blah"
+	return bytesToHex(xor)
 }
