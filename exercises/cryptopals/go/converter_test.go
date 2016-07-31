@@ -23,3 +23,18 @@ func TestHexToBytesConversion(t *testing.T) {
 		}
 	}
 }
+
+func TestBytesToHexConversion(t *testing.T) {
+	cases := []struct {
+		input    []byte
+		expected string
+	}{
+		{[]byte{73, 39, 255}, "4927ff"},
+		{[]byte{73, 39, 240}, "4927f0"},
+	}
+
+	for _, c := range cases {
+		actual := bytesToHex(c.input)
+		assertEquals(t, c.expected, actual)
+	}
+}

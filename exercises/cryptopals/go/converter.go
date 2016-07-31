@@ -11,6 +11,10 @@ func hexToBytes(hexString string) []byte {
 	return bytes
 }
 
+func bytesToHex(bytes []byte) string {
+	return hex.EncodeToString(bytes)
+}
+
 func bytesToBase64(bytes []byte) string {
 	return b64.StdEncoding.EncodeToString(bytes)
 }
