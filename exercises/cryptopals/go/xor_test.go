@@ -7,5 +7,6 @@ func TestXorHexStrings(t *testing.T) {
 }
 
 func TestXorHexStringSingleByte(t *testing.T) {
-	assertEquals(t, "d3b95b", xorHexStringAndSingleByte("abc123", byte(120)))
+	bytes := hexToBytes("abc123")
+	assertEquals(t, "d3b95b", bytesToHex(xorBytesAndSingleByte(bytes, byte(120))))
 }

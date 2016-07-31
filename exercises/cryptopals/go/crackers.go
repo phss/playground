@@ -1,8 +1,8 @@
 package main
 
-func score(str string) float64 {
+func simple_english_scoring(str string) int {
 	english := []byte("etaoin")
-	score := 0.0
+	score := 0
 
 	for _, char := range str {
 		b := byte(char)
@@ -19,13 +19,13 @@ func score(str string) float64 {
 func crackSingleByteXorCipher(hexString string) (
 	decryptedMessage string,
 	decryptionKey byte,
-	highestScore float64) {
+	highestScore int) {
+	bytes := hexToBytes(hexString)
 	for i := 0; i < 256; i++ {
 		key := byte(i)
-		xor := xorHexStringAndSingleByte(hexString, key)
-		strBytes := hexToBytes(xor)
-		message := string(strBytes)
-		score := score(message)
+		xor := xorBytesAndSingleByte(bytes, key)
+		message := string(xor)
+		score := simple_english_scoring(message)
 		if score > highestScore {
 			decryptedMessage = message
 			decryptionKey = key
