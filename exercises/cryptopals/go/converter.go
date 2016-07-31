@@ -1,27 +1,13 @@
 package main
 
 import b64 "encoding/base64"
-
-func hexCharToByte(char rune) byte {
-	dec := char - '0'
-	if dec > 9 {
-		dec = char - 'a' + 10
-	}
-	return byte(dec)
-}
+import hex "encoding/hex"
 
 func hexToBytes(hexString string) []byte {
-	chars := []rune(hexString)
-	if len(chars)%2 == 1 {
-		chars = append(chars, rune('0'))
+	if len(hexString)%2 == 1 {
+		hexString = hexString + "0"
 	}
-	bytes := make([]byte, (len(chars))/2)
-
-	for i := 0; i < len(chars); i += 2 {
-		j := i + 1
-		bytes[i/2] = hexCharToByte(chars[i])*16 + hexCharToByte(chars[j])
-	}
-
+	bytes, _ := hex.DecodeString(hexString)
 	return bytes
 }
 
