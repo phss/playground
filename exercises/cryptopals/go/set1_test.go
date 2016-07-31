@@ -22,6 +22,6 @@ func TestSet1Challenge3(t *testing.T) {
 	hexEncodedString := "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
 	decryptedMessage, byteKey, _ := crackSingleByteXorCipher(hexEncodedString)
 
-	assertEquals(t, "???", decryptedMessage)
-	assertEquals(t, "???", byteKey)
+	assertEquals(t, "Cooking MC's like a pound of bacon", decryptedMessage)
+	assertEquals(t, byte(88), byteKey)
 }
