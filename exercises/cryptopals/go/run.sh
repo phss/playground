@@ -1,1 +1,1 @@
-go run converter.go xor.go challenge1.go
+go build && ./go && rm go
