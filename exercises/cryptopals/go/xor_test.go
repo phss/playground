@@ -1,9 +1,6 @@
 package main
 
-import (
-	"bytes"
-	"testing"
-)
+import "testing"
 
 func TestXorHexStrings(t *testing.T) {
 	assertEquals(t, "e82be3", xorHexStrings("abc123", "43eac0"))
@@ -22,13 +19,15 @@ func TestXorBytes(t *testing.T) {
 	}{
 		{[]byte{40, 41, 42}, []byte{40, 41, 42}, []byte{0, 0, 0}},
 		{[]byte{40, 41, 42}, []byte{0, 0, 0}, []byte{40, 41, 42}},
-		//{[]byte{40, 41, 42}, []byte{12, 32, 201}, []byte{40, 41, 42}},
+		{[]byte{40, 41, 42}, []byte{12, 32, 201}, []byte{36, 9, 227}},
 	}
 
 	for _, c := range cases {
 		actual := xorBytes(c.a, c.b)
-		if !bytes.Equal(actual, c.expected) {
-			t.Errorf("Expected '%s', but got '%s'", c.expected, actual)
+		for i, _ := range c.expected {
+			if actual[i] != c.expected[i] {
+				t.Errorf("Expected byte at %d to be <%d>, but was <%d>", i, c.expected[i], actual[i])
+			}
 		}
 	}
 
