@@ -11,9 +11,10 @@ func TestSet1Challenge1(t *testing.T) {
 
 func TestSet1Challenge2(t *testing.T) {
 	expectedXor := "746865206b696420646f6e277420706c6179"
-	actualXor := xorHexStrings(
-		"1c0111001f010100061a024b53535009181c",
-		"686974207468652062756c6c277320657965")
+	actualXor := bytesToHex(
+		xorBytes(
+			hexToBytes("1c0111001f010100061a024b53535009181c"),
+			hexToBytes("686974207468652062756c6c277320657965")))
 
 	assertEquals(t, expectedXor, actualXor)
 }

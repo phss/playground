@@ -1,19 +1,12 @@
 package main
 
-func xorHexStrings(strA, strB string) string {
-	a := hexToBytes(strA)
-	b := hexToBytes(strB)
+func xorBytes(a, b []byte) []byte {
+	xor := make([]byte, max(len(a), len(b)))
 
-	xor := xorBytes(a, b)
-
-	return bytesToHex(xor)
-}
-
-func xorBytesAndSingleByte(bytes []byte, b byte) []byte {
-	xor := make([]byte, len(bytes))
-	for i, _ := range bytes {
-		xor[i] = bytes[i] ^ b
+	for i, _ := range xor {
+		xor[i] = a[i%len(a)] ^ b[i%len(b)]
 	}
+
 	return xor
 }
 
@@ -23,14 +16,4 @@ func max(a, b int) int {
 	} else {
 		return b
 	}
-}
-
-func xorBytes(a, b []byte) []byte {
-	xor := make([]byte, max(len(a), len(b)))
-
-	for i := 0; i < size; i++ {
-		xor[i] = a[i%len(a)] ^ b[i%len(b)]
-	}
-
-	return xor
 }
