@@ -17,10 +17,20 @@ func xorBytesAndSingleByte(bytes []byte, b byte) []byte {
 	return xor
 }
 
-func xorBytes(a, b []byte) []byte {
-	xor := make([]byte, len(a))
-	for i, _ := range a {
-		xor[i] = a[i] ^ b[i]
+func max(a, b int) int {
+	if a > b {
+		return a
+	} else {
+		return b
 	}
+}
+
+func xorBytes(a, b []byte) []byte {
+	xor := make([]byte, max(len(a), len(b)))
+
+	for i := 0; i < size; i++ {
+		xor[i] = a[i%len(a)] ^ b[i%len(b)]
+	}
+
 	return xor
 }
