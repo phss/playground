@@ -1,6 +1,11 @@
 package main
 
-import "testing"
+import (
+	"bufio"
+	"os"
+	"strings"
+	"testing"
+)
 
 func TestSet1Challenge1(t *testing.T) {
 	expectedBase64String := "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t"
@@ -25,4 +30,25 @@ func TestSet1Challenge3(t *testing.T) {
 
 	assertEquals(t, "Cooking MC's like a pound of bacon", decryptedMessage)
 	assertEquals(t, byte(88), byteKey)
+}
+
+func TestSet1Challenge4(t *testing.T) {
+	bestMessage := ""
+	bestKey := byte(0)
+	bestScore := 0
+	file, _ := os.Open("files/4.txt")
+	defer file.Close()
+	scanner := bufio.NewScanner(file)
+	scanner.Split(bufio.ScanLines)
+	for scanner.Scan() {
+		message, key, score := crackSingleByteXorCipher(scanner.Text())
+		if score > bestScore {
+			bestScore = score
+			bestMessage = strings.TrimSpace(message)
+			bestKey = key
+		}
+	}
+
+	assertEquals(t, "Now that the party is jumping", bestMessage)
+	assertEquals(t, byte(53), bestKey)
 }
