@@ -1,9 +1,6 @@
 package main
 
 import (
-	"bufio"
-	"os"
-	"strings"
 	"testing"
 )
 
@@ -36,19 +33,16 @@ func TestSet1Challenge4(t *testing.T) {
 	bestMessage := ""
 	bestKey := byte(0)
 	bestScore := 0
-	file, _ := os.Open("files/4.txt")
-	defer file.Close()
-	scanner := bufio.NewScanner(file)
-	scanner.Split(bufio.ScanLines)
-	for scanner.Scan() {
-		message, key, score := crackSingleByteXorCipher(scanner.Text())
+
+	for _, line := range readLines("files/4.txt") {
+		message, key, score := crackSingleByteXorCipher(line)
 		if score > bestScore {
 			bestScore = score
-			bestMessage = strings.TrimSpace(message)
+			bestMessage = message
 			bestKey = key
 		}
 	}
 
-	assertEquals(t, "Now that the party is jumping", bestMessage)
+	assertEquals(t, "Now that the party is jumping\n", bestMessage)
 	assertEquals(t, byte(53), bestKey)
 }
