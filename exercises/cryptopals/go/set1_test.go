@@ -23,28 +23,24 @@ func TestSet1Challenge2(t *testing.T) {
 
 func TestSet1Challenge3(t *testing.T) {
 	hexEncodedString := "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
-	decryptedMessage, byteKey, _ := crackSingleByteXorCipher(hexEncodedString)
+	result := crackSingleByteXorCipher(hexEncodedString)
 
-	assertEquals(t, "Cooking MC's like a pound of bacon", decryptedMessage)
-	assertEquals(t, byte(88), byteKey)
+	assertEquals(t, "Cooking MC's like a pound of bacon", result.message)
+	assertEquals(t, byte(88), result.key)
 }
 
 func TestSet1Challenge4(t *testing.T) {
-	bestMessage := ""
-	bestKey := byte(0)
-	bestScore := 0
+	var bestResult crackResult
 
 	for _, line := range readLines("files/4.txt") {
-		message, key, score := crackSingleByteXorCipher(line)
-		if score > bestScore {
-			bestScore = score
-			bestMessage = message
-			bestKey = key
+		result := crackSingleByteXorCipher(line)
+		if result.score > bestResult.score {
+			bestResult = result
 		}
 	}
 
-	assertEquals(t, "Now that the party is jumping\n", bestMessage)
-	assertEquals(t, byte(53), bestKey)
+	assertEquals(t, "Now that the party is jumping\n", bestResult.message)
+	assertEquals(t, byte(53), bestResult.key)
 }
 
 func TestSet1Challenge5(t *testing.T) {

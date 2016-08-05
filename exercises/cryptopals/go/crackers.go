@@ -1,19 +1,20 @@
 package main
 
-func crackSingleByteXorCipher(hexString string) (
-	decryptedMessage string,
-	decryptionKey byte,
-	highestScore int) {
+type crackResult struct {
+	message string
+	key     byte
+	score   int
+}
+
+func crackSingleByteXorCipher(hexString string) (result crackResult) {
 	bytes := hexToBytes(hexString)
 	for i := 0; i < 256; i++ {
 		key := byte(i)
 		xor := xorBytes(bytes, []byte{key})
 		message := string(xor)
 		score := simple_english_scoring(message)
-		if score > highestScore {
-			decryptedMessage = message
-			decryptionKey = key
-			highestScore = score
+		if score > result.score {
+			result = crackResult{message, key, score}
 		}
 	}
 	return
