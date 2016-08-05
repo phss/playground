@@ -30,10 +30,28 @@ func TestSet1Challenge3(t *testing.T) {
 }
 
 func TestSet1Challenge4(t *testing.T) {
+	lines := readLines("files/4.txt")
+
+	jobs := make(chan string, len(lines))
+	results := make(chan crackResult, len(lines))
+
+	for _, line := range lines {
+		jobs <- line
+	}
+	close(jobs)
+
+	for w := 0; w <= 5; w++ {
+		go func() {
+			for line := range jobs {
+				results <- crackSingleByteXorCipher(line)
+			}
+		}()
+	}
+
 	var bestResult crackResult
 
-	for _, line := range readLines("files/4.txt") {
-		result := crackSingleByteXorCipher(line)
+	for i := 0; i < len(lines); i++ {
+		result := <-results
 		if result.score > bestResult.score {
 			bestResult = result
 		}
