@@ -6,7 +6,7 @@ myButLast :: [a] -> a
 myButLast [] = error "empty list"
 myButLast (_:[]) = error "only one item"
 myButLast (x:_:[]) = x
-myButLast (_:_:xs) = myButLast xs
+myButLast (_:xs) = myButLast xs
 
 main :: IO Counts
 main = runTestTT $ TestList [
