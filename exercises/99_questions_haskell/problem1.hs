@@ -13,4 +13,4 @@ myLast' = head . reverse
 main :: IO Counts
 main = runTestTT $ TestList [
   TestCase $ assertEqual "integer array" (myLast [1, 2, 3, 4]) 4,
-  TestCase $ assertEqual "integer array" (myLast "xyz") 'z']
+  TestCase $ assertEqual "string array" (myLast "xyz") 'z']
