@@ -59,3 +59,7 @@ elem' y xs = foldl (\acc x -> if x == y then True else acc) False xs
 
 map' :: (a -> b) -> [a] -> [b]
 map' f xs = foldr (\x acc -> f x:acc) [] xs
+
+-- Function composition
+someMathFun :: (Integral b, Floating a, RealFrac a) => a -> b
+someMathFun = ceiling . negate . tan . cos . max 50
