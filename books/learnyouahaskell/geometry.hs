@@ -7,23 +7,26 @@ module Geometry
 , cuboidVolume
 ) where
 
+import qualified Geometry.Sphere as Sphere
+import qualified Geometry.Cuboid as Cuboid
+import qualified Geometry.Cube as Cube
+
 sphereVolume :: Float -> Float
-sphereVolume radius = (4.0 / 3.0) * pi * (radius ^ 3)
+sphereVolume = Sphere.volume
 
 sphereArea :: Float -> Float
-sphereArea radius = 4 * pi * (radius ^ 2)
+sphereArea = Sphere.area
 
 cubeVolume :: Float -> Float
-cubeVolume side = cuboidVolume side side side
+cubeVolume = Cube.volume
 
 cubeArea :: Float -> Float
-cubeArea side = cuboidArea side side side
+cubeArea = Cube.area
 
 cuboidVolume :: Float -> Float -> Float -> Float
-cuboidVolume a b c = rectangleArea a b * c
+cuboidVolume = Cuboid.volume
 
 cuboidArea :: Float -> Float -> Float -> Float
-cuboidArea a b c = rectangleArea a b * 2 + rectangleArea a c * 2 + rectangleArea c b * 2
+cuboidArea = Cuboid.area
 
-rectangleArea :: Float -> Float -> Float
-rectangleArea a b = a * b
+
