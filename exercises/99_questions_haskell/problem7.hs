@@ -8,6 +8,19 @@ flatten :: NestedList a -> [a]
 flatten (Elem x) = [x]
 flatten (List x) = concat . map flatten $ x
 
+flatten' :: NestedList a -> [a]
+flatten' (Elem x) = [x]
+flatten' (List []) = []
+flatten' (List (x:xs)) = flatten x ++ flatten (List xs)
+
+flatten'' :: NestedList a -> [a]
+flatten'' (Elem x) = [x]
+flatten'' (List xs) = foldr (\x acc -> flatten'' x ++ acc) [] xs
+
+flatten''' :: NestedList a -> [a]
+flatten''' (Elem x) = [x]
+flatten''' (List xs) = foldr1 (++) . map flatten''' $ xs
+
 main :: IO Counts
 main = runTestTT $ TestList [
   TestCase $ assertEqual "single elem" [5] (flatten (Elem 5)),
