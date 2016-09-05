@@ -56,27 +56,27 @@ class Tile:
     if block_sight is None: block_sight = blocked
     self.block_sight = block_sight
 
+  def set_wall(self):
+    self.blocked = False
+    self.block_sight = False
+
 
 # Map maker
 def create_room(room):
   global dungeon
   for x in range(room.x1 + 1, room.x2):
     for y in range(room.y1 + 1, room.y2):
-      dungeon[x][y].blocked = False
-      dungeon[x][y].block_sight = False
+      dungeon[x][y].set_wall()
 
 def create_h_tunnel(x1, x2, y):
   global dungeon
   for x in range(min(x1, x2), max(x1, x2) + 1):
-    dungeon[x][y].blocked = False
-    dungeon[x][y].block_sight = False
+    dungeon[x][y].set_wall()
 
 def create_v_tunnel(y1, y2, x):
   global dungeon
-  #vertical tunnel
   for y in range(min(y1, y2), max(y1, y2) + 1):
-    dungeon[x][y].blocked = False
-    dungeon[x][y].block_sight = False
+    dungeon[x][y].set_wall()
 
 def make_dungeon():
   global dungeon
@@ -103,8 +103,8 @@ def make_dungeon():
       (new_x, new_y) = new_room.center()
 
       # Debug
-      room_no = Object(new_x, new_y, chr(65+len(rooms)), libtcod.white)
-      objects.insert(0, room_no)
+      #room_no = Object(new_x, new_y, chr(65+len(rooms)), libtcod.white)
+      #objects.insert(0, room_no)
 
       if len(rooms) == 0:
         player.x = new_x
@@ -129,10 +129,8 @@ def render_all():
   for y in range(MAP_HEIGHT):
     for x in range(MAP_WIDTH):
       wall = dungeon[x][y].block_sight
-      if wall:
-          libtcod.console_set_char_background(con, x, y, color_dark_wall, libtcod.BKGND_SET )
-      else:
-          libtcod.console_set_char_background(con, x, y, color_dark_ground, libtcod.BKGND_SET )
+      color = color_dark_wall if wall else color_dark_ground
+      libtcod.console_set_char_background(con, x, y, color, libtcod.BKGND_SET )
 
   libtcod.console_blit(con, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, 0)
 
