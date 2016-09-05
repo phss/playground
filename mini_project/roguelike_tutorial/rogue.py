@@ -11,6 +11,14 @@ color_dark_wall = libtcod.Color(0, 0, 100)
 color_dark_ground = libtcod.Color(50, 50, 150)
 
 # Model
+class Rect:
+  def __init__(self, x, y, w, h):
+    self.x1 = x
+    self.y1 = y
+    self.x2 = x + w
+    self.y2 = y + h
+
+
 class Object:
   def __init__(self, x, y, char, color):
     self.x = x
@@ -36,15 +44,40 @@ class Tile:
     if block_sight is None: block_sight = blocked
     self.block_sight = block_sight
 
+
+# Map maker
+def create_room(room):
+  global dungeon
+  for x in range(room.x1 + 1, room.x2):
+    for y in range(room.y1 + 1, room.y2):
+      dungeon[x][y].blocked = False
+      dungeon[x][y].block_sight = False
+
+def create_h_tunnel(x1, x2, y):
+  global dungeon
+  for x in range(min(x1, x2), max(x1, x2) + 1):
+    dungeon[x][y].blocked = False
+    dungeon[x][y].block_sight = False
+
+def create_v_tunnel(y1, y2, x):
+  global map
+  #vertical tunnel
+  for y in range(min(y1, y2), max(y1, y2) + 1):
+    map[x][y].blocked = False
+    map[x][y].block_sight = False
+
 def make_dungeon():
   global dungeon
 
-  dungeon = [[ Tile(False) for y in range(MAP_HEIGHT)] for x in range(MAP_WIDTH)]
-  dungeon[30][22].blocked = True
-  dungeon[30][22].block_sight = True
-  dungeon[50][22].blocked = True
-  dungeon[50][22].block_sight = True
+  dungeon = [[ Tile(True) for y in range(MAP_HEIGHT)] for x in range(MAP_WIDTH)]
+  room1 = Rect(20, 15, 10, 15)
+  room2 = Rect(50, 15, 10, 15)
+  create_room(room1)
+  create_room(room2)
+  create_h_tunnel(25, 55, 23)
 
+  player.x = 25
+  player.y = 23
 
 # Rendering
 def render_all():
