@@ -102,6 +102,10 @@ def make_dungeon():
 
       (new_x, new_y) = new_room.center()
 
+      # Debug
+      room_no = Object(new_x, new_y, chr(65+len(rooms)), libtcod.white)
+      objects.insert(0, room_no)
+
       if len(rooms) == 0:
         player.x = new_x
         player.y = new_y
