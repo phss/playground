@@ -21,12 +21,13 @@ heathrowToLondon = [Section 50 10 30, Section 5 90 20, Section 40 2 25, Section 
 data Label = A | B | C deriving (Show)
 type Path = [(Label, Int)]
 
+priceOf :: Path -> Int
+priceOf = sum . map snd
+
 roadStep :: (Path, Path) -> Section -> (Path, Path)
 roadStep (pathA, pathB) (Section a b c) =
-  let priceA = sum $ map snd pathA
-      priceB = sum $ map snd pathB
-      forwardPriceToA = priceA + a
-      forwardPriceToB = priceB + b
+  let forwardPriceToA = priceOf pathA + a
+      forwardPriceToB = priceOf pathB + b
       crossPriceToA = forwardPriceToB + c
       crossPriceToB = forwardPriceToA + c
       newPathToA = if forwardPriceToA <= crossPriceToA then (A, a):pathA else (C, c):(B, b):pathB
@@ -36,6 +37,5 @@ roadStep (pathA, pathB) (Section a b c) =
 optimalPath :: RoadSystem -> Path
 optimalPath roadSystem =
   let (bestPathA, bestPathB) = foldl roadStep ([], []) roadSystem
-  in if (sum (map snd bestPathA)) <= (sum (map snd bestPathB))
-        then reverse bestPathA
-        else reverse bestPathB
+      bestPath = if (sum (map snd bestPathA)) <= (sum (map snd bestPathB)) then bestPathA else bestPathB
+  in reverse bestPath
