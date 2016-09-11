@@ -1,5 +1,7 @@
 import libtcod.libtcodpy as libtcod
 import rogue.map as map
+import rogue.model as model
+
 
 SCREEN_WIDTH = 80
 SCREEN_HEIGHT = 50
@@ -17,27 +19,6 @@ color_light_wall = libtcod.Color(130, 110, 50)
 color_dark_ground = libtcod.Color(50, 50, 150)
 color_light_ground = libtcod.Color(200, 180, 50)
 
-# Model
-class Object:
-  def __init__(self, x, y, char, color):
-    self.x = x
-    self.y = y
-    self.char = char
-    self.color = color
-
-  def move(self, dx, dy):
-    if not dungeon_map.is_blocked(self.x + dx, self.y + dy):
-      self.x += dx
-      self.y += dy
-
-  def draw(self):
-    if dungeon_map.is_in_fov(self.x, self.y):
-      libtcod.console_set_default_foreground(con, self.color)
-      libtcod.console_put_char(con, self.x, self.y, self.char, libtcod.BKGND_NONE)
-
-  def clear(self):
-    libtcod.console_put_char(con, self.x, self.y, ' ', libtcod.BKGND_NONE)
-
 # Rendering
 def render_all():
   global fov_recompute
@@ -47,7 +28,7 @@ def render_all():
     dungeon_map.compute_fov(player.x, player.y)
 
   for object in objects:
-    object.draw()
+    object.draw(con)
 
   for y in range(MAP_HEIGHT):
     for x in range(MAP_WIDTH):
@@ -96,7 +77,7 @@ con = libtcod.console_new(SCREEN_WIDTH, SCREEN_HEIGHT)
 
 dungeon_map, start_position = map.make_dungeon(MAP_WIDTH, MAP_HEIGHT, ROOM_MIN_SIZE, ROOM_MAX_SIZE, MAX_ROOMS)
 
-player = Object(start_position[0], start_position[1], '@', libtcod.white)
+player = model.Object(dungeon_map, start_position[0], start_position[1], '@', libtcod.white)
 objects = [player]
 fov_recompute = True
 
@@ -106,7 +87,7 @@ while not libtcod.console_is_window_closed():
   libtcod.console_flush()
 
   for object in objects:
-    object.clear()
+    object.clear(con)
 
   should_exit = handle_keys()
   if should_exit:
