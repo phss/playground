@@ -1,5 +1,3 @@
-import libtcod.libtcodpy as libtcod
-
 class Object:
   def __init__(self, dungeon_map, x, y, char, color):
     self.x = x
@@ -13,10 +11,9 @@ class Object:
       self.x += dx
       self.y += dy
 
-  def draw(self, con):
+  def draw(self, renderer):
     if self.dungeon_map.is_in_fov(self.x, self.y):
-      libtcod.console_set_default_foreground(con, self.color)
-      libtcod.console_put_char(con, self.x, self.y, self.char, libtcod.BKGND_NONE)
+      renderer.draw_foreground(self.char, self.color, self.x, self.y)
 
-  def clear(self, con):
-    libtcod.console_put_char(con, self.x, self.y, ' ', libtcod.BKGND_NONE)
+  def clear(self, renderer):
+    renderer.draw_foreground(' ', self.color, self.x, self.y)
