@@ -1,25 +1,46 @@
 import libtcod.libtcodpy as libtcod
+from collections import namedtuple
 
 FOV_ALGO = 0
 FOV_LIGHT_WALLS = True
 TORCH_RADIUS = 10
 
 def make_dungeon(map_width, map_height, room_min_size, room_max_size, max_rooms):
-  dungeon_map = Map(map_width, map_height)
+  dungeon_colors = MapColors(
+    dark_wall = libtcod.Color(0, 0, 100),
+    light_wall = libtcod.Color(130, 110, 50),
+    dark_ground = libtcod.Color(50, 50, 150),
+    light_ground = libtcod.Color(200, 180, 50))
+  dungeon_map = Map(map_width, map_height, dungeon_colors)
   room_maker = RoomMaker(room_min_size, room_max_size, max_rooms)
   start_pos = room_maker.build_rooms_on(dungeon_map)
   return (dungeon_map, start_pos)
 
+MapColors = namedtuple('MapColors', 'dark_wall light_wall dark_ground light_ground')
 
 class Map:
-  def __init__(self, width, height):
+  def __init__(self, width, height, colors):
     self.width = width
     self.height = height
+    self.colors = colors
     self.tiles = [[ Tile(True) for y in range(height)] for x in range(width)]
     self.fov = libtcod.map_new(width, height)
     for y in range(self.height):
       for x in range(self.width):
         self._update_fov(x, y)
+
+  def draw(self, renderer):
+    for y in range(self.height):
+      for x in range(self.width):
+        visible = self.is_in_fov(x, y)
+        wall = self.is_wall(x, y)
+        if visible:
+          color = self.colors.light_wall if wall else self.colors.light_ground
+          self.set_explored(x, y)
+          renderer.draw_background(color, x, y)
+        elif self.is_explored(x, y):
+          color = self.colors.dark_wall if wall else self.colors.dark_ground
+          renderer.draw_background(color, x, y)
 
   def set_wall_on(self, x, y):
     self.tiles[x][y].set_wall()

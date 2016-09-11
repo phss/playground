@@ -14,11 +14,6 @@ ROOM_MAX_SIZE = 10
 ROOM_MIN_SIZE = 6
 MAX_ROOMS = 30
 
-color_dark_wall = libtcod.Color(0, 0, 100)
-color_light_wall = libtcod.Color(130, 110, 50)
-color_dark_ground = libtcod.Color(50, 50, 150)
-color_light_ground = libtcod.Color(200, 180, 50)
-
 # Rendering
 class Renderer:
   def __init__(self, width, height):
@@ -37,21 +32,9 @@ class Renderer:
     libtcod.console_blit(self.con, 0, 0, self.width, self.height, 0, 0, 0)
 
 def render_all():
+  dungeon_map.draw(renderer)
   for object in objects:
     object.draw(renderer)
-
-  for y in range(MAP_HEIGHT):
-    for x in range(MAP_WIDTH):
-      visible = dungeon_map.is_in_fov(x, y)
-      wall = dungeon_map.is_wall(x, y)
-      if visible:
-        color = color_light_wall if wall else color_light_ground
-        dungeon_map.set_explored(x, y)
-        renderer.draw_background(color, x, y)
-      elif dungeon_map.is_explored(x, y):
-        color = color_dark_wall if wall else color_dark_ground
-        renderer.draw_background(color, x, y)
-
   renderer.blit()
 
 
