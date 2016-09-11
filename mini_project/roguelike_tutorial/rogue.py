@@ -26,12 +26,12 @@ class Object:
     self.color = color
 
   def move(self, dx, dy):
-    if not dungeon.is_blocked(self.x + dx, self.y + dy):
+    if not dungeon_map.is_blocked(self.x + dx, self.y + dy):
       self.x += dx
       self.y += dy
 
   def draw(self):
-    if dungeon.is_in_fov(self.x, self.y):
+    if dungeon_map.is_in_fov(self.x, self.y):
       libtcod.console_set_default_foreground(con, self.color)
       libtcod.console_put_char(con, self.x, self.y, self.char, libtcod.BKGND_NONE)
 
@@ -44,20 +44,20 @@ def render_all():
 
   if fov_recompute:
     fov_recompute = False
-    dungeon.compute_fov(player.x, player.y)
+    dungeon_map.compute_fov(player.x, player.y)
 
   for object in objects:
     object.draw()
 
   for y in range(MAP_HEIGHT):
     for x in range(MAP_WIDTH):
-      visible = dungeon.is_in_fov(x, y)
-      wall = dungeon.is_wall(x, y)
+      visible = dungeon_map.is_in_fov(x, y)
+      wall = dungeon_map.is_wall(x, y)
       if visible:
         color = color_light_wall if wall else color_light_ground
-        dungeon.set_explored(x, y)
+        dungeon_map.set_explored(x, y)
         libtcod.console_set_char_background(con, x, y, color, libtcod.BKGND_SET )
-      elif dungeon.is_explored(x, y):
+      elif dungeon_map.is_explored(x, y):
         color = color_dark_wall if wall else color_dark_ground
         libtcod.console_set_char_background(con, x, y, color, libtcod.BKGND_SET )
 
@@ -94,7 +94,7 @@ libtcod.console_init_root(SCREEN_WIDTH, SCREEN_HEIGHT, 'python/libtcod tutorial'
 libtcod.sys_set_fps(LIMIT_FPS)
 con = libtcod.console_new(SCREEN_WIDTH, SCREEN_HEIGHT)
 
-dungeon, start_position = map.make_dungeon(MAP_WIDTH, MAP_HEIGHT, ROOM_MIN_SIZE, ROOM_MAX_SIZE, MAX_ROOMS)
+dungeon_map, start_position = map.make_dungeon(MAP_WIDTH, MAP_HEIGHT, ROOM_MIN_SIZE, ROOM_MAX_SIZE, MAX_ROOMS)
 
 player = Object(start_position[0], start_position[1], '@', libtcod.white)
 objects = [player]

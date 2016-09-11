@@ -5,12 +5,12 @@ FOV_LIGHT_WALLS = True
 TORCH_RADIUS = 10
 
 def make_dungeon(map_width, map_height, room_min_size, room_max_size, max_rooms):
-  dungeon = Map(map_width, map_height)
+  dungeon_map = Map(map_width, map_height)
   room_maker = RoomMaker(room_min_size, room_max_size, max_rooms)
-  start_pos = room_maker.build_rooms_on(dungeon)
-  dungeon._init_fov()
+  start_pos = room_maker.build_rooms_on(dungeon_map)
+  dungeon_map._init_fov()
 
-  return (dungeon, start_pos)
+  return (dungeon_map, start_pos)
 
 
 class Map:
@@ -85,14 +85,14 @@ class RoomMaker:
     self.room_max_size = room_max_size
     self.max_rooms = max_rooms
 
-  def build_rooms_on(self, dungeon):
+  def build_rooms_on(self, dungeon_map):
     rooms = []
 
     for r in range(self.max_rooms):
       w = libtcod.random_get_int(0, self.room_min_size, self.room_max_size)
       h = libtcod.random_get_int(0, self.room_min_size, self.room_max_size)
-      x = libtcod.random_get_int(0, 0, dungeon.width - w - 1)
-      y = libtcod.random_get_int(0, 0, dungeon.height - h - 1)
+      x = libtcod.random_get_int(0, 0, dungeon_map.width - w - 1)
+      y = libtcod.random_get_int(0, 0, dungeon_map.height - h - 1)
 
       new_room = Rect(x, y, w, h)
       failed = False
@@ -102,7 +102,7 @@ class RoomMaker:
           break
 
       if not failed:
-        self._create_room(dungeon, new_room)
+        self._create_room(dungeon_map, new_room)
 
         (new_x, new_y) = new_room.center()
 
@@ -113,25 +113,25 @@ class RoomMaker:
           (prev_x, prev_y) = rooms[len(rooms)-1].center()
 
           if libtcod.random_get_int(0, 0, 1) == 1:
-            self._create_h_tunnel(dungeon, prev_x, new_x, prev_y)
-            self._create_v_tunnel(dungeon, prev_y, new_y, new_x)
+            self._create_h_tunnel(dungeon_map, prev_x, new_x, prev_y)
+            self._create_v_tunnel(dungeon_map, prev_y, new_y, new_x)
           else:
-            self._create_v_tunnel(dungeon, prev_y, new_y, prev_x)
-            self._create_h_tunnel(dungeon, prev_x, new_x, new_y)
+            self._create_v_tunnel(dungeon_map, prev_y, new_y, prev_x)
+            self._create_h_tunnel(dungeon_map, prev_x, new_x, new_y)
 
         rooms.append(new_room)
     return (start_x, start_y)
 
-  def _create_room(self, dungeon, room):
+  def _create_room(self, dungeon_map, room):
     for x in range(room.x1 + 1, room.x2):
       for y in range(room.y1 + 1, room.y2):
-        dungeon.set_wall_on(x, y)
+        dungeon_map.set_wall_on(x, y)
 
-  def _create_h_tunnel(self, dungeon, x1, x2, y):
+  def _create_h_tunnel(self, dungeon_map, x1, x2, y):
     for x in range(min(x1, x2), max(x1, x2) + 1):
-      dungeon.set_wall_on(x, y)
+      dungeon_map.set_wall_on(x, y)
 
-  def _create_v_tunnel(self, dungeon, y1, y2, x):
+  def _create_v_tunnel(self, dungeon_map, y1, y2, x):
     for y in range(min(y1, y2), max(y1, y2) + 1):
-      dungeon.set_wall_on(x, y)
+      dungeon_map.set_wall_on(x, y)
 
