@@ -1,4 +1,6 @@
-import libtcodpy as libtcod
+import libtcod.libtcodpy as libtcod
+import sys
+sys.path.append('./libtcod')
 
 SCREEN_WIDTH = 80
 SCREEN_HEIGHT = 50
