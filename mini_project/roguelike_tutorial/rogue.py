@@ -1,6 +1,5 @@
 import libtcod.libtcodpy as libtcod
-import sys
-sys.path.append('./libtcod')
+import rogue.map as map
 
 SCREEN_WIDTH = 80
 SCREEN_HEIGHT = 50
@@ -23,22 +22,6 @@ color_dark_ground = libtcod.Color(50, 50, 150)
 color_light_ground = libtcod.Color(200, 180, 50)
 
 # Model
-class Rect:
-  def __init__(self, x, y, w, h):
-    self.x1 = x
-    self.y1 = y
-    self.x2 = x + w
-    self.y2 = y + h
-
-  def center(self):
-    center_x = (self.x1 + self.x2) / 2
-    center_y = (self.y1 + self.y2) / 2
-    return (center_x, center_y)
-
-  def intersect(self, other):
-    return (self.x1 <= other.x2 and self.x2 >= other.x1 and
-            self.y1 <= other.y2 and self.y2 >= other.y1)
-
 class Object:
   def __init__(self, x, y, char, color):
     self.x = x
@@ -58,78 +41,6 @@ class Object:
 
   def clear(self):
     libtcod.console_put_char(con, self.x, self.y, ' ', libtcod.BKGND_NONE)
-
-class Tile:
-  def __init__(self, blocked, block_sight = None):
-    self.blocked = blocked
-    if block_sight is None: block_sight = blocked
-    self.block_sight = block_sight
-    self.explored = False
-
-  def set_wall(self):
-    self.blocked = False
-    self.block_sight = False
-
-
-# Map maker
-def create_room(room):
-  global dungeon
-  for x in range(room.x1 + 1, room.x2):
-    for y in range(room.y1 + 1, room.y2):
-      dungeon[x][y].set_wall()
-
-def create_h_tunnel(x1, x2, y):
-  global dungeon
-  for x in range(min(x1, x2), max(x1, x2) + 1):
-    dungeon[x][y].set_wall()
-
-def create_v_tunnel(y1, y2, x):
-  global dungeon
-  for y in range(min(y1, y2), max(y1, y2) + 1):
-    dungeon[x][y].set_wall()
-
-def make_dungeon():
-  global dungeon
-  dungeon = [[ Tile(True) for y in range(MAP_HEIGHT)] for x in range(MAP_WIDTH)]
-
-  rooms = []
-
-  for r in range(MAX_ROOMS):
-    w = libtcod.random_get_int(0, ROOM_MIN_SIZE, ROOM_MAX_SIZE)
-    h = libtcod.random_get_int(0, ROOM_MIN_SIZE, ROOM_MAX_SIZE)
-    x = libtcod.random_get_int(0, 0, MAP_WIDTH - w - 1)
-    y = libtcod.random_get_int(0, 0, MAP_HEIGHT - h - 1)
-
-    new_room = Rect(x, y, w, h)
-    failed = False
-    for other_room in rooms:
-      if new_room.intersect(other_room):
-        failed = True
-        break
-
-    if not failed:
-      create_room(new_room)
-
-      (new_x, new_y) = new_room.center()
-
-      # Debug
-      #room_no = Object(new_x, new_y, chr(65+len(rooms)), libtcod.white)
-      #objects.insert(0, room_no)
-
-      if len(rooms) == 0:
-        player.x = new_x
-        player.y = new_y
-      else:
-        (prev_x, prev_y) = rooms[len(rooms)-1].center()
-
-        if libtcod.random_get_int(0, 0, 1) == 1:
-          create_h_tunnel(prev_x, new_x, prev_y)
-          create_v_tunnel(prev_y, new_y, new_x)
-        else:
-          create_v_tunnel(prev_y, new_y, prev_x)
-          create_h_tunnel(prev_x, new_x, new_y)
-
-      rooms.append(new_room)
 
 # Rendering
 def render_all():
@@ -187,10 +98,11 @@ libtcod.console_init_root(SCREEN_WIDTH, SCREEN_HEIGHT, 'python/libtcod tutorial'
 libtcod.sys_set_fps(LIMIT_FPS)
 con = libtcod.console_new(SCREEN_WIDTH, SCREEN_HEIGHT)
 
-player = Object(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, '@', libtcod.white)
+dungeon, start_position = map.make_dungeon(MAP_WIDTH, MAP_HEIGHT, ROOM_MIN_SIZE, ROOM_MAX_SIZE, MAX_ROOMS)
+
+player = Object(start_position[0], start_position[1], '@', libtcod.white)
 npc = Object(SCREEN_WIDTH/2 - 5, SCREEN_HEIGHT/2, '@', libtcod.yellow)
 objects = [npc, player]
-make_dungeon()
 
 fov_recompute = True
 fov_map = libtcod.map_new(MAP_WIDTH, MAP_HEIGHT)
