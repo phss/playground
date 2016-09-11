@@ -8,8 +8,6 @@ def make_dungeon(map_width, map_height, room_min_size, room_max_size, max_rooms)
   dungeon_map = Map(map_width, map_height)
   room_maker = RoomMaker(room_min_size, room_max_size, max_rooms)
   start_pos = room_maker.build_rooms_on(dungeon_map)
-  dungeon_map._init_fov()
-
   return (dungeon_map, start_pos)
 
 
@@ -19,9 +17,13 @@ class Map:
     self.height = height
     self.tiles = [[ Tile(True) for y in range(height)] for x in range(width)]
     self.fov = libtcod.map_new(width, height)
+    for y in range(self.height):
+      for x in range(self.width):
+        self._update_fov(x, y)
 
   def set_wall_on(self, x, y):
     self.tiles[x][y].set_wall()
+    self._update_fov(x, y)
 
   def is_wall(self, x, y):
     return self.tiles[x][y].block_sight
@@ -41,12 +43,10 @@ class Map:
   def compute_fov(self, x, y):
     libtcod.map_compute_fov(self.fov, x, y, TORCH_RADIUS, FOV_LIGHT_WALLS, FOV_ALGO)
 
-  def _init_fov(self):
-    for y in range(self.height):
-      for x in range(self.width):
-        libtcod.map_set_properties(self.fov, x, y,
-                                   not self.is_wall(x, y),
-                                   not self.is_blocked(x, y))
+  def _update_fov(self, x, y):
+    libtcod.map_set_properties(self.fov, x, y,
+                                not self.is_wall(x, y),
+                                not self.is_blocked(x, y))
 
 
 class Tile:
