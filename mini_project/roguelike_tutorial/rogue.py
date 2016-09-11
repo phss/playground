@@ -37,12 +37,6 @@ class Renderer:
     libtcod.console_blit(self.con, 0, 0, self.width, self.height, 0, 0, 0)
 
 def render_all():
-  global fov_recompute, renderer
-
-  if fov_recompute:
-    fov_recompute = False
-    dungeon_map.compute_fov(player.x, player.y)
-
   for object in objects:
     object.draw(renderer)
 
@@ -63,21 +57,18 @@ def render_all():
 
 # Input
 def handle_keys():
-  global fov_recompute
-  global playerx, playery
-
   if libtcod.console_is_key_pressed(libtcod.KEY_UP):
     player.move(0, -1)
-    fov_recompute = True
+    dungeon_map.compute_fov(player.x, player.y)
   elif libtcod.console_is_key_pressed(libtcod.KEY_DOWN):
     player.move(0, 1)
-    fov_recompute = True
+    dungeon_map.compute_fov(player.x, player.y)
   elif libtcod.console_is_key_pressed(libtcod.KEY_LEFT):
     player.move(-1, 0)
-    fov_recompute = True
+    dungeon_map.compute_fov(player.x, player.y)
   elif libtcod.console_is_key_pressed(libtcod.KEY_RIGHT):
     player.move(1, 0)
-    fov_recompute = True
+    dungeon_map.compute_fov(player.x, player.y)
 
   key = libtcod.console_check_for_keypress(True) # True for turn-based
   if key.vk == libtcod.KEY_ENTER and key.lalt:
@@ -94,8 +85,8 @@ renderer = Renderer(SCREEN_WIDTH, SCREEN_HEIGHT)
 dungeon_map, start_position = map.make_dungeon(MAP_WIDTH, MAP_HEIGHT, ROOM_MIN_SIZE, ROOM_MAX_SIZE, MAX_ROOMS)
 
 player = model.Object(dungeon_map, start_position[0], start_position[1], '@', libtcod.white)
+dungeon_map.compute_fov(player.x, player.y)
 objects = [player]
-fov_recompute = True
 
 while not libtcod.console_is_window_closed():
   render_all()
