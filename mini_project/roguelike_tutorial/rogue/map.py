@@ -1,5 +1,23 @@
 import libtcod.libtcodpy as libtcod
 
+def make_dungeon(map_width, map_height, room_min_size, room_max_size, max_rooms):
+  dungeon = Map(map_width, map_height)
+  room_maker = RoomMaker(room_min_size, room_max_size, max_rooms)
+  start_pos = room_maker.build_rooms_on(dungeon)
+
+  return (dungeon.tiles, start_pos)
+
+
+class Map:
+  def __init__(self, width, height):
+    self.width = width
+    self.height = height
+    self.tiles = [[ Tile(True) for y in range(height)] for x in range(width)]
+
+  def set_wall_on(self, x, y):
+    self.tiles[x][y].set_wall()
+
+
 class Tile:
   def __init__(self, blocked, block_sight = None):
     self.blocked = blocked
@@ -36,14 +54,14 @@ class RoomMaker:
     self.room_max_size = room_max_size
     self.max_rooms = max_rooms
 
-  def build_rooms_on(self, dungeon, map_width, map_height):
+  def build_rooms_on(self, dungeon):
     rooms = []
 
     for r in range(self.max_rooms):
       w = libtcod.random_get_int(0, self.room_min_size, self.room_max_size)
       h = libtcod.random_get_int(0, self.room_min_size, self.room_max_size)
-      x = libtcod.random_get_int(0, 0, map_width - w - 1)
-      y = libtcod.random_get_int(0, 0, map_height - h - 1)
+      x = libtcod.random_get_int(0, 0, dungeon.width - w - 1)
+      y = libtcod.random_get_int(0, 0, dungeon.height - h - 1)
 
       new_room = Rect(x, y, w, h)
       failed = False
@@ -76,19 +94,13 @@ class RoomMaker:
   def __create_room(self, dungeon, room):
     for x in range(room.x1 + 1, room.x2):
       for y in range(room.y1 + 1, room.y2):
-        dungeon[x][y].set_wall()
+        dungeon.set_wall_on(x, y)
 
   def __create_h_tunnel(self, dungeon, x1, x2, y):
     for x in range(min(x1, x2), max(x1, x2) + 1):
-      dungeon[x][y].set_wall()
+      dungeon.set_wall_on(x, y)
 
   def __create_v_tunnel(self, dungeon, y1, y2, x):
     for y in range(min(y1, y2), max(y1, y2) + 1):
-      dungeon[x][y].set_wall()
+      dungeon.set_wall_on(x, y)
 
-def make_dungeon(map_width, map_height, room_min_size, room_max_size, max_rooms):
-  dungeon = [[ Tile(True) for y in range(map_height)] for x in range(map_width)]
-  room_maker = RoomMaker(room_min_size, room_max_size, max_rooms)
-  start_pos = room_maker.build_rooms_on(dungeon, map_width, map_height)
-
-  return (dungeon, start_pos)
