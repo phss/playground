@@ -7,7 +7,7 @@ import rogue.input as input
 
 SCREEN_WIDTH = 80
 SCREEN_HEIGHT = 50
-LIMIT_FPS = 30
+LIMIT_FPS = 40
 
 MAP_WIDTH = 80
 MAP_HEIGHT = 45

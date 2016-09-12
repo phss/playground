@@ -4,19 +4,17 @@ class MovementInputHandler:
   def __init__(self, player, dungeon_map):
     self.player = player
     self.dungeon_map = dungeon_map
+    self.key_maps = {
+      libtcod.KEY_UP:    (0, -1),
+      libtcod.KEY_DOWN:  (0, 1),
+      libtcod.KEY_LEFT:  (-1, 0),
+      libtcod.KEY_RIGHT: (1, 0),
+    }
 
   def handle(self, key):
-    if key.vk == libtcod.KEY_UP:
-      self.player.move(0, -1)
-      self.dungeon_map.compute_fov(self.player.x, self.player.y)
-    elif key.vk == libtcod.KEY_DOWN:
-      self.player.move(0, 1)
-      self.dungeon_map.compute_fov(self.player.x, self.player.y)
-    elif key.vk == libtcod.KEY_LEFT:
-      self.player.move(-1, 0)
-      self.dungeon_map.compute_fov(self.player.x, self.player.y)
-    elif key.vk == libtcod.KEY_RIGHT:
-      self.player.move(1, 0)
+    if key.vk in self.key_maps:
+      dx, dy = self.key_maps[key.vk]
+      self.player.move(dx, dy)
       self.dungeon_map.compute_fov(self.player.x, self.player.y)
     return False
 
