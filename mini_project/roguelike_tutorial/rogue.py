@@ -28,7 +28,7 @@ def render_all():
     object.clear(renderer)
 
 def handle_keys():
-  return input.handle_keys(player, dungeon_map)
+  return input_handler.handle()
 
 libtcod.console_set_custom_font('arial10x10.png', libtcod.FONT_TYPE_GREYSCALE | libtcod.FONT_LAYOUT_TCOD)
 libtcod.console_init_root(SCREEN_WIDTH, SCREEN_HEIGHT, 'python/libtcod tutorial', False)
@@ -40,6 +40,9 @@ dungeon_map, start_position = map.make_dungeon(MAP_WIDTH, MAP_HEIGHT, ROOM_MIN_S
 player = model.Object(dungeon_map, start_position[0], start_position[1], '@', libtcod.white)
 dungeon_map.compute_fov(player.x, player.y)
 objects = [player]
+input_handler = input.handler_for(
+  input.MovementInputHandler(player, dungeon_map),
+  input.GeneralInputHandler())
 
 while not libtcod.console_is_window_closed():
   render_all()

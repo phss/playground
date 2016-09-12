@@ -18,6 +18,7 @@ class MovementInputHandler:
     elif key.vk == libtcod.KEY_RIGHT:
       self.player.move(1, 0)
       self.dungeon_map.compute_fov(self.player.x, self.player.y)
+    return False
 
 class GeneralInputHandler:
   def handle(self, key):
@@ -27,7 +28,15 @@ class GeneralInputHandler:
       return True
     return False
 
-def handle_keys(player, dungeon_map):
-  key = libtcod.console_check_for_keypress(True) # True for turn-based
-  MovementInputHandler(player, dungeon_map).handle(key)
-  return GeneralInputHandler().handle(key)
+class Handler:
+  def __init__(self, input_handlers):
+    self.input_handlers = input_handlers
+
+  def handle(self):
+    key = libtcod.console_check_for_keypress(True) # True for turn-based
+    for input_handler in self.input_handlers:
+      result = input_handler.handle(key)
+    return result
+
+def handler_for(*input_handlers):
+  return Handler(input_handlers)
