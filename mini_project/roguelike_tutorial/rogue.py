@@ -16,37 +16,42 @@ ROOM_MAX_SIZE = 10
 ROOM_MIN_SIZE = 6
 MAX_ROOMS = 30
 
-# Rendering
-def render_all():
-  dungeon_map.draw(renderer)
-  for object in objects:
-    object.draw(renderer)
 
-  renderer.render()
+class Game:
+  def __init__(self):
+    self.dungeon_map, start_position = map.make_dungeon(MAP_WIDTH, MAP_HEIGHT, ROOM_MIN_SIZE, ROOM_MAX_SIZE, MAX_ROOMS)
+    self.player = model.Object(self.dungeon_map, start_position[0], start_position[1], '@', libtcod.white)
+    self.dungeon_map.compute_fov(self.player.x, self.player.y)
+    self.objects = [self.player]
+    self.renderer = render.Renderer(SCREEN_WIDTH, SCREEN_HEIGHT)
+    self.input_handler = input.handler_for(
+      input.MovementInputHandler(self.player, self.dungeon_map),
+      input.GeneralInputHandler())
 
-  for object in objects:
-    object.clear(renderer)
+  def main_loop(self):
+    while not libtcod.console_is_window_closed():
+      self.render_all()
 
-def handle_keys():
-  return input_handler.handle()
+      should_exit = self.handle_keys()
+      if should_exit:
+        break
 
-libtcod.console_set_custom_font('arial10x10.png', libtcod.FONT_TYPE_GREYSCALE | libtcod.FONT_LAYOUT_TCOD)
-libtcod.console_init_root(SCREEN_WIDTH, SCREEN_HEIGHT, 'python/libtcod tutorial', False)
-libtcod.sys_set_fps(LIMIT_FPS)
-renderer = render.Renderer(SCREEN_WIDTH, SCREEN_HEIGHT)
+  def render_all(self):
+    self.dungeon_map.draw(self.renderer)
+    for object in self.objects:
+      object.draw(self.renderer)
 
-dungeon_map, start_position = map.make_dungeon(MAP_WIDTH, MAP_HEIGHT, ROOM_MIN_SIZE, ROOM_MAX_SIZE, MAX_ROOMS)
+    self.renderer.render()
 
-player = model.Object(dungeon_map, start_position[0], start_position[1], '@', libtcod.white)
-dungeon_map.compute_fov(player.x, player.y)
-objects = [player]
-input_handler = input.handler_for(
-  input.MovementInputHandler(player, dungeon_map),
-  input.GeneralInputHandler())
+    for object in self.objects:
+      object.clear(self.renderer)
 
-while not libtcod.console_is_window_closed():
-  render_all()
+  def handle_keys(self):
+    return self.input_handler.handle()
 
-  should_exit = handle_keys()
-  if should_exit:
-    break
+
+if __name__ == '__main__':
+  libtcod.console_set_custom_font('arial10x10.png', libtcod.FONT_TYPE_GREYSCALE | libtcod.FONT_LAYOUT_TCOD)
+  libtcod.console_init_root(SCREEN_WIDTH, SCREEN_HEIGHT, 'python/libtcod tutorial', False)
+  libtcod.sys_set_fps(LIMIT_FPS)
+  Game().main_loop()
