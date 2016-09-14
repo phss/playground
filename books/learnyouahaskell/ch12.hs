@@ -59,4 +59,4 @@ moveListIn3 start = return [start] >>= moveListKnight >>= moveListKnight >>= mov
 movesToReachIn3 :: KnightPos -> KnightPos -> Maybe [KnightPos]
 movesToReachIn3 start end =
   let moves = moveListIn3 start
-  in find ((==end) . head) moves
+  in tail <$> reverse <$> find ((==end) . head) moves
