@@ -1,6 +1,7 @@
 module Book () where
 
 import Control.Monad
+import Data.List
 
 applyMaybe :: Maybe a -> (a -> Maybe b) -> Maybe b
 applyMaybe Nothing _ = Nothing
@@ -46,3 +47,16 @@ in3 start = return start >>= moveKnight >>= moveKnight >>= moveKnight
 
 canReachIn3 :: KnightPos -> KnightPos -> Bool
 canReachIn3 start end = end `elem` in3 start
+
+moveListKnight :: [KnightPos] -> [[KnightPos]]
+moveListKnight (x:xs) = do
+  nextMove <- moveKnight x
+  return (nextMove:x:xs)
+
+moveListIn3 :: KnightPos -> [[KnightPos]]
+moveListIn3 start = return [start] >>= moveListKnight >>= moveListKnight >>= moveListKnight
+
+movesToReachIn3 :: KnightPos -> KnightPos -> Maybe [KnightPos]
+movesToReachIn3 start end =
+  let moves = moveListIn3 start
+  in find ((==end) . head) moves
