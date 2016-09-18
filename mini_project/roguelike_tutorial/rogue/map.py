@@ -185,6 +185,6 @@ class MonsterMaker:
           #create a troll
           monster_char = 'T'
 
-        monster = model.Object(x, y, monster_char, self.colors[monster_char])
+        monster = model.Object(x, y, monster_char, self.colors[monster_char], True)
         monsters.append(monster)
     return monsters

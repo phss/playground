@@ -21,7 +21,7 @@ MAX_ROOM_MONSTERS = 3
 class Game:
   def __init__(self):
     dungeon_map, monsters, start_position = map.make_dungeon(MAP_WIDTH, MAP_HEIGHT, ROOM_MIN_SIZE, ROOM_MAX_SIZE, MAX_ROOMS, MAX_ROOM_MONSTERS)
-    player = model.Object(start_position[0], start_position[1], '@', libtcod.white)
+    player = model.Object(start_position[0], start_position[1], '@', libtcod.white, True)
     dungeon_map.compute_fov(player.x, player.y)
     self.environment = model.Environment(dungeon_map, [player] + monsters)
     for object in self.environment.objects:
