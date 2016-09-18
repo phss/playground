@@ -22,7 +22,7 @@ def make_dungeon(map_width, map_height, room_min_size, room_max_size, max_rooms,
 
   dungeon_map = Map(map_width, map_height, dungeon_colors)
   rooms = room_maker.build_rooms_on(dungeon_map)
-  monsters = monster_maker.create_monsters_on(dungeon_map, rooms)
+  monsters = monster_maker.create_monsters_on(rooms)
   return (dungeon_map, monsters, rooms[0].center())
 
 MapColors = namedtuple('MapColors', 'dark_wall light_wall dark_ground light_ground')
@@ -168,8 +168,7 @@ class MonsterMaker:
     self.max_room_monsters = max_room_monsters
     self.colors = colors
 
-  # TODO: only pass dungeon_map
-  def create_monsters_on(self, dungeon_map, rooms):
+  def create_monsters_on(self, rooms):
     monsters = []
 
     for room in rooms:
@@ -186,6 +185,6 @@ class MonsterMaker:
           #create a troll
           monster_char = 'T'
 
-        monster = model.Object(dungeon_map, x, y, monster_char, self.colors[monster_char])
+        monster = model.Object(x, y, monster_char, self.colors[monster_char])
         monsters.append(monster)
     return monsters

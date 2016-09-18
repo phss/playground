@@ -1,10 +1,9 @@
 class Object:
-  def __init__(self, dungeon_map, x, y, char, color):
+  def __init__(self, x, y, char, color):
     self.x = x
     self.y = y
     self.char = char
     self.color = color
-    self.dungeon_map = dungeon_map
 
   def move(self, dx, dy):
     if not self.dungeon_map.is_blocked(self.x + dx, self.y + dy):
