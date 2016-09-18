@@ -7,13 +7,18 @@ FOV_LIGHT_WALLS = True
 TORCH_RADIUS = 10
 
 def make_dungeon(map_width, map_height, room_min_size, room_max_size, max_rooms, max_room_monsters):
-  room_maker = RoomMaker(room_min_size, room_max_size, max_rooms)
-  monster_maker = MonsterMaker(max_room_monsters)
   dungeon_colors = MapColors(
     dark_wall = libtcod.Color(0, 0, 100),
     light_wall = libtcod.Color(130, 110, 50),
     dark_ground = libtcod.Color(50, 50, 150),
     light_ground = libtcod.Color(200, 180, 50))
+  monster_colors = {
+    'o': libtcod.desaturated_green,
+    'T': libtcod.darker_green
+  }
+
+  room_maker = RoomMaker(room_min_size, room_max_size, max_rooms)
+  monster_maker = MonsterMaker(max_room_monsters, monster_colors)
 
   dungeon_map = Map(map_width, map_height, dungeon_colors)
   rooms = room_maker.build_rooms_on(dungeon_map)
@@ -159,9 +164,11 @@ class RoomMaker:
 
 
 class MonsterMaker:
-  def __init__(self, max_room_monsters):
+  def __init__(self, max_room_monsters, colors):
     self.max_room_monsters = max_room_monsters
+    self.colors = colors
 
+  # TODO: only pass dungeon_map
   def create_monsters_on(self, dungeon_map, rooms):
     monsters = []
 
@@ -174,10 +181,11 @@ class MonsterMaker:
 
         if libtcod.random_get_int(0, 0, 100) < 80:  #80% chance of getting an orc
           #create an orc
-          monster = model.Object(dungeon_map, x, y, 'o', libtcod.desaturated_green)
+          monster_char = 'o'
         else:
           #create a troll
-          monster = model.Object(dungeon_map, x, y, 'T', libtcod.darker_green)
+          monster_char = 'T'
 
+        monster = model.Object(dungeon_map, x, y, monster_char, self.colors[monster_char])
         monsters.append(monster)
     return monsters
