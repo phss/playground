@@ -2,6 +2,7 @@ module Book () where
 
 import Data.Monoid
 import Control.Monad.Writer
+import Control.Monad.Instances
 
 -- Writer
 isBigGang :: Int -> (Bool, String)
@@ -34,3 +35,11 @@ gcd' a b
   | otherwise = do
       tell [show a ++ " mod " ++ show b ++ " = " ++ show (a `mod` b)]
       gcd' b (a `mod` b)
+
+-- Reader
+
+addStuff :: Int -> Int
+addStuff = do
+  a <- (*2)
+  b <- (+10)
+  return (a + b)
