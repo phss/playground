@@ -13,8 +13,8 @@ def make_dungeon(map_width, map_height, room_min_size, room_max_size, max_rooms)
     light_ground = libtcod.Color(200, 180, 50))
   dungeon_map = Map(map_width, map_height, dungeon_colors)
   room_maker = RoomMaker(room_min_size, room_max_size, max_rooms)
-  start_pos = room_maker.build_rooms_on(dungeon_map)
-  return (dungeon_map, start_pos)
+  rooms = room_maker.build_rooms_on(dungeon_map)
+  return (dungeon_map, rooms[0].center())
 
 MapColors = namedtuple('MapColors', 'dark_wall light_wall dark_ground light_ground')
 
@@ -108,6 +108,7 @@ class RoomMaker:
 
   def build_rooms_on(self, dungeon_map):
     rooms = []
+    objects = []
 
     for r in range(self.max_rooms):
       w = libtcod.random_get_int(0, self.room_min_size, self.room_max_size)
@@ -127,10 +128,7 @@ class RoomMaker:
 
         (new_x, new_y) = new_room.center()
 
-        if len(rooms) == 0:
-          start_x = new_x
-          start_y = new_y
-        else:
+        if len(rooms) > 0:
           (prev_x, prev_y) = rooms[len(rooms)-1].center()
 
           if libtcod.random_get_int(0, 0, 1) == 1:
@@ -141,7 +139,7 @@ class RoomMaker:
             self._create_h_tunnel(dungeon_map, prev_x, new_x, new_y)
 
         rooms.append(new_room)
-    return (start_x, start_y)
+    return rooms
 
   def _create_room(self, dungeon_map, room):
     for x in range(room.x1 + 1, room.x2):
