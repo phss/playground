@@ -15,17 +15,18 @@ MAP_HEIGHT = 45
 ROOM_MAX_SIZE = 10
 ROOM_MIN_SIZE = 6
 MAX_ROOMS = 30
+MAX_ROOM_MONSTERS = 3
 
 
 class Game:
   def __init__(self):
-    self.dungeon_map, start_position = map.make_dungeon(MAP_WIDTH, MAP_HEIGHT, ROOM_MIN_SIZE, ROOM_MAX_SIZE, MAX_ROOMS)
-    self.player = model.Object(self.dungeon_map, start_position[0], start_position[1], '@', libtcod.white)
-    self.dungeon_map.compute_fov(self.player.x, self.player.y)
-    self.objects = [self.player]
+    self.dungeon_map, monsters, start_position = map.make_dungeon(MAP_WIDTH, MAP_HEIGHT, ROOM_MIN_SIZE, ROOM_MAX_SIZE, MAX_ROOMS, MAX_ROOM_MONSTERS)
+    player = model.Object(self.dungeon_map, start_position[0], start_position[1], '@', libtcod.white)
+    self.dungeon_map.compute_fov(player.x, player.y)
+    self.objects = [player] + monsters
     self.renderer = render.Renderer(SCREEN_WIDTH, SCREEN_HEIGHT)
     self.input_handler = input.handler_for(
-      input.MovementInputHandler(self.player, self.dungeon_map),
+      input.MovementInputHandler(player, self.dungeon_map),
       input.GeneralInputHandler())
 
   def main_loop(self):

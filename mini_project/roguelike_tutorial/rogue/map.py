@@ -1,20 +1,24 @@
 import libtcod.libtcodpy as libtcod
+import rogue.model as model
 from collections import namedtuple
 
 FOV_ALGO = 0
 FOV_LIGHT_WALLS = True
 TORCH_RADIUS = 10
 
-def make_dungeon(map_width, map_height, room_min_size, room_max_size, max_rooms):
+def make_dungeon(map_width, map_height, room_min_size, room_max_size, max_rooms, max_room_monsters):
+  room_maker = RoomMaker(room_min_size, room_max_size, max_rooms)
+  monster_maker = MonsterMaker(max_room_monsters)
   dungeon_colors = MapColors(
     dark_wall = libtcod.Color(0, 0, 100),
     light_wall = libtcod.Color(130, 110, 50),
     dark_ground = libtcod.Color(50, 50, 150),
     light_ground = libtcod.Color(200, 180, 50))
+
   dungeon_map = Map(map_width, map_height, dungeon_colors)
-  room_maker = RoomMaker(room_min_size, room_max_size, max_rooms)
   rooms = room_maker.build_rooms_on(dungeon_map)
-  return (dungeon_map, rooms[0].center())
+  monsters = monster_maker.create_monsters_on(dungeon_map, rooms)
+  return (dungeon_map, monsters, rooms[0].center())
 
 MapColors = namedtuple('MapColors', 'dark_wall light_wall dark_ground light_ground')
 
@@ -99,7 +103,6 @@ class Rect:
             self.y1 <= other.y2 and self.y2 >= other.y1)
 
 
-# Map maker
 class RoomMaker:
   def __init__(self, room_min_size, room_max_size, max_rooms):
     self.room_min_size = room_min_size
@@ -154,3 +157,27 @@ class RoomMaker:
     for y in range(min(y1, y2), max(y1, y2) + 1):
       dungeon_map.set_wall_on(x, y)
 
+
+class MonsterMaker:
+  def __init__(self, max_room_monsters):
+    self.max_room_monsters = max_room_monsters
+
+  def create_monsters_on(self, dungeon_map, rooms):
+    monsters = []
+
+    for room in rooms:
+      num_monsters = libtcod.random_get_int(0, 0, self.max_room_monsters)
+
+      for i in range(num_monsters):
+        x = libtcod.random_get_int(0, room.x1, room.x2)
+        y = libtcod.random_get_int(0, room.y1, room.y2)
+
+        if libtcod.random_get_int(0, 0, 100) < 80:  #80% chance of getting an orc
+          #create an orc
+          monster = model.Object(dungeon_map, x, y, 'o', libtcod.desaturated_green)
+        else:
+          #create a troll
+          monster = model.Object(dungeon_map, x, y, 'T', libtcod.darker_green)
+
+        monsters.append(monster)
+    return monsters
