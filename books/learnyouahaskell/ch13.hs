@@ -4,6 +4,7 @@ import Data.Monoid
 import System.Random
 import Control.Monad.Writer
 import Control.Monad.State
+import Data.List
 
 -- Writer
 isBigGang :: Int -> (Bool, String)
@@ -109,3 +110,24 @@ keepSmall x
 
 powerset :: [a] -> [[a]]
 powerset xs = filterM (\x -> [True, False]) xs
+
+binSmalls :: Int -> Int -> Maybe Int
+binSmalls acc x
+  | x > 9     = Nothing
+  | otherwise = Just (acc + x)
+
+
+readMaybe :: (Read a) => String -> Maybe a
+readMaybe st = case reads st of [(x,"")] -> Just x
+                                _ -> Nothing
+
+foldingFunction :: [Double] -> String -> Maybe [Double]
+foldingFunction (x:y:ys) "*" = return ((x * y):ys)
+foldingFunction (x:y:ys) "+" = return ((x + y):ys)
+foldingFunction (x:y:ys) "-" = return ((y - x):ys)
+foldingFunction xs numberString = liftM (:xs) (readMaybe numberString)
+
+solveRPN :: String -> Maybe Double
+solveRPN st = do
+  [result] <- foldM foldingFunction [] (words st)
+  return result
