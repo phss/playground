@@ -153,6 +153,7 @@ flatten (Prob xs) = Prob $ concat $ map multAll xs
 
 instance Applicative Prob where
   pure x = Prob [(x,1%1)]
+  (Prob fs) <*> (Prob xs) = Prob $ [(f x, pf * px) | (f, pf) <- fs, (x, px) <- xs]
 
 instance Monad Prob where
   return x = Prob [(x,1%1)]
