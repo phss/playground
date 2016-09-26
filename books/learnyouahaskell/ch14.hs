@@ -3,7 +3,7 @@ module Book () where
 data Tree a = Empty | Node a (Tree a) (Tree a) deriving (Show)
 
 freeTree :: Tree Char
-freeTree = 
+freeTree =
     Node 'P'
         (Node 'O'
             (Node 'L'
@@ -38,3 +38,28 @@ elemAt :: Directions -> Tree a -> a
 elemAt (L:ds) (Node _ l _) = elemAt ds l
 elemAt (R:ds) (Node _ _ r) = elemAt ds r
 elemAt [] (Node x _ _) = x
+
+data Crumb a = LeftCrumb a (Tree a) | RightCrumb a (Tree a) deriving (Show)
+type Breadcrumbs a = [Crumb a]
+type Zipper a = (Tree a, Breadcrumbs a)
+
+goLeft :: (Zipper a) -> (Zipper a)
+goLeft (Node x l r, bs) = (l, (LeftCrumb x r):bs)
+
+goRight :: (Zipper a) -> (Zipper a)
+goRight (Node x l r, bs) = (r, (RightCrumb x l):bs)
+
+goUp :: (Zipper a) -> (Zipper a)
+goUp (l, (LeftCrumb x r):bs) = (Node x l r, bs)
+goUp (r, (RightCrumb x l):bs) = (Node x l r, bs)
+
+modify :: (a -> a) -> Zipper a -> Zipper a
+modify f (Node x l r, bs) = (Node (f x) l r, bs)
+modify f (Empty, bs) = (Empty, bs)
+
+attach :: Tree a -> Zipper a -> Zipper a
+attach t (_, bs) = (t, bs)
+
+topMost :: Zipper a -> Zipper a
+topMost (t, []) = (t, [])
+topMost z = topMost . goUp $ z
