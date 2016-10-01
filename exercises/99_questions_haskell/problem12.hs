@@ -15,7 +15,12 @@ decodeModified' = foldr (\x acc -> decode x ++ acc) []
   where decode (Single x) = [x]
         decode (Multiple n x) = replicate n x
 
+decodeModified'' :: [Encoding a] -> [a]
+decodeModified'' = concatMap decode
+  where decode (Single x) = [x]
+        decode (Multiple n x) = replicate n x
+
 main :: IO Counts
 main = runTestTT $ TestList [
   TestCase $ assertEqual "something" "aaaabccaadeeee"
-                                     (decodeModified' [Multiple 4 'a',Single 'b',Multiple 2 'c', Multiple 2 'a',Single 'd',Multiple 4 'e'])]
+                                     (decodeModified'' [Multiple 4 'a',Single 'b',Multiple 2 'c', Multiple 2 'a',Single 'd',Multiple 4 'e'])]
