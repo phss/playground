@@ -28,11 +28,22 @@
 ; Answer to part 1
 ;(last path-to-destination)
 
-(def repeated-locations
+(defn locations-between [[x1 y1] [x2 y2]]
+  (letfn [(between [a b] (range a b (if (< a b) 1 -1)))]
+    (concat (map #(vector % y1) (between x1 x2))
+            (map #(vector x1 %) (between y1 y2)))))
+
+(def all-locations
   (->> path-to-destination
        (map last)
-       frequencies
-       (filter (fn [[_ c]] (> c 1)))))
+       (partition 2 1)
+       (mapcat #(apply locations-between %))))
 
+(def first-duplicate-location
+  (loop [visited [] locs all-locations]
+    (let [loc (first locs)]
+      (if (some #{loc} visited)
+        loc
+        (recur (conj visited loc) (rest locs))))))
 
-repeated-locations
+first-duplicate-location
