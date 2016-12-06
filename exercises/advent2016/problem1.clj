@@ -17,13 +17,12 @@
 (defn move [[x y] dir dist]
   (dir {:N [x (+ y dist)], :W [(- x dist) y], :S [x (- y dist)], :E [(+ x dist) y]}))
 
+(defn process-direction [[dir pos] [t dist]]
+  (let [newdir ((turn t) dir)
+        newpos (move pos newdir dist)]
+    [newdir newpos]))
+
 (def dest
-  (loop [dir :N pos [0 0] dirs directions]
-    (if (empty? dirs)
-      pos
-      (let [[t dist] (first dirs)
-            newdir ((turn t) dir)
-            newpos (move pos newdir dist)]
-        (recur newdir newpos (rest dirs))))))
+  (reduce process-direction [:N [0 0]] directions))
 
 dest
