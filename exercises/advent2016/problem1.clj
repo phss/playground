@@ -22,7 +22,17 @@
         newpos (move pos newdir dist)]
     [newdir newpos]))
 
-(def dest
-  (reduce process-direction [:N [0 0]] directions))
+(def path-to-destination
+  (reductions process-direction [:N [0 0]] directions))
 
-dest
+; Answer to part 1
+;(last path-to-destination)
+
+(def repeated-locations
+  (->> path-to-destination
+       (map last)
+       frequencies
+       (filter (fn [[_ c]] (> c 1)))))
+
+
+repeated-locations
