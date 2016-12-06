@@ -11,12 +11,16 @@
        (clojure.string/split-lines)
        (map line-to-triangle)))
 
+(def actual-triangles
+  (partition 3 (concat (map first triangles) (map second triangles) (map last triangles))))
+
 (defn valid-triangle? [[a b c]]
   (and
    (< a (+ b c))
    (< b (+ a c))
    (< c (+ a b))))
 
-(->> triangles
+(->> actual-triangles
      (filter valid-triangle?)
      count)
+
