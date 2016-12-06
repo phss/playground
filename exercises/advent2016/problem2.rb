@@ -9,19 +9,19 @@ class Position
   end
 
   def left
-    Position.new(@x - 1, @y)
+    Position.new(x - 1, y)
   end
 
   def right
-    Position.new(@x + 1, @y)
+    Position.new(x + 1, y)
   end
 
   def up
-    Position.new(@x, @y - 1)
+    Position.new(x, y - 1)
   end
 
   def down
-    Position.new(@x, @y + 1)
+    Position.new(x, y + 1)
   end
 end
 
@@ -31,7 +31,9 @@ class Keypad
   end
 
   def valid?(position)
-    position.y >= 0 && position.y < @config.size && position.x >= 0 && position.x < @config[0].size
+    position.y >= 0 && position.y < @config.size &&
+      position.x >= 0 && position.x < @config[0].size &&
+      !button_at(position).nil?
   end
 
   def button_at(position)
@@ -39,10 +41,18 @@ class Keypad
   end
 end
 
-keypad = Keypad.new(
+part1_keypad = Keypad.new(
   [[1, 2, 3],
    [4, 5, 6],
    [7, 8, 9]])
+
+keypad = Keypad.new(
+  [[nil, nil, 1, nil, nil],
+   [nil, 2, 3, 4, nil],
+   [5, 6, 7, 8, 9],
+   [nil, 'A', 'B', 'C', nil],
+   [nil, nil, 'D', nil, nil]])
+
 
 pos = Position.new(1, 1)
 keys = input.map do |instructions|
