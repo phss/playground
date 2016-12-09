@@ -15,7 +15,7 @@ lines.each do |line|
 end
 
 word = data.map do |d|
-  frequency(d).sort_by { |_, freq| -freq }.first.first
+  frequency(d).sort_by { |_, freq| freq }.first.first
 end.join
 
 puts word
