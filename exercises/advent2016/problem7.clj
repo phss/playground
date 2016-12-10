@@ -30,3 +30,19 @@
      (filter tls?)
      count)
 
+(defn aba-or-bab? [[a b c]]
+  (and (= a c) (not= a b)))
+
+(defn corresponding? [[a b c] [x y z]]
+  (and (= a c y) (= b x z)))
+
+(defn ssl? [[seq hypernet-seqs]]
+  (let [find-aba-or-bab #(filter aba-or-bab? (mapcat (partial partition 3 1) %))
+        abas (find-aba-or-bab seq)
+        babs (find-aba-or-bab hypernet-seqs)]
+    (not (empty? (for [aba abas bab babs :when (corresponding? aba bab)] [aba bab])))))
+
+(->> ips
+     (map parse-ip)
+     (filter ssl?)
+     count)
