@@ -1,4 +1,5 @@
 from __future__ import print_function
+import re
 
 class Display:
   def __init__(self, width, height):
@@ -44,16 +45,22 @@ class Display:
 
 display = Display(7, 3)
 
-display.add_rect(3, 2)
-display.show()
+def perform(instruction_str, display):
+  if instruction_str.startswith('rect '):
+    w, h = map(int, re.findall(r"\d+", instruction_str))
+    display.add_rect(w, h)
+  if instruction_str.startswith('rotate column '):
+    c, s = map(int, re.findall(r"\d+", instruction_str))
+    display.rotate_column(c, s)
+  if instruction_str.startswith('rotate row '):
+    r, s = map(int, re.findall(r"\d+", instruction_str))
+    display.rotate_row(r, s)
+  else:
+    None
 
-display.rotate_column(1, 1)
+perform('rect 3x2', display)
+perform('rotate column x=1 by 1', display)
+perform('rotate row y=0 by 4', display)
+perform('rotate column x=1 by 1', display)
 display.show()
-
-display.rotate_row(0, 4)
-display.show()
-
-display.rotate_column(1, 1)
-display.show()
-
 print(display.lit_pixels())
