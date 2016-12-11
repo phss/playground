@@ -18,8 +18,13 @@ def decompress(input):
 
   return decompressed
 
-print decompress('ADVENT')
-print decompress('A(1x5)BC')
-print decompress('(3x3)XYZ')
-print decompress('(6x1)(1x3)A')
-print decompress('X(8x2)(3x3)ABCY')
+#print decompress('ADVENT')
+#print decompress('A(1x5)BC')
+#print decompress('(3x3)XYZ')
+#print decompress('(6x1)(1x3)A')
+#print decompress('X(8x2)(3x3)ABCY')
+
+with open('files/problem9.txt', 'r') as f:
+    input = f.read().rstrip()
+
+print len(decompress(input))
