@@ -43,8 +43,6 @@ class Display:
     return lit
 
 
-display = Display(7, 3)
-
 def perform(instruction_str, display):
   if instruction_str.startswith('rect '):
     w, h = map(int, re.findall(r"\d+", instruction_str))
@@ -58,9 +56,18 @@ def perform(instruction_str, display):
   else:
     None
 
-perform('rect 3x2', display)
-perform('rotate column x=1 by 1', display)
-perform('rotate row y=0 by 4', display)
-perform('rotate column x=1 by 1', display)
+#perform('rect 3x2', display)
+#perform('rotate column x=1 by 1', display)
+#perform('rotate row y=0 by 4', display)
+#perform('rotate column x=1 by 1', display)
+#display.show()
+#print(display.lit_pixels())
+
+display = Display(50, 6)
+
+with open('files/problem8.txt', 'r') as f:
+  for line in f:
+    perform(line.rstrip(), display)
+
 display.show()
 print(display.lit_pixels())
