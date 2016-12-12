@@ -50,7 +50,7 @@ class Output:
     self.values.append(value)
 
 
-bot_instructions, value_instructions = parse('files/problem10-test.txt')
+bot_instructions, value_instructions = parse('files/problem10.txt')
 
 bots = {}
 outputs = {}
@@ -82,6 +82,9 @@ for instruction in value_instructions:
 
 bot = next_full()
 while bot:
+  if bot.lower_value() == 17 and bot.higher_value() == 61:
+    print bot.name
+
   find_ref(bot.low_ref).push_value(bot.lower_value())
   find_ref(bot.high_ref).push_value(bot.higher_value())
   bot.clear()
