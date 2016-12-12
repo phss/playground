@@ -90,3 +90,6 @@ while bot:
   bot.clear()
   bot = next_full()
 
+print outputs['output 0'].values
+print outputs['output 1'].values
+print outputs['output 2'].values
