@@ -35,3 +35,20 @@ func simple_english_scoring(str string) int {
 
 	return score
 }
+
+func hammingDistance(a, b string) int {
+	aBytes := []byte(a)
+	bBytes := []byte(b)
+	diff := 0
+
+	for i, _ := range aBytes {
+		for j := 0; j < 8; j++ {
+			mask := byte(1 << uint(j))
+			if (aBytes[i] & mask) != (bBytes[i] & mask) {
+				diff++
+			}
+		}
+	}
+
+	return diff
+}
