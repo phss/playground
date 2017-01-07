@@ -12,7 +12,7 @@ func crackSingleByteXorCipher(hexString string) (result crackResult) {
 		key := byte(i)
 		xor := xorBytes(bytes, []byte{key})
 		message := string(xor)
-		score := simple_english_scoring(message)
+		score := simpleEnglishScoring(message)
 		if score > result.score {
 			result = crackResult{message, key, score}
 		}
@@ -20,7 +20,7 @@ func crackSingleByteXorCipher(hexString string) (result crackResult) {
 	return
 }
 
-func simple_english_scoring(str string) int {
+func simpleEnglishScoring(str string) int {
 	english := []byte("etaoin")
 	score := 0
 
@@ -28,7 +28,7 @@ func simple_english_scoring(str string) int {
 		b := byte(char)
 		for _, eb := range english {
 			if b == eb {
-				score += 1
+				score++
 			}
 		}
 	}
