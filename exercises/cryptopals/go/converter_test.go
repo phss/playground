@@ -38,3 +38,13 @@ func TestBytesToHexConversion(t *testing.T) {
 		assertEquals(t, c.expected, actual)
 	}
 }
+
+func TestBytesToBase64Conversion(t *testing.T) {
+	assertEquals(t, "SSfw", bytesToBase64([]byte{73, 39, 240}))
+}
+
+func TestBase64ToBytesConversion(t *testing.T) {
+	if !bytes.Equal(base64ToBytes("SSfw"), []byte{73, 39, 240}) {
+		t.Errorf("Fail")
+	}
+}
