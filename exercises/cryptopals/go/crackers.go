@@ -20,6 +20,24 @@ func crackSingleByteXorCipher(hexString string) (result crackResult) {
 	return
 }
 
+func crackRepeatedKeyXorCipher(encrypted []byte) []byte {
+	guessedKeysize := guessXorKeysize(encrypted)
+	key := make([]byte, guessedKeysize)
+
+	for i := 0; i < guessedKeysize; i++ {
+		block := make([]byte, 0)
+		j := i
+		for j < len(encrypted) {
+			block = append(block, encrypted[j])
+			j += guessedKeysize
+		}
+
+		key[i] = crackSingleByteXorCipher(bytesToHex(block)).key
+	}
+
+	return key
+}
+
 func guessXorKeysize(data []byte) int {
 	bestGuess := -1
 	bestEditDistance := 10000000
