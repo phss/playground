@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+	"strings"
 	"testing"
 )
 
@@ -70,4 +72,10 @@ func TestSet1Challenge5(t *testing.T) {
 	actual := bytesToHex(xorBytes([]byte(phrase), []byte(key)))
 
 	assertEquals(t, expected, actual)
+}
+
+func TestSet1Challenge6(t *testing.T) {
+	encrypted := base64ToBytes(strings.Join(readLines("files/6.txt"), ""))
+
+	fmt.Println(string(encrypted))
 }
