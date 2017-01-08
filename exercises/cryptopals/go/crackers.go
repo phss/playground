@@ -36,9 +36,7 @@ func simpleEnglishScoring(str string) int {
 	return score
 }
 
-func hammingDistance(a, b string) int {
-	aBytes := []byte(a)
-	bBytes := []byte(b)
+func hammingDistance(aBytes, bBytes []byte) int {
 	diff := 0
 
 	for i, _ := range aBytes {
