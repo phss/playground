@@ -20,6 +20,23 @@ func crackSingleByteXorCipher(hexString string) (result crackResult) {
 	return
 }
 
+func guessXorKeysize(data []byte) int {
+	bestGuess := -1
+	bestEditDistance := 10000000
+
+	for guess := 2; guess <= 40; guess++ {
+		first := data[0:guess]
+		second := data[guess : guess+guess]
+		normalisedEditDistance := hammingDistance(first, second) / guess
+
+		if normalisedEditDistance < bestEditDistance {
+			bestGuess = guess
+			bestEditDistance = normalisedEditDistance
+		}
+	}
+	return bestGuess
+}
+
 func simpleEnglishScoring(str string) int {
 	english := []byte("etaoin")
 	score := 0

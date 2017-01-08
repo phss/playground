@@ -77,5 +77,5 @@ func TestSet1Challenge5(t *testing.T) {
 func TestSet1Challenge6(t *testing.T) {
 	encrypted := base64ToBytes(strings.Join(readLines("files/6.txt"), ""))
 
-	fmt.Println(string(encrypted))
+	fmt.Println(guessXorKeysize(encrypted))
 }
