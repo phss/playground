@@ -1,5 +1,7 @@
 package main
 
+import ()
+
 type crackResult struct {
 	message string
 	key     byte
@@ -40,12 +42,17 @@ func crackRepeatedKeyXorCipher(encrypted []byte) []byte {
 
 func guessXorKeysize(data []byte) int {
 	bestGuess := -1
-	bestEditDistance := 10000000
+	bestEditDistance := 10000000.0
 
 	for guess := 2; guess <= 40; guess++ {
 		first := data[0:guess]
-		second := data[guess : guess+guess]
-		normalisedEditDistance := hammingDistance(first, second) / guess
+		sumDistances := 0
+		slices := 1
+		for (guess * (slices + 1)) < len(data) {
+			sumDistances += hammingDistance(data[guess*slices:guess*(slices+1)], first)
+			slices++
+		}
+		normalisedEditDistance := float64(sumDistances) / float64(slices) / float64(guess)
 
 		if normalisedEditDistance < bestEditDistance {
 			bestGuess = guess
@@ -56,7 +63,7 @@ func guessXorKeysize(data []byte) int {
 }
 
 func simpleEnglishScoring(str string) int {
-	english := []byte("etaoin")
+	english := []byte("etaoinsh")
 	score := 0
 
 	for _, char := range str {

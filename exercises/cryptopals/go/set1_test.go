@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strings"
 	"testing"
 )
@@ -79,5 +78,5 @@ func TestSet1Challenge6(t *testing.T) {
 
 	key := crackRepeatedKeyXorCipher(encrypted)
 
-	fmt.Println(string(xorBytes(encrypted, key)))
+	assertEquals(t, "Terminator X: Bring the noise", string(key))
 }
