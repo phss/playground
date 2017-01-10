@@ -1,6 +1,6 @@
-package main
+package byteutil
 
-func xorBytes(a, b []byte) []byte {
+func XorBytes(a, b []byte) []byte {
 	xor := make([]byte, max(len(a), len(b)))
 
 	for i, _ := range xor {

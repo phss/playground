@@ -1,6 +1,6 @@
 package main
 
-import ()
+import bu "./byteutil"
 
 type crackResult struct {
 	message string
@@ -9,10 +9,10 @@ type crackResult struct {
 }
 
 func crackSingleByteXorCipher(hexString string) (result crackResult) {
-	bytes := hexToBytes(hexString)
+	bytes := bu.HexToBytes(hexString)
 	for i := 0; i < 256; i++ {
 		key := byte(i)
-		xor := xorBytes(bytes, []byte{key})
+		xor := bu.XorBytes(bytes, []byte{key})
 		message := string(xor)
 		score := simpleEnglishScoring(message)
 		if score > result.score {
@@ -34,7 +34,7 @@ func crackRepeatedKeyXorCipher(encrypted []byte) []byte {
 			j += guessedKeysize
 		}
 
-		key[i] = crackSingleByteXorCipher(bytesToHex(block)).key
+		key[i] = crackSingleByteXorCipher(bu.BytesToHex(block)).key
 	}
 
 	return key

@@ -5,20 +5,21 @@ import (
 	"testing"
 )
 import tu "./testutil"
+import bu "./byteutil"
 
 func TestSet1Challenge1(t *testing.T) {
 	expectedBase64String := "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t"
-	actualBase64String := hexToBase64("49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d")
+	actualBase64String := bu.HexToBase64("49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d")
 
 	tu.AssertEquals(t, expectedBase64String, actualBase64String)
 }
 
 func TestSet1Challenge2(t *testing.T) {
 	expectedXor := "746865206b696420646f6e277420706c6179"
-	actualXor := bytesToHex(
-		xorBytes(
-			hexToBytes("1c0111001f010100061a024b53535009181c"),
-			hexToBytes("686974207468652062756c6c277320657965")))
+	actualXor := bu.BytesToHex(
+		bu.XorBytes(
+			bu.HexToBytes("1c0111001f010100061a024b53535009181c"),
+			bu.HexToBytes("686974207468652062756c6c277320657965")))
 
 	tu.AssertEquals(t, expectedXor, actualXor)
 }
@@ -43,7 +44,7 @@ func TestSet1Challenge4(t *testing.T) {
 	close(jobs)
 
 	for w := 0; w <= 5; w++ {
-		go func() {
+		func() {
 			for line := range jobs {
 				results <- crackSingleByteXorCipher(line)
 			}
@@ -69,13 +70,13 @@ func TestSet1Challenge5(t *testing.T) {
 
 	expected := "0b3637272a2b2e63622c2e69692a23693a2a3c6324202d623d63343c2a26226324272765272a282b2f20430a652e2c652a3124333a653e2b2027630c692b20283165286326302e27282f"
 
-	actual := bytesToHex(xorBytes([]byte(phrase), []byte(key)))
+	actual := bu.BytesToHex(bu.XorBytes([]byte(phrase), []byte(key)))
 
 	tu.AssertEquals(t, expected, actual)
 }
 
 func TestSet1Challenge6(t *testing.T) {
-	encrypted := base64ToBytes(strings.Join(readLines("files/6.txt"), ""))
+	encrypted := bu.Base64ToBytes(strings.Join(readLines("files/6.txt"), ""))
 
 	key := crackRepeatedKeyXorCipher(encrypted)
 

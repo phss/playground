@@ -1,4 +1,4 @@
-package main
+package byteutil
 
 import "testing"
 
@@ -16,7 +16,7 @@ func TestXorBytes(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		actual := xorBytes(c.a, c.b)
+		actual := XorBytes(c.a, c.b)
 		for i, _ := range c.expected {
 			if actual[i] != c.expected[i] {
 				t.Errorf("Expected byte at %d to be <%d>, but was <%d>", i, c.expected[i], actual[i])
