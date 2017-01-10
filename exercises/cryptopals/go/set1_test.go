@@ -4,12 +4,13 @@ import (
 	"strings"
 	"testing"
 )
+import tu "./testutil"
 
 func TestSet1Challenge1(t *testing.T) {
 	expectedBase64String := "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t"
 	actualBase64String := hexToBase64("49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d")
 
-	assertEquals(t, expectedBase64String, actualBase64String)
+	tu.AssertEquals(t, expectedBase64String, actualBase64String)
 }
 
 func TestSet1Challenge2(t *testing.T) {
@@ -19,15 +20,15 @@ func TestSet1Challenge2(t *testing.T) {
 			hexToBytes("1c0111001f010100061a024b53535009181c"),
 			hexToBytes("686974207468652062756c6c277320657965")))
 
-	assertEquals(t, expectedXor, actualXor)
+	tu.AssertEquals(t, expectedXor, actualXor)
 }
 
 func TestSet1Challenge3(t *testing.T) {
 	hexEncodedString := "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
 	result := crackSingleByteXorCipher(hexEncodedString)
 
-	assertEquals(t, "Cooking MC's like a pound of bacon", result.message)
-	assertEquals(t, byte(88), result.key)
+	tu.AssertEquals(t, "Cooking MC's like a pound of bacon", result.message)
+	tu.AssertEquals(t, byte(88), result.key)
 }
 
 func TestSet1Challenge4(t *testing.T) {
@@ -58,8 +59,8 @@ func TestSet1Challenge4(t *testing.T) {
 		}
 	}
 
-	assertEquals(t, "Now that the party is jumping\n", bestResult.message)
-	assertEquals(t, byte(53), bestResult.key)
+	tu.AssertEquals(t, "Now that the party is jumping\n", bestResult.message)
+	tu.AssertEquals(t, byte(53), bestResult.key)
 }
 
 func TestSet1Challenge5(t *testing.T) {
@@ -70,7 +71,7 @@ func TestSet1Challenge5(t *testing.T) {
 
 	actual := bytesToHex(xorBytes([]byte(phrase), []byte(key)))
 
-	assertEquals(t, expected, actual)
+	tu.AssertEquals(t, expected, actual)
 }
 
 func TestSet1Challenge6(t *testing.T) {
@@ -78,5 +79,5 @@ func TestSet1Challenge6(t *testing.T) {
 
 	key := crackRepeatedKeyXorCipher(encrypted)
 
-	assertEquals(t, "Terminator X: Bring the noise", string(key))
+	tu.AssertEquals(t, "Terminator X: Bring the noise", string(key))
 }

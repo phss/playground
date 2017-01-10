@@ -1,10 +1,13 @@
 package main
 
-import "testing"
-import "bytes"
+import (
+	"bytes"
+	"testing"
+)
+import tu "./testutil"
 
 func TestHexToBase64Conversion(t *testing.T) {
-	assertEquals(t, "ASNFZ4mrze8=", hexToBase64("0123456789abcdef"))
+	tu.AssertEquals(t, "ASNFZ4mrze8=", hexToBase64("0123456789abcdef"))
 }
 
 func TestHexToBytesConversion(t *testing.T) {
@@ -35,12 +38,12 @@ func TestBytesToHexConversion(t *testing.T) {
 
 	for _, c := range cases {
 		actual := bytesToHex(c.input)
-		assertEquals(t, c.expected, actual)
+		tu.AssertEquals(t, c.expected, actual)
 	}
 }
 
 func TestBytesToBase64Conversion(t *testing.T) {
-	assertEquals(t, "SSfw", bytesToBase64([]byte{73, 39, 240}))
+	tu.AssertEquals(t, "SSfw", bytesToBase64([]byte{73, 39, 240}))
 }
 
 func TestBase64ToBytesConversion(t *testing.T) {
