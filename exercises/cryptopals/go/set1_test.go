@@ -6,6 +6,7 @@ import (
 )
 import tu "./testutil"
 import bu "./byteutil"
+import c "./crackers"
 
 func TestSet1Challenge1(t *testing.T) {
 	expectedBase64String := "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t"
@@ -26,17 +27,17 @@ func TestSet1Challenge2(t *testing.T) {
 
 func TestSet1Challenge3(t *testing.T) {
 	hexEncodedString := "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
-	result := crackSingleByteXorCipher(hexEncodedString)
+	result := c.CrackSingleByteXorCipher(hexEncodedString)
 
-	tu.AssertEquals(t, "Cooking MC's like a pound of bacon", result.message)
-	tu.AssertEquals(t, byte(88), result.key)
+	tu.AssertEquals(t, "Cooking MC's like a pound of bacon", result.Message)
+	tu.AssertEquals(t, byte(88), result.Key)
 }
 
 func TestSet1Challenge4(t *testing.T) {
 	lines := readLines("files/4.txt")
 
 	jobs := make(chan string, len(lines))
-	results := make(chan crackResult, len(lines))
+	results := make(chan c.CrackResult, len(lines))
 
 	for _, line := range lines {
 		jobs <- line
@@ -46,22 +47,22 @@ func TestSet1Challenge4(t *testing.T) {
 	for w := 0; w <= 5; w++ {
 		func() {
 			for line := range jobs {
-				results <- crackSingleByteXorCipher(line)
+				results <- c.CrackSingleByteXorCipher(line)
 			}
 		}()
 	}
 
-	var bestResult crackResult
+	var bestResult c.CrackResult
 
 	for i := 0; i < len(lines); i++ {
 		result := <-results
-		if result.score > bestResult.score {
+		if result.Score > bestResult.Score {
 			bestResult = result
 		}
 	}
 
-	tu.AssertEquals(t, "Now that the party is jumping\n", bestResult.message)
-	tu.AssertEquals(t, byte(53), bestResult.key)
+	tu.AssertEquals(t, "Now that the party is jumping\n", bestResult.Message)
+	tu.AssertEquals(t, byte(53), bestResult.Key)
 }
 
 func TestSet1Challenge5(t *testing.T) {
@@ -78,7 +79,7 @@ func TestSet1Challenge5(t *testing.T) {
 func TestSet1Challenge6(t *testing.T) {
 	encrypted := bu.Base64ToBytes(strings.Join(readLines("files/6.txt"), ""))
 
-	key := crackRepeatedKeyXorCipher(encrypted)
+	key := c.CrackRepeatedKeyXorCipher(encrypted)
 
 	tu.AssertEquals(t, "Terminator X: Bring the noise", string(key))
 }

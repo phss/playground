@@ -1,28 +1,28 @@
-package main
+package crackers
 
-import bu "./byteutil"
+import bu "../byteutil"
 
-type crackResult struct {
-	message string
-	key     byte
-	score   int
+type CrackResult struct {
+	Message string
+	Key     byte
+	Score   int
 }
 
-func crackSingleByteXorCipher(hexString string) (result crackResult) {
+func CrackSingleByteXorCipher(hexString string) (result CrackResult) {
 	bytes := bu.HexToBytes(hexString)
 	for i := 0; i < 256; i++ {
 		key := byte(i)
 		xor := bu.XorBytes(bytes, []byte{key})
 		message := string(xor)
 		score := simpleEnglishScoring(message)
-		if score > result.score {
-			result = crackResult{message, key, score}
+		if score > result.Score {
+			result = CrackResult{message, key, score}
 		}
 	}
 	return
 }
 
-func crackRepeatedKeyXorCipher(encrypted []byte) []byte {
+func CrackRepeatedKeyXorCipher(encrypted []byte) []byte {
 	guessedKeysize := guessXorKeysize(encrypted)
 	key := make([]byte, guessedKeysize)
 
@@ -34,7 +34,7 @@ func crackRepeatedKeyXorCipher(encrypted []byte) []byte {
 			j += guessedKeysize
 		}
 
-		key[i] = crackSingleByteXorCipher(bu.BytesToHex(block)).key
+		key[i] = CrackSingleByteXorCipher(bu.BytesToHex(block)).Key
 	}
 
 	return key
