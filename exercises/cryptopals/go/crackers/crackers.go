@@ -4,14 +4,14 @@ import bu "../byteutil"
 
 type CrackResult struct {
 	Message string
-	Key     byte
+	Key     []byte
 	Score   int
 }
 
 func CrackSingleByteXorCipher(encrypted []byte) (result CrackResult) {
 	for i := 0; i < 256; i++ {
-		key := byte(i)
-		xor := bu.XorBytes(encrypted, []byte{key})
+		key := []byte{byte(i)}
+		xor := bu.XorBytes(encrypted, key)
 		message := string(xor)
 		score := simpleEnglishScoring(message)
 		if score > result.Score {
@@ -33,7 +33,7 @@ func CrackRepeatedKeyXorCipher(encrypted []byte) []byte {
 			j += guessedKeysize
 		}
 
-		key[i] = CrackSingleByteXorCipher(block).Key
+		key[i] = CrackSingleByteXorCipher(block).Key[0]
 	}
 
 	return key

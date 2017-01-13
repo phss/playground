@@ -31,7 +31,7 @@ func TestSet1Challenge3(t *testing.T) {
 	result := c.CrackSingleByteXorCipher(bu.HexToBytes(hexEncodedString))
 
 	tu.AssertEquals(t, "Cooking MC's like a pound of bacon", result.Message)
-	tu.AssertEquals(t, byte(88), result.Key)
+	tu.AssertBytesEquals(t, []byte{88}, result.Key)
 }
 
 func TestSet1Challenge4(t *testing.T) {
@@ -63,7 +63,7 @@ func TestSet1Challenge4(t *testing.T) {
 	}
 
 	tu.AssertEquals(t, "Now that the party is jumping\n", bestResult.Message)
-	tu.AssertEquals(t, byte(53), bestResult.Key)
+	tu.AssertBytesEquals(t, []byte{53}, bestResult.Key)
 }
 
 func TestSet1Challenge5(t *testing.T) {

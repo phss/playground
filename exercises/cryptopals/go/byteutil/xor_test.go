@@ -1,6 +1,7 @@
 package byteutil
 
 import "testing"
+import tu "../testutil"
 
 func TestXorBytes(t *testing.T) {
 	cases := []struct {
@@ -17,11 +18,7 @@ func TestXorBytes(t *testing.T) {
 
 	for _, c := range cases {
 		actual := XorBytes(c.a, c.b)
-		for i, _ := range c.expected {
-			if actual[i] != c.expected[i] {
-				t.Errorf("Expected byte at %d to be <%d>, but was <%d>", i, c.expected[i], actual[i])
-			}
-		}
+		tu.AssertBytesEquals(t, c.expected, actual)
 	}
 
 }
