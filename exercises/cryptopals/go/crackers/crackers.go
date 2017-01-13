@@ -8,11 +8,10 @@ type CrackResult struct {
 	Score   int
 }
 
-func CrackSingleByteXorCipher(hexString string) (result CrackResult) {
-	bytes := bu.HexToBytes(hexString)
+func CrackSingleByteXorCipher(encrypted []byte) (result CrackResult) {
 	for i := 0; i < 256; i++ {
 		key := byte(i)
-		xor := bu.XorBytes(bytes, []byte{key})
+		xor := bu.XorBytes(encrypted, []byte{key})
 		message := string(xor)
 		score := simpleEnglishScoring(message)
 		if score > result.Score {
@@ -34,7 +33,7 @@ func CrackRepeatedKeyXorCipher(encrypted []byte) []byte {
 			j += guessedKeysize
 		}
 
-		key[i] = CrackSingleByteXorCipher(bu.BytesToHex(block)).Key
+		key[i] = CrackSingleByteXorCipher(block).Key
 	}
 
 	return key

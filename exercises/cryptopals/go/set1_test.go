@@ -28,7 +28,7 @@ func TestSet1Challenge2(t *testing.T) {
 
 func TestSet1Challenge3(t *testing.T) {
 	hexEncodedString := "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
-	result := c.CrackSingleByteXorCipher(hexEncodedString)
+	result := c.CrackSingleByteXorCipher(bu.HexToBytes(hexEncodedString))
 
 	tu.AssertEquals(t, "Cooking MC's like a pound of bacon", result.Message)
 	tu.AssertEquals(t, byte(88), result.Key)
@@ -37,18 +37,18 @@ func TestSet1Challenge3(t *testing.T) {
 func TestSet1Challenge4(t *testing.T) {
 	lines := io.ReadLines("files/4.txt")
 
-	jobs := make(chan string, len(lines))
+	jobs := make(chan []byte, len(lines))
 	results := make(chan c.CrackResult, len(lines))
 
 	for _, line := range lines {
-		jobs <- line
+		jobs <- bu.HexToBytes(line)
 	}
 	close(jobs)
 
 	for w := 0; w <= 5; w++ {
 		func() {
-			for line := range jobs {
-				results <- c.CrackSingleByteXorCipher(line)
+			for bytes := range jobs {
+				results <- c.CrackSingleByteXorCipher(bytes)
 			}
 		}()
 	}
