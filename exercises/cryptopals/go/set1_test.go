@@ -6,6 +6,7 @@ import (
 )
 import tu "./testutil"
 import bu "./byteutil"
+import io "./ioutil"
 import c "./crackers"
 
 func TestSet1Challenge1(t *testing.T) {
@@ -34,7 +35,7 @@ func TestSet1Challenge3(t *testing.T) {
 }
 
 func TestSet1Challenge4(t *testing.T) {
-	lines := readLines("files/4.txt")
+	lines := io.ReadLines("files/4.txt")
 
 	jobs := make(chan string, len(lines))
 	results := make(chan c.CrackResult, len(lines))
@@ -77,7 +78,7 @@ func TestSet1Challenge5(t *testing.T) {
 }
 
 func TestSet1Challenge6(t *testing.T) {
-	encrypted := bu.Base64ToBytes(strings.Join(readLines("files/6.txt"), ""))
+	encrypted := bu.Base64ToBytes(strings.Join(io.ReadLines("files/6.txt"), ""))
 
 	key := c.CrackRepeatedKeyXorCipher(encrypted)
 

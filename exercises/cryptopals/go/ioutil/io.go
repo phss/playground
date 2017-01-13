@@ -1,4 +1,4 @@
-package main
+package ioutil
 
 import (
 	"bufio"
@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func readLines(filename string) []string {
+func ReadLines(filename string) []string {
 	lines := make([]string, 0)
 
 	file, _ := os.Open(filename)
