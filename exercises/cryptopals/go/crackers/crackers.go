@@ -21,7 +21,7 @@ func CrackSingleByteXorCipher(encrypted []byte) (result CrackResult) {
 	return
 }
 
-func CrackRepeatedKeyXorCipher(encrypted []byte) []byte {
+func CrackRepeatedKeyXorCipher(encrypted []byte) CrackResult {
 	guessedKeysize := guessXorKeysize(encrypted)
 	key := make([]byte, guessedKeysize)
 
@@ -36,7 +36,7 @@ func CrackRepeatedKeyXorCipher(encrypted []byte) []byte {
 		key[i] = CrackSingleByteXorCipher(block).Key[0]
 	}
 
-	return key
+	return CrackResult{string(bu.XorBytes(encrypted, key)), key, -1}
 }
 
 func guessXorKeysize(data []byte) int {

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"strings"
 	"testing"
 )
@@ -80,7 +81,7 @@ func TestSet1Challenge5(t *testing.T) {
 func TestSet1Challenge6(t *testing.T) {
 	encrypted := bu.Base64ToBytes(strings.Join(io.ReadLines("files/6.txt"), ""))
 
-	key := c.CrackRepeatedKeyXorCipher(encrypted)
+	result := c.CrackRepeatedKeyXorCipher(encrypted)
 
-	tu.AssertEquals(t, "Terminator X: Bring the noise", string(key))
+	tu.AssertEquals(t, "Terminator X: Bring the noise", string(result.Key))
 }
