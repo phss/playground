@@ -1,13 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"strings"
 	"testing"
 )
 import tu "./testutil"
 import bu "./byteutil"
 import io "./ioutil"
-import c "./crackers"
+import c "./crypto"
 
 func TestSet1Challenge1(t *testing.T) {
 	expectedBase64String := "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t"
@@ -83,4 +84,11 @@ func TestSet1Challenge6(t *testing.T) {
 	result := c.CrackRepeatedKeyXorCipher(encrypted)
 
 	tu.AssertEquals(t, "Terminator X: Bring the noise", string(result.Key))
+}
+
+func TestSet1Challenge7(t *testing.T) {
+	//encrypted := bu.Base64ToBytes(strings.Join(io.ReadLines("files/7.txt"), ""))
+	key := []byte("YELLOW SUBMARINE")
+
+	fmt.Println(bu.BytesToHex(key))
 }
