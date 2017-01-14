@@ -1,4 +1,4 @@
-package crackers
+package crypto
 
 import bu "../byteutil"
 

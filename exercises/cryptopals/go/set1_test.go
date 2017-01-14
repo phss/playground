@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strings"
 	"testing"
 )
@@ -87,8 +86,10 @@ func TestSet1Challenge6(t *testing.T) {
 }
 
 func TestSet1Challenge7(t *testing.T) {
-	//encrypted := bu.Base64ToBytes(strings.Join(io.ReadLines("files/7.txt"), ""))
+	encrypted := bu.Base64ToBytes(strings.Join(io.ReadLines("files/7.txt"), ""))
 	key := []byte("YELLOW SUBMARINE")
 
-	fmt.Println(bu.BytesToHex(key))
+	decrypted := c.DecryptAes128Ecb(encrypted, key)
+
+	tu.AssertStringContains(t, "Lay down and boogie and play that funky music till you die", string(decrypted))
 }
