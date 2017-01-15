@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strings"
 	"testing"
 )
@@ -97,6 +96,8 @@ func TestSet1Challenge7(t *testing.T) {
 
 func TestSet1Challenge8(t *testing.T) {
 	hexLines := io.ReadLines("files/8.txt")
+	highestCountIndex := 0
+	highestCount := 0
 
 	for i, hexLine := range hexLines {
 		byteFreq := make(map[string]int)
@@ -109,6 +110,19 @@ func TestSet1Challenge8(t *testing.T) {
 				byteFreq[byte] = 1
 			}
 		}
-		fmt.Println(i, byteFreq)
+
+		mostFrequentCount := 0
+		for _, count := range byteFreq {
+			if count > mostFrequentCount {
+				mostFrequentCount = count
+			}
+		}
+
+		if mostFrequentCount > highestCount {
+			highestCount = mostFrequentCount
+			highestCountIndex = i
+		}
 	}
+
+	tu.AssertEquals(t, 132, highestCountIndex)
 }
