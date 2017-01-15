@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"strings"
 	"testing"
 )
@@ -92,4 +93,22 @@ func TestSet1Challenge7(t *testing.T) {
 	decrypted := c.DecryptAes128Ecb(encrypted, key)
 
 	tu.AssertStringContains(t, "Lay down and boogie and play that funky music till you die", string(decrypted))
+}
+
+func TestSet1Challenge8(t *testing.T) {
+	hexLines := io.ReadLines("files/8.txt")
+
+	for i, hexLine := range hexLines {
+		byteFreq := make(map[string]int)
+		for j := 0; j < len(hexLine)-1; j += 2 {
+			byte := hexLine[j : j+2]
+			_, exists := byteFreq[byte]
+			if exists {
+				byteFreq[byte]++
+			} else {
+				byteFreq[byte] = 1
+			}
+		}
+		fmt.Println(i, byteFreq)
+	}
 }
