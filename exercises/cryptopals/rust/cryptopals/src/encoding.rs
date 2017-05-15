@@ -17,3 +17,8 @@ pub fn hexstr_to_bytes(string: &str) -> Vec<Byte> {
 pub fn bytes_to_base64str(bytes: &[u8]) -> String {
     encode(bytes)
 }
+
+pub fn hexstr_to_base64str(string: &str) -> String {
+    let bytes = hexstr_to_bytes(&string);
+    bytes_to_base64str(&bytes)
+}
