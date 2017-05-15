@@ -1,6 +1,5 @@
 extern crate base64;
 
-use base64::encode;
 mod encoding;
 
 fn main() {
@@ -8,8 +7,7 @@ fn main() {
                  6c696b65206120706f69736f6e6f7573206d757368726f6f6d";
 
     let bytes = encoding::hexstr_to_bytes(&input);
-
-    let b64 = encode(&bytes);
+    let b64 = encoding::bytes_to_base64str(&bytes);
 
     println!("{:?}", b64);
 }
