@@ -1,0 +1,6 @@
+[package]
+name = "rust-hyper"
+version = "0.1.0"
+authors = ["Paulo Schneider <paulo.schneider@gmail.com>"]
+
+[dependencies]
