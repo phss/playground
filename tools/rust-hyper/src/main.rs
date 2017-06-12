@@ -6,7 +6,13 @@ use hyper::Client;
 
 fn proxy_request(url: &str) -> hyper::client::Response {
     let response = Client::new().get(url).send().unwrap();
+
     println!("Go {} from {}!", response.status, url);
+    println!("Headers:");
+    for header in response.headers.iter() {
+       print!("- {}", header);
+    }
+
     response
 }
 
