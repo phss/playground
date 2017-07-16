@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from StringIO import StringIO
+from dice import *
 
 class Player(object):
   def __init__(self, name, fight_attr):
@@ -9,6 +10,9 @@ class Player(object):
     self.stress = [None, None]
     self.consequences = [None, None, None]
     self.alive = True
+
+  def roll_fight(self, dice):
+    return self.fight_attr + dice.roll()
 
   def take_hit(self, shift):
     if shift <= 0:
@@ -36,6 +40,7 @@ class Player(object):
     return desc.getvalue()
 
 if __name__ == '__main__':
-  player = Player("Bob", 1)
+  player = Player("Bob", 4)
+  print player.roll_fight(FateDiceHand())
   player.take_hit(10)
   print player
