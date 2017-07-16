@@ -24,11 +24,15 @@ class Player(object):
       self.stress[1] = "Ouch"
       return
 
-    for i, c in reversed(list(enumerate(self.consequences))):
+    best_ci = None
+    for i, c in enumerate(self.consequences):
       ci = (i + 1) * 2
-      if c == None:
-        self.consequences[i] = "Ouch"
-        return self.take_hit(shift - ci)
+      if c == None and (shift >= ci or best_ci == None):
+        best_ci = i
+
+    if best_ci != None:
+      self.consequences[best_ci] = "Ouch"
+      return self.take_hit(shift - (best_ci + 1) * 2)
 
     self.alive = False
 
