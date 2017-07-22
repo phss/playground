@@ -37,3 +37,5 @@ eval_loss = estimator.evaluate(input_fn=eval_input_fn)
 print("train loss: %r"% train_loss)
 print("eval loss: %r"% eval_loss)
 print list(estimator.predict(x={'x': x_train}))
+for n in estimator.get_variable_names():
+  print "%s = %s" % (n, estimator.get_variable_value(n))
