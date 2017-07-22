@@ -1,3 +1,5 @@
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 import tensorflow as tf
 import numpy as np
 
@@ -34,3 +36,4 @@ train_loss = estimator.evaluate(input_fn=input_fn)
 eval_loss = estimator.evaluate(input_fn=eval_input_fn)
 print("train loss: %r"% train_loss)
 print("eval loss: %r"% eval_loss)
+print list(estimator.predict(x={'x': x_train}))
