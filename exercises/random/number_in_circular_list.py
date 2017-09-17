@@ -7,32 +7,27 @@ class List:
 
 
 def make_circular_list(values):
-  first = None
-  previous = None
+  nodes = [List(value, None) for value in values]
+  if not nodes:
+    return None
 
-  for value in values:
-    node = List(value, None)
-    if first == None:
-      first = node
-    else:
-      previous.next_node = node
-    previous = node
+  for i in range(len(nodes) - 1):
+    nodes[i].next_node = nodes[i + 1]
+  nodes[-1].next_node = nodes[0]
 
-  if first != None:
-    previous.next_node = first
-  return first
+  return nodes[0]
 
 
-def number_exists(l, n):
-  node = l
+def number_exists(list, number):
+  node = list
   while True:
-    if node == None or node.value > n:
+    if node == None or node.value > number:
       return False
-    elif node.value == n:
+    elif node.value == number:
       return True
     else:
       node = node.next_node
-      if node == l:
+      if node == list:
         return False
 
 
