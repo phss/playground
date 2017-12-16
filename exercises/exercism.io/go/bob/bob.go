@@ -8,15 +8,16 @@ import (
 func Hey(remark string) string {
 	remark = strings.TrimSpace(remark)
 
-	if isAYell(remark) && isAQuestion(remark) {
+	switch {
+	case isAYell(remark) && isAQuestion(remark):
 		return "Calm down, I know what I'm doing!"
-	} else if isAYell(remark) {
+	case isAYell(remark):
 		return "Whoa, chill out!"
-	} else if isAQuestion(remark) {
+	case isAQuestion(remark):
 		return "Sure."
-	} else if isInSilence(remark) {
+	case isInSilence(remark):
 		return "Fine. Be that way!"
-	} else {
+	default:
 		return "Whatever."
 	}
 }
