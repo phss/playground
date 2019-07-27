@@ -10,10 +10,10 @@ import (
 )
 
 func main() {
+
 	clientID := flag.String("clientId", "", "")
 	clientSecret := flag.String("clientSecret", "", "")
-	username := flag.String("username", "", "")
-	password := flag.String("password", "", "")
+	refreshToken := flag.String("refreshToken", "", "")
 
 	ctx := context.Background()
 	conf := &oauth2.Config{
@@ -25,7 +25,10 @@ func main() {
 		},
 	}
 
-	token, err := conf.PasswordCredentialsToken(ctx, *username, *password)
+	previousToken := &oauth2.Token{
+		RefreshToken: *refreshToken,
+	}
+	token, err := conf.TokenSource(ctx, previousToken).Token()
 	if err != nil {
 		fmt.Println(err)
 		return
