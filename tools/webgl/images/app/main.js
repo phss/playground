@@ -43,9 +43,12 @@ function setRectangle(gl, x, y, width, height) {
 define(["text!app/vertex.fx", "text!app/fragment.fx"],
 function (vertexShaderSource, fragmentShaderSource) {
     var image = new Image();
-    image.src = "http://localhost:8000/sample.jpg";
+    // image.src = "http://localhost:8000/sample.jpg";
+    image.src = "http://localhost:8000/JACKAL2-SEM.png";
     image.onload = function() {
         var canvas = document.getElementById("c");
+        canvas.width = image.width;
+        canvas.height = image.height;
         var gl = canvas.getContext("webgl");
 
         // Setup shaders
@@ -65,14 +68,7 @@ function (vertexShaderSource, fragmentShaderSource) {
 
         var texcoordBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, texcoordBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
-            0.0,  0.0,
-            1.0,  0.0,
-            0.0,  1.0,
-            0.0,  1.0,
-            1.0,  0.0,
-            1.0,  1.0,
-        ]), gl.STATIC_DRAW);
+        setRectangle(gl, 0, 0, 1.0, 1.0);
 
 
         var texture = gl.createTexture();
