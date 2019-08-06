@@ -25,14 +25,12 @@ function createProgram(gl, vertexShader, fragmentShader) {
     gl.deleteProgram(program);
 }
 
-define(function (require) {
+define(["text!app/vertex.fx", "text!app/fragment.fx"],
+function (vertexShaderSource, fragmentShaderSource) {
     var canvas = document.getElementById("c");
     var gl = canvas.getContext("webgl");
 
     // Setup shaders
-    var vertexShaderSource = document.getElementById("2d-vertex-shader").text;
-    var fragmentShaderSource = document.getElementById("2d-fragment-shader").text;
-
     var vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
     var fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
 
