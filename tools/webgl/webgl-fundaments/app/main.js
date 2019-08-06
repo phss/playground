@@ -25,7 +25,7 @@ function createProgram(gl, vertexShader, fragmentShader) {
     gl.deleteProgram(program);
 }
 
-function main() {
+define(function (require) {
     var canvas = document.getElementById("c");
     var gl = canvas.getContext("webgl");
 
@@ -73,6 +73,4 @@ function main() {
     var offset = 0;
     var count = 3;
     gl.drawArrays(primitiveType, offset, count);
-}
-
-main();
+});
