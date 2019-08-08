@@ -27,10 +27,14 @@ varying vec2 v_texCoord;
 #endif
 
 // To be defined somewhere else?
-const int FrameCount = 1;
-const vec2 TextureSize = vec2(512.0, 512.0);
-const vec2 InputSize = vec2(512.0, 512.0);
-const vec2 OutputSize = vec2(512.0, 512.0);
+const int FrameCount = 2;
+const float scaleX = 1.0 * 3.0;
+const vec2 TextureSize = vec2(256.0 * scaleX, 240.0);
+// const vec2 TextureSize = vec2(512.0 * scaleX, 512.0);
+const vec2 InputSize = vec2(256.0 * scaleX, 240.0);
+// const vec2 InputSize = vec2(512.0 * scaleX, 512.0);
+const vec2 OutputSize = vec2(256.0 * scaleX, 240.0);
+// const vec2 OutputSize = vec2(512.0 * scaleX, 512.0);
 
 const mat3 yiq_mat = mat3(
       0.2989, 0.5870, 0.1140,
@@ -49,7 +53,10 @@ vec3 rgb2yiq(vec3 col) {
 }
 
 void main() {
-   vec2 pix_no = v_texCoord * TextureSize * (OutputSize / InputSize); /// ???
+   vec4 SourceSize = vec4(TextureSize, 1.0 / TextureSize); //either TextureSize or InputSize
+   vec4 outsize = vec4(OutputSize, 1.0 / OutputSize);
+//    vec2 pix_no = v_texCoord * TextureSize * (OutputSize / InputSize); /// ???
+   vec2 pix_no = v_texCoord * SourceSize.xy * (outsize.xy / InputSize);
 
 
    vec3 col = texture2D(u_image, v_texCoord).rgb;
