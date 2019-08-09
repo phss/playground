@@ -104,8 +104,8 @@ function setRectangle(gl, x, y, width, height) {
 
   }
 
-define(["text!app/vertex.fx", "text!app/fragment.fx", "text!app/fragment-2nd.fx", "text!app/fragment-3rd.fx"],
-function (vertexShaderSource, pass1fragmentShaderSource, pass2fragmentShaderSource, hyllianFragmentShaderSource) {
+define(["text!app/vertex.fx", "text!app/fragment.fx", "text!app/fragment-2nd.fx", "text!app/fragment-3rd.fx", "text!app/fragmentSinglePass.fx"],
+function (vertexShaderSource, pass1fragmentShaderSource, pass2fragmentShaderSource, hyllianFragmentShaderSource, fragmentSinglePassShaderSource) {
     var image = new Image();
     // image.src = "http://localhost:8000/sample.jpg";
     image.src = "http://localhost:8000/JACKAL2-SEM.png";
@@ -119,14 +119,17 @@ function (vertexShaderSource, pass1fragmentShaderSource, pass2fragmentShaderSour
         var vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
         var pass1FragmentShader = createShader(gl, gl.FRAGMENT_SHADER, pass1fragmentShaderSource);
         var pass2FragmentShader = createShader(gl, gl.FRAGMENT_SHADER, pass2fragmentShaderSource);
+        var fragmentSinglePassShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentSinglePassShaderSource);
         var hyllianFragmentShader = createShader(gl, gl.FRAGMENT_SHADER, hyllianFragmentShaderSource);
 
         var pass1Program = createProgram(gl, vertexShader, pass1FragmentShader);
         var pass2Program = createProgram(gl, vertexShader, pass2FragmentShader);
+        var singlePassProgram = createProgram(gl, vertexShader, fragmentSinglePassShader);
         var hyllianProgram = createProgram(gl, vertexShader, hyllianFragmentShader);
 
         // runProgram(gl, hyllianProgram, image);
-        runProgram(gl, pass1Program, image);
-        runProgram(gl, pass2Program, canvas);
+        runProgram(gl, singlePassProgram, image);
+        // runProgram(gl, pass2Program, canvas);
+        // runProgram(gl, hyllianProgram, canvas);
     };
 });
