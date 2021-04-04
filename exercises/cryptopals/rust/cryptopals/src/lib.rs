@@ -2,7 +2,7 @@ pub mod converter {
     use crate::hex;
 
     pub fn hex_to_base64(hex_string: String) -> String {
-        base64::encode(hex::decode(hex_string))
+        base64::encode(hex::decode(hex_string).unwrap())
     }
 
     #[cfg(test)]
@@ -20,18 +20,25 @@ pub mod converter {
 }
 
 mod hex {
-    pub fn decode(hex_string: String) -> Vec<u8> {
-        let digits: Vec<u8> = hex_string
-            .chars()
-            .map(|c| c.to_digit(16).unwrap() as u8)
-            .collect();
+    #[derive(Debug, Clone, Copy, PartialEq)]
+    pub enum DecodeError {
+        InvalidChar(char),
+    }
 
-        digits
+    pub fn decode(string: String) -> Result<Vec<u8>, DecodeError> {
+        let to_byte = |c: char| {
+            c.to_digit(16)
+                .map(|digit| digit as u8)
+                .ok_or(DecodeError::InvalidChar(c))
+        };
+        let half_bytes: Result<Vec<u8>, DecodeError> = string.chars().map(to_byte).collect();
+
+        half_bytes?
             .chunks(2)
             .map(|pair| match pair {
-                [high, low] => (high << 4) + low,
-                [high] => (high << 4),
-                _ => panic!("malformed digits"),
+                [high, low] => Ok((high << 4) + low),
+                [high] => Ok(high << 4),
+                _ => panic!("should never reach here"),
             })
             .collect()
     }
@@ -43,26 +50,30 @@ mod hex {
         #[test]
         fn test_decode() {
             assert_eq!(
-                vec![73, 39, 255],
+                Ok(vec![73, 39, 255]),
                 decode(String::from("4927ff")),
                 "even string"
             );
             assert_eq!(
-                vec![73, 39, 240],
+                Ok(vec![73, 39, 240]),
                 decode(String::from("4927f")),
                 "odd string"
             );
             assert_eq!(
-                vec![0, 17, 34, 51, 68, 85, 102, 119, 152, 153, 170, 187, 204, 221, 238, 255],
+                Ok(vec![
+                    0, 17, 34, 51, 68, 85, 102, 119, 152, 153, 170, 187, 204, 221, 238, 255
+                ]),
                 decode(String::from("00112233445566779899aabbccddeeff")),
                 "all digits"
             );
         }
 
         #[test]
-        #[should_panic]
-        fn test_decode_panics_when_bad_digit() {
-            decode(String::from("invalid"));
+        fn test_decode_with_bad_digit() {
+            assert_eq!(
+                Err(DecodeError::InvalidChar('i')),
+                decode(String::from("invalid"))
+            );
         }
     }
 }
