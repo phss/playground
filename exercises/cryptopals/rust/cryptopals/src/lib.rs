@@ -35,12 +35,26 @@ pub mod converter {
 
         #[test]
         fn test_hex_to_bytes_with_even_length_string() {
-            assert_eq!(vec![73, 39, 255], hex_to_bytes(String::from("4927ff")))
+            assert_eq!(vec![73, 39, 255], hex_to_bytes(String::from("4927ff")));
         }
 
         #[test]
         fn test_hex_to_bytes_with_odd_length_string() {
-            assert_eq!(vec![73, 39, 240], hex_to_bytes(String::from("4927f")))
+            assert_eq!(vec![73, 39, 240], hex_to_bytes(String::from("4927f")));
+        }
+
+        #[test]
+        fn test_hex_to_bytes_all_digits() {
+            assert_eq!(
+                vec![0, 17, 34, 51, 68, 85, 102, 119, 152, 153, 170, 187, 204, 221, 238, 255],
+                hex_to_bytes(String::from("00112233445566779899aabbccddeeff"))
+            );
+        }
+
+        #[test]
+        #[should_panic]
+        fn test_hex_to_bytes_panics_when_bad_digit() {
+            hex_to_bytes(String::from("invalid"));
         }
     }
 }
