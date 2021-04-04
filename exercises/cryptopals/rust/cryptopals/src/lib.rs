@@ -1,5 +1,9 @@
 pub mod converter {
     pub fn hex_to_base64(input: String) -> String {
+        base64::encode(hex_to_bytes(input))
+    }
+
+    fn hex_to_bytes(input: String) -> Vec<u8> {
         let mut digits = input.chars().map(|c| c.to_digit(16).unwrap() as u8);
         let mut bytes = Vec::new();
         loop {
@@ -10,7 +14,7 @@ pub mod converter {
             };
             bytes.push(byte);
         }
-        base64::encode(bytes)
+        bytes
     }
 
     #[cfg(test)]
@@ -18,11 +22,21 @@ pub mod converter {
         use super::*;
 
         #[test]
-        fn test_hex_to_bytes_conversion() {
+        fn test_hex_to_base64_conversion() {
             assert_eq!(
                 String::from("ASNFZ4mrze8="),
                 hex_to_base64(String::from("0123456789abcdef"))
             );
+        }
+
+        #[test]
+        fn test_hex_to_bytes_with_even_length_string() {
+            assert_eq!(vec![73, 39, 255], hex_to_bytes(String::from("4927ff")))
+        }
+
+        #[test]
+        fn test_hex_to_bytes_with_odd_length_string() {
+            assert_eq!(vec![73, 39, 240], hex_to_bytes(String::from("4927f")))
         }
     }
 }
