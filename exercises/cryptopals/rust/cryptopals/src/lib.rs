@@ -1,20 +1,24 @@
 pub mod converter {
-    pub fn hex_to_base64(input: String) -> String {
-        base64::encode(hex_to_bytes(input))
+    use core::panic;
+
+    pub fn hex_to_base64(hex_string: String) -> String {
+        base64::encode(hex_to_bytes(hex_string))
     }
 
-    fn hex_to_bytes(input: String) -> Vec<u8> {
-        let mut digits = input.chars().map(|c| c.to_digit(16).unwrap() as u8);
-        let mut bytes = Vec::new();
-        loop {
-            let byte = match (digits.next(), digits.next()) {
-                (Some(high), Some(low)) => (high << 4) + low,
-                (Some(high), None) => (high << 4),
-                _ => break,
-            };
-            bytes.push(byte);
-        }
-        bytes
+    fn hex_to_bytes(hex_string: String) -> Vec<u8> {
+        let digits: Vec<u8> = hex_string
+            .chars()
+            .map(|c| c.to_digit(16).unwrap() as u8)
+            .collect();
+
+        digits
+            .chunks(2)
+            .map(|pair| match pair {
+                [high, low] => (high << 4) + low,
+                [high] => (high << 4),
+                _ => panic!("malformed digits"),
+            })
+            .collect()
     }
 
     #[cfg(test)]
