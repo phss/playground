@@ -1,4 +1,4 @@
-(ns day1.part1
+(ns day1.part2
   (:require [clojure.string :as s]))
 
 (def input-file
@@ -16,6 +16,8 @@
 
 (def result
   (->> input
+       (partition 3 1)
+       (map #(apply + %))
        (partition 2 1)
        (filter increase?)
        (count)))
