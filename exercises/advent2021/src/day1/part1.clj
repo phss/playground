@@ -1,5 +1,7 @@
 (ns day1.part1
-  (:require [clojure.string :as s]))
+  (:require
+   [clojure.string :as s]
+   [day1.calc :as calc]))
 
 (def input-file
   (str "data/day1-input.txt"))
@@ -10,14 +12,7 @@
        (s/split-lines)
        (map #(Integer/parseInt %))))
 
-(defn increase?
-  [[a b]]
-  (> b a))
-
 (def result
-  (->> input
-       (partition 2 1)
-       (filter increase?)
-       (count)))
+  (calc/solve input))
 
 (println result)
