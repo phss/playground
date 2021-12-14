@@ -1,9 +1,7 @@
 (ns day2.part1
   (:require
-   [clojure.string :as s]))
-
-(def input-file
-  (str "data/day2.txt"))
+   [clojure.string :as s]
+   [parser :as parser]))
 
 (defn parse-line
   [line]
@@ -11,10 +9,7 @@
     [move (Integer/parseInt amount)]))
 
 (def input
-  (->> input-file
-       (slurp)
-       (s/split-lines)
-       (map parse-line)))
+  (parser/input parse-line "data/day2.txt"))
 
 (defn step
   [[position depth aim]

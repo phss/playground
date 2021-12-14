@@ -1,16 +1,10 @@
-(ns day1.part2
+(ns day1.part1
   (:require
-   [clojure.string :as s]
-   [day1.calc as :calc]))
-
-(def input-file
-  (str "data/day1.txt"))
+   [day1.calc :as calc]
+   [parser :as parser]))
 
 (def input
-  (->> input-file
-       (slurp)
-       (s/split-lines)
-       (map #(Integer/parseInt %))))
+  (parser/input parser/toInt "data/day1.txt"))
 
 (def result
   (->> input
