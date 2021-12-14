@@ -4,7 +4,7 @@
    [day1.calc as :calc]))
 
 (def input-file
-  (str "data/day1-input.txt"))
+  (str "data/day1.txt"))
 
 (def input
   (->> input-file
