@@ -1,30 +1,6 @@
-from dataclasses import dataclass
+import common
 
-@dataclass
-class Point:
-    x: int
-    y: int
-
-@dataclass
-class Line:
-    a: Point
-    b: Point
-
-
-def parse(filename: str) -> list[Line]:
-    with open(filename) as file:
-        fileLines = file.read().split('\n')
-
-        lines = []
-        for fileLine in fileLines:
-            a, b = fileLine.split(' -> ')
-            ax, ay = map(int, a.split(','))
-            bx, by = map(int, b.split(','))
-            lines.append(Line(Point(ax, ay), Point(bx, by)))
-
-        return lines
-
-def solve(input: list[Line], size: int) -> int:
+def solve(input: list[common.Line], size: int) -> int:
     board = [ [0]*size for i in range(size)]
 
     for line in input:
@@ -46,7 +22,7 @@ def solve(input: list[Line], size: int) -> int:
     return dangerPoints
 
 def main():
-    input = parse('data/day5.txt')
+    input = common.parse('data/day5.txt')
     result = solve(input, 1000)
     print(result)
 
