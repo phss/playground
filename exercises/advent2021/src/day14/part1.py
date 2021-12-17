@@ -22,8 +22,7 @@ def solve(input: Tuple[str, dict[str, str]]) -> int:
             second = polymer[i+1]
             pair = first + second
             newPolymer += first
-            if pair in rules:
-                newPolymer += rules[pair]
+            newPolymer += rules[pair]
         newPolymer += polymer[-1]        
         polymer = newPolymer
 
