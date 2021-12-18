@@ -64,6 +64,8 @@ def reduce(number):
     reducing = True
     while reducing:
         number, (exploded, _) = explode(number)
+        if exploded:
+            continue
         number, (splited, _) = split(number)
         reducing = exploded or splited
     return number
@@ -71,15 +73,28 @@ def reduce(number):
 def add(a, b):
     return reduce([a, b])
 
+def magnitude(number):
+    if type(number) == int:
+        return number
+    left, right = number
+    return 3*magnitude(left) + 2*magnitude(right)
+
 # Core
-def solve() -> int:
-    a = fromString("[[[[4,3],4],4],[7,[[8,4],9]]]")
-    b = fromString("[1,1]")
-    print(toString(add(a, b)))
-    return 0
+def parse(filename: str):
+    with open(filename) as file:
+        fileLines = file.read().split('\n')
+        return [fromString(line) for line in fileLines]
+
+def solve(input) -> int:
+    result = input[0]
+    for number in input[1:]:
+        result = add(result, number)
+    print(toString(result))
+    return magnitude(result)
 
 def main():
-    result = solve()
+    input = parse("data/day18.txt")
+    result = solve(input)
     print(result)
 
 if __name__ == '__main__':
