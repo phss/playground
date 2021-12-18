@@ -2,16 +2,16 @@ def parse(filename: str):
     with open(filename) as file:
         return file.read()
 
-def header(bits: str):
-    version = int(bits[0:3], 2)
-    type = int(bits[3:6], 2)
+def header(bits: str, i: int):
+    version = int(bits[i:i+3], 2)
+    type = int(bits[i+3:i+6], 2)
     return (version, type)
 
-def literalFrom(bits: str):
-    version, type = header(bits)
+def literalFrom(bits: str, i: int):
+    version, type = header(bits, i)
+    i += 6
 
     literal = ""
-    i = 6
     while True:
         control = bits[i]
         literal += bits[i+1:i+5]
@@ -19,26 +19,48 @@ def literalFrom(bits: str):
         if control == '0':
             break
 
-    while i % 4 != 0:
-        i += 1
+    return ((version, type, int(literal, 2)), i)
 
-    print(i)
+def lenghtSubpacketsFrom(bits: str, i: int):
+    version, type = header(bits, i)
+    i += 7
 
-    return ((version, type, int(literal, 2)), bits[i:])
+    length = int(bits[i:i+15], 2)
+    i += 15
 
-def packetify(bits: str):
-    (literal, bits) = literalFrom(bits)
-    print(bits)
-    return literal
+    subpacketsEnd = i + length
+    subpackets = []
+    while i < subpacketsEnd:
+        packet, i = packetify(bits, i)
+        subpackets.append(packet)
+
+    return ((version, type, subpackets), i)
+
+def packetify(bits: str, i: int):
+    _, type = header(bits, i)
+    if type == 4:
+        return literalFrom(bits, i)
+
+    return lenghtSubpacketsFrom(bits, i) 
 
 def solve(input: str) -> int:
-    bits = bin(int(input, 16))[2:]
-    packets = packetify(bits)
-    print(packets)
-    return -1
+    bits = format(int(input, 16), "0" + str(len(input) * 4) + "b")
+    packets, i = packetify(bits, 0)
+    print(packets, i)
+
+    def versionSum(packet):
+        version, type, value = (packet)
+        versions = [version]
+        if type != 4:
+            for subpacket in value:
+                versions.append(versionSum(subpacket))
+        return sum(versions)
+
+
+    return versionSum(packets)
 
 def main():
-    input = parse('data/literal.txt')
+    input = parse('data/lengthzero.txt')
     result = solve(input)
     print(result)
 
