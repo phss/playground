@@ -36,12 +36,29 @@ def lenghtSubpacketsFrom(bits: str, i: int):
 
     return ((version, type, subpackets), i)
 
+def numberSubpacketsFrom(bits: str, i: int):
+    version, type = header(bits, i)
+    i += 7
+
+    number = int(bits[i:i+11], 2)
+    i += 11
+
+    subpackets = []
+    for _ in range(number):
+        packet, i = packetify(bits, i)
+        subpackets.append(packet)
+
+    return ((version, type, subpackets), i)
+
 def packetify(bits: str, i: int):
     _, type = header(bits, i)
     if type == 4:
         return literalFrom(bits, i)
 
-    return lenghtSubpacketsFrom(bits, i) 
+    if bits[i+6] == '0':
+        return lenghtSubpacketsFrom(bits, i) 
+    else:
+        return numberSubpacketsFrom(bits, i) 
 
 def solve(input: str) -> int:
     bits = format(int(input, 16), "0" + str(len(input) * 4) + "b")
@@ -60,7 +77,7 @@ def solve(input: str) -> int:
     return versionSum(packets)
 
 def main():
-    input = parse('data/lengthzero.txt')
+    input = parse('data/lengthone.txt')
     result = solve(input)
     print(result)
 
