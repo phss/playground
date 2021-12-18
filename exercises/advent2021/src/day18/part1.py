@@ -44,11 +44,28 @@ def explode(number, level=0):
     return ([left, right], (False, [None, None]))
 
 
+def split(number):
+    if type(number) == int:
+        if number <= 9:
+            return (number, (False, None))
+        else:
+            return ([number//2, number//2 + number%2], (True, number))
+
+    left, right = number
+    left, (splited, old) = split(left)
+    if splited:
+        return ([left, right], (True, old))
+
+    right, result = split(right)
+    return ([left, right], result)
+
+
 def reduce(number):
-    goOn = True
-    while goOn:
+    reducing = True
+    while reducing:
         number, (exploded, _) = explode(number)
-        goOn = exploded
+        number, (splited, _) = split(number)
+        reducing = exploded or splited
     return number
 
 def add(a, b):
@@ -56,8 +73,9 @@ def add(a, b):
 
 # Core
 def solve() -> int:
-    # print(toString(reduce(fromString("[[[[[9,8],1],2],3],4]"))))
-    print(toString(reduce(fromString("[[3,[2,[1,[7,3]]]],[6,[5,[4,[3,2]]]]]"))))
+    a = fromString("[[[[4,3],4],4],[7,[[8,4],9]]]")
+    b = fromString("[1,1]")
+    print(toString(add(a, b)))
     return 0
 
 def main():
