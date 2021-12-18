@@ -77,7 +77,7 @@ def solve(input: str) -> int:
     return versionSum(packets)
 
 def main():
-    input = parse('data/lengthone.txt')
+    input = parse('data/day16.txt')
     result = solve(input)
     print(result)
 
