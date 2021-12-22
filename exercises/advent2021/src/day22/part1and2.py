@@ -76,24 +76,11 @@ def remove(cubes, cubeToRemove):
     return afterRemove
 
 def solve(input) -> int:
-    smallCubes = []
-    for step in input:
-        _, cube = step
-        small = True
-        for axis in range(3):
-            if cube[axis][0] < -50 or cube[axis][0] > 50 or cube[axis][1] < -50 or cube[axis][1] > 50:
-                small = False
-                break
-        if small:
-            smallCubes.append(step)
-
-    _, firstCube = smallCubes[0]
+    _, firstCube = input[0]
     cubes = [firstCube]
 
-    for step in smallCubes[1:]:
+    for step in input[1:]:
         switch, cube = step
-
-
         if switch == 'on':
             cubes += add(cubes, cube)
         elif switch == 'off':
