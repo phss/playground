@@ -6,8 +6,38 @@ def parse(filename: str):
 def pretty(input):
     return "".join(map(str, reversed(input)))
 
+def calculate(stateVariables, stepVariables):
+    w, x, y, z = stateVariables
+    a, b, c = stepVariables
+
+    x = (z % 26) + a
+    z //= b
+    x = 1 if x != w else 0
+    y = (25 * x) + 1
+    z *= y
+    y = (w + c) * x
+    z += y
+
+    return [w, x, y, z]
+
 def allSolutions(monad):
     states = [(0, [0, 0, 0, 0])]
+    stepVariables = [
+        [13, 1, 14],
+        [12, 1, 8],
+        [11, 1, 5],
+        [0, 26, 4],
+        [15, 1, 10],
+        [-13, 26, 13],
+        [10, 1, 16],
+        [-9, 26, 5],
+        [11, 1, 6],
+        [13, 1, 13],
+        [-14, 26, 6],
+        [-3, 26, 7],
+        [-2, 26, 13],
+        [-14, 26, 3]
+    ]
 
     def pruneStates():
         uniqueStates = {}
@@ -19,7 +49,7 @@ def allSolutions(monad):
 
         return uniqueStates.values()
 
-    def expandStatesAndInp(a):
+    def expandStatesAndInp():
         newStates = []
         for state in states:
             model, variables = state
@@ -30,69 +60,24 @@ def allSolutions(monad):
                 newStates.append((newModel, newVariables))
         return newStates
 
-    def vtoi(a):
-        if a == 'w':
-            return 0
-        elif a == 'x':
-            return 1
-        elif a == 'y':
-            return 2
-        elif a == 'z':
-            return 3
-        else:
-            return -1
-
-    def add(variables, a, b):
-        bi = vtoi(b)
-        value = variables[bi] if bi != -1 else int(b)
-        variables[vtoi(a)] += value
-
-    def mul(variables, a, b):
-        bi = vtoi(b)
-        value = variables[bi] if bi != -1 else int(b)
-        variables[vtoi(a)] *= value
-
-    def div(variables, a, b):
-        bi = vtoi(b)
-        value = variables[bi] if bi != -1 else int(b)
-        variables[vtoi(a)] //= value
-
-    def mod(variables, a, b):
-        bi = vtoi(b)
-        value = variables[bi] if bi != -1 else int(b)
-        variables[vtoi(a)] %= value
-        
-    def eql(variables, a, b):
-        bi = vtoi(b)
-        value = variables[bi] if bi != -1 else int(b)
-        variables[vtoi(a)] = 1 if variables[vtoi(a)] == value else 0
-
     digits = 0
-    for i, instruction in enumerate(monad):
-        op, rest = instruction[0], instruction[1:]
-        print('>', i, op, rest)
+    for step, stepVars in enumerate(stepVariables):
+        print(">", step)
+        print(digits, len(states), "states (before)")
+        states = pruneStates()
+        print(digits, len(states), "states (after prune)")
+        states = expandStatesAndInp()
+        print(digits, len(states), "states (after expansion)")
+        digits += 1
 
-        if op == 'inp':
-            print(digits, len(states), "states (before)")
-            states = pruneStates()
-            print(digits, len(states), "states (after prune)")
-            states = expandStatesAndInp(rest[0])
-            print(digits, len(states), "states (after expansion)")
-            digits += 1
-            continue
+        things = sorted(states, key=lambda x: x[0])
+        print("Min", things[0])
+        print("Max", things[-1])
 
-        for state in states:
-            _, variables = state
-            if op == 'add':
-                add(variables, rest[0], rest[1])
-            elif op == 'mul':
-                mul(variables, rest[0], rest[1])
-            elif op == 'div':
-                div(variables, rest[0], rest[1])
-            elif op == 'mod':
-                mod(variables, rest[0], rest[1])
-            elif op == 'eql':
-                eql(variables, rest[0], rest[1])
+        for i, state in enumerate(states):
+            model, stateVars = state
+            newStateVars = calculate(stateVars, stepVars)
+            states[i] = (model, newStateVars)
         
     solutions = []
     for state in states:
