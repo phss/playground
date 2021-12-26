@@ -7,13 +7,13 @@ def pretty(input):
     return "".join(map(str, reversed(input)))
 
 def allSolutions(monad):
-    states = [(0, { 'w': 0, 'x': 0, 'y': 0, 'z': 0 })]
+    states = [(0, [0, 0, 0, 0])]
 
     def pruneStates():
         uniqueStates = {}
         for state in states:
             model, variables = state
-            hashedState = '%d-%d-%d' % (variables['x'], variables['y'], variables['z'])
+            hashedState = '%d-%d-%d' % (variables[1], variables[2], variables[3])
             if (not hashedState in uniqueStates) or (uniqueStates[hashedState][0] < model):
                 uniqueStates[hashedState] = (model, variables)
 
@@ -26,29 +26,46 @@ def allSolutions(monad):
             for digit in range(1, 10):
                 newModel = model*10 + digit
                 newVariables = variables.copy()
-                newVariables[a] = digit
+                newVariables[0] = digit
                 newStates.append((newModel, newVariables))
         return newStates
 
+    def vtoi(a):
+        if a == 'w':
+            return 0
+        elif a == 'x':
+            return 1
+        elif a == 'y':
+            return 2
+        elif a == 'z':
+            return 3
+        else:
+            return -1
+
     def add(variables, a, b):
-        value = variables[b] if b in variables else int(b)
-        variables[a] += value
+        bi = vtoi(b)
+        value = variables[bi] if bi != -1 else int(b)
+        variables[vtoi(a)] += value
 
     def mul(variables, a, b):
-        value = variables[b] if b in variables else int(b)
-        variables[a] *= value
+        bi = vtoi(b)
+        value = variables[bi] if bi != -1 else int(b)
+        variables[vtoi(a)] *= value
 
     def div(variables, a, b):
-        value = variables[b] if b in variables else int(b)
-        variables[a] //= value
+        bi = vtoi(b)
+        value = variables[bi] if bi != -1 else int(b)
+        variables[vtoi(a)] //= value
 
     def mod(variables, a, b):
-        value = variables[b] if b in variables else int(b)
-        variables[a] %= value
+        bi = vtoi(b)
+        value = variables[bi] if bi != -1 else int(b)
+        variables[vtoi(a)] %= value
         
     def eql(variables, a, b):
-        value = variables[b] if b in variables else int(b)
-        variables[a] = 1 if variables[a] == value else 0
+        bi = vtoi(b)
+        value = variables[bi] if bi != -1 else int(b)
+        variables[vtoi(a)] = 1 if variables[vtoi(a)] == value else 0
 
     digits = 0
     for i, instruction in enumerate(monad):
@@ -80,7 +97,7 @@ def allSolutions(monad):
     solutions = []
     for state in states:
         model, variables = state
-        if variables['z'] == 0:
+        if variables[3] == 0:
             solutions.append(model)
 
     return solutions
