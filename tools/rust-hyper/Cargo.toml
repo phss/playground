@@ -5,4 +5,4 @@ authors = ["Paulo Schneider <paulo.schneider@gmail.com>"]
 
 [dependencies]
 
-hyper = "0.10.12"
+hyper = "0.14.10"
