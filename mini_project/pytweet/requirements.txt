@@ -1,4 +1,4 @@
-Flask==0.10.1
+Flask==2.3.2
 SQLAlchemy==0.8.3
 psycopg2==2.5.1
 behave==1.2.2
